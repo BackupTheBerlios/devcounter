@@ -67,6 +67,9 @@ else
    $username=$db->f("username");
 */
    $username=$auth->auth["uname"];
+   $db->query("SELECT * from developer WHERE username='$username'");
+   $db->next_record();
+   
 
    htmlp_form_hidden("username", $username);
    echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
@@ -74,12 +77,12 @@ else
 
    echo "<tr><td align=right width=30%>".$t->translate("Nationality").":</td><td width=70%>\n";
    htmlp_select("nationality"); echo "\n";
-   select_country(999);
+   select_country($db->f("nationality"));
    htmlp_select_end(); echo "</td></tr>\n";
 
    echo "<tr><td align=right width=30%>".$t->translate("Country you actually live in").":</td><td width=70%>\n";
    htmlp_select("actual_country"); echo "\n";
-   select_country(999);
+   select_country("no entry");
    htmlp_select_end(); echo "</td></tr>\n";
 
    echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>19<input type=\"TEXT\" name=\"year_of_birth\" size=3 maxlength=2></td></tr>\n";
@@ -97,7 +100,7 @@ else
    echo "</td></tr>\n";
    echo "<tr><td align=right width=30%>".$t->translate("Mother tongue").":</td><td width=70%>\n";
    htmlp_select("mother_tongue"); echo "\n";
-   select_lang(999);
+   select_lang("no entry");
    htmlp_select_end(); echo "</td></tr>\n";
 
    echo "<tr><td align=right valign=top width=30%><BR>".$t->translate("Other languages").":</td><td width=70%>\n";
@@ -105,11 +108,11 @@ else
    echo "<tr>";
    echo "<td width=25% valign=top>2. ";
    htmlp_select("other_lang_1"); echo "\n";
-   select_lang(999);
+   select_lang("no entry");
    htmlp_select_end(); echo "</td>\n";
    echo "<td width=25% valign=top>3. ";
    htmlp_select("other_lang_2"); echo "\n";
-   select_lang(999);
+   select_lang("no entry");
    htmlp_select_end(); echo "</td>\n";
 
    echo "</td></tr>\n";

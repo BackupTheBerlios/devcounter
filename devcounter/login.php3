@@ -38,6 +38,30 @@ if ($perm->have_perm("user_pending")) {
   ."<b>".$auth->auth["perm"]."</b> ".$t->translate("permission")."."
   ."<br>".$t->translate("Your authentication is valid until")." <b>".timestr($auth->auth["exp"])."</b>";
   $bx->box_full($t->translate("Welcome to $sys_name"), $msg);
+
+if (empty($auth->auth["uname"]))
+  {
+    echo " ";
+  }
+else
+  {
+   $username = $auth->auth["uname"];
+   
+   $db->query("SELECT * from developers WHERE username='$username'");
+   if ($db->num_rows() ==0)
+     {
+      $bx->box_begin();
+      $bx->box_title($username);
+      $bx->box_body_begin();
+      htmlp_link("questionaire.php3","",$t->translate("please take part at our questionaire"));
+      $bx->box_body_end();
+      $bx->box_end();
+     }
+   echo " ";
+  }
+
+
+
 }
 ?>
 <!-- end content -->
