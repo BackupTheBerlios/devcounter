@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: insert.php,v 1.3 2002/08/27 09:59:41 helix Exp $
+# $Id: insert.php,v 1.4 2002/08/27 11:16:59 helix Exp $
 #
 ######################################################################  
 
@@ -34,12 +34,8 @@ if (isset($auth) && !empty($auth->auth["perm"])) {
 
 require("./include/header.inc");
 
-$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
-$be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
-$bs = new box("100%",$th_strip_frame_color,$th_strip_frame_width,$th_strip_title_bgcolor,$th_strip_title_font_color,
-              $th_strip_title_align,$th_strip_body_bgcolor,$th_strip_body_font_color,$th_strip_body_align);
+$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $db2 = new DB_DevCounter;
 ?>
 
@@ -55,7 +51,7 @@ $db2 = new DB_DevCounter;
 
   if ($db->affected_rows() == 0) 
   {
-    $bx->box_full($t->translate("Error"),$t->translate("Database Access failed"));
+    $be->box_full($t->translate("Error"),$t->translate("Database Access failed"));
   }
   
   // Get new developer index
@@ -91,7 +87,7 @@ $db2 = new DB_DevCounter;
 
   if ($db->affected_rows() == 0) 
     {
-     $bx->box_full($t->translate("Error"),$t->translate("Database Access failed"));
+     $be->box_full($t->translate("Error"),$t->translate("Database Access failed"));
     } 
   else 
     {

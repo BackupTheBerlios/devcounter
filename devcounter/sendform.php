@@ -18,15 +18,19 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: sendform.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: sendform.php,v 1.5 2002/08/27 11:16:59 helix Exp $
 #
 ######################################################################  
 
 require("./include/prepend.php3");
 
-page_open(array("sess" => "DevCounter_Session",
-                "auth" => "DevCounter_Auth",
-                "perm" => "DevCounter_Perm"));
+page_open(array("sess" => "DevCounter_Session"));
+if (isset($auth) && !empty($auth->auth["perm"])) {
+  page_close();
+  page_open(array("sess" => "DevCounter_Session",
+                  "auth" => "DevCounter_Auth",
+                  "perm" => "DevCounter_Perm"));
+}
 
 require("./include/header.inc");
 
@@ -39,12 +43,7 @@ $be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolo
 $db->query("SELECT * from extra_perms,auth_user WHERE auth_user.username='$devname' AND extra_perms.username='$devname'");
    if ($db->num_rows() ==0)
      {
-      $bx->box_begin();
-      $bx->box_title($t->translate("Error"));
-      $bx->box_body_begin();
-      echo "Unknown Developer";
-      $bx->box_body_end();
-      $bx->box_end();
+      $be->box_full($t->translate("Error"), $t->translate("Unknown Developer"));
      }
    else
      {
@@ -62,12 +61,7 @@ $db->query("SELECT * from extra_perms,auth_user WHERE auth_user.username='$devna
         }
       else
         {
-         $bx->box_begin();
-         $bx->box_title($t->translate("error"));
-         $bx->box_body_begin();
-         echo "..-..";
-         $bx->box_body_end();
-         $bx->box_end();
+         $be->box_full($t->translate("Error"), $t->translate("Developer does not allow to contact him"));
 	}
      }
    echo " ";

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: addproj2db.php,v 1.3 2002/08/27 09:59:41 helix Exp $
+# $Id: addproj2db.php,v 1.4 2002/08/27 11:16:59 helix Exp $
 #
 ######################################################################  
 
@@ -44,12 +44,7 @@ $db2 = new DB_DevCounter;
 $counter=0;
 if (empty($auth->auth["uname"]))
   {
-   $bx->box_begin();
-   $bx->box_title($t->translate("Not logged in"));
-   $bx->box_body_begin();
-   echo $t->translate("Please login first")."\n";
-   $bx->box_body_end();
-   $bx->box_end();
+   $bx->box_full($t->translate("Not logged in"), $t->translate("Please login first"));
   }
 else
   {
@@ -60,26 +55,19 @@ else
    if ($number_of_projects <= 0)
       $number_of_projects = 6;
    $counter2=0;
-      while ($counter!=$number_of_projects)
+   while ($counter!=$number_of_projects)
+     {
+      $counter++;
+      if (!empty($projectname[$counter]))
         {
-         $counter++;
-	 if (!empty($projectname[$counter]))
-	   {
-	    $pcomment[$counter] = htmlentities($pcomment[$counter]);
-	    $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname[$counter]', url = '$projecturl[$counter]', comment='$pcomment[$counter]'");
-	    if ($db->affected_rows() != 0)
-	      {
-	       $counter2++;
-	      }
-	   }
-	}
-      $db->query("UPDATE developers SET number_of_projects='$counter2' WHERE username='$username'");
-      $bx->box_begin();
-      $bx->box_title($t->translate("Success"));
-      $bx->box_body_begin();
-      echo $t->translate("Your Project Data were included successfully")."\n";
-      $bx->box_body_end();
-      $bx->box_end();
+         $pcomment[$counter] = htmlentities($pcomment[$counter]);
+         $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname[$counter]', url = '$projecturl[$counter]', comment='$pcomment[$counter]'");
+         if ($db->affected_rows() != 0)
+            $counter2++;
+        }
+     }
+   $db->query("UPDATE developers SET number_of_projects='$counter2' WHERE username='$username'");
+   $bx->box_full($t->translate("Success"), $t->translate("Your Project Data were included successfully"));
   }
 ?>
 

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: projects.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: projects.php,v 1.5 2002/08/27 11:16:59 helix Exp $
 #
 ######################################################################
 
@@ -35,10 +35,8 @@ if (isset($auth) && !empty($auth->auth["perm"]))
 
 require("./include/header.inc");
 
-$bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
-$be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+$bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
 $db2 = new DB_DevCounter;
 ?>
 
@@ -48,12 +46,7 @@ $counter=0;
 
 if (empty($auth->auth["uname"]))
   {
-   $bx->box_begin();
-   $bx->box_title($t->translate("Not logged in"));
-   $bx->box_body_begin();
-   echo $t->translate("Please login first")."\n";
-   $bx->box_body_end();
-   $bx->box_end();
+   $be->box_full($t->translate("Not logged in"), $t->translate("Please login first"));
   }
 else
   {
@@ -66,12 +59,7 @@ else
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
-      $bx->box_begin();
-      $bx->box_title($t->translate("Success"));
-      $bx->box_body_begin();
-      echo $t->translate("Project updated")."\n";
-      $bx->box_body_end();
-      $bx->box_end();
+      $bx->box_full($t->translate("Success"), $t->translate("Project updated"));
      }
     break;
 
@@ -79,12 +67,7 @@ else
     $db->query("delete from os_projects where username='$username' AND projectname='$oldpname'");
     if ($db->affected_rows() == 1 )
      {
-      $bx->box_begin();
-      $bx->box_title($t->translate("Success"));
-      $bx->box_body_begin();
-      echo $t->translate("Project deleted")."\n";
-      $bx->box_body_end();
-      $bx->box_end();
+      $bx->box_full($t->translate("Success"), $t->translate("Project deleted"));
      }
    $db->query("SELECT * from os_projects where username='$username'");
    $number_of_projects=$db->num_rows();
@@ -98,23 +81,12 @@ else
        $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname', url = '$projecturl', comment='$pcomment'");
        if ($db->affected_rows() == 1 )
         {
-         $bx->box_begin();
-         $bx->box_title($t->translate("Success"));
-         $bx->box_body_begin();
-         echo $t->translate("Project added")."\n";
-         $bx->box_body_end();
-         $bx->box_end();
+         $bx->box_full($t->translate("Success"), $t->translate("Project added"));
         }
       }
     else
       {
-       $bx->box_begin();
-       $bx->box_title($t->translate("Error"));
-       $bx->box_body_begin();
-       echo $t->translate("Empty Project")."\n";
-       $bx->box_body_end();
-       $bx->box_end();
-       
+       $be->box_full($t->translate("Error"), $t->translate("Empty Project"));
       }
    $db->query("SELECT * from os_projects where username='$username'");
    $number_of_projects=$db->num_rows();
@@ -174,23 +146,19 @@ else
        $bx->box_column("center","",$bgcolor,html_input_text("projecturl", 35, 255, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("pcomment", 35, 400, ""));
        $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add Project")));
-//       $bx->box_column("center","",$bgcolor,"--");
        $bx->box_columns_end();
        htmlp_form_end();
      }
    else
      {
-      $bx->box_begin();
-      $bx->box_title($t->translate("Error"));
-      $bx->box_body_begin();
+      $be->box_begin();
+      $be->box_title($t->translate("Error"));
+      $be->box_body_begin();
       htmlp_link("addproj.php","",$t->translate("Enter your projects here"));
-      //echo $t->translate("Enter your projects here")."\n";
-      $bx->box_body_end();
-      $bx->box_end();
-
+      $be->box_body_end();
+      $be->box_end();
      }
   }
-
 ?>
 <!-- end content -->
 

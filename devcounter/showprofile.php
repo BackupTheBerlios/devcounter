@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: showprofile.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: showprofile.php,v 1.5 2002/08/27 11:16:59 helix Exp $
 #
 ######################################################################
 
@@ -35,10 +35,8 @@ if (isset($auth) && !empty($auth->auth["perm"]))
 
 require("./include/header.inc");
 
-$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
-$be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
 $db2 = new DB_DevCounter;
 ?>
 
@@ -48,14 +46,7 @@ $db->query("SELECT * from auth_user,developers,extra_perms WHERE auth_user.usern
 if ($db->num_rows() == 0)
   {
       
-   $bx->box_begin();
-   $bx->box_title($t->translate("Error"));
-   $bx->box_body_begin();
-
-   echo $t->translate("Developer did not specify a Profile yet");
-
-   $bx->box_body_end();
-   $bx->box_end();
+   $be->box_full($t->translate("Error"), $t->translate("Developer did not specify a Profile yet"));
   }
 else
   {
@@ -169,8 +160,6 @@ else
 
    $number_of_projects = $db->f("number_of_projects");
    echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects").": $number_of_projects\n";
-   //$name_of_projects = $db->f("name_of_projects");
-   //echo "<BR>".$t->translate("The Free Software/Open Source Projects are").": $name_of_projects";
    echo "<P>";
    $db2->query("SELECT * FROM os_projects WHERE username='$username'");
    $number_of_projects=$db2->num_rows();
@@ -243,7 +232,6 @@ else
            {
             echo "<td width=18% align=right>\n";
            }
-         //echo "<table border=3 width=100% cellpadding=3><tr><td align=right>";
          echo $db->f("ability")."\n";
          echo "</td><td width=90>";
       
@@ -255,8 +243,6 @@ else
    	    $printstars++;
       	   }
       
-         //echo"</td></tr></table>";
-     
          if (($counter2 % 3)==0)
            {
             echo "</td></tr>\n\n"; 
@@ -309,7 +295,6 @@ else
            {
            echo "<td width=18% align=right>\n";
            }
-//         echo "<table border=3 width=100% cellpadding=3><tr><td align=right>";
          echo $db->f("language")."\n";
          echo "</td><td width=90>";
 
@@ -322,8 +307,6 @@ else
 	    $printstars++;
 	   }
 
-//         echo"</td></tr></table>";
-     
          if (($counter2 % 3)==0)
            {
             echo "</td></tr>\n\n"; 
@@ -340,10 +323,6 @@ else
       echo "</tr>\n\n"; 
      }
    htmlp_form_hidden("lang_amount", $lang_amount);
-
-/*  
-  echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-*/
 
    echo "</table></center>\n";
    echo "</td></tr>\n";
