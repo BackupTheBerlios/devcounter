@@ -5,7 +5,7 @@
 # ================================================
 #
 # Copyright (c) 2001-2002 by
-#       Lutz Henckel (lutz.henckel@fokus.gmd.de) and
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de) and
 #       Gregorio Robles (grex@scouts-es.org)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: top_strip.inc,v 1.3 2002/08/26 10:14:28 helix Exp $
+# $Id: top_strip.inc,v 1.4 2003/11/12 14:18:10 helix Exp $
 #
 ######################################################################
 

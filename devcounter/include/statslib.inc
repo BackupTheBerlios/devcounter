@@ -6,7 +6,7 @@
 #
 # Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -19,7 +19,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: statslib.inc,v 1.6 2003/07/16 18:21:22 masato Exp $
+# $Id: statslib.inc,v 1.7 2003/11/12 14:18:10 helix Exp $
 #
 ######################################################################
 

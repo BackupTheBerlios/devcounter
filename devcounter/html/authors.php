@@ -6,8 +6,8 @@
 #
 # Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
-#       Stefan Heinze (heinze@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
+#       Stefan Heinze (heinze@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: authors.php,v 1.2 2002/09/16 18:39:27 helix Exp $
+# $Id: authors.php,v 1.3 2003/11/12 14:18:09 helix Exp $
 #
 ######################################################################  
 
@@ -30,11 +30,11 @@ require("./include/header.inc");
 <P><H2>About the authors:</H2>
 
 <UL>
-<LI>Stefan Heinze &lt;<A HREF="mailto:heinze@fokus.fhg.de">heinze@fokus.fhg.de</a>&gt;
+<LI>Stefan Heinze &lt;<A HREF="mailto:heinze@fokus.fraunhofer.de">heinze@fokus.fraunhofer.de</a>&gt;
 <BR>Stefan Heinze is a student at FHTW in Berlin
 
 <BR>&nbsp;
-<LI>Lutz Henckel &lt;<A HREF="mailto:lutz.henckel@fokus.gmd.de">lutz.henckel@fokus.gmd.de</A>&gt;
+<LI>Lutz Henckel &lt;<A HREF="mailto:lutz.henckel@fokus.fraunhofer.de">lutz.henckel@fokus.fraunhofer.de</A>&gt;
 <BR>Lutz Henckel is the project manager of the BerliOS team. He is known for his
 earlier home page "Woven Goods for Linux", which has evolved to what BerliOS is today.
 

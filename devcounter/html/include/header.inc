@@ -6,8 +6,8 @@
 #
 # Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
-#       Stefan Heinze (heinze@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
+#       Stefan Heinze (heinze@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: header.inc,v 1.2 2002/09/17 11:53:49 helix Exp $
+# $Id: header.inc,v 1.3 2003/11/12 14:18:09 helix Exp $
 #
 ######################################################################  
 

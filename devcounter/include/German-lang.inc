@@ -5,15 +5,15 @@
 # ================================================
 #
 # Copyright (c) 2001-2002 by
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
 #       Gregorio Robles (grex@scouts-es.org)
-#       Stefan Heinze (heinze@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # File with the main German translation
-# translated by Lutz Henckel <lutz.henckel@fokus.fhg.de>
+# translated by Lutz Henckel <lutz.henckel@fokus.fraunhofer.de>
 #
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

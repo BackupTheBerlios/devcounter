@@ -6,8 +6,8 @@
 #
 # Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
-#       Stefan Heinze (heinze@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
+#       Stefan Heinze (heinze@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: translating.php,v 1.3 2002/09/16 18:39:27 helix Exp $
+# $Id: translating.php,v 1.4 2003/11/12 14:18:09 helix Exp $
 #
 ######################################################################  
 
@@ -64,7 +64,7 @@ require("./include/header.inc");
 <TABLE width=95%>
 <TR><TD>Language</TD><TD>Translator</TD><TD>Version</TD><TD>Last Modified</TD></TR>
 <TR><TD>German</TD><TD>Lutz Henckel &lt;<A
-HREF="mailto:lutz.henckel@fokus.gmd.de">lutz.henckel@fokus.fhg.de</A>&gt;</TD><TD>0.1</TD><TD>3
+HREF="mailto:lutz.henckel@fokus.fraunhofer.de">lutz.henckel@fokus.fraunhofer.de</A>&gt;</TD><TD>0.1</TD><TD>3
 April 2002</TD></TR>
 </TABLE></CENTER>
 

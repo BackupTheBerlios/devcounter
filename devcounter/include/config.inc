@@ -6,7 +6,7 @@
 #
 # Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.gmd.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: config.inc,v 1.18 2003/11/12 13:56:03 helix Exp $
+# $Id: config.inc,v 1.19 2003/11/12 14:18:09 helix Exp $
 #
 ######################################################################
 
@@ -66,7 +66,7 @@ $sys_logo_small_heigth = "32";
 ######################################################################
 
 $org_name = "FOKUS";
-$org_url = "http://www.fokus.gmd.de/";
+$org_url = "http://www.fokus.fraunhofer.de/";
 $org_logo_image = "images/logo_fokus.png";
 $org_logo_alt = $org_name;
 $org_logo_width = "60";
