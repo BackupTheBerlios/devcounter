@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: install.php,v 1.3 2002/08/31 14:52:55 helix Exp $
+# $Id: install.php,v 1.4 2002/09/01 11:48:56 helix Exp $
 #
 ######################################################################  
 
@@ -85,7 +85,6 @@ case "check_php":
 /* Check PHPlib */
 
 case "check_phplib":
-	require("./include/prepend.php3");
 	require("./install/header.inc");
 	require("./install/check_phplib.php");
 	break;
