@@ -107,7 +107,7 @@ switch($phrase) {
      
      case "Project": $tmp = "Projekt"; break;
      case "Number of Free Software/Open Source Projects you are involved in": $tmp = "Anzahl der Free Software/Open Source Projekte in die eingebunden bist"; break;
-     case "Which of these programming expirience do you have?": $tmp = "In welchen Bereichen hast Du Erfahrung?"; break;
+     case "Which of these programming experience do you have?": $tmp = "In welchen Bereichen hast Du Erfahrung?"; break;
      case "Which of these languages/tools are you experienced with?": $tmp = "In welchen dieser Sprachen/Tools hast Du Erfahrung?"; break;
      case "Professional Data": $tmp = "Ausbildung & Beruf"; break;
      case "Personal Data": $tmp = "Persönliche Daten"; break;
@@ -400,7 +400,6 @@ switch($phrase) {
     case "as password.": $tmp = "als Passwort"; break;
 
 // configure.php
-
     case "Enter your projects here": $tmp = "Projekte hier eingeben"; break;
     case "Project updated": $tmp = "Projekt ge&auml;ndert"; break;
     case "Project deleted": $tmp = "Projekt gel&ouml;scht"; break;
@@ -408,6 +407,11 @@ switch($phrase) {
     case "The Projects": $tmp = "Die Projekte"; break;
     case "Please proceed with the projects page": $tmp = "Bitte mit Projekt-Seite fortfahren"; break;
     
+// Developers watch
+    case "Set Watch": $tmp = "Setze Beobachtung"; break;
+    case "Which programming experiences you like to watch?": $tmp = "Welche Programmierfähigkeiten sollen beobachtet werden?"; break;
+    case "Which languages/tools you like to watch?": $tmp = "Welche Programmiersprachen/Werkzeuge sollen beobachtet werden?"; break;
+    case "Your Developers Watch has been succesfully set": $tmp = "Ihre Entwicklerbeobachtung wurde eingerichtet"; break;
 
 // If no translation available, keep the original phrase
       
