@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: authors.php,v 1.3 2003/11/12 14:18:09 helix Exp $
+# $Id: authors.php,v 1.4 2004/03/02 09:22:10 helix Exp $
 #
 ######################################################################  
 
