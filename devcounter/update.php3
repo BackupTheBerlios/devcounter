@@ -67,52 +67,83 @@ else
    $username=$db->f("username");
 */
    $username=$auth->auth["uname"];
-   $db->query("SELECT * from developer WHERE username='$username'");
+   $db->query("SELECT * from developers WHERE username='$username'");
    $db->next_record();
    
 
    htmlp_form_hidden("username", $username);
    echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
   
-
+   $nationality = $db->f("nationality");
    echo "<tr><td align=right width=30%>".$t->translate("Nationality").":</td><td width=70%>\n";
    htmlp_select("nationality"); echo "\n";
-   select_country($db->f("nationality"));
+   select_country($nationality);
    htmlp_select_end(); echo "</td></tr>\n";
 
+   $actual_country = $db->f("actual_country");
    echo "<tr><td align=right width=30%>".$t->translate("Country you actually live in").":</td><td width=70%>\n";
    htmlp_select("actual_country"); echo "\n";
-   select_country("no entry");
+   select_country($actual_country);
    htmlp_select_end(); echo "</td></tr>\n";
+   $year_of_birth = $db->f("year_of_birth");
+   echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>19<input type=\"TEXT\" name=\"year_of_birth\" size=3 maxlength=2 value=\"$year_of_birth\"></td></tr>\n";
 
-   echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>19<input type=\"TEXT\" name=\"year_of_birth\" size=3 maxlength=2></td></tr>\n";
 
-
+   $gender = $db->f("gender");
    echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>\n";
    echo "<center><table width=80% border=0>\n";
    echo "<tr><td width=26%>";
-   htmlp_radio("gender","no entry",0); echo "&nbsp; ".$t->translate("no entry")."\n";
+   if ($gender == "no entry") 
+     {
+      htmlp_radio("gender","no entry",1);
+     }
+   else
+     {
+      htmlp_radio("gender","no entry",0);
+     }
+   echo "&nbsp; ".$t->translate("no entry")."\n";
    echo "</td>\n<td width=26%>";
-   htmlp_radio("gender","Male",0); echo "&nbsp; ".$t->translate("Male")."\n";
+   if ($gender == "Male") 
+     {
+      htmlp_radio("gender","Male",1);
+     }
+   else
+     {
+      htmlp_radio("gender","Male",0);
+     }
+   echo "&nbsp; ".$t->translate("Male")."\n";
    echo "</td>\n<td width=26%>";
-   htmlp_radio("gender","Female",0); echo "&nbsp; ".$t->translate("Female")."\n";
+   if ($gender == "Female") 
+     {
+      htmlp_radio("gender","Female",1);
+     }
+   else
+     {
+      htmlp_radio("gender","Female",0);
+     }
+   echo "&nbsp; ".$t->translate("Female")."\n";
    echo "</td></tr></table></center>\n";
    echo "</td></tr>\n";
+
+
+   $mother_tongue = $db->f("mother_tongue");
    echo "<tr><td align=right width=30%>".$t->translate("Mother tongue").":</td><td width=70%>\n";
    htmlp_select("mother_tongue"); echo "\n";
-   select_lang("no entry");
+   select_lang($mother_tongue);
    htmlp_select_end(); echo "</td></tr>\n";
 
    echo "<tr><td align=right valign=top width=30%><BR>".$t->translate("Other languages").":</td><td width=70%>\n";
    echo "<table width=90% border=0>\n";
    echo "<tr>";
    echo "<td width=25% valign=top>2. ";
+   $other_lang_1 = $db->f("other_lang_1");
    htmlp_select("other_lang_1"); echo "\n";
-   select_lang("no entry");
+   select_lang($other_lang_1);
+   $other_lang_2 = $db->f("other_lang_2");
    htmlp_select_end(); echo "</td>\n";
    echo "<td width=25% valign=top>3. ";
    htmlp_select("other_lang_2"); echo "\n";
-   select_lang("no entry");
+   select_lang($other_lang_2);
    htmlp_select_end(); echo "</td>\n";
 
    echo "</td></tr>\n";
@@ -318,6 +349,8 @@ else
    echo"</TD><TD width=5%>&nbsp;\n";
    echo"</TD><TD width=30%>\n";
   }
+
+
 
 ?>
 <!-- end content -->

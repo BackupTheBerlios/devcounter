@@ -925,9 +925,10 @@ function select_lang($selected) {
   $db_local = new DB_DevCounter;
   $db_local->query("SELECT code,language FROM languages WHERE translation='$la'");
   while($db_local->next_record()) {
-    echo "<option value=\"".$db_local->f("code")."\"";
+    $db_code = $db_local->f("code");
+    echo "<option value=\"".$db_code."\"";
     $db_language = $db_local->f("language");
-    if ($db_language == $selected) echo " selected";
+    if ($db_code == $selected) echo " selected";
     echo ">". $db_local->f("language")."\n";
   }
 }
@@ -943,9 +944,10 @@ function select_country($selected) {
   $db_local = new DB_DevCounter;
   $db_local->query("SELECT code,description FROM countries WHERE language='$la'");
   while($db_local->next_record()) {
-    echo "<option value=\"".$db_local->f("code")."\"";
+    $db_code = $db_local->f("code");
+    echo "<option value=\"".$db_code."\"";
     $db_country = $db_local->f("description");
-    if ($db_country == $selected) echo " selected";
+    if ($db_code == $selected) echo " selected";
     echo ">". $db_local->f("description")."\n";
   }
 }
