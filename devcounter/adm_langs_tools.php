@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: adm_langs_tools.php,v 1.5 2002/08/31 14:51:33 helix Exp $
+# $Id: adm_langs_tools.php,v 1.6 2002/09/02 11:01:00 helix Exp $
 #
 ######################################################################
 
@@ -48,7 +48,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
     switch($option) {
     case "lang_change":
 
-    $query = "UPDATE prog_languages SET  language = '$language'  WHERE code='$code'";
+    $query = "UPDATE prog_languages SET language='$language' WHERE code='$code'";
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
@@ -72,11 +72,13 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
         $counter++;	
       }
     $code=$counter;
-    $query = "INSERT prog_languages SET  language = '$language', code='$code', colname='$colname'";
+    $query = "INSERT prog_languages SET language='$language',code='$code',colname='$colname'";
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
-      $query = "ALTER TABLE prog_language_values ADD $colname int(11)  NOT NULL DEFAULT 0";
+      $query = "ALTER TABLE prog_language_values ADD $colname int(11) NOT NULL DEFAULT 0";
+      $db->query($query);
+      $query = "ALTER TABLE prog_language_watch ADD $colname int(11) NOT NULL DEFAULT 0";
       $db->query($query);
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
@@ -95,6 +97,8 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
      {
       $query = "ALTER TABLE prog_language_values DROP COLUMN $colname";
       $db->query($query);
+      $query = "ALTER TABLE prog_language_watch DROP COLUMN $colname";
+      $db->query($query);
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
       $bx->box_body_begin();
@@ -106,7 +110,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 
     case "abil_change":
 
-    $query = "UPDATE prog_abilities SET  ability = '$ability', translation='$translation'  WHERE (code='$code' AND translation='$old_trans')";
+    $query = "UPDATE prog_abilities SET ability='$ability',translation='$translation' WHERE (code='$code' AND translation='$old_trans')";
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
@@ -131,21 +135,23 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
         $counter++;	
       }
     $newcode=$counter;
-    $query = "INSERT prog_abilities SET  ability = '$ability', code='$newcode', colname='$colname', translation='$translation'";
+    $query = "INSERT prog_abilities SET ability='$ability',code='$newcode',colname='$colname',translation='$translation'";
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
       $db->query("SELECT * FROM prog_abilities WHERE colname='$colname' ORDER BY code ASC");
       if ($db->num_rows() == 1)
         {
-	 $query = "ALTER TABLE prog_ability_values ADD $colname int(11)  NOT NULL DEFAULT 0";
+         $query = "ALTER TABLE prog_ability_values ADD $colname int(11) NOT NULL DEFAULT 0";
          $db->query($query);
-	}
+         $query = "ALTER TABLE prog_ability_watch ADD $colname int(11) NOT NULL DEFAULT 0";
+         $db->query($query);
+        }
       else
         {
          $db->next_record();
-	 $code = $db->f("code");
-         $query = "UPDATE prog_abilities SET  code = '$code'  WHERE (code='$newcode')";
+         $code = $db->f("code");
+         $query = "UPDATE prog_abilities SET code='$code' WHERE (code='$newcode')";
          $db->query($query);
 	 
 	}
@@ -169,7 +175,9 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
         {
          $query = "ALTER TABLE prog_ability_values DROP COLUMN $colname";
          $db->query($query);
-	}
+         $query = "ALTER TABLE prog_ability_watch DROP COLUMN $colname";
+         $db->query($query);
+        }
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
       $bx->box_body_begin();
