@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: projects.php,v 1.5 2002/08/27 11:16:59 helix Exp $
+# $Id: projects.php,v 1.6 2002/09/01 16:06:06 helix Exp $
 #
 ######################################################################
 
@@ -126,13 +126,13 @@ else
 	 $bx->box_column("center","",$bgcolor,html_input_text("projectname", 25, 64, $db->f("projectname")));
 	 $bx->box_column("center","",$bgcolor,html_input_text("projecturl", 35, 255, $db->f("url")));
 	 $bx->box_column("center","",$bgcolor,html_input_text("pcomment", 35, 400, $db->f("comment")));
-         $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Change")));
+         $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Change"),""));
 	 htmlp_form_end();
 	 htmlp_form_action("projects.php",array(),"POST");
 	 htmlp_form_hidden("oldpname", $db->f("projectname") );
 	 htmlp_form_hidden("option", "delete" );
 	 $bgcolor = "gold";
-	 $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Delete")));
+	 $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Delete"),""));
 	 htmlp_form_end();
 	 $bx->box_next_row_of_columns();
 	 $bgcolor = "#FFFFFF";
@@ -145,7 +145,7 @@ else
        $bx->box_column("center","",$bgcolor,html_input_text("projectname", 25, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("projecturl", 35, 255, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("pcomment", 35, 400, ""));
-       $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add Project")));
+       $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add Project"),""));
        $bx->box_columns_end();
        htmlp_form_end();
      }
