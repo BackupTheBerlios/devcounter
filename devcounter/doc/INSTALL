@@ -12,21 +12,9 @@ PHP3 or PHP4, PHPLib and MySQL installed on your system.
 * mysql> CREATE DATABASE devcounter;
 * mysql> exit;
 * user$ tar -zxvf devcounter-x.x.tar.gz
-* user$ mysql -h host -u operator -p < devcounter/sql/devcounter.sql
+* user$ mysql -h host -u operator -p < devcounter/sql/tables.sql
   (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/auth_user.sql
-  (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/extra_perms.sql
-  (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/countries.sql
-  (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/faq.sql
-  (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/languages.sql
-  (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/prog_abilities.sql
-  (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/prog_languages.sql
+* user$ mysql -h host -u operator -p < devcounter/sql/defaults.sql
   (insert db_password)
 * user$ vi devcounter/include/local.inc
   (insert the correct database parameters; please, keep devcounter as the database name)
