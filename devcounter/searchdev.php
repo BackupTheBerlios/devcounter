@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: searchdev.php,v 1.5 2002/08/27 14:11:10 helix Exp $
+# $Id: searchdev.php,v 1.6 2002/09/03 10:43:45 helix Exp $
 #
 ######################################################################
 
@@ -49,10 +49,10 @@ $bx->box_title($t->translate("$sys_name Search by Category"));
 $bx->box_body_begin();
 
 echo "<table border=0 width=100% cellspacing=5>\n";
-echo "<tr><td><center><a href=\"".$sess->url("searchdev.php?option=abilities")."\">".$t->translate("Programming &amp; Computer Abilities")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("searchdev.php?option=projects")."\">".$t->translate("Projects")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("searchdev.php?option=country")."\">".$t->translate("Countries")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("searchdev.php?option=lang")."\">".$t->translate("Spoken Languages")."</a></center></td></tr>\n";
+echo "<tr><td><a href=\"".$sess->url("searchdev.php?option=abilities")."\">".$t->translate("Programming &amp; Computer Abilities")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("searchdev.php?option=projects")."\">".$t->translate("Projects")."</a></td></tr>\n";
+echo "<tr><td><a href=\"".$sess->url("searchdev.php?option=country")."\">".$t->translate("Countries")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("searchdev.php?option=lang")."\">".$t->translate("Spoken Languages")."</a></td></tr>\n";
 echo "<tr><td colspan=2><center><a href=\"".$sess->url("searchdev.php?option=allinone")."\">".$t->translate("All in one")."</a></center></td></tr>\n";
 echo "</table>\n";
 
@@ -93,7 +93,7 @@ $bx->box_end();
       $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
-   echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("Which of these programming expirience do you have?")."</FONT></B></td></tr><tr><td>\n";
+   echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("Which of these programming experience do you have?")."</FONT></B></td></tr><tr><td>\n";
    echo "<center><table width=90% border=0>\n";
 
    $db->query("SELECT * from prog_abilities WHERE translation='$la'");
@@ -208,7 +208,7 @@ $bx->box_end();
  
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
-   echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("Which of these programming expirience do you have?")."</FONT></B></td></tr><tr><td>\n";
+   echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("Which of these programming experience do you have?")."</FONT></B></td></tr><tr><td>\n";
    echo "<center><table width=90% border=0>\n";
 
    $db->query("SELECT * from prog_abilities WHERE translation='$la'");
