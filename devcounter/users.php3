@@ -52,10 +52,10 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 
   $msg .= "<a href=\"".$sess->self_url().$sess->add_query(array("by" => "%"))."\">".$t->translate("All")."</a> ]";
 
-  $where = "username LIKE '$by'";
+  $where = "auth_user.username LIKE '$by'";
 
   $bs->box_strip($msg);
-  $db->query("SELECT * FROM auth_user WHERE $where ORDER BY username ASC");
+  $db->query("SELECT * FROM auth_user, extra_perms WHERE $where AND auth_user.username=extra_perms.username ORDER BY auth_user.username ASC");
   $bx->box_begin();
   $bx->box_title($t->translate("Developers"));
   $bx->box_body_begin();
@@ -75,8 +75,22 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 	$bx->box_column("right","",$bgcolor,$i);
 	$pquery["devname"] = $db->f("username") ;
 	$bx->box_column("center","",$bgcolor,html_link("showprofile.php3",$pquery,$db->f("username")));
-	$bx->box_column("center","",$bgcolor,$db->f("realname"));
-	$bx->box_column("center","",$bgcolor,html_link("mailto:".$db->f("email_usr"),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+	if ($db->f("showname")=="yes")
+	  {
+	   $bx->box_column("center","",$bgcolor,$db->f("realname"));
+	  }
+	else
+	  {
+	   $bx->box_column("center","",$bgcolor,"---");
+	  }
+	if ($db->f("showemail")=="yes")
+	  {
+	   $bx->box_column("center","",$bgcolor,html_link("mailto:".$db->f("email_usr"),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+	  }
+	else
+	  {
+	   $bx->box_column("center","",$bgcolor,"---");
+	  }
 	$bx->box_next_row_of_columns();
 	$i++;
   }

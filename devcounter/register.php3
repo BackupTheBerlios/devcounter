@@ -79,6 +79,11 @@ while (is_array($HTTP_POST_VARS)
             $be->box_full($t->translate("Error"), $t->translate("Registration of new Developer failed").":<br> $query");
             break;
         }
+        if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
+        if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
+	$query = "insert into extra_perms values('$username','$showname','$showmail','yes','yes')"
+        $db->query($query);
+	
         // send mail
         $message = $t->translate("Thank you for registering on the $sys_name Site. In order")."\n"
                   .$t->translate("to complete your registration, visit the following URL").": \n\n"
@@ -125,7 +130,13 @@ if (!$reg) {
 <td align=right><?php echo $t->translate("Realname") ?>:</td><td><input type="text" name="realname" size=20 maxlength=64 value=""></td>
 </tr>
 <tr valign=middle align=left>
+<td align=right><input type="checkbox" name="showname" checked></td><td><?php echo $t->translate("allow to show realname") ?></td>
+</tr>
+<tr valign=middle align=left>
 <td align=right><?php echo $t->translate("E-Mail") ?>:</td><td><input type="text" name="email_usr" size=20 maxlength=128 value=""></td>
+</tr>
+<tr valign=middle align=left>
+<td align=right><input type="checkbox" name="showemail" checked></td><td><?php echo $t->translate("allow to show E-Mail") ?></td>
 </tr>
 <tr valign=middle align=left>
 <td></td>

@@ -61,6 +61,7 @@ $bx->box_end();
     case "abilities":
 
    htmlp_form_action("devresults.php3",array(),"POST");
+   //htmlp_form_hidden("lang", $lang);
    $bx->box_begin();
    $bx->box_title($t->translate("Computer experience"));
    $bx->box_body_begin();
@@ -154,7 +155,7 @@ $bx->box_end();
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("language")."\n";
       echo "</td><td width=20%>";
-      htmlp_select("lang[".$db->f("code")."]"); 
+      htmlp_select("plang[".$db->f("code")."]"); 
       htmlp_select_option("0",1,$t->translate("No Experience"));
       htmlp_select_option("1",0,$t->translate("Novice"));
       htmlp_select_option("2",0,$t->translate("Beginner")); 

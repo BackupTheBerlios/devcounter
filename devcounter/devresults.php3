@@ -89,11 +89,11 @@ for ($i=0;$i<$ability_amount;$i++)
 $query = "SELECT * from prog_language_values, prog_ability_values WHERE prog_language_values.username=prog_ability_values.username ";
 for ($i=0;$i<$lang_amount;$i++)
   {
-   if ($lang[$i] != 0)
+   if ($plang[$i] != 0)
      {
       $db2->query("SELECT colname FROM prog_languages WHERE code='$i'");
       $db2->next_record();//echo "-".$i."-";
-      $query = $query." AND prog_language_values.".$db2->f("colname").">='$lang[$i]'";
+      $query = $query." AND prog_language_values.".$db2->f("colname").">='$plang[$i]'";
      }
    
   }
@@ -103,7 +103,7 @@ for ($i=0;$i<$ability_amount;$i++)
      {
       $db2->query("SELECT colname FROM prog_abilities WHERE code='$i'");
       $db2->next_record();//echo "-".$i."-";
-      $query = $query." AND prog_ability_values.".$db2->f("colname").">='$lang[$i]'";
+      $query = $query." AND prog_ability_values.".$db2->f("colname").">='$plang[$i]'";
      }
   }
 

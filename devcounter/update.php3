@@ -508,7 +508,7 @@ else
       $colname = $db->f("colname");
       $ability_value = $db2->f($colname);
       echo "</td><td width=20%>";
-      htmlp_select("lang[".$ability_code."]"); 
+      htmlp_select("plang[".$ability_code."]"); 
       
       if ($ability_value == 0)
         {

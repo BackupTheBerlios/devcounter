@@ -64,8 +64,8 @@ $db2 = new DB_DevCounter;
      $counter++;
      $db2->query("SELECT colname FROM prog_languages WHERE code='$counter'");
      $db2->next_record();
-     //$query = "INSERT prog_languages_values SET  username = '$username', code = '$counter', value = '$lang[$counter]'";
-     $query = $query.", ".$db2->f("colname")."='$lang[$counter]'";
+     //$query = "INSERT prog_languages_values SET  username = '$username', code = '$counter', value = '$plang[$counter]'";
+     $query = $query.", ".$db2->f("colname")."='$plang[$counter]'";
     }
    $db->query($query);
 

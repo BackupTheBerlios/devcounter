@@ -47,3 +47,11 @@ CREATE TABLE developers (
 
 );
 
+DROP TABLE IF EXISTS extra_perms;
+CREATE TABLE extra_perms (
+   username varchar(24) NOT NULL,
+   showname varchar(3) NOT NULL,
+   showemail varchar(3) NOT NULL,
+   search varchar(3) NOT NULL,
+   contact varchar(3) NOT NULL
+);

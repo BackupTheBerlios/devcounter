@@ -46,13 +46,20 @@ while (is_array($HTTP_POST_VARS)
             	$be->box_full($t->translate("Error"), $t->translate("The passwords are not identical").". ".$t->translate("Please try again")."!");
             	break;
         	}
-            $query = "UPDATE auth_user SET password='$password', realname='$realname', email_usr='$email_usr', modification_usr=NOW() WHERE user_id='$u_id'";
+	    if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
+	    if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
+	    if ($search == "on") {$search = "yes";} else {$search = "no";}
+	    if ($contact == "on") {$contact = "yes";} else {$contact = "no";}
+	    
+	    $query = "UPDATE auth_user SET password='$password', realname='$realname', email_usr='$email_usr', modification_usr=NOW() WHERE user_id='$u_id'";
             $db->query($query);
             if ($db->affected_rows() == 0) {
                 $be->box_full($t->translate("Error"), $t->translate("Change User Parameters failed").":<br>$query");
                 break;
             }
             $bi->box_full($t->translate("Change Developer Parameters"), $t->translate("Password and/or E-Mail Address of")." <b>". $auth->auth["uname"] ."</b> ".$t->translate("is changed").".");
+			$query = "UPDATE extra_perms SET showname='$showname', showemail='$showemail', search='$search' , contact='$contact' WHERE username='".$auth->auth["uname"]."'";
+                        $db->query($query);
 			if ($ml_notify) {
 				$message  = "Username: ".$auth->auth["uname"]."\n";
 				$message .= "Realname: $realname\n";
@@ -72,7 +79,7 @@ $bx->box_begin();
 $bx->box_title($t->translate("Change Developer Parameters"));
 $bx->box_body_begin();
 echo "<table border=0 align=\"center\" cellspacing=0 cellpadding=3>\n";
-$db->query("select * from auth_user where username='".$auth->auth["uname"]."'");
+$db->query("select * from auth_user,extra_perms where auth_user.username='".$auth->auth["uname"]."' and extra_perms.username='".$auth->auth["uname"]."'");
 while ($db->next_record()) {
 ?>
 <form method="post" action="<?php $sess->pself_url() ?>">
@@ -84,9 +91,62 @@ while ($db->next_record()) {
 <td align=right><?php echo $t->translate("Confirm Password") ?>:</td><td><input type="password" name="cpassword" size=20 maxlength=32 value="<?php $db->p("password") ?>"></td></tr>
 <tr>
 <td align=right><?php echo $t->translate("Realname") ?>:</td><td><input type="text" name="realname" size=20 maxlength=64 value="<?php $db->p("realname") ?>"></td></tr>
+
+<tr valign=middle align=left>
+<td align=right>
+<?php 
+if ($db->f("showname")=="yes")
+  {
+   echo"<input type=\"checkbox\" name=\"showname\" checked></td><td>";
+  }
+else
+  {
+  echo"<input type=\"checkbox\" name=\"showname\"></td><td>";
+  }
+echo $t->translate("allow to show realname") ?></td>
+</tr>
 <tr>
 <td align=right><?php echo $t->translate("E-Mail") ?>:</td><td><input type="text" name="email_usr" size=20 maxlength=128 value="<?php $db->p("email_usr") ?>"></td></tr>
 <tr>
+<tr valign=middle align=left>
+<td align=right>
+<?php 
+if ($db->f("showemail")=="yes")
+  {
+   echo"<input type=\"checkbox\" name=\"showemail\" checked></td><td>";
+  }
+else
+  {
+  echo"<input type=\"checkbox\" name=\"showemail\"></td><td>";
+  }
+echo $t->translate("allow to show E-Mail") ?></td>
+</tr>
+<tr valign=middle align=left>
+<td align=right>
+<?php 
+if ($db->f("search")=="yes")
+  {
+   echo"<input type=\"checkbox\" name=\"search\" checked></td><td>";
+  }
+else
+  {
+  echo"<input type=\"checkbox\" name=\"search\"></td><td>";
+  }
+echo $t->translate("allow to be searched") ?></td>
+</tr>
+<tr valign=middle align=left>
+<td align=right>
+<?php 
+if ($db->f("contact")=="yes")
+  {
+   echo"<input type=\"checkbox\" name=\"contact\" checked></td><td>";
+  }
+else
+  {
+  echo"<input type=\"checkbox\" name=\"contact\"></td><td>";
+  }
+echo $t->translate("allow to be contacted by other developers <BR>via DevCounter") ?></td>
+</tr>
 <?php
 	$time = mktimestamp($db->f("modification_usr"));
 ?>
