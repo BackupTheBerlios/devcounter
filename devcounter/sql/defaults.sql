@@ -202,7 +202,7 @@ INSERT INTO countries (code, domaine, description, language) VALUES (95, 'ht', '
 INSERT INTO countries (code, domaine, description, language) VALUES (96, 'hu', 'Ungarn', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (97, 'id', 'Indonesien', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (98, 'ie', 'Irland', 'German');
-INSERT INTO countries (code, domaine, description, language) VALUES (99, 'il', 'Israël', 'German');
+INSERT INTO countries (code, domaine, description, language) VALUES (99, 'il', 'Israel', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (100, 'im', 'Ile de Man', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (101, 'in', 'Indien', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (102, 'io', 'Britische Territorien im Indischen Ozean', 'German');
@@ -263,7 +263,7 @@ INSERT INTO countries (code, domaine, description, language) VALUES (156, 'ne', 
 INSERT INTO countries (code, domaine, description, language) VALUES (157, 'nf', 'Norfolk Iland', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (158, 'ng', 'Nigeria', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (159, 'ni', 'Nikaragua', 'German');
-INSERT INTO countries (code, domaine, description, language) VALUES (160, 'nl', 'Pays Bas', 'German');
+INSERT INTO countries (code, domaine, description, language) VALUES (160, 'nl', 'Niederlande', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (161, 'no', 'Norwegen', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (162, 'np', 'Nepal', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (163, 'nr', 'Nauru', 'German');
@@ -325,8 +325,8 @@ INSERT INTO countries (code, domaine, description, language) VALUES (218, 'tw', 
 INSERT INTO countries (code, domaine, description, language) VALUES (219, 'tz', 'Tanzania', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (220, 'ua', 'Ukraine', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (221, 'ug', 'Ouganda', 'German');
-INSERT INTO countries (code, domaine, description, language) VALUES (222, 'uk', 'Royaume Uni', 'German');
-INSERT INTO countries (code, domaine, description, language) VALUES (223, 'gb', 'Royaume Uni', 'German');
+INSERT INTO countries (code, domaine, description, language) VALUES (222, 'uk', 'Vereinigtes Königreich', 'German');
+INSERT INTO countries (code, domaine, description, language) VALUES (223, 'gb', 'Vereinigtes Königreich', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (224, 'um', 'US Minor Outlying Inseln', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (225, 'us', 'USA', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (226, 'uy', 'Uruguay', 'German');
