@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: req_compose.php,v 1.1 2002/10/08 18:12:54 Masato Exp $
+# $Id: req_compose.php,v 1.2 2002/10/09 18:36:16 Masato Exp $
 #
 ######################################################################
 
@@ -55,10 +55,10 @@ else
    $bx->box_title($t->translate("make request"));
    $bx->box_body_begin();
    htmlp_form_action("req_manage.php", "", "POST");
-   htmlp_form_hidden("option", "send" );
+   htmlp_form_hidden("option", "Send" );
    echo $t->translate("Subject").":<BR>";
    htmlp_input_text("reqsubject", 50, 75, "");
-   htmlp_form_submit("send","");
+   htmlp_form_submit($t->translate("send"),"");
    echo "<BR>\n";
    echo $t->translate("Related to which Project").":<BR>";
    htmlp_select("projectname"); 
@@ -76,6 +76,7 @@ else
    htmlp_select_option("member",1,$t->translate("new project member"));
    htmlp_select_option("task",0,$t->translate("specific task"));
    htmlp_select_option("help",0,$t->translate("help/assistance"));
+   htmlp_select_option("test",0,$t->translate("testing/debugging"));
    htmlp_select_end();
    echo "<BR>\n";
    

@@ -51,9 +51,13 @@ switch($phrase) {
      case "Modify ProgLanguages &amp; ProgTools": $tmp = "ProgSprachen und ProgTools verwalten";break;
      case "Daily Newsletter": $tmp = "Tägl. Newsletter"; break;
      case "Weekly Newsletter": $tmp = "Wöchentl. Newsletter"; break;
+     case "Create a new Request": $tmp = "Neue Anfrage erstellen"; break;
+     case "Show Requests": $tmp = "Anfragen anzeigen"; break;
+     case "Manage your Requests": $tmp = "Eigene Anfragen verwalten"; break;
 
 //Frontpage
      case "Newest Developers": $tmp = "Neueste Entwickler"; break;
+     case "Newest Requests": $tmp = "Neueste Anfragen"; break;
      case "Please enter your Profile": $tmp = "Bitte geben Sie Ihre Profildaten ein"; break;
 
 //Permissions
@@ -190,7 +194,7 @@ switch($phrase) {
      case "Your account is now activated. Please login": $tmp = "Ihre Benutzerkennung ist jetzt freigeschaltet. Bitte loggen Sie sich ein"; break;
 
 // Contact Developer
-     case "Send": $tmp = "Senden"; break;
+     case "Send": $tmp = "Abschicken"; break;
      case "contact developer": $tmp = "an Entwickler schreiben"; break;
      case "write Developer": $tmp = "an Entwickler schreiben"; break;     
      case "Subject:": $tmp = "Betreff:"; break;
@@ -391,6 +395,34 @@ switch($phrase) {
     case "The Projects": $tmp = "Die Projekte"; break;
     case "Please proceed with the projects page": $tmp = "Bitte mit Projekt-Seite fortfahren"; break;
     
+// Requests
+    case "Time": $tmp = "Zeit"; break;
+    case "Edit": $tmp = "Bearbeiten"; break;
+    case "other": $tmp = "anderes"; break;
+    case "none": $tmp = "keins"; break;
+    case "Task": $tmp = "Aufgabe"; break;
+    case "Type": $tmp = "Art"; break;
+    case "edit request": $tmp = "Anfrage bearbeiten"; break;
+    case "Subject": $tmp = "Betreff"; break;
+    case "Content": $tmp = "Inhalt"; break;
+    case "previous page": $tmp = "vorherige Seite"; break;
+    case "next page": $tmp = "n&auml;chste Seite"; break;
+    case "new project member": $tmp = "neues Projektmitglied"; break;
+    case "specific task": $tmp = "spezielle Aufgabe"; break;
+    case "help/assistance": $tmp = "Hilfe/Assistenz"; break;
+    case "testing/debugging": $tmp = "testen/debuggen"; break;
+    case "Related to which Project": $tmp = "Auf welches Projekt bezogen"; break;
+    case "Which type": $tmp = "Welche Art"; break;
+    case "What kind of task": $tmp = "Was für einen Aufgabe"; break;
+    case "Request-Language": $tmp = "Sprache der Anfrage"; break;
+    case "Request deleted": $tmp = "Anfrage gel&ouml;scht"; break;
+    case "Request wasn't deleted": $tmp = "Anfrage wurde nicht gel&ouml;scht"; break;
+    case "Request changed": $tmp = "Anfrage ge&auml;ndert"; break;
+    case "Request wasn't changed": $tmp = "Anfrage wurde nicht ge&auml;ndert"; break;
+    case "Request posted": $tmp = "Anfrage gepostet"; break;
+    case "Request wasn't posted": $tmp = "Anfrage wurde nicht gepostet"; break;
+
+//    case "": $tmp = ""; break;
 // Developers watch
     case "Set your Developers Watch": $tmp = "Setze Entwicklerausschau"; break;
     case "Which programming experiences you like to watch?": $tmp = "Welche Programmierfähigkeiten sollen beobachtet werden?"; break;

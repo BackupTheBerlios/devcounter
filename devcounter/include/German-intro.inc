@@ -18,7 +18,11 @@ echo "die Kentnisse und Erfahrungen von gesuchten Entwicklern beschreiben.\n";
 echo "Sind Entwickler mit den gesuchten Kentnissen und Erfahrungen verfügbar,\n";
 echo "dann wird der Benutzer durch eine Nachricht per E-Mail darüber informiert.\n";
 echo "<P>";
-echo "Entwickler, die Projekte suchen und helfen wollen, können sich bei <B>DevCounters</B> unter Angabe ihrer Kenntnisse eintragen.";
+echo "Registrierte Benutzer können zusätzlich Anfragen stellen, wenn sie Hilfe, \n";
+echo "Projektmitglieder oder Tester suchen. Der entsprechende Entwicker und Projekt sind direkt verlinkt\n";
+echo "<P>";
+echo "Entwickler, die Projekte suchen und helfen wollen, können sich bei <B>DevCounters</B> ";
+echo "unter Angabe ihrer Kenntnisse eintragen.";
 
 $bx->box_body_end();
 $bx->box_end();

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: req_manage.php,v 1.1 2002/10/08 18:12:54 Masato Exp $
+# $Id: req_manage.php,v 1.2 2002/10/09 18:36:16 Masato Exp $
 #
 ######################################################################
 
@@ -59,6 +59,10 @@ else
         {
          $bx->box_full($t->translate("Success"), $t->translate("Request deleted"));
         }
+      else
+        {
+         $bx->box_full($t->translate("Error"), $t->translate("Request wasn't deleted"));
+	}
       
       break;
       
@@ -71,7 +75,7 @@ else
         }
       else
         {
-         $bx->box_full($t->translate("Error"), $t->translate("Request hasn't changed"));
+         $bx->box_full($t->translate("Error"), $t->translate("Request wasn't changed"));
 	}
       
       break;
@@ -86,6 +90,10 @@ else
         {
          $bx->box_full($t->translate("Success"), $t->translate("Request posted"));
         }
+      else
+        {
+         $bx->box_full($t->translate("Error"), $t->translate("Request wasn't posted"));
+	}
       
    
       

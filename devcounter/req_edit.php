@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: req_edit.php,v 1.1 2002/10/08 18:12:54 Masato Exp $
+# $Id: req_edit.php,v 1.2 2002/10/09 18:36:16 Masato Exp $
 #
 ######################################################################
 
@@ -64,7 +64,7 @@ else
       echo $t->translate("Subject").":<BR>";
       $reqsubject=$db->f("reqsubject");
       htmlp_input_text("reqsubject", 50, 75, $reqsubject);
-      htmlp_form_submit("send","");
+      htmlp_form_submit($t->translate("Send"),"");
       echo "<BR>\n";
       echo $t->translate("Related to which Project").":<BR>";
       htmlp_select("projectname"); 
@@ -93,16 +93,25 @@ else
          htmlp_select_option("member",1,$t->translate("new project member"));
          htmlp_select_option("task",0,$t->translate("specific task"));
          htmlp_select_option("help",0,$t->translate("help/assistance"));
+         htmlp_select_option("test",0,$t->translate("testing/debugging"));
          break;
          case "task":
          htmlp_select_option("member",0,$t->translate("new project member"));
          htmlp_select_option("task",1,$t->translate("specific task"));
          htmlp_select_option("help",0,$t->translate("help/assistance"));
+         htmlp_select_option("test",0,$t->translate("testing/debugging"));
          break;
          case "help":
          htmlp_select_option("member",0,$t->translate("new project member"));
          htmlp_select_option("task",0,$t->translate("specific task"));
          htmlp_select_option("help",1,$t->translate("help/assistance"));
+         htmlp_select_option("test",0,$t->translate("testing/debugging"));
+         break;
+         case "member":
+         htmlp_select_option("member",0,$t->translate("new project member"));
+         htmlp_select_option("task",0,$t->translate("specific task"));
+         htmlp_select_option("help",0,$t->translate("help/assistance"));
+         htmlp_select_option("test",1,$t->translate("testing/debugging"));
          break;
         }
       htmlp_select_end();

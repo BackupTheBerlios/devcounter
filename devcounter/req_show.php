@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: req_show.php,v 1.1 2002/10/08 18:12:54 Masato Exp $
+# $Id: req_show.php,v 1.2 2002/10/09 18:36:16 Masato Exp $
 #
 ######################################################################
 
@@ -91,12 +91,13 @@ if (!isset($reqid) || empty($reqid))
    $counter=0;
    $bx->box_begin();
    $bx->box_body_begin();
-   $bx->box_columns_begin(5);
+   $bx->box_columns_begin(6);
    $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
    $bx->box_column("center","20%", $th_strip_title_bgcolor,"<b>".$t->translate("Subject")."</b>");
    $bx->box_column("center","20%", $th_strip_title_bgcolor,"<b>".$t->translate("Developer")."</b>");
-   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Time")."</b>");
-   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Task")."</b>");
+   $bx->box_column("center","20%", $th_strip_title_bgcolor,"<b>".$t->translate("Time")."</b>");
+   $bx->box_column("center","20%", $th_strip_title_bgcolor,"<b>".$t->translate("Task")."</b>");
+   $bx->box_column("center","20%", $th_strip_title_bgcolor,"<b>".$t->translate("Type")."</b>");
    $bx->box_column("center","15%", $th_strip_title_bgcolor,"<b>".$t->translate("Language")."</b>");
    $bx->box_next_row_of_columns();
    $bgcolor = "#FFFFFF";
@@ -121,6 +122,22 @@ if (!isset($reqid) || empty($reqid))
          $tasktype = $db2->f("ability");
         }
       $bx->box_column("center","",$bgcolor,$tasktype);
+      $category=$db->f("category");
+      switch($category) 
+        {
+         case "member":
+         $bx->box_column("center","", $bgcolor,$t->translate("new project member"));
+         break;
+         case "task":
+         $bx->box_column("center","", $bgcolor,$t->translate("specific task"));
+         break;
+         case "help":
+         $bx->box_column("center","", $bgcolor,$t->translate("help/assistance"));
+         break;
+         case "test":
+         $bx->box_column("center","", $bgcolor,$t->translate("testing/debugging"));
+         break;
+        }
       $reqlang=$db->f("language");
       $bx->box_column("center","",$bgcolor,get_lang($reqlang));
       $bx->box_next_row_of_columns();
@@ -151,75 +168,91 @@ else
      {
       $db->next_record();
       $reqsubject=$db->f("reqsubject");
+      //$bs->box_strip($t->translate("Show request"));
       $bx->box_begin();
-      $bx->box_title($t->translate("Show request"));
       $bx->box_body_begin();
-      //echo $t->translate("Subject:")."<BR>";
-      echo "<FONT SIZE=+1>".$reqsubject."</FONT>";
-      echo "<BR>\n";
-      echo "<B>".$t->translate("Devloper").":</B> &nbsp; ";
+      $bx->box_columns_begin(2);
+      $bx->box_colspan(2,"center",$th_strip_title_bgcolor,"<b><FONT SIZE=+2>".$reqsubject."</FONT></b>","");
+      $bgcolor = "#FFFFFF";
+
+      $bx->box_next_row_of_columns();
+      $bx->box_column("left","30%", $bgcolor,"<B>".$t->translate("Developer").":</B> &nbsp; ");
       $reqdev=$db->f("username");
       $pquery["devname"] = $db->f("username") ;
-      htmlp_link("showprofile.php",$pquery,$reqdev);
-      echo "<BR>\n";
+      $bx->box_column("left","70%", $bgcolor,html_link("showprofile.php",$pquery,$reqdev));
+      
+      $bx->box_next_row_of_columns();
+      $bx->box_column("left","", $bgcolor,"<B>".$t->translate("Project").":</B> &nbsp; ");
       $projectname=$db->f("projectname");
       if ($projectname != "none") 
         {
-         echo "<B>".$t->translate("Project").":</B> &nbsp; ";
          $db2->query("SELECT * FROM os_projects WHERE username='$reqdev' AND projectname='$projectname'");
          $db2->next_record(); 
          if (ereg("://",$db2->f("url")))
-         { echo "<A HREF=\"".$db2->f("url")."\">".$db2->f("projectname")."</A>"; } 
+           {  $bx->box_column("left","", $bgcolor,"<A HREF=\"".$db2->f("url")."\">".$db2->f("projectname")."</A>"); } 
          else
-         { echo "<A HREF=\"http://".$db2->f("url")."\">".$db2->f("projectname")."</A>"; }
-	 
+           {  $bx->box_column("left","", $bgcolor,"<A HREF=\"http://".$db2->f("url")."\">".$db2->f("projectname")."</A>"); }
         }
-      echo "<BR>\n";
+      else
+        {
+	 $bx->box_column("left","", $bgcolor,"none");
+	}
 
-      echo "<B>".$t->translate("Type").":</B> &nbsp; ";
+      $bx->box_next_row_of_columns();
+      $bx->box_column("left","", $bgcolor,"<B>".$t->translate("Type").":</B> &nbsp; ");
       $category=$db->f("category");
       switch($category) 
         {
          case "member":
-         echo $t->translate("new project member");
+         $bx->box_column("left","", $bgcolor,$t->translate("new project member"));
          break;
          case "task":
-         echo $t->translate("specific task");
+         $bx->box_column("left","", $bgcolor,$t->translate("specific task"));
          break;
          case "help":
-         echo $t->translate("help/assistance");
+         $bx->box_column("left","", $bgcolor,$t->translate("help/assistance"));
+         break;
+         case "test":
+         $bx->box_column("left","", $bgcolor,$t->translate("testing/debugging"));
          break;
         }
-      echo "<BR>\n";
-      
+
+      $bx->box_next_row_of_columns();
+      $bx->box_column("left","", $bgcolor,"<B>".$t->translate("Task").":</B> &nbsp; ");
       $tasktype=$db->f("tasktype");
       if ($tasktype != "other") 
         {
-         echo "<B>".$t->translate("Kind of task").":</B> &nbsp; ";
          $db2->query("SELECT * FROM prog_abilities WHERE translation='$la' AND code='$tasktype'");
          $db2->next_record();
-         echo $db2->f("ability");
+         $bx->box_column("left","", $bgcolor,$db2->f("ability"));
         }
       else
         {
-	 echo $t->translate("other");
+	 $bx->box_column("left","", $bgcolor,$t->translate("other"));
 	}
-      echo "<BR>\n";
-      
-      $reqlang=$db->f("language");
-      echo "<B>".$t->translate("Request-Language").":</B> &nbsp; ";
-      print_lang($reqlang);
-      echo "<BR>\n";
-      
+      $bgcolor = "#FFFFFF";
 
-      echo "<BR>\n";
-      $reqmessage=$db->f("reqmessage");
-      echo "<B>".$t->translate("Content").":</B> &nbsp;<BR>";
+      $bx->box_next_row_of_columns();
+      $bx->box_column("left","30%", $bgcolor,"<B>".$t->translate("Language").":</B> &nbsp; ");
+      $reqlang=$db->f("language");
+      $bx->box_column("left","70%", $bgcolor,get_lang($reqlang));
       
-      echo "<PRE>".$reqmessage."</PRE>";
+      $bx->box_next_row_of_columns();
+      $bx->box_colspan(2,"center",$bgcolor,"<b>&nbsp;</b>","");
+      $bgcolor = "#F0F0F0";
+      
+      $bx->box_next_row_of_columns();
+      $reqmessage=$db->f("reqmessage");
+      $bx->box_colspan(2,"left",$bgcolor,"<B>".$t->translate("Content").":</B> &nbsp;<BR>\n"."<PRE>".$reqmessage."</PRE>");
+      $bx->box_next_row_of_columns();
+      
+      $bx->box_columns_end();
       $bx->box_body_end();
       $bx->box_end();
-     }
+
+
+
+      }
   }
 ?>
 <!-- end content -->
