@@ -257,7 +257,7 @@ switch($phrase) {
 	 case "Developers by Programming Abilities": $tmp = "Entwickler nach Programmier-Erfahrung"; break;
 	 case "Developers by Programming Languages/Tools": $tmp = "Entwickler nach Programmiersprachen/Werkzeug-Erfahrung"; break;
 	 case "Developers by Nationality": $tmp = "Entwickler nach Herkunftsland"; break;
-	 case "Developers by Countries currently lives in": $tmp = "Entwickler nach Land, in dem man momentan lebt"; break;
+	 case "Developers by Countries currently live in": $tmp = "Entwickler nach Ländern, in denen man momentan lebt"; break;
 	 case "Developers by Mother Tonque": $tmp = "Entwickler nach Muttersprache"; break;
 
 	 case "Number of Developers in $GLOBALS[sys_name]": $tmp = "Anzahl der Entwickler in $GLOBALS[sys_name]"; break;
@@ -282,7 +282,7 @@ switch($phrase) {
      case "Developers listed by Programming Abilities": $tmp = "Entwickler geordnet nach Programmier-Erfahrung"; break;
      case "Developers listed by Programming Languages/Tools": $tmp = "Entwickler geordnet nach Programmiersprachen/Werkzeug-Erfahrung"; break;
      case "Developers listed by Nationality": $tmp = "Entwickler geordnet nach Herkunftsland"; break;
-     case "Developers listed by Countries currently lives in": $tmp = "Entwickler geordnet nach Land, in dem man momentan lebt"; break;
+     case "Developers listed by Countries currently live in": $tmp = "Entwickler geordnet nach Ländern, in denen man momentan lebt"; break;
      case "Developers listed by Mother Tongue": $tmp = "Entwickler geordnet nach Muttersprache"; break;
 
 

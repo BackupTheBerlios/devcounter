@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.11 2002/09/16 18:47:02 helix Exp $
+# $Id: stats.php,v 1.12 2002/09/25 10:01:56 helix Exp $
 #
 ######################################################################
 
@@ -65,7 +65,7 @@ echo "</tr><tr>\n";
 echo "<td><a href=\"".$sess->url("stats.php?option=prog_languages")."\">".$t->translate("Developers by Programming Languages/Tools")."</a></td>\n";
 echo "<td><a href=\"".$sess->url("stats.php?option=nationality")."\">".$t->translate("Developers by Nationality")."</a></td>\n";
 echo "</tr><tr>\n";
-echo "<td><a href=\"".$sess->url("stats.php?option=lives_in")."\">".$t->translate("Developers by Countries currently lives in")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=lives_in")."\">".$t->translate("Developers by Countries currently live in")."</a></td>\n";
 echo "<td><a href=\"".$sess->url("stats.php?option=mother_tonque")."\">".$t->translate("Developers by Mother Tonque")."</a></td>\n";
 echo "</tr>\n";
 echo "</table>\n";
@@ -319,9 +319,9 @@ if (isset($option)) {
      break;
 
 
-// Developers by Countries currently lives in
+// Developers by Countries currently live in
     case "lives_in":
-      stats_title($t->translate("Developers listed by Countries currently lives in"));
+      stats_title($t->translate("Developers listed by Countries currently live in"));
       $db->query("SELECT *,COUNT(*) AS nat_cnt FROM developers GROUP BY developers.actual_country ORDER BY nat_cnt DESC");
      while($db->next_record()) {
        stats_display(get_country($db->f("actual_country")),$db->f("nat_cnt"),"","",$total_number_dev);
