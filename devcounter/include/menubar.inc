@@ -65,10 +65,8 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
 	        htmlp_link("update.php","",$t->translate("Update your Profile"));
 	       }
         }
-/*
         echo "<BR>\n";
 	    htmlp_link("watch.php","",$t->translate("Watch Developers"));
-*/
      }
 ?>
    <br><a href="<?php $sess->purl("newsletter.php"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
