@@ -95,7 +95,10 @@ if ($request_amount != 0)
       if (current($un_query) == $request_amount)
         {
          $hit_amount++;
-	 echo key($un_query)." : ".current($un_query)."<br>";   
+	 $pquery["devname"] = key($un_query);
+	 htmlp_link("showprofile.php3",$pquery,key($un_query));
+	 echo "<BR>\n";
+	 //echo key($un_query)." <br>";   
         } 
       next($un_query);	
      }
@@ -138,7 +141,10 @@ $bx->box_end();
        {
         while ($db->next_record())
 	  {
-	   echo $db->f("username")."<BR>\n";
+	   $pquery["devname"] = $db->f("username") ;
+	   htmlp_link("showprofile.php3",$pquery,$db->f("username"));
+	   echo "<BR>\n";
+	   //echo $db->f("username")."<BR>\n";
 	  }
        }
         $bx->box_body_end();
@@ -164,7 +170,10 @@ $bx->box_end();
        {
         while ($db->next_record())
 	  {
-	   echo $db->f("username")."<BR>\n";
+	   $pquery["devname"] = $db->f("username") ;
+	   htmlp_link("showprofile.php3",$pquery,$db->f("username"));
+	   echo "<BR>\n";
+	   //echo $db->f("username")."<BR>\n";
 	  }
        }
       $bx->box_body_end();
@@ -187,7 +196,10 @@ $bx->box_end();
        {
         while ($db->next_record())
 	  {
-	   echo $db->f("username")."<BR>\n";
+	   $pquery["devname"] = $db->f("username") ;
+	   htmlp_link("showprofile.php3",$pquery,$db->f("username"));
+	   echo "<BR>\n";
+	   //echo $db->f("username")."<BR>\n";
 	  }
        }
 
