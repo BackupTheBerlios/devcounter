@@ -1,2 +1,8 @@
-Order Deny,Allow
-Deny from All
+<Files local.inc>
+    Order allow,deny
+    Deny from all
+</Files>
+<Files local_database.inc>
+    Order allow,deny
+    Deny from all
+</Files>                                                                       
