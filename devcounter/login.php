@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: login.php,v 1.5 2003/02/26 13:19:11 masato Exp $
+# $Id: login.php,v 1.6 2003/07/16 18:21:22 masato Exp $
 #
 ######################################################################  
 
@@ -30,8 +30,8 @@ page_open(array("sess" => "DevCounter_Session",
 
 require("./include/header.inc");
 
-$bx = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
-$be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$be = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
 ?>
 
 <!-- content -->
@@ -45,8 +45,6 @@ if ($perm->have_perm("user_pending")) {
   ."<br>".$t->translate("Your authentication is valid until")." <b>".timestr($auth->auth["exp"])."</b>";
   $bx->box_full($t->translate("Welcome to $sys_name"), $msg);
 
-echo "<TABLE BORDER=\"0\" WIDTH=\"100%\">";
-echo "<TR><TD VALIGN=\"top\">";
 
 if (empty($auth->auth["uname"]))
   {

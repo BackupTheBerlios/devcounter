@@ -19,7 +19,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: statslib.inc,v 1.5 2002/08/30 06:57:25 helix Exp $
+# $Id: statslib.inc,v 1.6 2003/07/16 18:21:22 masato Exp $
 #
 ######################################################################
 
@@ -131,7 +131,7 @@ function stats_display($what,$count,$url,$urlquery,$total) {
 
   echo "<td><table width=264><TR><td><img src=\"images/leftbar.gif\" height=14 width=7 Alt=\"$what\"><img src=\"images/mainbar.gif\" Alt=\"$what\" height=14 width=", $count * 240 / $total_normalize, "><img src=\"images/rightbar.gif\" height=14 width=7 Alt=\"$what\"></td></tr></table>\n";
 
-  echo "</td><td width=42 align=right>&nbsp;".(Ceil(($count*100 /($total+$epsilon))*10)/10)."%</td></tr>\n";
+  echo "</td><td width=42 align=right>&nbsp;".(Ceil(($count*100 /($total+$epsilon))*100)/100)."%</td></tr>\n";
 }
 
 ## stats_end():
