@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: sitebar.php,v 1.3 2002/08/27 09:59:41 helix Exp $
+# $Id: sitebar.php,v 1.4 2002/09/01 11:27:51 helix Exp $
 #
 ######################################################################  
 
@@ -45,8 +45,7 @@ $db = new DB_DevCounter;
 
 $bx = new box("95%",$th_box_frame_color,0,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 ?>
-
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -60,6 +59,11 @@ $bx = new box("95%",$th_box_frame_color,0,$th_box_title_bgcolor,$th_box_title_fo
 <!-- content -->
 <p>&nbsp;
 <?php
+$bx->box_begin();
+$bx->box_body_begin();
+echo "<a href=\"$sys_url_title\" target=\"_content\"><img src=\"$sys_logo_small_image\" border=\"0\" height=\"$sys_logo_small_heigth\" width=\"$sys_logo_small_width\" ALT=\"$sys_logo_small_alt\"></a>";
+$bx->box_body_end();
+$bx->box_end();
 $bx->box_begin();
 $bx->box_title("<font size=\"1\">".$t->translate("Newest Developers")."</font>");
 $db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.username=auth_user.username AND developers.username=extra_perms.username ORDER BY developers.creation DESC limit 20");
