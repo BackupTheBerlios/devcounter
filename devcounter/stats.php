@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.8 2002/08/31 14:54:15 helix Exp $
+# $Id: stats.php,v 1.9 2002/09/01 16:18:55 helix Exp $
 #
 ######################################################################
 
@@ -309,7 +309,7 @@ if (isset($option)) {
       stats_title($t->translate("Developers listed by Nationality"));
       $db->query("SELECT *,COUNT(*) AS nat_cnt FROM developers GROUP BY developers.nationality ORDER BY nat_cnt DESC");
      while($db->next_record()) {
-       stats_display(get_country($db->f("nationality"))." (".$db->f("nationality").")",$db->f("nat_cnt"),"","",$total_number_dev);
+       stats_display(get_country($db->f("nationality")),$db->f("nat_cnt"),"","",$total_number_dev);
      }
      stats_end();
      break;
