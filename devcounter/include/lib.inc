@@ -933,6 +933,18 @@ function select_lang($selected) {
   }
 }
 
+function print_lang($selected) {
+  global $db, $la;
+
+  $db_local = new DB_DevCounter;
+  $db_local->query("SELECT code,language FROM languages WHERE translation='$la' and code='$selected'");
+  $db_local->next_record(); 
+  
+  $db_language = $db_local->f("language");
+  echo  $db_local->f("language")."\n";
+  
+}
+
 #  select_country($selected)
 #  Displays the different countries as a select form 
 #  $selected ist the SELECTED language
@@ -950,6 +962,18 @@ function select_country($selected) {
     if ($db_code == $selected) echo " selected";
     echo ">". $db_local->f("description")."\n";
   }
+}
+
+function print_country($selected) {
+  global $db, $la;
+
+  $db_local = new DB_DevCounter;
+  $db_local->query("SELECT code,description FROM countries WHERE language='$la' and code='$selected'");
+  $db_local->next_record();
+  $db_country = $db_local->f("description");
+  
+  echo $db_local->f("description")."\n";
+  
 }
 
 

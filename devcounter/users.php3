@@ -73,7 +73,8 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
   	else $bgcolor = "#FFFFFF";
 
 	$bx->box_column("right","",$bgcolor,$i);
-	$bx->box_column("center","",$bgcolor,$db->f("username"));
+	$pquery["devname"] = $db->f("username") ;
+	$bx->box_column("center","",$bgcolor,html_link("showprofile.php3",$pquery,$db->f("username")));
 	$bx->box_column("center","",$bgcolor,$db->f("realname"));
 	$bx->box_column("center","",$bgcolor,html_link("mailto:".$db->f("email_usr"),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
 	$bx->box_next_row_of_columns();
