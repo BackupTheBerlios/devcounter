@@ -168,7 +168,7 @@ else
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
    echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" size=3 maxlength=2>\n";
-   echo "<BR>".$t->translate("Which Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"name_of_projects\" size=30 maxlength=200></td></tr>\n";
+   echo "</tr>\n";
   
 
    echo "</TABLE>";

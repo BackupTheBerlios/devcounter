@@ -28,6 +28,8 @@ require("header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$bs = new box("100%",$th_strip_frame_color,$th_strip_frame_width,$th_strip_title_bgcolor,$th_strip_title_font_color,
+              $th_strip_title_align,$th_strip_body_bgcolor,$th_strip_body_font_color,$th_strip_body_align);
 $db2 = new DB_DevCounter;
 ?>
 
@@ -36,7 +38,7 @@ $db2 = new DB_DevCounter;
 <?php
 
 
-  $query = "INSERT developers SET username = '$username', nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification', number_of_projects='$number_of_projects', name_of_projects='$name_of_projects'";
+  $query = "INSERT developers SET username = '$username', nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification', number_of_projects='$number_of_projects'";
   $db->query($query);
 //  echo "Fehler-Nr: $db->Errno \nFehlertxt: $db->Error \n";
 
@@ -79,29 +81,63 @@ $db2 = new DB_DevCounter;
   else 
     {
 
-    $bx->box_begin();
-    $bx->box_title($t->translate("Thank you"));
-    $bx->box_body_begin();
-    echo "\n<P>";
-    echo $t->translate("Give another time thanx for filling it out");
-    echo "\n<BR>";
-    htmlp_link("./index.php3", "", $t->translate("please proceed to the main page"));
-    echo "\n<P>";
-    $bx->box_body_end();
-    $bx->box_end();
+    if ($number_of_projects>0)
+      {
+       $counter=0;
+       htmlp_form_action("insert.php3","","GET");
+       htmlp_form_hidden("number_of_projects", $number_of_projects);
+       
+       //$bs->box_strip($msg);
+       $bx->box_begin();
+       $bx->box_title($t->translate("Please enter Project Data"));
+       $bx->box_body_begin();
+	  
+       $bx->box_columns_begin(4);
+       $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Projectname")."</b>");
+       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("ProjectURL")."</b>");
+       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Comment")."</b>");
+       $bx->box_next_row_of_columns();
+       $bgcolor = "#FFFFFF";
+       
+       while ($counter!=$number_of_projects)
+         {
+          $counter++;
+	  $bx->box_column("right","",$bgcolor,$counter);
+	  $bx->box_column("center","",$bgcolor,html_input_text("projectname[]", 25, 64, ""));
+	  $bx->box_column("center","",$bgcolor,html_input_text("projecturl[]", 35, 255, ""));
+	  $bx->box_column("center","",$bgcolor,html_input_text("comment[]", 42, 400, ""));
+	  $bx->box_next_row_of_columns();
 
-    echo "</td></tr>\n";
-    echo "</table>\n";
-    $bx->box_body_end();
-    $bx->box_end();
+	 }
+       $bx->box_columns_end();
+       $bx->box_body_end();
+       $bx->box_end();
+      }
+    else
+      {
 
-    $bx->box_body_end();
-    $bx->box_end();
+       $bx->box_begin();
+       $bx->box_title($t->translate("Thank you"));
+       $bx->box_body_begin();
+       echo "\n<P>";
+       echo $t->translate("Give another time thanx for filling it out");
+       echo "\n<BR>";
+       htmlp_link("./index.php3", "", $t->translate("please proceed to the main page"));
+       echo "\n<P>";
+       $bx->box_body_end();
+       $bx->box_end();
+
+       echo "</td></tr>\n";
+       echo "</table>\n";
+       $bx->box_body_end();
+       $bx->box_end();
+   
+       $bx->box_body_end();
+       $bx->box_end();
+      }
     } 
-/*else 
-  {
-  $be->box_full($t->translate("Error"),$t->translate("Sorry, we only allow one insertion per IP every 24 hours"));
-  }  */
+
 ?>
 
 <!-- end content -->

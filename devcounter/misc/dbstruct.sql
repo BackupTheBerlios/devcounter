@@ -55,3 +55,11 @@ CREATE TABLE extra_perms (
    search varchar(3) NOT NULL,
    contact varchar(3) NOT NULL
 );
+
+DROP TABLE IF EXISTS os_projects;
+CREATE TABLE os_projects (
+   username varchar(24) NOT NULL,
+   projectname varchar(64) NOT NULL,
+   url varchar(255) NOT NULL,
+   comment text NOT NULL
+);

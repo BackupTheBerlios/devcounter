@@ -81,7 +81,7 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 	  }
 	else
 	  {
-	   $bx->box_column("center","",$bgcolor,"---");
+	   $bx->box_column("center","",$bgcolor,"-- % ---");
 	  }
 	if ($db->f("showemail")=="yes")
 	  {
@@ -89,7 +89,7 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 	  }
 	else
 	  {
-	   $bx->box_column("center","",$bgcolor,"---");
+	   $bx->box_column("center","",$bgcolor,"--- % ---");
 	  }
 	$bx->box_next_row_of_columns();
 	$i++;

@@ -46,7 +46,7 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
    <br><a href="<?php $sess->purl("users.php3") ?>" class="menus"><?php echo $t->translate("Developers"); ?></a>
 
    <br>
-   <br><a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Search Developer"); ?></a>
+   <br><a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Advanced Search"); ?></a>
    <?php
    if (isset($auth) && !empty($auth->auth["perm"]) && !($logout)) 
      {
@@ -159,10 +159,13 @@ if (
 <tr ALIGN=RIGHT BGCOLOR="<?php echo $th_nav_bgcolor;?>">
 <td align=center>
 <p>
-<form action="<?php $sess->purl("search.php3"); ?>">
-<input TYPE="text" SIZE="10" NAME="search" VALUE="">
 <?php
-echo "<p><input TYPE=\"submit\" NAME=\"Search\" VALUE=\"".$t->translate("Search")."\">";
+htmlp_form_action("devresults.php3",array(),"POST");
+htmlp_form_hidden("option", "name");
+?>
+<input TYPE="text" SIZE="10" NAME="search_text" VALUE="">
+<?php
+echo "<p><input TYPE=\"submit\" VALUE=\"".$t->translate('Search')."\">";
 ?>
 </form>
 </td>

@@ -145,7 +145,7 @@ else
   {
   echo"<input type=\"checkbox\" name=\"contact\"></td><td>";
   }
-echo $t->translate("allow to be contacted by other developers <BR>via DevCounter") ?></td>
+echo $t->translate("allow to be contacted by DevCounter") ?></td>
 </tr>
 <?php
 	$time = mktimestamp($db->f("modification_usr"));

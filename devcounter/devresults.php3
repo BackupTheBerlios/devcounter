@@ -54,39 +54,7 @@ $db2 = new DB_DevCounter;
 $request_amount = 0;
 $hit_amount =0;
 
-/*$db->query("SELECT username from developers");
-while ($db->next_record())
-  {
-   $un_query[$db->f("username")]=0;
-  }
-
-for ($i=0;$i<$lang_amount;$i++)
-  {
-   if ($lang[$i] != 0)
-     {
-      $db->query("SELECT username FROM prog_languages_values WHERE code='$i' AND value>='$lang[$i]'");
-      $request_amount++;
-      while ($db->next_record())
-        {
-	 $un_query[$db->f("username")]++;
-	}
-     }
-  }
-
-for ($i=0;$i<$ability_amount;$i++)
-  {
-   if ($ability[$i] != 0)
-     {
-      $db->query("SELECT username FROM prog_abilities_values WHERE code='$i' AND value>='$lang[$i]'");
-      $request_amount++;
-      while ($db->next_record())
-        {
-	 $un_query[$db->f("username")]++;
-	}
-     }
-  }
-*/
-$query = "SELECT * from prog_language_values, prog_ability_values WHERE prog_language_values.username=prog_ability_values.username ";
+$query = "SELECT * from prog_language_values, prog_ability_values, extra_perms WHERE prog_language_values.username=prog_ability_values.username AND extra_perms.username=prog_ability_values.username AND extra_perms.search='yes' ";
 for ($i=0;$i<$lang_amount;$i++)
   {
    if ($plang[$i] != 0)
@@ -106,7 +74,7 @@ for ($i=0;$i<$ability_amount;$i++)
       $query = $query." AND prog_ability_values.".$db2->f("colname").">='$plang[$i]'";
      }
   }
-
+$query=$query." ORDER BY extra_perms.username ASC";
 $db->query($query);
 
 
@@ -114,31 +82,6 @@ $bx->box_begin();
 $bx->box_title($t->translate("Search Results"));
 $bx->box_body_begin();
 
-/*
-if ($request_amount != 0)
-  {
-   for($x=0;$x<sizeof($un_query);$x++) 
-     {
-      if (current($un_query) == $request_amount)
-        {
-         $hit_amount++;
-	 $pquery["devname"] = key($un_query);
-	 htmlp_link("showprofile.php3",$pquery,key($un_query));
-	 echo "<BR>\n";
-	 //echo key($un_query)." <br>";   
-        } 
-      next($un_query);	
-     }
-   if ($hit_amount == 0 )
-     {
-      echo $t->translate("No Results")."\n";
-     }
-  }
-else
-  {
-   echo $t->translate("No Results")."\n";
-  }
-*/
 
      if ($db->num_rows() == 0)
        {
@@ -174,7 +117,7 @@ $bx->box_end();
       $bx->box_body_end();
       $bx->box_end();
 */
-      $db->query("SELECT username FROM developers WHERE  name_of_projects LIKE '%$projname%'");
+      $db->query("SELECT developers.username FROM developers, extra_perms WHERE developers.username=extra_perms.username AND extra_perms.search='yes' AND developers.name_of_projects LIKE '%$projname%' ORDER BY developers.username ASC");
       $bx->box_begin();
       $bx->box_title($t->translate("Results"));
       $bx->box_body_begin();
@@ -200,7 +143,7 @@ $bx->box_end();
     case "lang":
 
 
-      $db->query("SELECT username FROM developers WHERE mother_tongue='$dev_lang' OR other_lang_1='$dev_lang' OR other_lang_2='$dev_lang'");
+      $db->query("SELECT developers.username FROM developers, extra_perms WHERE developers.username=extra_perms.username AND extra_perms.search='yes' AND (developers.mother_tongue='$dev_lang' OR developers.other_lang_1='$dev_lang' OR developers.other_lang_2='$dev_lang') ORDER BY developers.username ASC");
       $bx->box_begin();
       $bx->box_title($t->translate("Results"));
       $bx->box_body_begin();
@@ -229,7 +172,7 @@ $bx->box_end();
 
     case "country":
 
-      $db->query("SELECT username FROM developers WHERE nationality='$dev_country' OR actual_country='$dev_country'");
+      $db->query("SELECT developers.username FROM developers, extra_perms  WHERE developers.username=extra_perms.username AND extra_perms.search='yes' AND (developers.nationality='$dev_country' OR developers.actual_country='$dev_country') ORDER BY developers.username ASC");
       $bx->box_begin();
       $bx->box_title($t->translate("Results"));
       $bx->box_body_begin();
@@ -249,6 +192,35 @@ $bx->box_end();
 	  }
        }
 
+      $bx->box_body_end();
+      $bx->box_end();
+
+      break;
+
+    case "name":
+
+
+      $db->query("SELECT developers.username FROM developers, extra_perms WHERE developers.username LIKE '%$search_text%' AND developers.username=extra_perms.username AND extra_perms.search='yes' ORDER BY developers.username ASC");
+      $bx->box_begin();
+      $bx->box_title($t->translate("Results"));
+      $bx->box_body_begin();
+      
+      
+      
+     if ($db->num_rows() == 0)
+       {
+        echo $t->translate("No Results")."\n";
+       }
+     else
+       {
+        while ($db->next_record())
+	  {
+	   $pquery["devname"] = $db->f("username") ;
+	   htmlp_link("showprofile.php3",$pquery,$db->f("username"));
+	   echo " <BR>\n";
+	   //echo $db->f("username")."<BR>\n";
+	  }
+       }
       $bx->box_body_end();
       $bx->box_end();
 

@@ -41,14 +41,14 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 
 
 $bx->box_begin();
-$bx->box_title($t->translate("$sys_name Search"));
+$bx->box_title($t->translate("$sys_name Search by Category"));
 $bx->box_body_begin();
 
 echo "<table border=0 width=100% cellspacing=5>\n";
 echo "<tr><td><center><a href=\"".$sess->url("searchdev.php3?option=abilities")."\">".$t->translate("Programming &amp; Computer Abilities")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("searchdev.php3?option=lang")."\">".$t->translate("Spoken Languages")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("searchdev.php3?option=country")."\">".$t->translate("Country")."</a></center></td>\n";
 echo "<td><center><a href=\"".$sess->url("searchdev.php3?option=projects")."\">".$t->translate("Projects")."</a></center></td></tr>\n";
+echo "<tr><td><center><a href=\"".$sess->url("searchdev.php3?option=country")."\">".$t->translate("Country")."</a></center></td>\n";
+echo "<td><center><a href=\"".$sess->url("searchdev.php3?option=lang")."\">".$t->translate("Spoken Languages")."</a></center></td></tr>\n";
 echo "</table>\n";
 
 $bx->box_body_end();

@@ -81,7 +81,7 @@ while (is_array($HTTP_POST_VARS)
         }
         if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
         if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
-	$query = "insert into extra_perms values('$username','$showname','$showmail','yes','yes')"
+	$query = "insert into extra_perms values('$username','$showname','$showmail','yes','yes')";
         $db->query($query);
 	
         // send mail
