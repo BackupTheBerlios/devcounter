@@ -10,6 +10,8 @@
 # Database : `devcounter`
 # --------------------------------------------------------
 
+USE devcounter;
+
 #
 # Table structure for table `active_sessions`
 #

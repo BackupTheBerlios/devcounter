@@ -9,6 +9,8 @@
 # PHP Version: 3.0.18
 # Database : `devcounter`
 
+USE devcounter;
+
 #
 # Dumping data for table `auth_user`
 #
