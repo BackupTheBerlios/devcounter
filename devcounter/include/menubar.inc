@@ -44,14 +44,30 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
   {
    ?>
    <br><a href="<?php $sess->purl("users.php") ?>" class="menus"><?php echo $t->translate("Developers"); ?></a>
-
+   <br><a href="<?php $sess->purl("req_show.php") ?>" class="menus"><?php echo $t->translate("Show Requests"); ?></a>
+   <?php
+if (isset($auth) && !empty($auth->auth["perm"]) && !($logout) ) 
+  {
+   if ($perm->have_perm("pending") || $perm->have_perm("user") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
+     {
+      ?>
+      <br><a href="<?php $sess->purl("req_manage.php") ?>" class="menus"><?php echo $t->translate("Manage your Requests"); ?></a>
+      <br><a href="<?php $sess->purl("req_compose.php") ?>" class="menus"><?php echo $t->translate("Create a new Request"); ?></a>
+      
+     <?php 
+     }
+  } 
+     
+     
+      ?>
    <br>
    <?php
    if (isset($auth) && !empty($auth->auth["perm"]) && !($logout)) 
      {
       if ($perm->have_perm("user") || $perm->have_perm("user_pending") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
         {
-	     $uname = $auth->auth["uname"];
+	  
+	  $uname = $auth->auth["uname"];
    
          $db->query("SELECT * from developers WHERE username='$uname'");
          if ($db->num_rows()==0)
