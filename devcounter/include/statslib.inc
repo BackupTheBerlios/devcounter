@@ -5,8 +5,8 @@
 # ================================================
 #
 # Copyright (c) 2001-2002 by
-#       Lutz Henckel (lutz.henckel@fokus.gmd.de) and
 #       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -19,7 +19,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: statslib.inc,v 1.4 2002/08/26 10:14:28 helix Exp $
+# $Id: statslib.inc,v 1.5 2002/08/30 06:57:25 helix Exp $
 #
 ######################################################################
 
@@ -46,31 +46,16 @@ function statslib_top($query,$var,$message,$position) {
   while($db->next_record()) {
    if ( ($db->f("$var") > $max) ) {
       $max = $db->f("$var");
-    } 
+    }
     $position +=1;
     $width = $db->f("$var") * $length / $max;
-    echo "<tr><td width=5% align=right>&nbsp;".$position.".</td>\n";
-    echo "<td width=35%>&nbsp;".$db->f("name");
-
-		// We show (S) for the stable branch
-		// and (D) for the development branch
-    $db_local = new DB_DevCounter;
-    $db_name = $db->f("name");
-    $db_local->query("SELECT appid,type FROM software WHERE name='$db_name'");
-    while ($db_local->next_record()) {
-      $db_local_appid = $db_local->f("appid");
-      $db_local_type = $db_local->f("type");
-      if ($db_local_type == "S") {
-        echo " (<a href=\"".$sess->url("appbyid.php").$sess->add_query(array("id" => $db_local->f("appid")))."\">S</A>)";
-      }
-      if ($db_local_type == "D") {
-        echo " (<a href=\"".$sess->url("appbyid.php").$sess->add_query(array("id" => $db_local->f("appid")))."\">D</A>)";
-      }
-    }
+    echo "<tr><td width=5% align=right valign=top>".$position.".</td>\n";
+    echo "<td width=35%>";
+    echo "<a href=\"".$sess->url("showprofile.php").$sess->add_query(array("devname" => $db->f("username")))."\">".$db->f("username")."</A>";
     echo "</td>\n";
 
     echo "<td width=1%>&nbsp;</td>\n";
-    echo "<td width=59%><img src=\"images/leftbar.gif\" height=14 width=7 Alt=\"".$db->f("name")."\"><img src=\"images/mainbar.gif\" Alt=\"".$db->f("name")."\" height=14 width=\"$width\"><img src=\"images/rightbar.gif\" height=14 width=7 Alt=\"".$db->f("name")."\">&nbsp; ".$db->f("$var")."</td></tr>\n";
+    echo "<td width=59%><img src=\"images/leftbar.gif\" height=14 width=7 Alt=\"".$db->f("username")."\"><img src=\"images/mainbar.gif\" Alt=\"".$db->f("username")."\" height=14 width=\"$width\"><img src=\"images/rightbar.gif\" height=14 width=7 Alt=\"".$db->f("username")."\">&nbsp;".$db->f("$var")."</td></tr>\n";
     echo "</td></tr>\n";
   }
   echo "</table>\n";
@@ -110,33 +95,20 @@ function stats_subtitle($message) {
 }
 
 
-## stats_display($what,$count,$url):
+## stats_display($what,$count,$url,$urlquery,$total):
 ##
 ## Displays the statistic graphically in one column
 ## $what is the string which gives the name
 ## $count gives the number of times it appears
 ## $url gives the corresponding url
-## if $url = 0 then no url is displayed
-
-function stats_display($what,$count,$url) {
-  $max= 400;		// max is a number to ensure the maximum lenght of the graph
-  $length = 575; 	// length is the maximal lenght of the image
-
-  echo "<tr><td width=47%>&nbsp;<a href=\"".$url."\">".$what."</A>:</td>\n";
-  echo "<td width=1%>&nbsp;</td>\n";
-  echo "<td width=52%><img src=\"images/leftbar.gif\" height=14 width=7 Alt=\"${$type}[$i]\"><img src=\"images/mainbar.gif\" Alt=\"${$type}[$i]\" height=14 width=", $count * $length / $max, "><img src=\"images/rightbar.gif\" height=14 width=7 Alt=\"${$type}[$i]\">&nbsp; $count</td></tr>\n";
-  echo "</FONT></td></tr>";
-}
-
-## stats_display_alt($what,$count,$url,$total):
-##
-## Displays the statistic graphically in one column
-## $what is the string which gives the name
-## $count gives the number of times it appears
-## $url gives the corresponding url
+## $urlquery contains an array with the paramaters for the new page
+##            (everything after the ?)
+##            if $urlquery = 0, no additional query will be set
 ## $total gives the total sum of all the studied items
 
-function stats_display_alt($what,$count,$url,$total) {
+function stats_display($what,$count,$url,$urlquery,$total) {
+  global $sess;
+
   $epsilon = 0.0001;    // To avoid having division by zero
   if (empty($total) || !isset($total) || $total == 0) {$total=1; $count=0;}
   if (empty($count) || !isset($count)) {$count=0;}
@@ -149,15 +121,17 @@ function stats_display_alt($what,$count,$url,$total) {
   }
 
   echo "<tr><td width=246>&nbsp;";
-    if (strcmp($url,"0")) echo "<a href=\"".$url."\">";
+    if (strcmp($url,"0")) echo "<a href=\"".$sess->url($url);
+    if (strcmp($urlquery,"0")) echo $sess->add_query($urlquery);
+    if (strcmp($url,"0")) echo "\">";
        echo $what;
 	 if (strcmp($url,"0")) echo "</A>:</td>\n";
   echo "<td width=6>&nbsp;</td>\n";
-  echo "</td width=42><td>&nbsp; $count</td>\n";
+  echo "<td align=right>&nbsp;$count</td>\n";
 
   echo "<td><table width=264><TR><td><img src=\"images/leftbar.gif\" height=14 width=7 Alt=\"$what\"><img src=\"images/mainbar.gif\" Alt=\"$what\" height=14 width=", $count * 240 / $total_normalize, "><img src=\"images/rightbar.gif\" height=14 width=7 Alt=\"$what\"></td></tr></table>\n";
 
-  echo "</td><td width=42>&nbsp;".(Ceil(($count*100 /($total+$epsilon))*10)/10)."%</td></tr>\n";
+  echo "</td><td width=42 align=right>&nbsp;".(Ceil(($count*100 /($total+$epsilon))*10)/10)."%</td></tr>\n";
 }
 
 ## stats_end():
