@@ -60,7 +60,7 @@ $bx->box_end();
 // Abilities
     case "abilities":
 
-   htmlp_form_action("devresults.php3","POST");
+   htmlp_form_action("devresults.php3",array(),"POST");
    $bx->box_begin();
    $bx->box_title($t->translate("Computer experience"));
    $bx->box_body_begin();

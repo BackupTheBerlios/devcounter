@@ -62,7 +62,7 @@ else
    $bx->box_body_begin();
   
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
-   htmlp_form_action("update2db.php3","","GET");
+   htmlp_form_action("update2db.php3",array(),"GET");
    echo "\n";
 /*
    $db->query("SELECT * from auth_user WHERE user_id='$user__id'");
