@@ -35,14 +35,15 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
 <?php
 
 
-  $query = "INSERT developers SET username = '$username', nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification', number_of_projects='$number_of_projects', nonprog='$nonprog'";
+  $query = "INSERT developers SET username = '$username', nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification', number_of_projects='$number_of_projects', name_of_projects='$name_of_projects', nonprog='$nonprog'";
   $db->query($query);
-    $counter=0;
 
-  if ($db->affected_rows() == 0) {
+  if ($db->affected_rows() == 0) 
+  {
     $bx->box_full($t->translate("Error"),$t->translate("Database Access failed"));
   }
   
+    $counter=0;
   while ($counter<$ability_amount)
     {
      $counter++;
@@ -62,9 +63,12 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
 
 
 
-  if ($db->affected_rows() == 0) {
-    $bx->box_full($t->translate("Error"),$t->translate("Database Access failed"));
-  } else {
+  if ($db->affected_rows() == 0) 
+    {
+     $bx->box_full($t->translate("Error"),$t->translate("Database Access failed"));
+    } 
+  else 
+    {
 
     $bx->box_begin();
     $bx->box_title($t->translate("Thank you"));
@@ -82,10 +86,11 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
 
     $bx->box_body_end();
     $bx->box_end();
-  }
-} else {
+    } 
+/*else 
+  {
   $be->box_full($t->translate("Error"),$t->translate("Sorry, we only allow one insertion per IP every 24 hours"));
-}
+  }  */
 ?>
 
 <!-- end content -->
