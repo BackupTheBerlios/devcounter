@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: adm_langs_tools.php,v 1.6 2002/09/02 11:01:00 helix Exp $
+# $Id: adm_langs_tools.php,v 1.7 2002/09/03 10:41:06 helix Exp $
 #
 ######################################################################
 
@@ -76,9 +76,9 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
-      $query = "ALTER TABLE prog_language_values ADD $colname int(11) NOT NULL DEFAULT 0";
+      $query = "ALTER TABLE prog_language_values ADD $colname int(11) NOT NULL DEFAULT 1";
       $db->query($query);
-      $query = "ALTER TABLE prog_language_watch ADD $colname int(11) NOT NULL DEFAULT 0";
+      $query = "ALTER TABLE prog_language_watch ADD $colname int(11) NOT NULL DEFAULT 1";
       $db->query($query);
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
@@ -142,9 +142,9 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
       $db->query("SELECT * FROM prog_abilities WHERE colname='$colname' ORDER BY code ASC");
       if ($db->num_rows() == 1)
         {
-         $query = "ALTER TABLE prog_ability_values ADD $colname int(11) NOT NULL DEFAULT 0";
+         $query = "ALTER TABLE prog_ability_values ADD $colname int(11) NOT NULL DEFAULT 1";
          $db->query($query);
-         $query = "ALTER TABLE prog_ability_watch ADD $colname int(11) NOT NULL DEFAULT 0";
+         $query = "ALTER TABLE prog_ability_watch ADD $colname int(11) NOT NULL DEFAULT 1";
          $db->query($query);
         }
       else
@@ -315,8 +315,6 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
        $bx->box_end();
 
 }
-
-
 ?>
 <!-- end content -->
 
