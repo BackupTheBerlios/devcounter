@@ -15,7 +15,7 @@
 	if ($mode) {
 		if (($mode & 00666) == 00666) {
 			echo "<p><font color=\"red\">Database configuration file $dbconfile has incorrect ".get_perms($mode)." permissions.\n";
-			echo "<br>Please change permissions to rw-rw-rw and try again!</font>\n";
+			echo "<br>Please change permissions to rw-r--r-- and try again!</font>\n";
 		} else {
 			echo "<p><font color=\"green\">Database configuration file $dbconfile has correct ".get_perms($mode)." permissions.</font>\n";
 		}
@@ -24,13 +24,13 @@
 	if ($mode) {
 		if (($mode & 00666) == 00666) {
 			echo "<p><font color=\"red\">PHPlib prepend file $prependfile has incorrect ".get_perms($mode)." permissions.\n";
-			echo "<br>Please change permissions to rw-r-r!</font>\n";
+			echo "<br>Please change permissions to rw-r--r--!</font>\n";
 		} else {
 			echo "<p><font color=\"green\">PHPlib prepend file $prependfile has correct ".get_perms($mode)." permissions.</font>\n";
 		}
 	}
 ?>
 	<p><font color="green">Congratulations!
-	<br>DevCounter is correctly installed.
-	<br>Now visit <a href="<?php echo $sys_url;?>">DevCounter</a> homepage</font>
+	<br><?php echo $sys_name;?> is correctly installed.
+	<br>Now visit <a href="<?php echo $sys_url;?>"><?php echo $sys_name;?></a> homepage</font>
 	<p>[ <a href="install.php">Go back</a> ]
