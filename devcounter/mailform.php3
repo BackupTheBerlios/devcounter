@@ -18,9 +18,15 @@
 # the Free Software Foundation; either version 2 or later of the GPL.
 ######################################################################  
 
-page_open(array("sess" => "DevCounter_Session",
-                "auth" => "DevCounter_Auth",
-                "perm" => "DevCounter_Perm"));
+
+page_open(array("sess" => "DevCounter_Session"));
+if (isset($auth) && !empty($auth->auth["perm"])) {
+  page_close();
+  page_open(array("sess" => "DevCounter_Session",
+                  "auth" => "DevCounter_Auth",
+                  "perm" => "DevCounter_Perm"));
+}
+
 
 require("header.inc");
 
@@ -39,7 +45,7 @@ if (empty($auth->auth["uname"]))
 else
   {
 */
-   $username = $auth->auth["uname"];
+   //$username = $auth->auth["uname"];
    
    $db->query("SELECT * from extra_perms WHERE username='$devname'");
    if ($db->num_rows() ==0)
