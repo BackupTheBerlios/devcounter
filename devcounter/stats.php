@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.6 2002/08/30 07:01:11 helix Exp $
+# $Id: stats.php,v 1.7 2002/08/30 13:17:15 helix Exp $
 #
 ######################################################################
 
@@ -200,32 +200,32 @@ if (isset($option)) {
       stats_end();
       break;
 
-// Gender
+// Developers by Gender
     case "gender":
       stats_title($t->translate("Developers listed by Gender"));
       $db->query("SELECT *,COUNT(*) AS gend_cnt FROM developers,gender WHERE developers.gender=gender.gendid GROUP BY gender.gendid ORDER BY gend_cnt DESC");
       while($db->next_record()) {
-        stats_display($db->f("gender"),$db->f("gend_cnt"),"","",$total_number_dev);
+        stats_display($t->translate($db->f("gender")),$db->f("gend_cnt"),"","",$total_number_dev);
       }
       stats_end();
       break;
 
-// Profession
+// Developers by Profession
     case "profession":
       stats_title($t->translate("Developers listed by Profession"));
       $db->query("SELECT *,COUNT(*) AS prof_cnt FROM developers,profession WHERE developers.profession = profession.profid GROUP BY profession.profid ORDER BY prof_cnt DESC");
       while($db->next_record()) {
-        stats_display($db->f("profession"),$db->f("prof_cnt"),"","",$total_number_dev);
+        stats_display($t->translate($db->f("profession")),$db->f("prof_cnt"),"","",$total_number_dev);
       }
       stats_end();
       break;
  
-// Qualification
+// Developers by Qualification
     case "qualification":
       stats_title($t->translate("Developers listed by Qualification"));
       $db->query("SELECT *,COUNT(*) AS qual_cnt FROM developers,qualification WHERE developers.qualification = qualification.qualid GROUP BY qualification.qualid ORDER BY qual_cnt DESC");
       while($db->next_record()) {
-        stats_display($db->f("qualification"),$db->f("qual_cnt"),"","",$total_number_dev);
+        stats_display($t->translate($db->f("qualification")),$db->f("qual_cnt"),"","",$total_number_dev);
       }
       stats_end();
       break;
@@ -238,6 +238,7 @@ if (isset($option)) {
       $urlquery = "0";		// No URL query in function stats_display
 
       stats_title($t->translate("Developers listed by Email Domain"));
+
       for($i=1;$i<sizeof($domain_country);$i++) {
         $num = 0;
         $like = "'%.".$domain_country[$i][0]."'";
@@ -308,7 +309,7 @@ if (isset($option)) {
       stats_title($t->translate("Developers listed by Nationality"));
       $db->query("SELECT *,COUNT(*) AS nat_cnt FROM developers GROUP BY developers.nationality ORDER BY nat_cnt DESC");
      while($db->next_record()) {
-       stats_display(get_country($db->f("nationality")),$db->f("nat_cnt"),"","",$total_number_dev);
+       stats_display(get_country($db->f("nationality"))." (".$db->f("nationality").")",$db->f("nat_cnt"),"","",$total_number_dev);
      }
      stats_end();
      break;
