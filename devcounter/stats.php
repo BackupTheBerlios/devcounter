@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: stats.php,v 1.5 2002/08/27 14:11:10 helix Exp $
 #
 ######################################################################
 
@@ -72,10 +72,10 @@ if (isset($option)) {
       echo "</TR><TR>";
       
       echo "<TD>";
-      $db->query("SELECT COUNT(*) FROM developers where gender='Male'");
+      $db->query("SELECT COUNT(*) FROM developers where gender='2'");
       $db->next_record();
       $male = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where gender='Female'");
+      $db->query("SELECT COUNT(*) FROM developers where gender='3'");
       $db->next_record();
       $female = $db->f("COUNT(*)");
       $other = $total_number_devs - $male - $female;
@@ -103,28 +103,29 @@ if (isset($option)) {
       echo "</TR><TR>";
       
       echo "<TD>";
-      $db->query("SELECT COUNT(*) FROM developers where qualification='Elementary School'");
+
+      $db->query("SELECT COUNT(*) FROM developers where qualification='2'");
       $db->next_record();
       $e_school = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where qualification='High School'");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='3'");
       $db->next_record();
       $h_school = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where qualification='A-Level'");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='4'");
       $db->next_record();
       $a_level = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where qualification='Apprenticeship'");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='5'");
       $db->next_record();
       $appren = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where qualification='College Graduate'");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='6'");
       $db->next_record();
       $college = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where qualification='University Graduate'");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='7'");
       $db->next_record();
       $unive = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where qualification='Master'");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='8'");
       $db->next_record();
       $master = $db->f("COUNT(*)");
-      $db->query("SELECT COUNT(*) FROM developers where qualification='PhD'");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='9'");
       $db->next_record();
       $phd = $db->f("COUNT(*)");
       $other = $total_number_devs - $e_school - $h_school - $a_level - $appren - $college - $unive - $master - $phd;

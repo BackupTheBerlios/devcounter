@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: addproj2db.php,v 1.4 2002/08/27 11:16:59 helix Exp $
+# $Id: addproj2db.php,v 1.5 2002/08/27 14:11:10 helix Exp $
 #
 ######################################################################  
 
@@ -43,9 +43,7 @@ $db2 = new DB_DevCounter;
 <?php
 $counter=0;
 if (empty($auth->auth["uname"]))
-  {
    $bx->box_full($t->translate("Not logged in"), $t->translate("Please login first"));
-  }
 else
   {
    $username=$auth->auth["uname"];

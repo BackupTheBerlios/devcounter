@@ -1,4 +1,5 @@
 <?php
+
 ######################################################################
 # DevCounter: Open Source Developer Counter
 # ================================================
@@ -17,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: searchdev.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: searchdev.php,v 1.5 2002/08/27 14:11:10 helix Exp $
 #
 ######################################################################
 
@@ -38,11 +39,11 @@ $bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+$db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
 <?php
-
 $bx->box_begin();
 $bx->box_title($t->translate("$sys_name Search by Category"));
 $bx->box_body_begin();
@@ -70,7 +71,6 @@ $bx->box_end();
       echo $t->translate("Enter Name of <B>one</B> Project")."\n";
       htmlp_input_text("projname", "30", "30", "");
       htmlp_form_hidden("option", $option);
-      //htmlp_form_submit($t->translate("Submit"),"");
       $bx->box_body_end();
       $bx->box_body_begin();
 
@@ -104,40 +104,32 @@ $bx->box_end();
       $counter++;
       $db->next_record();
       if (($counter % 3)==1)
-        {
-         echo "<tr><td width=33%>\n"; 
-        }
+         echo "<tr><td width=33%>\n";
       else
-        {
          echo "<td width=33%>\n";
-        }
+
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("ability")."\n";
       echo "</td><td width=20%>";
       htmlp_select("ability[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("No Experience"));
-      htmlp_select_option("1",0,$t->translate("Novice"));
-      htmlp_select_option("2",0,$t->translate("Beginner")); 
-      htmlp_select_option("3",0,$t->translate("Advanced"));
-      htmlp_select_option("4",0,$t->translate("Expert"));
-      htmlp_select_option("5",0,$t->translate("Guru"));
+      $db2->query("SELECT * FROM weightings");
+      while ($db2->next_record()) {
+         $selected = 0;
+         if ($db2->f("weightid") == 0) $selected = 1;
+         htmlp_select_option($db2->f("weightid"),$selected,$t->translate($db2->f("weighting")));
+      }
       htmlp_select_end();
       echo"</td></tr></table>";
      
       if (($counter % 3)==0)
-        {
-         echo "</td></tr>\n\n"; 
-        }
+         echo "</td></tr>\n\n";
       else
-        {
          echo "</td>\n";
-        }
      }
      
    if (($counter % 3)==0)
-     {
-      echo "</tr>\n\n"; 
-     }
+      echo "</tr>\n\n";
+
    htmlp_form_hidden("ability_amount", $ability_amount);
   
    echo "</table></center>\n";
@@ -158,53 +150,41 @@ $bx->box_end();
       $counter++;
       $db->next_record();
       if (($counter % 3)==1)
-        {
-         echo "<tr><td width=33%>\n"; 
-        }
+         echo "<tr><td width=33%>\n";
       else
-        {
         echo "<td width=33%>\n";
-        }
+
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("language")."\n";
       echo "</td><td width=20%>";
       htmlp_select("plang[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("No Experience"));
-      htmlp_select_option("1",0,$t->translate("Novice"));
-      htmlp_select_option("2",0,$t->translate("Beginner")); 
-      htmlp_select_option("3",0,$t->translate("Advanced"));
-      htmlp_select_option("4",0,$t->translate("Expert"));
-      htmlp_select_option("5",0,$t->translate("Guru"));
+      $db2->seek(0);
+      while ($db2->next_record()) {
+         $selected = 0;
+         if ($db2->f("weightid") == 0) $selected = 1;
+         htmlp_select_option($db2->f("weightid"),$selected,$t->translate($db2->f("weighting")));
+      }
       htmlp_select_end();
       echo"</td></tr></table>";
      
       if (($counter % 3)==0)
-        {
-         echo "</td></tr>\n\n"; 
-        }
+         echo "</td></tr>\n\n";
       else
-        {
          echo "</td>\n";
-        }
      }
      
    if (($counter % 3)==0)
-     {
-      echo "</tr>\n\n"; 
-     }
-   htmlp_form_hidden("lang_amount", $lang_amount);
+      echo "</tr>\n\n";
 
-/*  
-  echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-*/
+   htmlp_form_hidden("lang_amount", $lang_amount);
 
    echo "</table></center>\n";
    echo "</td></tr>\n";
    echo "</td></tr>\n";
    echo "</table>\n";
       
-      $bx->box_body_end();
-      $bx->box_end();
+   $bx->box_body_end();
+   $bx->box_end();
       
    echo"<CENTER><TABLE BORDER=0 width=89%><TR><TD>\n";
 
@@ -239,40 +219,30 @@ $bx->box_end();
       $counter++;
       $db->next_record();
       if (($counter % 3)==1)
-        {
-         echo "<tr><td width=33%>\n"; 
-        }
+         echo "<tr><td width=33%>\n";
       else
-        {
          echo "<td width=33%>\n";
-        }
+
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("ability")."\n";
       echo "</td><td width=20%>";
       htmlp_select("ability[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("No Experience"));
-      htmlp_select_option("1",0,$t->translate("Novice"));
-      htmlp_select_option("2",0,$t->translate("Beginner")); 
-      htmlp_select_option("3",0,$t->translate("Advanced"));
-      htmlp_select_option("4",0,$t->translate("Expert"));
-      htmlp_select_option("5",0,$t->translate("Guru"));
+      $db2->query("SELECT * FROM weightings");
+      while ($db2->next_record()) {
+         htmlp_select_option($db2->f("weightid"),0,$t->translate($db2->f("weighting")));
+      }
       htmlp_select_end();
       echo"</td></tr></table>";
      
       if (($counter % 3)==0)
-        {
-         echo "</td></tr>\n\n"; 
-        }
+         echo "</td></tr>\n\n";
       else
-        {
          echo "</td>\n";
-        }
      }
      
    if (($counter % 3)==0)
-     {
-      echo "</tr>\n\n"; 
-     }
+      echo "</tr>\n\n";
+
    htmlp_form_hidden("ability_amount", $ability_amount);
   
    echo "</table></center>\n";
@@ -293,45 +263,31 @@ $bx->box_end();
       $counter++;
       $db->next_record();
       if (($counter % 3)==1)
-        {
-         echo "<tr><td width=33%>\n"; 
-        }
+         echo "<tr><td width=33%>\n";
       else
-        {
         echo "<td width=33%>\n";
-        }
+
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("language")."\n";
       echo "</td><td width=20%>";
       htmlp_select("plang[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("No Experience"));
-      htmlp_select_option("1",0,$t->translate("Novice"));
-      htmlp_select_option("2",0,$t->translate("Beginner")); 
-      htmlp_select_option("3",0,$t->translate("Advanced"));
-      htmlp_select_option("4",0,$t->translate("Expert"));
-      htmlp_select_option("5",0,$t->translate("Guru"));
+      $db2->seek(0);
+      while ($db2->next_record()) {
+         htmlp_select_option($db2->f("weightid"),0,$t->translate($db2->f("weighting")));
+      }
       htmlp_select_end();
       echo"</td></tr></table>";
      
       if (($counter % 3)==0)
-        {
-         echo "</td></tr>\n\n"; 
-        }
+         echo "</td></tr>\n\n";
       else
-        {
          echo "</td>\n";
-        }
      }
      
    if (($counter % 3)==0)
-     {
-      echo "</tr>\n\n"; 
-     }
-   htmlp_form_hidden("lang_amount", $lang_amount);
+      echo "</tr>\n\n";
 
-/*  
-  echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-*/
+   htmlp_form_hidden("lang_amount", $lang_amount);
 
    echo "</table></center>\n";
    echo "</td></tr>\n";

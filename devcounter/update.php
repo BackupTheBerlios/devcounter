@@ -1,4 +1,5 @@
 <?php
+
 ######################################################################
 # DevCounter: Open Source Developer Counter
 # ================================================
@@ -17,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: update.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: update.php,v 1.5 2002/08/27 14:11:10 helix Exp $
 #
 ######################################################################
 
@@ -34,12 +35,11 @@ if (isset($auth) && !empty($auth->auth["perm"]))
 
 require("./include/header.inc");
 
-$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
-$be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
-              $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
 
 $db2 = new DB_DevCounter;
+$db3 = new DB_DevCounter;
 ?>
 
 <!-- content -->
@@ -62,12 +62,7 @@ else
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
    htmlp_form_action("update2db.php",array(),"POST");
    echo "\n";
-/*
-   $db->query("SELECT * from auth_user WHERE user_id='$user__id'");
-   $db->next_record();
 
-   $username=$db->f("username");
-*/
    $username=$auth->auth["uname"];
    $db->query("SELECT * from developers WHERE username='$username'");
    $db->next_record();
@@ -92,37 +87,19 @@ else
    $gender = $db->f("gender");
    echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>\n";
    echo "<center><table width=80% border=0>\n";
-   echo "<tr><td width=26%>";
-   if ($gender == "no entry") 
-     {
-      htmlp_radio("gender","no entry",1);
-     }
-   else
-     {
-      htmlp_radio("gender","no entry",0);
-     }
-   echo "&nbsp; ".$t->translate("no entry")."\n";
-   echo "</td>\n<td width=26%>";
-   if ($gender == "Male") 
-     {
-      htmlp_radio("gender","Male",1);
-     }
-   else
-     {
-      htmlp_radio("gender","Male",0);
-     }
-   echo "&nbsp; ".$t->translate("Male")."\n";
-   echo "</td>\n<td width=26%>";
-   if ($gender == "Female") 
-     {
-      htmlp_radio("gender","Female",1);
-     }
-   else
-     {
-      htmlp_radio("gender","Female",0);
-     }
-   echo "&nbsp; ".$t->translate("Female")."\n";
-   echo "</td></tr></table></center>\n";
+   echo "<tr>";
+
+   $db3->query("SELECT * FROM gender");
+   while ($db3->next_record()) {
+      $selected = 0;
+      if ($db3->f("gendid") == $gender) $selected = 1;
+      echo "<td width=26%>";
+      htmlp_radio("gender",$db3->f("gendid"),$selected);
+      echo "&nbsp; ".$t->translate($db3->f("gender"))."\n";
+      echo "</td>\n";
+   }
+
+   echo "</tr></table></center>\n";
    echo "</td></tr>\n";
 
    $mother_tongue = $db->f("mother_tongue");
@@ -161,189 +138,29 @@ else
 
    $profession = $db->f("profession");
    echo "<tr><td align=right width=30%>".$t->translate("Profession").":</td><td width=70%>\n";
-   htmlp_select("profession"); echo "\n";
-   if ($profession == "no entry") 
-     {
-      htmlp_select_option("no entry",1,$t->translate("no entry")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("no entry",0,$t->translate("no entry")); echo "\n";
-     }
-   if ($profession == "Student (IT)") 
-     {
-      htmlp_select_option("Student (IT)",1,$t->translate("Student (IT)")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Student (IT)",0,$t->translate("Student (IT)")); echo "\n";
-     }
-   if ($profession == "Student (other)") 
-     {
-      htmlp_select_option("Student (other)",1,$t->translate("Student (other)")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Student (other)",0,$t->translate("Student (other)")); echo "\n";
-     }
-   if ($profession == "Programmer") 
-     {
-      htmlp_select_option("Programmer",1,$t->translate("Programmer")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Programmer",0,$t->translate("Programmer")); echo "\n";
-     }
-   if ($profession == "Software Engineer") 
-     {
-      htmlp_select_option("Software Engineer",1,$t->translate("Software Engineer")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Software Engineer",0,$t->translate("Software Engineer")); echo "\n";
-     }
-   if ($profession == "Other type of Engineering") 
-     {
-      htmlp_select_option("Other type of Engineering",1,$t->translate("Other type of Engineering")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Other type of Engineering",0,$t->translate("Other type of Engineering")); echo "\n";
-     }
-   if ($profession == "University professor/assistant (IT)") 
-     {
-      htmlp_select_option("University professor/assistant (IT)",1,$t->translate("University professor/assistant (IT)")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("University professor/assistant (IT)",0,$t->translate("University professor/assistant (IT)")); echo "\n";
-     }
-   if ($profession == "University professor/assistant (other)") 
-     {
-      htmlp_select_option("University professor/assistant (other)",1,$t->translate("University professor/assistant (other)")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("University professor/assistant (other)",0,$t->translate("University professor/assistant (other)")); echo "\n";
-     }
-   if ($profession == "Executive (IT)") 
-     {
-      htmlp_select_option("Executive (IT)",1,$t->translate("Executive (IT)")); echo "\n";
-    }
-   else
-     {
-      htmlp_select_option("Executive (IT)",0,$t->translate("Executive (IT)")); echo "\n";
-     }
-   if ($profession == "Executive (other)") 
-     {
-      htmlp_select_option("Executive (other)",1,$t->translate("Executive (other)")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Executive (other)",0,$t->translate("Executive (other)")); echo "\n";
-     }
-   if ($profession == "Consultant (IT)") 
-     {
-      htmlp_select_option("Consultant (IT)",1,$t->translate("Consultant (IT)")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Consultant (IT)",0,$t->translate("Consultant (IT)")); echo "\n";
-     }
-   if ($profession == "Consultant (other)") 
-     {
-      htmlp_select_option("Consultant (other)",1,$t->translate("Consultant (other)")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Consultant (other)",0,$t->translate("Consultant (other)")); echo "\n";
-     }
-   if ($profession == "Nothing to do with the software industry") 
-     {
-      htmlp_select_option("Nothing to do with the software industry",1,$t->translate("Nothing to do with the software industry")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Nothing to do with the software industry",0,$t->translate("Nothing to do with the software industry")); echo "\n";
-     }
-   htmlp_select_end(); echo "</td></tr>\n";
+   htmlp_select("profession");
+
+   $db3->query("SELECT * FROM profession");
+   while ($db3->next_record()) {
+      $selected = 0;
+      if ($db3->f("profid") == $profession) $selected = 1;
+      htmlp_select_option($db3->f("profid"),$selected,$t->translate($db3->f("profession")));
+   }
+   htmlp_select_end();
+   echo "</td></tr>\n";
 
    $qualification = $db->f("qualification");
    echo "<tr><td align=right width=30%>".$t->translate("Qualification").":</td><td width=70%>\n";
-   htmlp_select("qualification"); echo "\n";
-   if ($qualification == "no entry") 
-     {
-      htmlp_select_option("no entry",1,$t->translate("no entry")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("no entry",0,$t->translate("no entry")); echo "\n";
-     }
-   if ($qualification == "Elementary School") 
-     {
-      htmlp_select_option("Elementary School",1,$t->translate("Elementary School")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Elementary School",0,$t->translate("Elementary School")); echo "\n";
-     }
-   if ($qualification == "High School") 
-     {
-      htmlp_select_option("High School",1,$t->translate("High School")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("High School",0,$t->translate("High School")); echo "\n";
-     }
-   if ($qualification == "A-Level") 
-     {
-      htmlp_select_option("A-Level",1,$t->translate("A-Level")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("A-Level",0,$t->translate("A-Level")); echo "\n";
-     }
-   if ($qualification == "Apprenticeship") 
-     {
-      htmlp_select_option("Apprenticeship",1,$t->translate("Apprenticeship")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Apprenticeship",0,$t->translate("Apprenticeship")); echo "\n";
-     }
-   if ($qualification == "College Graduate") 
-     {
-      htmlp_select_option("College Graduate",1,$t->translate("College Graduate")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("College Graduate",0,$t->translate("College Graduate")); echo "\n";
-     }
-   if ($qualification == "University Graduate") 
-     {
-      htmlp_select_option("University Graduate",1,$t->translate("University Graduate")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("University Graduate",0,$t->translate("University Graduate")); echo "\n";
-     }
-   if ($qualification == "Master") 
-     {
-      htmlp_select_option("Master",1,$t->translate("Master")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("Master",0,$t->translate("Master")); echo "\n";
-     }
-   if ($qualification == "PhD") 
-     {
-      htmlp_select_option("PhD",1,$t->translate("PhD")); echo "\n";
-     }
-   else
-     {
-      htmlp_select_option("PhD",0,$t->translate("PhD")); echo "\n";
-     }
-   htmlp_select_end(); echo "</td></tr>\n";
+   htmlp_select("qualification");
+
+   $db3->query("SELECT * FROM qualification");
+   while ($db3->next_record()) {
+      $selected = 0;
+      if ($db3->f("qualid") == $qualification) $selected = 1;
+      htmlp_select_option($db3->f("qualid"),$selected,$t->translate($db3->f("qualification")));
+   }
+   htmlp_select_end();
+   echo "</td></tr>\n";
 
    echo "</table>\n";
    $bx->box_body_end();
@@ -359,13 +176,9 @@ else
    echo "<B><FONT SIZE=+1>".$t->translate("Projects")."</FONT></B><BR>";
    $db->query("SELECT * from os_projects WHERE username='$username'");
    if ($db->num_rows() ==0)
-     {
       htmlp_link("addproj.php","",$t->translate("Manage your Project List"));
-     }
    else
-     {
       htmlp_link("projects.php","",$t->translate("Manage your Project List"));
-     }
    
    echo "</td></tr>\n";
 
@@ -388,13 +201,9 @@ else
       $counter++;
       $db->next_record();
       if (($counter % 3)==1)
-        {
-         echo "<tr><td width=33%>\n"; 
-        }
+         echo "<tr><td width=33%>\n";
       else
-        {
          echo "<td width=33%>\n";
-        }
       $ability_value = 0;
       $ability_code = $db->f("code");
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
@@ -402,73 +211,24 @@ else
       $colname = $db->f("colname");
       $ability_value = $db2->f($colname);
       echo "</td><td width=20% align=right>";
-      htmlp_select("ability[".$ability_code."]"); 
-      
-      if ($ability_value == 0)
-        {
-         htmlp_select_option("0",1,$t->translate("No Experience"));
-	}
-      else
-        {
-	 htmlp_select_option("0",0,$t->translate("No Experience"));
-	}
-      if ($ability_value == 1)
-        {
-         htmlp_select_option("1",1,$t->translate("Novice"));
-	}
-      else
-        {
-	 htmlp_select_option("1",0,$t->translate("Novice"));
-	}
-      if ($ability_value == 2)
-        {
-         htmlp_select_option("2",1,$t->translate("Beginner")); 
-	}
-      else
-        {
-         htmlp_select_option("2",0,$t->translate("Beginner")); 
-	}
-      if ($ability_value == 3)
-        {
-         htmlp_select_option("3",1,$t->translate("Advanced"));
-	}
-      else
-        {
-         htmlp_select_option("3",0,$t->translate("Advanced"));
-	}
-      if ($ability_value == 4)
-        {
-         htmlp_select_option("4",1,$t->translate("Expert"));
-	}
-      else
-        {
-         htmlp_select_option("4",0,$t->translate("Expert"));
-	}
-      if ($ability_value == 5)
-        {
-         htmlp_select_option("5",1,$t->translate("Guru"));
-	}
-      else
-        {
-         htmlp_select_option("5",0,$t->translate("Guru"));
-	}
+      htmlp_select("ability[".$ability_code."]");      
+      $db3->query("SELECT * FROM weightings");
+      while ($db3->next_record()) {
+         $selected = 0;
+         if ($db3->f("weightid") == $ability_value) $selected = 1;
+         htmlp_select_option($db3->f("weightid"),$selected,$t->translate($db3->f("weighting")));
+      }
       htmlp_select_end();
       echo"</td></tr></table>";
      
       if (($counter % 3)==0)
-        {
          echo "</td></tr>\n\n"; 
-        }
       else
-        {
          echo "</td>\n";
-        }
      }
      
    if (($counter % 3)==0)
-     {
-      echo "</tr>\n\n"; 
-     }
+      echo "</tr>\n\n";
    htmlp_form_hidden("ability_amount", $ability_amount);
   
    echo "</table></center>\n";
@@ -492,13 +252,9 @@ else
       $counter++;
       $db->next_record();
       if (($counter % 3)==1)
-        {
-         echo "<tr><td width=33%>\n"; 
-        }
+         echo "<tr><td width=33%>\n";
       else
-        {
         echo "<td width=33%>\n";
-        }
       $ability_value = 0;
       $ability_code = $db->f("code");
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
@@ -507,79 +263,25 @@ else
       $ability_value = $db2->f($colname);
       echo "</td><td width=20% align=right>";
       htmlp_select("plang[".$ability_code."]"); 
-      
-      if ($ability_value == 0)
-        {
-         htmlp_select_option("0",1,$t->translate("No Experience"));
-	}
-      else
-        {
-	 htmlp_select_option("0",0,$t->translate("No Experience"));
-	}
-      if ($ability_value == 1)
-        {
-         htmlp_select_option("1",1,$t->translate("Novice"));
-	}
-      else
-        {
-	 htmlp_select_option("1",0,$t->translate("Novice"));
-	}
-      if ($ability_value == 2)
-        {
-         htmlp_select_option("2",1,$t->translate("Beginner")); 
-	}
-      else
-        {
-         htmlp_select_option("2",0,$t->translate("Beginner")); 
-	}
-      if ($ability_value == 3)
-        {
-         htmlp_select_option("3",1,$t->translate("Advanced"));
-	}
-      else
-        {
-         htmlp_select_option("3",0,$t->translate("Advanced"));
-	}
-      if ($ability_value == 4)
-        {
-         htmlp_select_option("4",1,$t->translate("Expert"));
-	}
-      else
-        {
-         htmlp_select_option("4",0,$t->translate("Expert"));
-	}
-      if ($ability_value == 5)
-        {
-         htmlp_select_option("5",1,$t->translate("Guru"));
-	}
-      else
-        {
-         htmlp_select_option("5",0,$t->translate("Guru"));
-	}
-
+      $db3->seek(0);
+      while ($db3->next_record()) {
+         $selected = 0;
+         if ($db3->f("weightid") == $ability_value) $selected = 1;
+         htmlp_select_option($db3->f("weightid"),$selected,$t->translate($db3->f("weighting")));
+      }
       htmlp_select_end();
       echo"</td></tr></table>";
      
       if (($counter % 3)==0)
-        {
-         echo "</td></tr>\n\n"; 
-        }
+         echo "</td></tr>\n\n";
       else
-        {
          echo "</td>\n";
-        }
      }
      
    if (($counter % 3)==0)
-     {
-      echo "</tr>\n\n"; 
-     }
+      echo "</tr>\n\n";
    htmlp_form_hidden("lang_amount", $lang_amount);
   
-/*  
-  echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-*/
-
    echo "</table></center>\n";
    echo "</td></tr>\n";
    echo "</td></tr>\n";
