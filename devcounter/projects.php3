@@ -55,11 +55,11 @@ if (empty($auth->auth["uname"]))
 else
   {
    $username=$auth->auth["uname"];
-   //echo " - $projectname - $projecturl - $comment - $username";
+   //echo " - $projectname - $projecturl - $pcomment - $username";
    switch($option) {
     case "change":
-    $comment = htmlentities($comment);
-    $query = "UPDATE os_projects SET  projectname = '$projectname', url = '$projecturl', comment='$comment'  WHERE (username='$username' and projectname='$oldpname')";
+    $pcomment = htmlentities($pcomment);
+    $query = "UPDATE os_projects SET  projectname = '$projectname', url = '$projecturl', comment='$pcomment'  WHERE (username='$username' and projectname='$oldpname')";
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
@@ -78,9 +78,6 @@ else
     $db->query("delete from os_projects where username='$username' AND projectname='$oldpname'");
     if ($db->affected_rows() == 1 )
      {
-      $db->query("SELECT number_of_projects from developers where username='$username'");
-      
-      $db->query("UPDATE developers SET number_of_projects='$number_of_projects' WHERE username='$username'");
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
       $bx->box_body_begin();
@@ -88,7 +85,7 @@ else
       $bx->box_body_end();
       $bx->box_end();
      }
-   $db->query("SELECT number_of_projects from developers where username='$username'");
+   $db->query("SELECT * from os_projects where username='$username'");
    $number_of_projects=$db->num_rows();
    $db->query("UPDATE developers SET number_of_projects='$number_of_projects' WHERE username='$username'");
     
@@ -97,8 +94,8 @@ else
     case "add":
     if (!empty($projectname))
       {
-       $comment = htmlentities($comment);
-       $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname', url = '$projecturl', comment='$comment'");
+       $pcomment = htmlentities($pcomment);
+       $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname', url = '$projecturl', comment='$pcomment'");
        if ($db->affected_rows() == 1 )
         {
          $bx->box_begin();
@@ -134,7 +131,7 @@ else
    $db->next_record();
    $projects_entered = $db->f("COUNT(*)");
 
-   if ($number_of_projects == $projects_entered)
+   if ($number_of_projects <= $projects_entered)
      {
       $db->query("SELECT * from os_projects WHERE username='$username'");
       $bx->box_columns_begin(6);
@@ -158,7 +155,7 @@ else
 	 $bx->box_column("right","",$bgcolor,$counter);
 	 $bx->box_column("center","",$bgcolor,html_input_text("projectname", 25, 64, $db->f("projectname")));
 	 $bx->box_column("center","",$bgcolor,html_input_text("projecturl", 35, 255, $db->f("url")));
-	 $bx->box_column("center","",$bgcolor,html_input_text("comment", 35, 400, $db->f("comment")));
+	 $bx->box_column("center","",$bgcolor,html_input_text("pcomment", 35, 400, $db->f("comment")));
          $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Change")));
 	 htmlp_form_end();
 	 htmlp_form_action("projects.php3",array(),"POST");
@@ -177,7 +174,7 @@ else
        $bx->box_column("right","",$bgcolor,"--");
        $bx->box_column("center","",$bgcolor,html_input_text("projectname", 25, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("projecturl", 35, 255, ""));
-       $bx->box_column("center","",$bgcolor,html_input_text("comment", 35, 400, ""));
+       $bx->box_column("center","",$bgcolor,html_input_text("pcomment", 35, 400, ""));
        $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Add Project")));
        $bx->box_column("center","",$bgcolor,"--");
        $bx->box_columns_end();

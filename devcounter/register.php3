@@ -79,9 +79,9 @@ while (is_array($HTTP_POST_VARS)
             $be->box_full($t->translate("Error"), $t->translate("Registration of new Developer failed").":<br> $query");
             break;
         }
-        if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
-        if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
-	$query = "insert into extra_perms values('$username','$showname','$showmail','yes','yes')";
+        if ($show_name == "on") {$show_name = "yes";} else {$show_name = "no";}
+        if ($show_email == "on") {$show_email = "yes";} else {$show_email = "no";}
+	$query = "insert into extra_perms values('$username','$show_name','$show_email','yes','yes')";
         $db->query($query);
 	
         // send mail

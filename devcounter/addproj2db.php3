@@ -57,8 +57,8 @@ else
          $counter++;
 	 if (!empty($projectname[$counter]))
 	   {
-	    $comment = htmlentities($comment);
-	    $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname[$counter]', url = '$projecturl[$counter]', comment='$comment[$counter]'");
+	    $pcomment[$counter] = htmlentities($pcomment[$counter]);
+	    $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname[$counter]', url = '$projecturl[$counter]', comment='$pcomment[$counter]'");
 	    if ($db->affected_rows() != 0)
 	      {
 	       $counter2++;

@@ -76,7 +76,7 @@ else
 
 
    $actual_country = $db->f("actual_country");
-   echo "<tr><td align=right width=30%>".$t->translate("actually live in").":</td><td width=70%>\n";
+   echo "<tr><td align=right width=30%>".$t->translate("currently live in").":</td><td width=70%>\n";
    print_country($actual_country);
 
    echo "<tr><td align=right valign=top width=30%>".$t->translate("Languages spoken").":</td><td width=70%>\n";

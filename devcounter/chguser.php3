@@ -46,8 +46,8 @@ while (is_array($HTTP_POST_VARS)
             	$be->box_full($t->translate("Error"), $t->translate("The passwords are not identical").". ".$t->translate("Please try again")."!");
             	break;
         	}
-	    if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
-	    if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
+	    if ($show_name == "on") {$show_name = "yes";} else {$show_name = "no";}
+	    if ($show_email == "on") {$show_email = "yes";} else {$show_email = "no";}
 	    if ($search == "on") {$search = "yes";} else {$search = "no";}
 	    if ($contact == "on") {$contact = "yes";} else {$contact = "no";}
 	    
@@ -58,7 +58,7 @@ while (is_array($HTTP_POST_VARS)
                 break;
             }
             $bi->box_full($t->translate("Change Developer Parameters"), $t->translate("Password and/or E-Mail Address of")." <b>". $auth->auth["uname"] ."</b> ".$t->translate("is changed").".");
-			$query = "UPDATE extra_perms SET showname='$showname', showemail='$showemail', search='$search' , contact='$contact' WHERE username='".$auth->auth["uname"]."'";
+			$query = "UPDATE extra_perms SET showname='$show_name', showemail='$show_email', search='$search' , contact='$contact' WHERE username='".$auth->auth["uname"]."'";
                         $db->query($query);
 			if ($ml_notify) {
 				$message  = "Username: ".$auth->auth["uname"]."\n";

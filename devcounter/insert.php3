@@ -88,8 +88,7 @@ $db2 = new DB_DevCounter;
        $bx->box_title($t->translate("The Projects"));
        $bx->box_body_begin();
        echo "\n<P>";
-       echo $t->translate("Give another time thanx for filling it out");
-       echo "\n<BR>";
+       
        htmlp_link("./addproj.php3", "", $t->translate("please proceed to the projects page"));
        echo "\n<P>";
        $bx->box_body_end();

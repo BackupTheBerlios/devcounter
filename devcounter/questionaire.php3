@@ -77,7 +77,7 @@ else
    select_country(999);
    htmlp_select_end(); echo "</td></tr>\n";
 
-   echo "<tr><td align=right width=30%>".$t->translate("Country you actually live in").":</td><td width=70%>\n";
+   echo "<tr><td align=right width=30%>".$t->translate("Country you currently live in").":</td><td width=70%>\n";
    htmlp_select("actual_country"); echo "\n";
    select_country(999);
    htmlp_select_end(); echo "</td></tr>\n";

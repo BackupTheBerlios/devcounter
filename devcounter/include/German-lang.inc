@@ -78,9 +78,19 @@ switch($phrase) {
 
      case "Profession": $tmp = "Beruf"; break;
      case "Programmer": $tmp = "Programmierer"; break;
-     case "Engineer": $tmp = "Ingeneur"; break;
+     case "Engineer": $tmp = "Ingenieur"; break;
+     case "Student (other)": $tmp = "Student (andere)"; break;
+     case "Software Engineer": $tmp = "Software Ingenieur"; break;
      case "University professor/assistant": $tmp = "Universitätsprofessor/-assistent"; break;
+     case "University professor/assistant (IT)": $tmp = "Universitätsprofessor/-assistent (IT)"; break;
+     case "University professor/assistant (other)": $tmp = "Universitätsprofessor/-assistent (andere)"; break;
      case "Consultant": $tmp = "Berater"; break;
+     case "Consultant (IT)": $tmp = "Berater (IT)"; break;
+     case "Consultant (other)": $tmp = "Berater (andere)"; break;
+     case "Executive": $tmp = "Selbstst&auml;ndiger"; break;
+     case "Executive (IT)": $tmp = "Selbstst&auml;ndiger (IT)"; break;
+     case "Executive (other)": $tmp = "Selbstst&auml;ndiger (andere)"; break;
+     case "Nothing to do with the software industry": $tmp = "Nichts mit der Software Industrie zu tun"; break;
      
      case "IT or not IT": $tmp = "IT oder nicht IT"; break;
      case "Not IT": $tmp = "Nicht IT"; break;
@@ -89,7 +99,7 @@ switch($phrase) {
      case "Update your Profile": $tmp = "Profildaten ändern"; break;
 
      case "Nationality": $tmp = "Herkunftsland"; break;
-     case "Country you actually live in": $tmp = "Land, in dem Du zur Zeit lebst"; break;
+     case "Country you currently live in": $tmp = "Land, in dem Du zur Zeit lebst"; break;
      case "Year of Birth": $tmp = "Geburtsjahr"; break;
      case "Mother tongue": $tmp = "Muttersprache"; break;
      case "Other languages": $tmp = "weitere Sprachen"; break;
@@ -113,7 +123,7 @@ switch($phrase) {
      case "No Experience": $tmp = "Keine Erfahrung"; break;
      case "Novice": $tmp = "Einsteiger"; break;
      case "Beginner": $tmp = "Anfänger"; break;
-     case "Advanced": $tmp = "Fortgeschrittner"; break;
+     case "Advanced": $tmp = "Fortgeschrittener"; break;
      case "Expert": $tmp = "Experte"; break;
 
      case "Projects": $tmp = "Projekte"; break;
@@ -365,7 +375,7 @@ switch($phrase) {
 
 // showprofile.php3
 
-    case "actually live in": $tmp = "lebt momentan in"; break;
+    case "currently live in": $tmp = "lebt momentan in"; break;
     case "Languages spoken": $tmp = "gesprochene Sprachen"; break;
     case "Number of Free Software/Open Source Projects": $tmp = "Anzahl der Free Software/Open Source Projekte"; break;
     
@@ -395,7 +405,16 @@ switch($phrase) {
 
 // configure.php3
 
+    case "Enter your projects here": $tmp = "Projekte hier eingeben"; break;
+    case "Project updated": $tmp = "Projekt ge&auml;ndert"; break;
+    case "Project deleted": $tmp = "Projekt gel&ouml;scht"; break;
+    case "Project added": $tmp = "Projekt hinzugef&uuml;gt"; break;
+    case "The Projects": $tmp = "Die Projekte"; break;
+    case "please proceed to the projects page": $tmp = "Bitte zur Projekt-Seite fortfahren"; break;
+    
+
 // If no translation available, keep the original phrase
+      
      default: $tmp = "$phrase"; break;
 }
 ?>

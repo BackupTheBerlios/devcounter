@@ -79,7 +79,7 @@ else
 	  $bx->box_column("right","",$bgcolor,$counter);
 	  $bx->box_column("center","",$bgcolor,html_input_text("projectname[$counter]", 25, 64, ""));
 	  $bx->box_column("center","",$bgcolor,html_input_text("projecturl[$counter]", 35, 255, ""));
-	  $bx->box_column("center","",$bgcolor,html_input_text("comment[$counter]", 42, 400, ""));
+	  $bx->box_column("center","",$bgcolor,html_input_text("pcomment[$counter]", 42, 400, ""));
 	  $bx->box_next_row_of_columns();
 
 	 }
