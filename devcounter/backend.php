@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: backend.php,v 1.8 2004/03/02 10:21:30 helix Exp $
+# $Id: backend.php,v 1.9 2004/03/02 11:26:12 helix Exp $
 #
 ###################################################################### 
 
@@ -40,16 +40,16 @@ echo "           \"http://my.netscape.com/publish/formats/rss-0.91.dtd\">\n";
 echo "<rss version=\"0.91\">\n";
 
 echo "  <channel>\n";
-echo "    <title>".$sys_name."</title>\n";
+echo "    <title>".htmlspecialchars($sys_name)."</title>\n";
 echo "    <link>".$sys_url."</link>\n";
 echo "    <description>".$sys_name." - ".$sys_title."</description>\n";
 echo "    <language>en-us</language>\n";
 
 echo "  <image>\n";
-echo "    <title>".$sys_name."</title>\n";
+echo "    <title>".htmlspecialchars($sys_name)."</title>\n";
 echo "    <url>".$sys_url.$sys_logo_image."</url>\n";
 echo "    <link>".$sys_url."</link>\n";
-echo "    <description>".$sys_name." - ".$sys_title."</description>\n";
+echo "    <description>".htmlspecialchars($sys_name." - ".$sys_title)."</description>\n";
 echo "    <width>66</width>\n";
 echo "    <height>73</height>\n";
 echo "  </image>\n";
@@ -63,9 +63,9 @@ $db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.user
 $i=0;
 while($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>".$db->f("username");
+  echo "    <title>".htmlspecialchars($db->f("username"));
   if ($db->f("showname") == "yes")
-    echo " (".$db->f("realname").")";
+    echo " (".htmlspecialchars($db->f("realname")).")";
   $timestamp = mktimestamp($db->f("creation"));
   echo " [".timestr_short($timestamp)."]";
   echo "</title>\n";
@@ -83,7 +83,7 @@ $db->query("SELECT * FROM requests ORDER BY reqtime DESC LIMIT 0,5");
 
 while ($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>".html_entity_decode($db->f("reqsubject"));
+  echo "    <title>".htmlspecialchars($db->f("reqsubject"));
   $timestamp = mktimestamp($db->f("reqtime"));
   echo " [".timestr_short($timestamp)."]";
   echo "</title>\n";
