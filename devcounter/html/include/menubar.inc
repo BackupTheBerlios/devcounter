@@ -9,7 +9,7 @@
 <td><a href="./" class="menus">About&nbsp;DevCounter</a>
 <br><a href="../" class="menus">DevCounter&nbsp;Home</a>
 <br>
-<br><a href="../doc/INSTALL" class="menus">Documentation</a>
+<br><a href="../doc/INSTALL" class="menus">Install</a>
 <br><a href="../doc/CHANGELOG" class="menus">Changelog</a>
 <br><a href="http://developer.berlios.de/projects/devcounter" class="menus">Download</a>
 <br>

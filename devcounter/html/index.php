@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: index.php,v 1.1 2002/08/26 12:54:20 helix Exp $
+# $Id: index.php,v 1.2 2002/09/02 14:29:53 helix Exp $
 #
 ######################################################################  
 
@@ -31,8 +31,8 @@ require("./include/header.inc");
 
 <P>DevCounter queries open source developers for their knowledge and experiences as well as their cooperation in open source projects.
 
-<P>It is based in <A HREF="http://www.php.net">PHP</A> and uses <A HREF="http://www.mysql.com">MySQL</A> as its database system. DevCounter depends on
-the <A HREF="http://phplib.netuse.de/">PHPLib library</A> (version 7.2 or
+<P>It is based in <A HREF="http://sourceforge.net/projects/phplib/">PHP</A> and uses <A HREF="http://www.mysql.com">MySQL</A> as its database system. DevCounter depends on
+the <A HREF="http://sourceforge.net/projects/phplib/">PHPLib library</A> (version 7.2 or
 later). Future versions may have database independence, but this is
 not yet supported. We are still working on it. Only if you want to have
 diary and weekly mailing lists with the announcements, you should also have
