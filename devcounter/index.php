@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: index.php,v 1.2 2002/08/26 09:55:21 helix Exp $
+# $Id: index.php,v 1.3 2002/08/26 19:03:04 helix Exp $
 #
 ######################################################################  
 
@@ -97,7 +97,7 @@ else
    echo " ";
   }
 
-echo "</TD><TD WIDTH=\"250\">";
+echo "</TD><TD WIDTH=\"250\" VALIGN=\"top\">";
 
 $bx->box_begin();
 $bx->box_title($t->translate("Newest Developers"));
