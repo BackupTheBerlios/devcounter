@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watch.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: watch.php,v 1.5 2002/09/03 10:47:54 helix Exp $
 #
 ######################################################################
 
@@ -55,7 +55,7 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
    $bx->box_body_begin();
 
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
-   echo "<tr><td align=center><B>".$t->translate("Which programming expiriences you like to watch?")."</B></td></tr><tr><td>\n";
+   echo "<tr><td align=center><B>".$t->translate("Which programming experiences you like to watch?")."</B></td></tr><tr><td>\n";
    echo "<center><table border=0>\n";
 
    $db->query("SELECT * from prog_abilities WHERE translation='$la'");

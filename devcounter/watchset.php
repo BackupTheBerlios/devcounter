@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watchset.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: watchset.php,v 1.5 2002/09/03 10:48:14 helix Exp $
 #
 ######################################################################
 
@@ -40,30 +40,36 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
 	$be->box_full($t->translate("Error"), $t->translate("Access denied"));
 } else {
 	$username = $auth->auth["uname"];
+    $db->query("SELECT * FROM prog_ability_watch WHERE username='$username'");
+    if ($db->next_record()) {
+		$query = "UPDATE ";
+		$update = 1;
+	} else {
+		$query = "INSERT INTO ";
+		$update = 0;
+	}
+
 	$counter=0;
-	$query = "UPDATE prog_ability_watch SET username = '$username'";
+	$query1 = $query."prog_ability_watch SET username='$username'";
 	while ($counter < count($ability)) {
 		$counter++;
 		$db2->query("SELECT colname FROM prog_abilities WHERE code='$counter'");
 		$db2->next_record();
-		$query .= ", ".$db2->f("colname")."='$ability[$counter]'";
+		$query1 .= ", ".$db2->f("colname")."='$ability[$counter]'";
 	}
-	$query .= " WHERE username='$username'";
-	$db->query($query);
-echo "<p>query: $query\n";
+	if ($update) $query1 .= " WHERE username='$username'";
+	$db->query($query1);
 
 	$counter=0;
-	$query = "UPDATE prog_language_watch SET username = '$username'";
+	$query2 = $query."prog_language_watch SET username='$username'";
 	while ($counter < count($plang)) {
 		$counter++;
 		$db2->query("SELECT colname FROM prog_languages WHERE code='$counter'");
 		$db2->next_record();
-		$query .= ", ".$db2->f("colname")."='$plang[$counter]'";
+		$query2 .= ", ".$db2->f("colname")."='$plang[$counter]'";
 	}
-	$query .= " WHERE username='$username'";
-	$db->query($query);
-echo "<p>query: $query\n";
-
+	if ($update) $query2 .= " WHERE username='$username'";
+	$db->query($query2);
 	$bx->box_begin();
 	$bx->box_title($t->translate("Done"));
 	$bx->box_body_begin();
