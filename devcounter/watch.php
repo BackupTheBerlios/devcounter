@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watch.php,v 1.5 2002/09/03 10:47:54 helix Exp $
+# $Id: watch.php,v 1.6 2002/09/16 18:44:21 helix Exp $
 #
 ######################################################################
 
@@ -51,7 +51,7 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
      $exists = 0;
 
    $bx->box_begin();
-   $bx->box_title($t->translate("Set Watch"));
+   $bx->box_title($t->translate("Set your Developers Watch"));
    $bx->box_body_begin();
 
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
@@ -60,10 +60,13 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
 
    $db->query("SELECT * from prog_abilities WHERE translation='$la'");
 
+   $count = 0;
    while ($db->next_record()) {
+	  $count++;
       $ability_code = $db->f("code");
       $colname = $db->f("colname");
-      echo "<tr><td align=right>".$db->f("ability")."</td><td>\n";
+      if ($count == 1) echo "<tr>\n";
+      echo "<td align=right>".$db->f("ability")."</td><td>\n";
       htmlp_select("ability[".$ability_code."]"); 
       $db2->query("SELECT * FROM weightings");
       while ($db2->next_record()) {
@@ -78,7 +81,11 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
          htmlp_select_option("$weightid",$select,$t->translate($weighting));
       }
       htmlp_select_end();
-      echo "</td></tr>\n";
+      echo "</td>\n";
+      if ($count >= 3) {
+         echo "</tr>\n";
+         $count = 0;
+      }
    }
 
    echo "</table></center>\n";
@@ -101,15 +108,18 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
 
    $db->query("SELECT * from prog_languages");
 
+   $count = 0;
    while ($db->next_record()) {
+      $count++;
       $language_code = $db->f("code");
       $colname = $db->f("colname");
-      echo "<tr><td align=right>".$db->f("language")."</td><td>\n";
+      if ($count == 1) echo "<tr>\n";
+      echo "<td align=right>".$db->f("language")."</td><td>\n";
       htmlp_select("plang[".$language_code."]"); 
       $db2->query("SELECT * FROM weightings");
       while ($db2->next_record()) {
-		 $weightid = $db2->f("weightid");
-		 $weighting = $db2->f("weighting");
+	 $weightid = $db2->f("weightid");
+	 $weighting = $db2->f("weighting");
          $select = 0;
          if ($exists) {
             $exist_weighting = $db3->f($colname);
@@ -119,8 +129,11 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
          htmlp_select_option("$weightid",$select,$t->translate($weighting));
       }
       htmlp_select_end();
-
-      echo "</td></tr>\n";
+      echo "</td>\n";
+      if ($count >= 3) {
+         echo "</tr>\n";
+         $count = 0;
+      }
    }
 
    echo "</table></center>\n";

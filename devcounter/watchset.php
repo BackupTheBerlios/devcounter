@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watchset.php,v 1.5 2002/09/03 10:48:14 helix Exp $
+# $Id: watchset.php,v 1.6 2002/09/16 18:44:42 helix Exp $
 #
 ######################################################################
 
@@ -73,11 +73,7 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
 	$bx->box_begin();
 	$bx->box_title($t->translate("Done"));
 	$bx->box_body_begin();
-	echo "\n<P>";
-	echo $t->translate("Your Developers Watch has been succesfully set");
-	echo "\n<BR>";
-	htmlp_link("./index.php", "", $t->translate("Please proceed with the main page"));
-	echo "\n<P>";
+	echo $t->translate("Your Developers Watch has been set succesfully");
 	$bx->box_body_end();
 	$bx->box_end();
 }
