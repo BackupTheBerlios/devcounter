@@ -17,15 +17,17 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: chguser.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: chguser.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session",
                 "auth" => "DevCounter_Auth",
                 "perm" => "DevCounter_Perm"));
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $bi = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -180,6 +182,6 @@ $bx->box_end();
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

@@ -17,9 +17,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: searchdev.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: searchdev.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) 
@@ -30,7 +32,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -40,7 +42,6 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 
 <!-- content -->
 <?php
-
 
 $bx->box_begin();
 $bx->box_title($t->translate("$sys_name Search by Category"));
@@ -57,7 +58,6 @@ echo "</table>\n";
 $bx->box_body_end();
 $bx->box_end();
 
-
   switch($option) {
 
 // Abilities
@@ -73,8 +73,7 @@ $bx->box_end();
       //htmlp_form_submit($t->translate("Submit"),"");
       $bx->box_body_end();
       $bx->box_body_begin();
-      
-      
+
       echo $t->translate("Please select desired Language")."\n";
 
       htmlp_select("dev_lang"); echo "\n";
@@ -83,7 +82,6 @@ $bx->box_end();
       
       $bx->box_body_end();
       $bx->box_body_begin();
-      
       
       echo $t->translate("Please select desired Country")."\n";
 
@@ -144,7 +142,6 @@ $bx->box_end();
   
    echo "</table></center>\n";
 
-
    echo "</TABLE>";
    $bx->box_body_end();
    $bx->box_body_begin();
@@ -197,12 +194,9 @@ $bx->box_end();
      }
    htmlp_form_hidden("lang_amount", $lang_amount);
 
-  
 /*  
   echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-
- 
- */
+*/
 
    echo "</table></center>\n";
    echo "</td></tr>\n";
@@ -214,7 +208,6 @@ $bx->box_end();
       
    echo"<CENTER><TABLE BORDER=0 width=89%><TR><TD>\n";
 
-
    echo "<CENTER>";
    htmlp_form_submit($t->translate("Submit"),"");
    echo "</CENTER>";
@@ -223,11 +216,8 @@ $bx->box_end();
    htmlp_form_end();
    echo "</td></tr>\n";
    echo "</table>\n";
-
-
- 
-    
     break;
+
     case "abilities":
 
    htmlp_form_action("devresults.php",array(),"POST");
@@ -287,7 +277,6 @@ $bx->box_end();
   
    echo "</table></center>\n";
 
-
    echo "</TABLE>";
    $bx->box_body_end();
    $bx->box_body_begin();
@@ -340,12 +329,9 @@ $bx->box_end();
      }
    htmlp_form_hidden("lang_amount", $lang_amount);
 
-  
 /*  
   echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-
- 
- */
+*/
 
    echo "</table></center>\n";
    echo "</td></tr>\n";
@@ -356,7 +342,6 @@ $bx->box_end();
 
    echo"<CENTER><TABLE BORDER=0 width=89%><TR><TD>\n";
 
-
    echo "<CENTER>";
    htmlp_form_submit($t->translate("Submit"),"");
    echo "</CENTER>";
@@ -365,8 +350,6 @@ $bx->box_end();
    htmlp_form_end();
    echo "</td></tr>\n";
    echo "</table>\n";
-
-
       break;
 
     case "projects":
@@ -423,14 +406,12 @@ $bx->box_end();
 
       $bx->box_body_end();
       $bx->box_end();
-
       break;
-
    }
 ?>
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

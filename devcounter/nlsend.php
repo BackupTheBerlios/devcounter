@@ -4,7 +4,7 @@
 # DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
+# Copyright (c) 2001-2002 by
 #       Lutz Henckel (lutz.henckel@fokus.gmd.de)
 #       Gregorio Robles (grex@scouts-es.org)
 #
@@ -17,13 +17,16 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: nlsend.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: nlsend.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ###################################################################### 
 
+require("./include/prepend.php3");
+
 page_open(array("sess" => "DevCounter_Session"));
-require("config.inc");
-require("lib.inc");
+
+require("./include/config.inc");
+require("./include/lib.inc");
 
 $db = new DB_DevCounter;
 

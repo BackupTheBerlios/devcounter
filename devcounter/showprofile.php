@@ -1,4 +1,5 @@
 <?php
+
 ######################################################################
 # DevCounter: Open Source Developer Counter
 # ================================================
@@ -17,9 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: showprofile.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: showprofile.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) 
@@ -30,7 +33,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -41,8 +44,6 @@ $db2 = new DB_DevCounter;
 
 <!-- content -->
 <?php
-
-
 $db->query("SELECT * from auth_user,developers,extra_perms WHERE auth_user.username = developers.username AND developers.username='$devname' AND extra_perms.username='$devname'");
 if ($db->num_rows() == 0)
   {
@@ -63,10 +64,8 @@ else
    increasecnt($develid);
    $username = $devname;
    
-
    echo "<CENTER><FONT SIZE=\"+3\"><B>&nbsp;&nbsp;$devname&nbsp;&nbsp;</B></FONT></CENTER><BR><BR>";
 
-   
    $bx->box_begin();
    $bx->box_title($t->translate("Personal Data"));
    $bx->box_body_begin();
@@ -208,9 +207,7 @@ else
     $bx->box_end();
     }
 
-
    echo "</td></tr>\n";
-  
 
    echo "</TABLE>";
    $bx->box_body_end();
@@ -219,7 +216,6 @@ else
 
    echo "<tr><td align=center><B><B>".$t->translate("Programming Experience")."</B></td></tr><tr><td>\n";
    echo "<center><table width=100% border=0 cellspacing=6>\n";
-
 
    $db2->query("select * from prog_ability_values WHERE username='$username'");
    $db2->next_record();
@@ -280,7 +276,6 @@ else
   
    echo "</table></center>\n";
 
-
    echo "</TABLE>";
    $bx->box_body_end();
    $bx->box_body_begin();
@@ -288,8 +283,6 @@ else
 
    echo "<tr><td align=center><B>".$t->translate("Languages/Tools Experience")."</B></td></tr><tr><td>\n";
    echo "<center><table border=0 width=100% cellspacing=6>\n";
-
-
 
    $db2->query("select * from prog_language_values WHERE username='$username'");
    $db2->next_record();
@@ -328,8 +321,6 @@ else
 	    //echo "+";
 	    $printstars++;
 	   }
-      
- 
 
 //         echo"</td></tr></table>";
      
@@ -350,12 +341,9 @@ else
      }
    htmlp_form_hidden("lang_amount", $lang_amount);
 
-  
 /*  
   echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-
- 
- */
+*/
 
    echo "</table></center>\n";
    echo "</td></tr>\n";
@@ -368,6 +356,6 @@ else
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

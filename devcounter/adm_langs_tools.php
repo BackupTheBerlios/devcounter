@@ -18,9 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: adm_langs_tools.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: adm_langs_tools.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) {
@@ -311,6 +313,6 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

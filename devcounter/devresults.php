@@ -1,4 +1,5 @@
 <?php
+
 ######################################################################
 # DevCounter: Open Source Developer Counter
 # ================================================
@@ -17,10 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: devresults.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: devresults.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
 
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) 
@@ -31,7 +33,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -42,10 +44,6 @@ $db2 = new DB_DevCounter;
 
 <!-- content -->
 <?php
-
-
-
-
   switch($option) {
 
     case "allinone":
@@ -85,11 +83,9 @@ $query=$query." ORDER BY extra_perms.username ASC";
 
 $db->query($query);
 
-
 $bx->box_begin();
 $bx->box_title($t->translate("Search Results"));
 $bx->box_body_begin();
-
 
      if ($db->num_rows() == 0)
        {
@@ -107,7 +103,6 @@ $bx->box_body_begin();
         $i=1;
         while ($db->next_record())
 	  {
-
 
            if ($counter%2 != 1) {$bgcolor = "#FFFFFF";}
            else {$bgcolor = "#E0E0E0";}
@@ -144,14 +139,8 @@ $bx->box_body_begin();
 
     $bx->box_body_end();
     $bx->box_end();
-
-
-
-    
-    
     
     break;
-
 
 // Abilities
     case "abilities":
@@ -247,10 +236,6 @@ $bx->box_body_begin();
 
     break;
 
-
-
-
-
     case "projects":
 
 /*
@@ -319,13 +304,11 @@ $bx->box_body_begin();
        $bx->box_columns_end();
       }
 
-
     $bx->box_body_end();
     $bx->box_end();
     break;
 
     case "lang":
-
 
       $db->query("SELECT developers.username FROM developers, extra_perms WHERE developers.username=extra_perms.username AND extra_perms.search='yes' AND (developers.mother_tongue='$dev_lang' OR developers.other_lang_1='$dev_lang' OR developers.other_lang_2='$dev_lang') ORDER BY developers.username ASC");
       $bx->box_begin();
@@ -333,7 +316,6 @@ $bx->box_body_begin();
       $bx->box_body_begin();
       
 //      mother_tongue   other_lang_1   other_lang_2
-      
       
      if ($db->num_rows() == 0)
        {
@@ -382,8 +364,6 @@ $bx->box_body_begin();
 	  }
 	$bx->box_next_row_of_columns();
 	$i++;
-	   
-
 	  }
         $bx->box_columns_end();
        }
@@ -447,12 +427,10 @@ $bx->box_body_begin();
 	  }
 	$bx->box_next_row_of_columns();
 	$i++;
-	   
-	   
+
 	  }
          $bx->box_columns_end();
        }
-
 
     $bx->box_body_end();
     $bx->box_end();
@@ -461,14 +439,11 @@ $bx->box_body_begin();
 
     case "name":
 
-
       $db->query("SELECT developers.username FROM auth_user, developers, extra_perms WHERE developers.username=extra_perms.username AND developers.username=auth_user.username AND extra_perms.search='yes' AND (developers.username LIKE '%$search_text%' OR (extra_perms.showname='yes' AND auth_user.realname LIKE '%$search_text%')) ORDER BY developers.username ASC");
       $bx->box_begin();
       $bx->box_title($t->translate("Results"));
       $bx->box_body_begin();
-      
-      
-      
+
      if ($db->num_rows() == 0)
        {
         echo $t->translate("No Results")."\n";
@@ -526,16 +501,11 @@ $bx->box_body_begin();
       $bx->box_end();
 
       break;
-
-
-
    }
-
-
 ?>
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

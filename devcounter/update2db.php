@@ -18,9 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: update2db.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: update2db.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################  
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) {
@@ -30,7 +32,7 @@ if (isset($auth) && !empty($auth->auth["perm"])) {
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -38,7 +40,6 @@ $db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
-
 <?php
   $query = "UPDATE developers SET nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification' WHERE username='$username'";
   $db->query($query);
@@ -90,6 +91,6 @@ $db2 = new DB_DevCounter;
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

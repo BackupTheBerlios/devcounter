@@ -18,9 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: verify.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: verify.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) 
@@ -31,7 +33,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -41,7 +43,6 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 
 <!-- content -->
 <?php
-
 $db->query("SELECT perms FROM auth_user WHERE user_id='$confirm_hash'");
 $db->next_record();
 
@@ -60,10 +61,9 @@ if ($db->f("perms") == "user") {
     }
  }
 ?>
-
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

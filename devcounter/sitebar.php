@@ -18,9 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: sitebar.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: sitebar.php,v 1.3 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################  
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) {
@@ -33,11 +35,11 @@ if (isset($auth) && !empty($auth->auth["perm"])) {
 header("Cache-Control: no-cache, must-revalidate");     // HTTP/1.1
 header("Pragma: no-cache"); 				// HTTP/1.0
 
-require "config.inc";
-require "lib.inc";
-require("translation.inc");
-require("lang.inc");
-require("box.inc");
+require("./include/config.inc");
+require("./include/lib.inc");
+require("./include/translation.inc");
+require("./include/lang.inc");
+require("./include/box.inc");
 $t = new translation($la);
 $db = new DB_DevCounter;
 
@@ -56,7 +58,6 @@ $bx = new box("95%",$th_box_frame_color,0,$th_box_title_bgcolor,$th_box_title_fo
 <body bgcolor="<?php echo $th_body_bgcolor;?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
 
 <!-- content -->
-
 <p>&nbsp;
 <?php
 $bx->box_begin();

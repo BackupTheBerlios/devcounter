@@ -18,9 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: stats.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) {
@@ -30,8 +32,8 @@ if (isset($auth) && !empty($auth->auth["perm"])) {
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
-require("statslib.inc");
+require("./include/header.inc");
+require("./include/statslib.inc");
 
 $bx = new box("95%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
@@ -44,15 +46,12 @@ $bar_lenght = 250;
 if (!isset($iter)) $iter=0;
 $iter*=10;
 
-
-
 if (isset($option)) {
 
   $db->query("SELECT COUNT(*) FROM developers");
   $db->next_record();
   $total_number_devs = $db->f("COUNT(*)");
 //  $numiter = ($db->f("COUNT(*)")/10);
-
 
   switch($option) {
 
@@ -166,8 +165,7 @@ if (isset($option)) {
       htmlp_image("bar_wh_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Master")."&nbsp;&nbsp; ";
       htmlp_image("bar_yl_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("PhD")."&nbsp;&nbsp; ";
       htmlp_image("bar_bk_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("No Entry")."&nbsp;&nbsp; ";
-      
-      
+         
       echo "</TD>";
       
       echo "</TR><TR>";
@@ -224,7 +222,6 @@ if (isset($option)) {
       htmlp_image("bar_pr_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Consultant")."&nbsp;&nbsp; ";
       htmlp_image("bar_bk_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("No Entry")."&nbsp;&nbsp; ";
       
-      
       echo "</TD>";
       
       echo "</TR><TR>";
@@ -269,21 +266,18 @@ if (isset($option)) {
       htmlp_image("bar_rd_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Not IT")."&nbsp;&nbsp; ";
       htmlp_image("bar_bk_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("No Entry")."&nbsp;&nbsp; ";
       
-      
       echo "</TD>";
       
       echo "</TR></TABLE>";
       $bx->box_body_end();
       $bx->box_end();
-      
       break;
    }
 }
-
 ?>
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

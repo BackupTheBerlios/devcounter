@@ -1,4 +1,5 @@
 <?php
+
 ######################################################################
 # DevCounter: Open Source Developer Counter
 # ================================================
@@ -17,9 +18,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: questionaire.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: questionaire.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) 
@@ -30,7 +33,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -40,10 +43,6 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 
 <!-- content -->
 <?php
-
-
-
-
 if (empty($auth->auth["uname"]))
   {
    $bx->box_begin();
@@ -72,7 +71,6 @@ else
 
    htmlp_form_hidden("username", $username);
    echo "<tr><td align=right width=30%>".$t->translate("Username").":</td><td width=70%> $username\n";
-  
 
    echo "<tr><td align=right width=30%>".$t->translate("Nationality").":</td><td width=70%>\n";
    htmlp_select("nationality"); echo "\n";
@@ -85,7 +83,6 @@ else
    htmlp_select_end(); echo "</td></tr>\n";
 
    echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>19<input type=\"TEXT\" name=\"year_of_birth\" size=3 maxlength=2></td></tr>\n";
-
 
    echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>\n";
    echo "<center><table width=80% border=0>\n";
@@ -121,7 +118,6 @@ else
 
    $bx->box_body_end();
    $bx->box_end();
-
 
    $bx->box_begin();
    $bx->box_title($t->translate("Professional Data"));
@@ -163,7 +159,6 @@ else
    $bx->box_body_end();
    $bx->box_end();
 
-
    $bx->box_begin();
    $bx->box_title($t->translate("Computer experience"));
    $bx->box_body_begin();
@@ -171,7 +166,6 @@ else
 
    echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" value=\"0\" size=\"3\" maxlength=\"2\">\n";
    echo "</tr>\n";
-  
 
    echo "</TABLE>";
    $bx->box_body_end();
@@ -227,7 +221,6 @@ else
   
    echo "</table></center>\n";
 
-
    echo "</TABLE>";
    $bx->box_body_end();
    $bx->box_body_begin();
@@ -280,12 +273,9 @@ else
      }
    htmlp_form_hidden("lang_amount", $lang_amount);
 
-  
-/*  
+/*
   echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-
- 
- */
+*/
 
    echo "</table></center>\n";
    echo "</td></tr>\n";
@@ -294,9 +284,7 @@ else
    $bx->box_body_end();
    $bx->box_end();
 
-
    echo"<CENTER><TABLE BORDER=0 width=89%><TR><TD width=65%>\n";
-
 
    echo "<CENTER>";
    htmlp_form_submit($t->translate("Submit"),"");
@@ -305,15 +293,13 @@ else
    echo "</td></tr>\n";
    echo "</table>\n";
 
-
    echo"</TD><TD width=5%>&nbsp;\n";
    echo"</TD><TD width=30%>\n";
   }
-
 ?>
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

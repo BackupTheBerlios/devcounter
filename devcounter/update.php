@@ -17,9 +17,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: update.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: update.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ######################################################################
+
+require("./include/prepend.php3");
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) 
@@ -30,7 +32,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
                   "perm" => "DevCounter_Perm"));
 }
 
-require("header.inc");
+require("./include/header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
@@ -69,7 +71,6 @@ else
    $username=$auth->auth["uname"];
    $db->query("SELECT * from developers WHERE username='$username'");
    $db->next_record();
-   
 
    htmlp_form_hidden("username", $username);
    echo "<tr><td align=right width=30%>".$t->translate("Username").":</td><td width=70%> $username\n";
@@ -87,7 +88,6 @@ else
    htmlp_select_end(); echo "</td></tr>\n";
    $year_of_birth = $db->f("year_of_birth");
    echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>19<input type=\"TEXT\" name=\"year_of_birth\" size=3 maxlength=2 value=\"$year_of_birth\"></td></tr>\n";
-
 
    $gender = $db->f("gender");
    echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>\n";
@@ -125,7 +125,6 @@ else
    echo "</td></tr></table></center>\n";
    echo "</td></tr>\n";
 
-
    $mother_tongue = $db->f("mother_tongue");
    echo "<tr><td align=right width=30%>".$t->translate("Mother tongue").":</td><td width=70%>\n";
    htmlp_select("mother_tongue"); echo "\n";
@@ -153,7 +152,6 @@ else
 
    $bx->box_body_end();
    $bx->box_end();
-
 
    $bx->box_begin();
    $bx->box_title($t->translate("Professional Data"));
@@ -351,7 +349,6 @@ else
    $bx->box_body_end();
    $bx->box_end();
 
-
    $bx->box_begin();
    $bx->box_title($t->translate("Computer Experience"));
    $bx->box_body_begin();
@@ -371,7 +368,6 @@ else
      }
    
    echo "</td></tr>\n";
-  
 
    echo "</TABLE>";
    $bx->box_body_end();
@@ -380,7 +376,6 @@ else
 
    echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("Which of these programming expirience do you have?")."</FONT></B></td></tr><tr><td>\n";
    echo "<center><table width=90% border=0>\n";
-
 
    $db2->query("select * from prog_ability_values WHERE username='$username'");
    $db2->next_record();
@@ -478,7 +473,6 @@ else
   
    echo "</table></center>\n";
 
-
    echo "</TABLE>";
    $bx->box_body_end();
    $bx->box_body_begin();
@@ -486,8 +480,6 @@ else
 
    echo "<tr><td align=center><B><FONT SIZE=+1>".$t->translate("Which of these languages/tools are you experienced with?")."</FONT></B></td></tr><tr><td>\n";
    echo "<center><table border=0>\n";
-
-
 
    $db2->query("select * from prog_language_values WHERE username='$username'");
    $db2->next_record();
@@ -583,13 +575,10 @@ else
       echo "</tr>\n\n"; 
      }
    htmlp_form_hidden("lang_amount", $lang_amount);
-
   
 /*  
   echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
-
- 
- */
+*/
 
    echo "</table></center>\n";
    echo "</td></tr>\n";
@@ -606,8 +595,7 @@ else
 
    echo "</td></tr>\n";
    echo "</table>\n";
- 
- 
+
    echo"</TD><TD width=5%>&nbsp;\n";
    echo"</TD><TD width=30%>\n";
   }
@@ -615,6 +603,6 @@ else
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 @page_close();
 ?>

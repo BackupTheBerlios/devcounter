@@ -17,9 +17,11 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: backend.php,v 1.3 2002/08/26 19:46:59 helix Exp $
+# $Id: backend.php,v 1.4 2002/08/27 09:59:41 helix Exp $
 #
 ###################################################################### 
+
+require "./include/prepend.php3";
 
 header("Content-Type: text/plain");
 
@@ -27,8 +29,8 @@ header("Content-Type: text/plain");
 header("Cache-Control: no-cache, must-revalidate");     // HTTP/1.1
 header("Pragma: no-cache");                             // HTTP/1.0
 
-require "config.inc";
-require "lib.inc";
+require "./include/config.inc";
+require "./include/lib.inc";
 
 $db = new DB_DevCounter;
 

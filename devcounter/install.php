@@ -15,9 +15,13 @@
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
+#
+# $Id: install.php,v 1.2 2002/08/27 09:59:41 helix Exp $
+#
 ######################################################################  
 
 require("./include/config.inc");
+
 $dbconfile = "./include/local.inc";
 
 function status($foo) {
@@ -89,7 +93,7 @@ case "check_phplib":
 
 case 'check_session':
 	require("./include/prepend.php3");
-	page_open(array('sess' => 'DevCounter_Session'));
+	require("./include/prepend.php3"); page_open(array('sess' => 'DevCounter_Session'));
 	require("./install/header.inc");
 	require("./install/check_session.php");
 	page_close();
