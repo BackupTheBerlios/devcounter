@@ -1,40 +1,87 @@
 Fast Installation Guide
------------------------
+=======================
 
 You need to have a webserver (we have tested the system with Apache),
 PHP3 or PHP4, PHPLib and MySQL installed on your system.
 
-* user$ mysql -h host -u database_superuser -p
-  (insert superuser_password)
-* mysql> USE mysql;
-* mysql> INSERT INTO user VALUES ( 'host', 'operator', PASSWORD('operator_password'), 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N');
-* mysql> FLUSH PRIVILEGES;
-* mysql> CREATE DATABASE devcounter;
-* mysql> exit;
-* user$ tar -zxvf devcounter-x.x.tar.gz
-* user$ mysql -h host -u operator -p < devcounter/sql/tables.sql
-  (insert db_password)
-* user$ mysql -h host -u operator -p < devcounter/sql/defaults.sql
-  (insert db_password)
-* user$ vi devcounter/include/local.inc
-  (insert the correct database parameters; please, keep devcounter as the database name)
+Two installation and configuration methods are provided:
+
+Using Installation Script
+-------------------------
+
+1. Go to the directory where your HTML files resides
+   and untar the DevCounter archive:
+
+   user$ cd /usr/local/httpd/htdocs
+   user$ tar -zxvf devcounter-x.x.x.tar.gz
+
+2. Execute the installation script and follow the
+   instruction.
+
+   http://yourserver/devcounter-x.x.x/install.php
+
+
+Manual Installation
+-------------------
+
+1. Go to the directory where your HTML files resides
+   and untar the DevCounter archive:
+
+   user$ cd /usr/local/httpd/htdocs
+   user$ tar -zxvf devcounter-x.x.x.tar.gz
+
+2. Set up the database user account for DevCounter
+   and create the DevCounter database:
+
+   user$ mysql -h host -u database_superuser -p
+   (insert superuser_password)
+   mysql> USE mysql;
+   mysql> INSERT INTO user VALUES ( 'host', 'operator', PASSWORD('operator_password'), 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N');
+   mysql> FLUSH PRIVILEGES;
+   mysql> CREATE DATABASE devcounter;
+   mysql> exit;
+
+3. Go to the DevCounter directory and
+   create DevCounter tables and defaults:
+
+   user$ cd /usr/local/httpd/htdocs/devcounter-x.x.x
+   user$ mysql -h host -u operator -p < devcounter/sql/tables.sql
+   (insert db_password)
+   user$ mysql -h host -u operator -p < devcounter/sql/defaults.sql
+   (insert db_password)
+
+4. Set database parameters in devcounter-x.x.x/include/local.inc;
+   keep devcounter as the database name
+
+   user$ vi devcounter-x.x.x/include/local.inc
 
    var $Host     = "host";
    var $Database = "devcounter";
    var $User     = "operator";
    var $Password = "password";
 
+5. Set path to PHPLib directory in devcounter-x.x.x/include/prepend.php3:
+
+   user$ vi devcounter-x.x.x/include/prepend.php3
+
+   $_PHPLIB["libdir"] = "/usr/share/php/phplib/";
+
 Ok, that's it. You've finished installing and configuring
-DevCounter. Start your browser and visit
-http://yourserver/devcounter/index.php.
+DevCounter. Start your browser and visit:
+
+   http://yourserver/devcounter-x.x.x/index.php
+
 As you'll see, DevCounter comes only with the administrator.
-You can modify your profile by entering as an administrator.
-To do so, login as the default administrator with user,editor,admin
-permissions. At the prompt use the following ID to login
+You can modify your profile. To do so, login as the default
+administrator with user,editor,admin permissions.
+At the prompt use the following ID to login
 (case sensitive):
 
     Username: admin
     Password: admin
 
-Vert important: Be sure of immediately changing the login and password by
-clicking on the User Admin link. You'll notice this is quite easy to do ;-)
+Very important: Be sure that you immediately change the username and
+password by clicking on the User Admin link. You'll notice this is
+quite easy to do ;-)
+
+Have fun!
