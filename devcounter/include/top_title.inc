@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: top_title.inc,v 1.5 2002/08/26 10:14:28 helix Exp $
+# $Id: top_title.inc,v 1.6 2002/09/17 09:58:06 helix Exp $
 #
 ######################################################################
 
@@ -29,8 +29,8 @@
 <td BGCOLOR="<?php echo $th_body_bgcolor;?>"><a href="<?php echo $sys_url_title;?>"><img SRC="<?php echo $sys_logo_image;?>" HSPACE=5 VSPACE=5 BORDER=0 height=<?php echo $sys_logo_heigth;?> width=<?php echo $sys_logo_width;?> ALT="<?php echo $sys_logo_alt;?>"></a></td>
 <td WIDTH="10"><img SRC="images/blank.gif" BORDER=0 height=1 width=10></td>
 <td VALIGN="middle" WIDTH="99%"><font color="<?php echo $th_nav_font_color;?>">
-<TABLE WIDTH=100%><TR><td VALIGN="middle"><b><font size=+1><?php echo $sys_name;?></font></b>
-<br><?php echo $t->translate($sys_title);?></font></TD><TD ALIGN="RIGHT" VALIGN="middle">BETA!!<BR>BETA!!<BR>BETA!!<BR>BETA!!</TD></TR></table></td>
+<b class="title"><?php echo $sys_name;?></b>
+<br><?php echo $t->translate($sys_title);?></font></td>
 
 <!-- logo at right -->
 <td VALIGN="middle">

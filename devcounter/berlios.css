@@ -35,6 +35,13 @@ A:visited { text-decoration:none }
 A:active { text-decoration:none }
 A:hover { text-decoration:underline; }
 
-.titlebar { text-decoration:none; color:<?php echo $th_navstrip_font_color;?>; font-family: <?php echo $th_font_family;?>; font-size: <?php echo $fsn ?>; font-weight: bold }
+.title { font-family: <?php echo $th_font_family; ?>; font-size: <?php echo $h2; ?>; }
 
 .small { font-family: <?php echo $th_font_family; ?>; font-size: <?php echo $fss; ?>; }
+
+A.small:link { text-decoration:none; font-size: <?php echo $fss; ?> }
+A.small:visited { text-decoration:none; font-size: <?php echo $fss; ?> }
+A.small:active { text-decoration:none; font-size: <?php echo $fss; ?> }
+A.small:hover { text-decoration:underline; font-size: <?php echo $fss; ?> }
+
+.titlebar { text-decoration:none; color:<?php echo $th_navstrip_font_color;?>; font-family: <?php echo $th_font_family;?>; font-size: <?php echo $fsn ?>; font-weight: bold }
