@@ -6,8 +6,8 @@
 #
 # Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
-#       Stefan Heinze (heinze@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
+#       Stefan Heinze (heinze@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: verify.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: verify.php,v 1.5 2004/03/02 09:22:58 helix Exp $
 #
 ######################################################################
 
@@ -54,7 +54,7 @@ if ($db->f("perms") == "user") {
     $db->query($query);
 
     if ($db->affected_rows() == 0) {
-       $be->box_full($t->translate("Error"), $t->translate("Verification of Registration failed").":<br>$query<p>Please contact the <a href=\"mailto:heinze@fokus.gmd.de\">webmaster</a>");
+       $be->box_full($t->translate("Error"), $t->translate("Verification of Registration failed").":<br>$query<p>Please contact the <a href=\"mailto:heinze@fokus.fraunhofer.de\">webmaster</a>");
     } else {
        $msg = $t->translate("Your account is now activated. Please login").".";
        $bx->box_full($t->translate("Verification of Registration"), $msg);

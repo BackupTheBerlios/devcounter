@@ -5,9 +5,9 @@
 # ================================================
 #
 # Copyright (c) 2001-2002 by
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
 #       Gregorio Robles (grex@scouts-es.org)
-#       Stefan Heinze (heinze@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: adm_langs_tools.php,v 1.7 2002/09/03 10:41:06 helix Exp $
+# $Id: adm_langs_tools.php,v 1.8 2004/03/02 09:22:58 helix Exp $
 #
 ######################################################################
 

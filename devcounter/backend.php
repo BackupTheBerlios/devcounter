@@ -5,7 +5,7 @@
 # ================================================
 #
 # Copyright (c) 2001-2002 by
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
 #       Gregorio Robles (grex@scouts-es.org)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: backend.php,v 1.6 2003/02/26 13:19:11 masato Exp $
+# $Id: backend.php,v 1.7 2004/03/02 09:22:58 helix Exp $
 #
 ###################################################################### 
 

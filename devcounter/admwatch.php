@@ -5,7 +5,7 @@
 # ================================================
 #
 # Copyright (c) 2001-2002 by
-#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: admwatch.php,v 1.5 2002/09/25 10:16:48 helix Exp $
+# $Id: admwatch.php,v 1.6 2004/03/02 09:22:58 helix Exp $
 #
 ######################################################################  
 
