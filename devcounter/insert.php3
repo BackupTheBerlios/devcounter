@@ -83,36 +83,27 @@ $db2 = new DB_DevCounter;
 
     if ($number_of_projects>0)
       {
-       $counter=0;
-       htmlp_form_action("insert.php3","","GET");
-       htmlp_form_hidden("number_of_projects", $number_of_projects);
-       
-       //$bs->box_strip($msg);
-       $bx->box_begin();
-       $bx->box_title($t->translate("Please enter Project Data"));
-       $bx->box_body_begin();
-	  
-       $bx->box_columns_begin(4);
-       $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
-       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Projectname")."</b>");
-       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("ProjectURL")."</b>");
-       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Comment")."</b>");
-       $bx->box_next_row_of_columns();
-       $bgcolor = "#FFFFFF";
-       
-       while ($counter!=$number_of_projects)
-         {
-          $counter++;
-	  $bx->box_column("right","",$bgcolor,$counter);
-	  $bx->box_column("center","",$bgcolor,html_input_text("projectname[]", 25, 64, ""));
-	  $bx->box_column("center","",$bgcolor,html_input_text("projecturl[]", 35, 255, ""));
-	  $bx->box_column("center","",$bgcolor,html_input_text("comment[]", 42, 400, ""));
-	  $bx->box_next_row_of_columns();
 
-	 }
-       $bx->box_columns_end();
+       $bx->box_begin();
+       $bx->box_title($t->translate("The Projects"));
+       $bx->box_body_begin();
+       echo "\n<P>";
+       echo $t->translate("Give another time thanx for filling it out");
+       echo "\n<BR>";
+       htmlp_link("./addproj.php3", "", $t->translate("please proceed to the projects page"));
+       echo "\n<P>";
        $bx->box_body_end();
        $bx->box_end();
+
+       echo "</td></tr>\n";
+       echo "</table>\n";
+       $bx->box_body_end();
+       $bx->box_end();
+   
+       $bx->box_body_end();
+       $bx->box_end();
+   
+
       }
     else
       {

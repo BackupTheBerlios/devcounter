@@ -36,7 +36,7 @@ $db2 = new DB_DevCounter;
 <?php
 
 
-  $query = "UPDATE developers SET nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification', number_of_projects='$number_of_projects', name_of_projects='$name_of_projects' WHERE username='$username'";
+  $query = "UPDATE developers SET nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification' WHERE username='$username'";
   $db->query($query);
 //  echo "Fehler-Nr: $db->Errno \nFehlertxt: $db->Error \n";
 

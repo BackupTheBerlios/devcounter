@@ -37,7 +37,70 @@ $db2 = new DB_DevCounter;
 
 <?php
 
+if (empty($auth->auth["uname"]))
+  {
+   $bx->box_begin();
+   $bx->box_title($t->translate("Not logged in"));
+   $bx->box_body_begin();
+   echo $t->translate("Please login first")."\n";
+   $bx->box_body_end();
+   $bx->box_end();
+  }
+else
+  {
+   $username=$auth->auth["uname"];
+   $db->query("SELECT * from developers WHERE username='$username'");
+   $db->next_record();
+   $number_of_projects = $db->f("number_of_projects");
+   if ($number_of_projects>0)
+     {
+   
+       $counter=0;
+       htmlp_form_action("addproj2db.php3","","POST");
+       htmlp_form_hidden("number_of_projects", $number_of_projects);
+       
+       //$bs->box_strip($msg);
+       $bx->box_begin();
+       $bx->box_title($t->translate("Please enter Project Data"));
+       $bx->box_body_begin();
+	  
+       $bx->box_columns_begin(4);
+       $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Projectname")."</b>");
+       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("ProjectURL")."</b>");
+       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Comment")."</b>");
+       $bx->box_next_row_of_columns();
+       $bgcolor = "#FFFFFF";
+       
+       while ($counter!=$number_of_projects)
+         {
+          $counter++;
 
+	  $bx->box_column("right","",$bgcolor,$counter);
+	  $bx->box_column("center","",$bgcolor,html_input_text("projectname[$counter]", 25, 64, ""));
+	  $bx->box_column("center","",$bgcolor,html_input_text("projecturl[$counter]", 35, 255, ""));
+	  $bx->box_column("center","",$bgcolor,html_input_text("comment[$counter]", 42, 400, ""));
+	  $bx->box_next_row_of_columns();
+
+	 }
+       $bx->box_column("right","",$bgcolor,html_form_submit($t->translate("Send"),""));
+       $bx->box_next_row_of_columns();
+       $bx->box_columns_end();
+       $bx->box_body_end();
+       $bx->box_end();
+       
+     }
+   else
+     {
+      $bx->box_begin();
+      $bx->box_title($t->translate("Error"));
+      $bx->box_body_begin();
+      echo $t->translate("No Projects")."\n";
+      $bx->box_body_end();
+      $bx->box_end();
+
+     }
+  }
 
 
 

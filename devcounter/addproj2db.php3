@@ -32,7 +32,46 @@ $db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
+<?php
+$counter=0;
+if (empty($auth->auth["uname"]))
+  {
+   $bx->box_begin();
+   $bx->box_title($t->translate("Not logged in"));
+   $bx->box_body_begin();
+   echo $t->translate("Please login first")."\n";
+   $bx->box_body_end();
+   $bx->box_end();
+  }
+else
+  {
+   $username=$auth->auth["uname"];
+   $db->query("SELECT * from developers WHERE username='$username'");
+   $db->next_record();
+   $number_of_projects = $db->f("number_of_projects");
+   if ($number_of_projects>0)
+     {
+      while ($counter!=$number_of_projects)
+        {
+         $counter++;
+	 $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname[$counter]', url = '$projecturl[$counter]', comment='$comment[$counter]'");
+	}
+     }
+   else
+     {
+      $bx->box_begin();
+      $bx->box_title($t->translate("Error"));
+      $bx->box_body_begin();
+      echo $t->translate("No Projects")."\n";
+      $bx->box_body_end();
+      $bx->box_end();
 
+     }
+  }
+
+
+
+?>
 
 <!-- end content -->
 

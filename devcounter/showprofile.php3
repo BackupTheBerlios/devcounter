@@ -117,8 +117,40 @@ else
 
    $number_of_projects = $db->f("number_of_projects");
    echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects").": $number_of_projects\n";
-   $name_of_projects = $db->f("name_of_projects");
-   echo "<BR>".$t->translate("The Free Software/Open Source Projects are").": $name_of_projects</td></tr>\n";
+   //$name_of_projects = $db->f("name_of_projects");
+   //echo "<BR>".$t->translate("The Free Software/Open Source Projects are").": $name_of_projects";
+   echo "<P>";
+   $db2->query("select * from os_projects WHERE username='$username'");
+   $counter=0;
+   $db->query("SELECT * from os_projects ");
+   $bx->box_begin();
+   $bx->box_body_begin();
+   $bx->box_columns_begin(3);
+   $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Project")."</b>");
+   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Comment")."</b>");
+   $bx->box_next_row_of_columns();
+   $bgcolor = "#FFFFFF";
+   while ($counter!=$number_of_projects)
+     {
+      $db2->next_record();
+      $counter++;
+      if ($counter%2 != 0) {$bgcolor = "#FFFFFF";}
+      else {$bgcolor = "#E0E0E0";}
+      $bx->box_column("right","",$bgcolor,$counter);
+      $bx->box_column("center","",$bgcolor,"<A HREF=\"".$db2->f("url")."\">".$db2->f("projectname")."</A>");
+      $bx->box_column("center","",$bgcolor,$db2->f("comment"));
+      $bx->box_next_row_of_columns();
+      $bgcolor = "#FFFFFF";
+     
+     }
+    $bx->box_columns_end();
+    $bx->box_body_end();
+    $bx->box_end();
+
+
+
+   echo "</td></tr>\n";
   
 
    echo "</TABLE>";

@@ -361,10 +361,12 @@ else
    $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
-   $number_of_projects = $db->f("number_of_projects");
-   echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" value=\"$number_of_projects\" size=3 maxlength=2>\n";
-   $name_of_projects = $db->f("name_of_projects");
-   echo "<BR>".$t->translate("Which Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"name_of_projects\" value=\"$name_of_projects\" size=30 maxlength=200></td></tr>\n";
+   //$number_of_projects = $db->f("number_of_projects");
+   echo "<tr><td align=center>";
+   echo "<B><FONT SIZE=+1>".$t->translate("Projects")."</FONT></B><BR>";
+   htmlp_link("projects.php3","",$t->translate("Manage your Project List"));
+   
+   echo "</td></tr>\n";
   
 
    echo "</TABLE>";
