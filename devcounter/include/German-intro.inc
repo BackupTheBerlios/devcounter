@@ -4,14 +4,22 @@ $bx->box_begin();
 $bx->box_title("Einführung");
 $bx->box_body_begin();
 
-echo "<B>DevCounter</B> befragt Open-Source-Entwickler nach ihren Kentnissen und Erfahrungen sowie der Mitarbeit \n";
-echo "an Open-Source-Projekten. Außerdem erlaubt <B>DevCounter</B> die zielgerichtete Suche nach Entwicklern \n";
-echo "mit definierten Know-How. Man kann dort weitere Entwickler für die eigenen Projekte suchen oder einfach jemand, der bei\n";
-echo "bestimmten Aufgaben kurz aushelfen kann, wie z.B. bei der Netzwerkprogrammierung, dem Schreiben von Dokumentation oder dem Erstellen von Übersetzungen.\n";
+echo "<B>DevCounter</B> befragt Open-Source-Entwickler nach ihren Kentnissen\n";
+echo "und Erfahrungen sowie der Mitarbeit an Open-Source-Projekten.\n";
+echo "Außerdem erlaubt <B>DevCounter</B> die zielgerichtete Suche nach Entwicklern\n";
+echo "mit definierten Know-How. Man kann dort weitere Entwickler für\n";
+echo "die eigenen Projekte suchen oder einfach jemand, der bei\n";
+echo "bestimmten Aufgaben kurz aushelfen kann, wie z.B. bei der\n";
+echo "Netzwerkprogrammierung, dem Schreiben von Dokumentation oder dem\n";
+echo "Erstellen von Übersetzungen.\n";
 echo "<P>";
-echo "Entwickler, die Projekte suchen und helfen wollen, können sich bei DevCounters unter Angaben ihrer Kenntnisse eintragen.";
+echo "Registrierte Benutzer können eine Entwicklerausschau definieren,\n";
+echo "die Kentnisse und Erfahrungen von gesuchten Entwicklern beschreiben.\n";
+echo "Ist ein Entwickler mit den gesuchten Kentnissen und Erfahrungen verfügbar,\n";
+echo "dann wird der Benutzer durch eine Nachricht per eMail darüber informiert.\n";
+echo "<P>";
+echo "Entwickler, die Projekte suchen und helfen wollen, können sich bei <B>DevCounters</B> unter Angaben ihrer Kenntnisse eintragen.";
+
 $bx->box_body_end();
 $bx->box_end();
-
-
 ?>
