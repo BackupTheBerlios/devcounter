@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.9 2002/09/01 16:18:55 helix Exp $
+# $Id: stats.php,v 1.10 2002/09/03 10:44:24 helix Exp $
 #
 ######################################################################
 
@@ -50,23 +50,23 @@ $bx->box_title($t->translate("$sys_name Statistics"));
 $bx->box_body_begin();
 echo "<table border=0 width=100% cellspacing=0>\n";
 echo "<tr>";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=general")."\">".$t->translate("General $sys_name Statistics")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=birth")."\">".$t->translate("Developers by Year of Birth")."</a></center></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=general")."\">".$t->translate("General $sys_name Statistics")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=birth")."\">".$t->translate("Developers by Year of Birth")."</a></td>\n";
 echo "</tr><tr>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=visits")."\">".$t->translate("Developer by Visits")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=profession")."\">".$t->translate("Developers by Profession")."</a></center></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=visits")."\">".$t->translate("Developer by Visits")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=profession")."\">".$t->translate("Developers by Profession")."</a></td>\n";
 echo "</tr><tr>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=gender")."\">".$t->translate("Developers by Gender")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=qualification")."\">".$t->translate("Developers by Qualification")."</a></center></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=gender")."\">".$t->translate("Developers by Gender")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=qualification")."\">".$t->translate("Developers by Qualification")."</a></td>\n";
 echo "</tr><tr>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=email")."\">".$t->translate("Developers by Email Domains")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=prog_abilities")."\">".$t->translate("Developers by Programming Abilities")."</a></center></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=email")."\">".$t->translate("Developers by Email Domains")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=prog_abilities")."\">".$t->translate("Developers by Programming Abilities")."</a></td>\n";
 echo "</tr><tr>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=prog_languages")."\">".$t->translate("Developers by Programming Languages/Tools")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=nationality")."\">".$t->translate("Developers by Nationality")."</a></center></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=prog_languages")."\">".$t->translate("Developers by Programming Languages/Tools")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=nationality")."\">".$t->translate("Developers by Nationality")."</a></td>\n";
 echo "</tr><tr>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=lives_in")."\">".$t->translate("Developers by Countries currently lives in")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php?option=mother_tonque")."\">".$t->translate("Developers by Mother Tonque")."</a></center></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=lives_in")."\">".$t->translate("Developers by Countries currently lives in")."</a></td>\n";
+echo "<td><a href=\"".$sess->url("stats.php?option=mother_tonque")."\">".$t->translate("Developers by Mother Tonque")."</a></td>\n";
 echo "</tr>\n";
 echo "</table>\n";
 
@@ -328,7 +328,7 @@ if (isset($option)) {
 
 // Developers by Mother Tonque
     case "mother_tonque":
-      stats_title($t->translate("Developers listed by Mother Tonque"));
+      stats_title($t->translate("Developers listed by Mother Tongue"));
       $db->query("SELECT *,COUNT(*) AS nat_cnt FROM developers GROUP BY developers.mother_tongue ORDER BY nat_cnt DESC");
      while($db->next_record()) {
        stats_display(get_lang($db->f("mother_tongue")),$db->f("nat_cnt"),"","",$total_number_dev);
