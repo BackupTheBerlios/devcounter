@@ -189,7 +189,7 @@ if (isset($option)) {
       $db->query("SELECT COUNT(*) FROM developers where profession LIKE 'Consultant%'");
       $db->next_record();
       $consultant = $db->f("COUNT(*)");
-      $other = $total_number_devs - $student - $programmer - $engineer - $prof - $executive - $consultant - $master - $phd;
+      $other = $total_number_devs - $student - $programmer - $engineer - $prof - $executive - $consultant;
 
       echo $t->translate("Profession")." : ";
       echo "</TD><TD>";
@@ -198,9 +198,9 @@ if (isset($option)) {
       echo "</TD><TD>";
       htmlp_image("bar_bl_m.gif", 0, $student/$total_number_devs*$bar_lenght, 11, $t->translate("Student")." ".sprintf( "%01.2f",($student/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
-      htmlp_image("bar_rd_m.gif", 0, $programmer/$total_number_devs*$bar_lenght, 11, $t->translate("Programmer")." ".sprintf( "%01.2f",($h_school/$total_number_devs)*100) ."%");
+      htmlp_image("bar_rd_m.gif", 0, $programmer/$total_number_devs*$bar_lenght, 11, $t->translate("Programmer")." ".sprintf( "%01.2f",($programmer/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
-      htmlp_image("bar_cy_m.gif", 0, $engineer/$total_number_devs*$bar_lenght, 11, $t->translate("Engineer")." ".sprintf( "%01.2f",($a_level/$total_number_devs)*100) ."%");
+      htmlp_image("bar_cy_m.gif", 0, $engineer/$total_number_devs*$bar_lenght, 11, $t->translate("Engineer")." ".sprintf( "%01.2f",($engeneer/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
       htmlp_image("bar_gr_m.gif", 0, $prof/$total_number_devs*$bar_lenght, 11, $t->translate("University professor/assistant")." ".sprintf( "%01.2f",($prof/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
@@ -255,7 +255,7 @@ if (isset($option)) {
       echo "</TD><TD>";
       htmlp_image("bar_bl_m.gif", 0, $it_yes/$total_number_devs*$bar_lenght, 11, $t->translate("IT")." ".sprintf( "%01.2f",($it_yes/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
-      htmlp_image("bar_rd_m.gif", 0, $it_no/$total_number_devs*$bar_lenght, 11, $t->translate("Programmer")." ".sprintf( "%01.2f",($h_school/$total_number_devs)*100) ."%");
+      htmlp_image("bar_rd_m.gif", 0, $it_no/$total_number_devs*$bar_lenght, 11, $t->translate("Not IT")." ".sprintf( "%01.2f",($it_no/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
       htmlp_image("bar_bk_m.gif", 0, $other/$total_number_devs*$bar_lenght, 11, $t->translate("No Entry")." ".sprintf( "%01.2f",($other/$total_number_devs)*100) ."%");
       echo "</TD><TD>";

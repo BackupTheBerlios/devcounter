@@ -36,7 +36,7 @@
 $sys_name = "DevCounter";
 $sys_title = "Open Source Developer Counter";
 $sys_url_title = "http://www.berlios.de/";
-$sys_url = "http://devcounter.berlios.de/devcounter/";
+$sys_url = "http://devcounter.berlios.de/";
 $sys_logo_image = "images/berliOS_logo.png";
 $sys_logo_alt = "BerliOS";
 $sys_logo_width = "238";
@@ -74,9 +74,9 @@ $org_logo_heigth = "60";
 
 $ts_array = array (
 	"Home"		=> $sys_url_title."index.php",
-	"About us"	=> $sys_url_title."about/index.php",
-	"Partners"	=> $sys_url_title."partners/index.php",
-	"Contact"	=> $sys_url_title."contact/index.php"
+	"About us"	=> $sys_url_title."about/index.php.en",
+	"Partners"	=> $sys_url_title."partners/index.php.en",
+	"Contact"	=> $sys_url_title."contact/index.php.en"
 );
 
 ######################################################################
