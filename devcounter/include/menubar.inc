@@ -46,7 +46,6 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
    <br><a href="<?php $sess->purl("users.php3") ?>" class="menus"><?php echo $t->translate("Developers"); ?></a>
 
    <br>
-   <br><a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Advanced Search"); ?></a>
    <?php
    if (isset($auth) && !empty($auth->auth["perm"]) && !($logout)) 
      {
@@ -74,7 +73,7 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
         }
      }
    ?>
-   <br><a href="<?php $sess->purl("backend.php3"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>
+   <!--<br><a href="<?php $sess->purl("backend.php3"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>-->
    <br><a href="<?php $sess->purl("stats.php3?option=general"); ?>" class="menus"><?php echo $t->translate("Statistics"); ?></a>
    <?php
   }
@@ -121,24 +120,25 @@ if (
       $db->query("SELECT COUNT(*) FROM auth_user");
       $db->next_record();
       echo "<a href=\"".$sess->url("admuser.php3")."\" class=\"menus\">".$t->translate("Developers")." [".$db->f("COUNT(*)")."]</a>\n";
+      echo "<BR><a href=\"".$sess->url("adm_langs_tools.php3")."\" class=\"menus\">".$t->translate("Modify ProgLanguages &amp; ProgTools")."</a>\n";
      }
 
    if (($config_perm_admfaq == "all") || (isset($perm) && $perm->have_perm($config_perm_admfaq))  && !($logout)) 
      {
       $db->query("SELECT COUNT(*) FROM faq WHERE language='$la'");
       $db->next_record();
-      echo "<br><a href=\"".$sess->url("admfaq.php3")."\" class=\"menus\">".$t->translate("Q&A")." [".$db->f("COUNT(*)")."]</a>\n";
+      echo "<br><a href=\"".$sess->url("admfaq.php3")."\" class=\"menus\">".$t->translate("Q&amp;A")." [".$db->f("COUNT(*)")."]</a>\n";
      }
 
    if (($config_perm_nladm == "all") || (isset($perm) && $perm->have_perm($config_perm_nladm))  && !($logout)) 
      {
  				// Daily Newsletter
-      $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')=\"".date("Y-m-d")."\"";
+      /*$where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')=\"".date("Y-m-d")."\"";
       echo "<br><a href=\"".$sess->url("nladm.php3?period=daily")."\" class=\"menus\">".$t->translate("Daily Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
   				// Weekly Newsletter
       $lastday = time() - 7 * 24 * 60 * 60;
       $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')<=\"".date("Y-m-d")."\" AND DATE_FORMAT(developerss.creation,'%Y-%m-%d')>\"".date("Y-m-d",$lastday)."\"";
-      echo "<br><a href=\"".$sess->url("nladm.php3?period=weekly")."\" class=\"menus\">".$t->translate("Weekly Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
+      echo "<br><a href=\"".$sess->url("nladm.php3?period=weekly")."\" class=\"menus\">".$t->translate("Weekly Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";*/
      }
    ?>
    </td>
@@ -165,9 +165,10 @@ htmlp_form_hidden("option", "name");
 ?>
 <input TYPE="text" SIZE="10" NAME="search_text" VALUE="">
 <?php
-echo "<p><input TYPE=\"submit\" VALUE=\"".$t->translate('Search')."\">";
+echo "<BR><input TYPE=\"submit\" VALUE=\"".$t->translate('Search')."\">";
 ?>
 </form>
+   <a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Advanced Search"); ?></a>
 </td>
 </tr>
 </table>
@@ -205,7 +206,7 @@ while (list(, $ln) = each($la_array)) {
 ?>
 </select>
 <?php
-echo "<p><input TYPE=\"submit\" NAME=\"go\" VALUE=\"".$t->translate("Go")."\">";
+echo "<BR><input TYPE=\"submit\" NAME=\"go\" VALUE=\"".$t->translate("Go")."\">";
 ?>
 </form>
 </td>

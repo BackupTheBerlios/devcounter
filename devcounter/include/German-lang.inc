@@ -35,31 +35,80 @@ switch($phrase) {
      case "Open Source Software Announcement & Retrieval":  $tmp = "Open Source Software Ank&uuml;ndigung & Recherche"; break;
 
 // Menue bar
-     case "Recent Apps": $tmp = "Neueste Anw."; break;
+     case "Developer": $tmp = "Entwickler"; break;
      case "Q&amp;A": $tmp = "F&amp;A"; break;
      case "Login": $tmp = "Einloggen"; break;
      case "Logout": $tmp = "Ausloggen"; break;
-     case "New User": $tmp = "Neuer Benutzer"; break;
+     case "New Developer": $tmp = "Neuer Entwickler"; break;
      case "Forgot Password": $tmp = "Passwort vergessen"; break;
-     case "Change User": $tmp = "Benutzer &auml;ndern"; break;
-     case "Users": $tmp = "Benutzer"; break;
-
-     case "Apps Index": $tmp = "Anw.-Index"; break;
-     case "New Apps": $tmp = "Neue Anw."; break;
-     case "Update Apps": $tmp = "Aktualisiere Anw."; break;
-     case "Pending Apps": $tmp = "Prüfe Anw.";break;
-     case "Deleted Apps": $tmp = "Gelöschte Anw.";break;
-     case "Modified Apps": $tmp = "Modifizierte Anw.";break;
-
-     case "Backend": $tmp = "$phrase"; break;
+     case "Change Developer": $tmp = "Entwickler &auml;ndern"; break;
+     case "Developers": $tmp = "Entwickler"; break;
      case "Statistics": $tmp = "Statistiken"; break;
 
-     case "Administration": $tmp = "Administration"; break;
-     case "Sections": $tmp = "Sektionen"; break;
-     case "Categories": $tmp = "Kategorien"; break;
-     case "Authors": $tmp = "Autoren"; break;
-     case "Licenses": $tmp = "Lizenzen"; break;
-     case "Check Date": $tmp = "Prüfe Datum"; break;
+     case "allow to show E-Mail": $tmp = "E-Mail darf angezeigt werden"; break;
+     case "allow to be searched": $tmp = "Darf gefunden werden"; break;
+     case "allow to be contacted by DevCounter": $tmp = "Darf von DevCounter kontaktiert werden"; break;
+     case "Advanced Search": $tmp = "Erweiterte Suche";break;
+
+     case "Total number of developers": $tmp = "Gesamtazahl der Entwickler";break;
+     case "no entry": $tmp = "Kein Eintrag";break;
+     case "No Entry": $tmp = "Kein Eintrag";break;
+     case "Gender": $tmp = "Geschlecht";break;
+     case "Male": $tmp = "Männlich";break;
+     case "Female": $tmp = "Weiblich";break;
+
+     case "Backend": $tmp = "$phrase"; break;
+
+     case "Qualification": $tmp = "Abschluß"; break;
+     case "Elementary School": $tmp = "Grundschule"; break;
+     case "High School": $tmp = "Oberschule"; break;
+     case "A-Level": $tmp = "Abitur"; break;
+     case "Apprenticeship": $tmp = "Lehre"; break;
+     case "College Graduate": $tmp = "Hochschulabschluß"; break;
+     case "University Graduate": $tmp = "Universitätsabschluß"; break;
+     case "PhD": $tmp = "Doktor (akad.)"; break;
+
+     case "Profession": $tmp = "Beruf"; break;
+     case "Programmer": $tmp = "Programmierer"; break;
+     case "Engineer": $tmp = "Ingeneur"; break;
+     case "University professor/assistant": $tmp = "Universitätsprofessor/-assistent"; break;
+     case "Consultant": $tmp = "Berater"; break;
+     
+     case "IT or not IT": $tmp = "IT oder nicht IT"; break;
+     case "Not IT": $tmp = "Nicht IT"; break;
+
+     case "Enter your Profile": $tmp = "Profildaten eingeben"; break;
+     case "Update your Profile": $tmp = "Profildaten ändern"; break;
+
+     case "Nationality": $tmp = "Herkunftsland"; break;
+     case "Country you actually live in": $tmp = "Land, in dem Du zur Zeit lebst"; break;
+     case "Year of Birth": $tmp = "Geburtsjahr"; break;
+     case "Mother tongue": $tmp = "Muttersprache"; break;
+     case "Other languages": $tmp = "weitere Sprachen"; break;
+
+     
+     case "Number of Free Software/Open Source Projects you are involved in": $tmp = "Anzahl der Free Software/Open Source Projekte in die eingebunden bist"; break;
+     case "Which of these programming expirience do you have?": $tmp = "In welchen Bereichen hast Du Erfahrung?"; break;
+     case "Which of these languages/tools are you experienced with?": $tmp = "In welchen dieser Sprachen/Tools hast Du Erfahrung?"; break;
+     case "Professional Data": $tmp = "Ausbildung & Beruf"; break;
+     case "Personal Data": $tmp = "Persönliche Daten"; break;
+     case "Computer experience": $tmp = "Computer Erfahrung"; break;
+     case "Submit": $tmp = "Abschicken"; break; 
+     case "Submit Your Form": $tmp = "Formular abschicken"; break; 
+     case "Add Project": $tmp = "Projekt hinzufügen"; break; 
+     case "Please enter Project Data": $tmp = "Bitte Projektdaten eingeben"; break; 
+     case "Projectname": $tmp = "Projektname"; break; 
+     case "ProjectURL": $tmp = "ProjektURL"; break; 
+
+     
+     case "No Experience": $tmp = "Keine Erfahrung"; break;
+     case "Novice": $tmp = "Einsteiger"; break;
+     case "Beginner": $tmp = "Anfänger"; break;
+     case "Advanced": $tmp = "Fortgeschrittner"; break;
+     case "Expert": $tmp = "Experte"; break;
+
+     case "Projects": $tmp = "Projekte"; break;
+     case "Manage your Project List": $tmp = "Projektliste verwalten"; break;
 
      case "Search": $tmp = "Suche"; break;
      case "Language": $tmp = "Sprache"; break;
@@ -295,7 +344,7 @@ switch($phrase) {
 
 // Statistics
 	 case "$GLOBALS[sys_name] Statistics": $tmp = "$GLOBALS[sys_name] Statistiken"; break;
-	 case "General $GLOBALS[sys_name] Statistics": $tmp = "Generelle $GLOBALS[sys_name] Statistiken"; break;
+	 case "General $GLOBALS[sys_name] Statistics": $tmp = "Allgemeine $GLOBALS[sys_name] Statistiken"; break;
 	 case "Apps by Importance": $tmp = "Anw. nach Bedeutung"; break;
 	 case "Apps by Hits": $tmp = "Anw. nach Zugriffen"; break;
 	 case "Apps by Homepage Visits": $tmp = "Anw. nach Homepage-Besuchen"; break;

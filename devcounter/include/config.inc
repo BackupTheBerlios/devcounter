@@ -91,7 +91,7 @@ $ts_array = array (
 $la_array[] = "English";
 $la_array[] = "German";
 $la_array[] = "Spanish";
-$la_array[] = "Frensh";
+$la_array[] = "French";
 
 ######################################################################
 # Theme

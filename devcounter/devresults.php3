@@ -117,7 +117,7 @@ $bx->box_end();
       $bx->box_body_end();
       $bx->box_end();
 */
-      $db->query("SELECT developers.username FROM developers, extra_perms WHERE developers.username=extra_perms.username AND extra_perms.search='yes' AND developers.name_of_projects LIKE '%$projname%' ORDER BY developers.username ASC");
+      $db->query("SELECT DISTINCT os_projects.username FROM os_projects, extra_perms WHERE (os_projects.username=extra_perms.username AND extra_perms.search='yes') AND os_projects.projectname LIKE '%$projname%' ORDER BY os_projects.username ASC");
       $bx->box_begin();
       $bx->box_title($t->translate("Results"));
       $bx->box_body_begin();

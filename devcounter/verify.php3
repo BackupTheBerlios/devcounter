@@ -39,7 +39,7 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 <!-- content -->
 <?php
 
-$db->query("SELECT perms FROM auth_user WHERE user_id='$confirm_hash'")
+$db->query("SELECT perms FROM auth_user WHERE user_id='$confirm_hash'");
 $db->next_record();
 
 if ($db->f("perms") == "user") {
@@ -56,7 +56,7 @@ if ($db->f("perms") == "user") {
        $bx->box_full($t->translate("Verification of Registration"), $msg);
     }
 
-
+ }
 ?>
 
 

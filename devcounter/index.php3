@@ -34,6 +34,52 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
 
 <?php
 
+echo "<TABLE BORDER=\"0\" WIDTH=\"100%\">";
+echo "<TR><TD VALIGN=\"top\">";
+
+
+      switch ($la) {
+      case "English":
+	    require("English-intro.inc");
+        break;
+      case "German":
+	    require("German-intro.inc");
+        break;
+/*      case "Spanish":
+	    require("Spanish-lang.inc");
+        break;
+      case "French":
+	    require("French-lang.inc");
+        break;*/
+      default:
+	    require("English-intro.inc");
+        break;
+      }
+
+echo "</TD><TD WIDTH=\"250\">";
+
+$bx->box_begin();
+$bx->box_title($t->translate("Newest Devlopers"));
+$bx->box_body_begin();
+
+$db->query("SELECT * FROM auth_user ORDER BY creation_usr DESC LIMIT 0, 10");
+
+while ($db->next_record())
+  {
+   $user_name = $db->f("username");
+   echo "- ";
+   $pquery["devname"] = $user_name ;
+   htmlp_link("showprofile.php3",$pquery,$user_name);
+   echo "<BR>\n";
+  }
+
+$bx->box_body_end();
+$bx->box_end();
+
+
+
+echo "</TD></TR>";
+echo "</TABLE>";
 
 if (empty($auth->auth["uname"]))
   {

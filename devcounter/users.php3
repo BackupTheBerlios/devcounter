@@ -57,7 +57,7 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
   $bs->box_strip($msg);
   $db->query("SELECT * FROM auth_user, extra_perms WHERE $where AND auth_user.username=extra_perms.username ORDER BY auth_user.username ASC");
   $bx->box_begin();
-  $bx->box_title($t->translate("Developers"));
+  $bx->box_title($t->translate("Developers")." : ".ereg_replace("%","",$by));
   $bx->box_body_begin();
 
   $bx->box_columns_begin(4);
