@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.7 2002/08/30 13:17:15 helix Exp $
+# $Id: stats.php,v 1.8 2002/08/31 14:54:15 helix Exp $
 #
 ######################################################################
 
@@ -342,6 +342,6 @@ if (isset($option)) {
 <!-- end content -->
 
 <?php
-require("footer.inc");
+require("./include/footer.inc");
 page_close();
 ?>

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: index.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: index.php,v 1.5 2002/08/31 14:50:46 helix Exp $
 #
 ######################################################################  
 
@@ -47,19 +47,19 @@ echo "<TR><TD VALIGN=\"top\">";
 
       switch ($la) {
       case "English":
-	    require("English-intro.inc");
+	    require("./include/English-intro.inc");
         break;
       case "German":
-	    require("German-intro.inc");
+	    require("./include/German-intro.inc");
         break;
 /*      case "Spanish":
-	    require("Spanish-lang.inc");
+	    require("./include/Spanish-lang.inc");
         break;
       case "French":
-	    require("French-lang.inc");
+	    require("./include/French-lang.inc");
         break;*/
       default:
-	    require("English-intro.inc");
+	    require("./include/English-intro.inc");
         break;
       }
 
