@@ -16,6 +16,8 @@ PHP3 or PHP4, PHPLib and MySQL installed on your system.
   (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/auth_user.sql
   (insert db_password)
+* user$ mysql -h host -u operator -p < devcounter/sql/extra_perms.sql
+  (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/countries.sql
   (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/faq.sql
