@@ -44,20 +44,26 @@ switch($phrase) {
      case "Change Developer": $tmp = "Entwickler &auml;ndern"; break;
      case "Developers": $tmp = "Entwickler"; break;
      case "Statistics": $tmp = "Statistiken"; break;
+     case "Advanced Search": $tmp = "Erweiterte Suche";break;
+     case "Backend": $tmp = "$phrase"; break;
 
+//Frontpage
+     case "Newest Developers": $tmp = "Neueste Entwickler"; break;
+
+
+//Permissions
+     case "allow to show realname": $tmp = "wirlicher Name darf angezeigt werden"; break;
      case "allow to show E-Mail": $tmp = "E-Mail darf angezeigt werden"; break;
      case "allow to be searched": $tmp = "Darf gefunden werden"; break;
      case "allow to be contacted by DevCounter": $tmp = "Darf von DevCounter kontaktiert werden"; break;
-     case "Advanced Search": $tmp = "Erweiterte Suche";break;
 
+//Statiscs and Profile
      case "Total number of developers": $tmp = "Gesamtazahl der Entwickler";break;
      case "no entry": $tmp = "Kein Eintrag";break;
      case "No Entry": $tmp = "Kein Eintrag";break;
      case "Gender": $tmp = "Geschlecht";break;
      case "Male": $tmp = "Männlich";break;
      case "Female": $tmp = "Weiblich";break;
-
-     case "Backend": $tmp = "$phrase"; break;
 
      case "Qualification": $tmp = "Abschluß"; break;
      case "Elementary School": $tmp = "Grundschule"; break;
@@ -132,6 +138,22 @@ switch($phrase) {
      case "Question": $tmp = "Frage"; break;
      case "Answer": $tmp = "Antwort"; break;
 
+//Search
+     case "DevCounter Search by Category": $tmp = "DevCounter Kategoriesuche"; break;
+     case "Countries": $tmp = "L&auml;nder"; break;
+     case "Spoken Languages": $tmp = "Gesprochene Sprachen"; break;
+     case "Programming &amp; Computer Abilities": $tmp = "Programmier- &amp; Computerf&auml;higkeiten"; break;
+     case "All in one": $tmp = "Alles auf einmal"; break;
+     case "Search for Languages spoken": $tmp = "Suche nach gesprochen Sprachen"; break;
+     case "Please select desired Language": $tmp = "Bitte gew&uuml;nschte Sprace ausw&auml;hlen"; break;
+     case "Search for Projects": $tmp = "Suche nach Projekten"; break;
+     case "Enter Name of <B>one</B> Project": $tmp = "Gib den Namen <B>eines</B> Projektes ein"; break;
+     case "Results": $tmp = "Ergebnisse"; break;
+     case "No Results": $tmp = "keine Ergebnisse"; break;
+     case "Search for Countries": $tmp = "Suche nach L&auml;ndern"; break;
+     case "Please select desired Country": $tmp = "Bitte das gw&uuml;nschte Land ausw&auml;hlen"; break;
+
+
 // Apps update
      case "Comment": $tmp = "Kommentar"; break;
      case "Review": $tmp = "Überprüfen"; break;
@@ -177,7 +199,7 @@ switch($phrase) {
      case "You will get your Password by e-mail in a couple of minutes": $tmp = "Sie erhalten Ihr Passwort per E-Mail in wenigen Minuten"; break;
 
 // Change User Parameters
-     case "Change User Parameters": $tmp = "Änderung der Benutzerdaten"; break;
+     case "Change Developer Parameters": $tmp = "Änderung der Entwicklerdaten"; break;
      case "Remind me": $tmp = "Erinnerung"; break;
      case "Modification": $tmp = "Modifiziert"; break;
      case "Creation": $tmp = "Erzeugt"; break;

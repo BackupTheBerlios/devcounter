@@ -47,7 +47,7 @@ $bx->box_body_begin();
 echo "<table border=0 width=100% cellspacing=5>\n";
 echo "<tr><td><center><a href=\"".$sess->url("searchdev.php3?option=abilities")."\">".$t->translate("Programming &amp; Computer Abilities")."</a></center></td>\n";
 echo "<td><center><a href=\"".$sess->url("searchdev.php3?option=projects")."\">".$t->translate("Projects")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("searchdev.php3?option=country")."\">".$t->translate("Country")."</a></center></td>\n";
+echo "<tr><td><center><a href=\"".$sess->url("searchdev.php3?option=country")."\">".$t->translate("Countries")."</a></center></td>\n";
 echo "<td><center><a href=\"".$sess->url("searchdev.php3?option=lang")."\">".$t->translate("Spoken Languages")."</a></center></td></tr>\n";
 echo "<tr><td colspan=2><center><a href=\"".$sess->url("searchdev.php3?option=allinone")."\">".$t->translate("All in one")."</a></center></td></tr>\n";
 echo "</table>\n";
@@ -406,7 +406,7 @@ $bx->box_end();
     case "country":
 
       $bx->box_begin();
-      $bx->box_title($t->translate("Search for Counties"));
+      $bx->box_title($t->translate("Search for Countries"));
       $bx->box_body_begin();
 
       htmlp_form_action("devresults.php3","POST");
