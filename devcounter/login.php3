@@ -57,6 +57,21 @@ else
       $bx->box_body_end();
       $bx->box_end();
      }
+   else
+     {
+      $db->next_record();
+      $num_of_projects = $db->f("num_of_projects");
+      $db->query("SELECT * from os_projects WHERE username='$username'");
+      if ($db->num_rows() ==0 && $num_of_projects>0)
+        {
+	 $bx->box_begin();
+	 $bx->box_title($username);
+	 $bx->box_body_begin();
+	 htmlp_link("addproj.php3","",$t->translate("please enter your project data"));
+	 $bx->box_body_end();
+	 $bx->box_end();
+	}
+     }
    echo " ";
   }
 

@@ -118,7 +118,7 @@ else
    $number_of_projects = $db->f("number_of_projects");
    if ($number_of_projects>0)
      {
-      $db->query("SELECT * from os_projects ");
+      $db->query("SELECT * from os_projects WHERE username='$username'");
       $bx->box_columns_begin(6);
       $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
       $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Projectname")."</b>");
