@@ -58,6 +58,7 @@ else
    //echo " - $projectname - $projecturl - $comment - $username";
    switch($option) {
     case "change":
+    $comment = htmlentities($comment);
     $query = "UPDATE os_projects SET  projectname = '$projectname', url = '$projecturl', comment='$comment'  WHERE (username='$username' and projectname='$oldpname')";
     $db->query($query);
     if ($db->affected_rows() == 1 )
@@ -78,9 +79,7 @@ else
     if ($db->affected_rows() == 1 )
      {
       $db->query("SELECT number_of_projects from developers where username='$username'");
-      $db->next_record("");
-      $number_of_projects=$db->f("number_of_projects");
-      $number_of_projects--;
+      
       $db->query("UPDATE developers SET number_of_projects='$number_of_projects' WHERE username='$username'");
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
@@ -89,34 +88,53 @@ else
       $bx->box_body_end();
       $bx->box_end();
      }
+   $db->query("SELECT number_of_projects from developers where username='$username'");
+   $number_of_projects=$db->num_rows();
+   $db->query("UPDATE developers SET number_of_projects='$number_of_projects' WHERE username='$username'");
     
     break;
 
     case "add":
-    $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname', url = '$projecturl', comment='$comment'");
-    if ($db->affected_rows() == 1 )
-     {
-      $db->query("SELECT number_of_projects from developers where username='$username'");
-      $db->next_record("");
-      $number_of_projects=$db->f("number_of_projects");
-      $number_of_projects++;
-      $db->query("UPDATE developers SET number_of_projects='$number_of_projects' WHERE username='$username'");
-      $bx->box_begin();
-      $bx->box_title($t->translate("Success"));
-      $bx->box_body_begin();
-      echo $t->translate("Project added")."\n";
-      $bx->box_body_end();
-      $bx->box_end();
-     }
-    
+    if (!empty($projectname))
+      {
+       $comment = htmlentities($comment);
+       $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname', url = '$projecturl', comment='$comment'");
+       if ($db->affected_rows() == 1 )
+        {
+         $bx->box_begin();
+         $bx->box_title($t->translate("Success"));
+         $bx->box_body_begin();
+         echo $t->translate("Project added")."\n";
+         $bx->box_body_end();
+         $bx->box_end();
+        }
+      }
+    else
+      {
+       $bx->box_begin();
+       $bx->box_title($t->translate("Error"));
+       $bx->box_body_begin();
+       echo $t->translate("Empty Project")."\n";
+       $bx->box_body_end();
+       $bx->box_end();
+       
+      }
+   $db->query("SELECT * from os_projects where username='$username'");
+   $number_of_projects=$db->num_rows();
+   $db->query("UPDATE developers SET number_of_projects='$number_of_projects' WHERE username='$username'");
+     
     
     break;
 
    }
-   $db->query("SELECT * from developers WHERE username='$username'");
+   $db->query("SELECT * FROM developers WHERE username='$username'");
    $db->next_record();
    $number_of_projects = $db->f("number_of_projects");
-   if ($number_of_projects>0)
+   $db->query("SELECT COUNT(*) FROM os_projects WHERE username='$username'");
+   $db->next_record();
+   $projects_entered = $db->f("COUNT(*)");
+
+   if ($number_of_projects == $projects_entered)
      {
       $db->query("SELECT * from os_projects WHERE username='$username'");
       $bx->box_columns_begin(6);
@@ -164,8 +182,6 @@ else
        $bx->box_column("center","",$bgcolor,"--");
        $bx->box_columns_end();
        htmlp_form_end();
-       $bx->box_body_end();
-       $bx->box_end();
       
       
      }
@@ -174,7 +190,8 @@ else
       $bx->box_begin();
       $bx->box_title($t->translate("Error"));
       $bx->box_body_begin();
-      echo $t->translate("No Projects")."\n";
+      htmlp_link("addproj.php3","",$t->translate("Enter your projects here"));
+      //echo $t->translate("Enter your projects here")."\n";
       $bx->box_body_end();
       $bx->box_end();
 
@@ -186,5 +203,5 @@ else
 
 <?php
 require("footer.inc");
-page_close();
+@page_close();
 ?>

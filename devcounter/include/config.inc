@@ -37,10 +37,10 @@ $sys_name = "DevCounter";
 $sys_title = "Open Source Developer Counter";
 $sys_url_title = "http://www.berlios.de/";
 $sys_url = "http://devcounter.berlios.de/devcounter/";
-$sys_logo_image = "images/berlios.jpg";
+$sys_logo_image = "images/berliOS_logo.png";
 $sys_logo_alt = "BerliOS";
 $sys_logo_width = "238";
-$sys_logo_heigth = "104";
+$sys_logo_heigth = "61";
 
 ######################################################################
 # Organisation Config
@@ -55,10 +55,10 @@ $sys_logo_heigth = "104";
 
 $org_name = "GMD FOKUS";
 $org_url = "http://www.fokus.gmd.de/";
-$org_logo_image = "images/logo_fokus.gif";
+$org_logo_image = "images/logo_fokus.png";
 $org_logo_alt = $org_name;
-$org_logo_width = "66";
-$org_logo_heigth = "73";
+$org_logo_width = "60";
+$org_logo_heigth = "60";
 
 ######################################################################
 # Top Strip
@@ -107,11 +107,11 @@ $th_font_color = "#333333";
 $th_hover_font_color = "#FF0000";
 
 $th_nav_bgcolor = "#FFCC33";
-$th_navstrip_bgcolor = "#000000";
+$th_navstrip_bgcolor = "#7B7B7B";
 $th_nav_font_color = "#333333";
 $th_navstrip_font_color = "#FFFFFF";
 
-$th_box_frame_color = "#000000";
+$th_box_frame_color = "#CCCCCC";
 $th_box_frame_width = "1";
 $th_box_title_bgcolor = "#CCCCCC";
 $th_box_body_bgcolor = "#FFFFFF";
@@ -121,7 +121,7 @@ $th_box_title_font_color = "#000000";
 $th_box_body_font_color = "#333333";
 $th_box_error_font_color = "#FF2020";
 
-$th_strip_frame_color = "#000000";
+$th_strip_frame_color = "#CCCCCC";
 $th_strip_frame_width = "1";
 $th_strip_title_bgcolor = "#CCCCCC";
 $th_strip_body_bgcolor = "";

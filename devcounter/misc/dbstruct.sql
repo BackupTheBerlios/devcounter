@@ -61,5 +61,6 @@ CREATE TABLE os_projects (
    username varchar(24) NOT NULL,
    projectname varchar(64) NOT NULL,
    url varchar(255) NOT NULL,
-   comment text NOT NULL
+   comment text NOT NULL,
+   PRIMARY KEY (username,projectname)
 );

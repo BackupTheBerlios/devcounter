@@ -56,9 +56,9 @@ else
    else
      {
       $db->next_record();
-      $num_of_projects = $db->f("num_of_projects");
+      $number_of_projects = $db->f("number_of_projects");
       $db->query("SELECT * from os_projects WHERE username='$username'");
-      if ($db->num_rows() ==0 && $num_of_projects>0)
+      if ($db->num_rows() ==0 && $number_of_projects>0)
         {
 	 $bx->box_begin();
 	 $bx->box_title($username);

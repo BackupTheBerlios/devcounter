@@ -49,13 +49,23 @@ else
    $db->query("SELECT * from developers WHERE username='$username'");
    $db->next_record();
    $number_of_projects = $db->f("number_of_projects");
+   $counter2=0;
    if ($number_of_projects>0)
      {
       while ($counter!=$number_of_projects)
         {
          $counter++;
-	 $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname[$counter]', url = '$projecturl[$counter]', comment='$comment[$counter]'");
+	 if (!empty($projectname[$counter]))
+	   {
+	    $comment = htmlentities($comment);
+	    $db->query("INSERT os_projects SET  username = '$username', projectname = '$projectname[$counter]', url = '$projecturl[$counter]', comment='$comment[$counter]'");
+	    if ($db->affected_rows() != 0)
+	      {
+	       $counter2++;
+	      }
+	   }
 	}
+      $db->query("UPDATE developers SET number_of_projects='$counter2' WHERE username='$username'");
      }
    else
      {

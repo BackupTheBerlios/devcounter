@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: html.inc,v 1.3 2002/01/21 15:55:42 Masato Exp $
+# $Id: html.inc,v 1.4 2002/03/07 12:43:30 Masato Exp $
 #
 ######################################################################
 
@@ -50,7 +50,7 @@ function htmlp_anchor($name) {
 function html_image($file, $border, $width, $height, $alternate) {
     return ( "<img src=\"images/".$file."\" border=\""
              .$border."\" width=\"".$width."\" height=\""
-             .$height."\" alt=\"".$alternate."\">" );
+             .$height."\" alt=\"".$alternate."\" title=\"".$alternate."\">" );
 }
 function htmlp_image($file, $border, $width, $height, $alternate) {
     print html_image( $file, $border, $width, $height, $alternate );

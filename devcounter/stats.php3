@@ -37,52 +37,19 @@ $be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolo
 
 <!-- content -->
 <?php
-
+$bar_lenght = 250;
 // $iter is a variable for printing the Top Statistics in steps of 10 apps
 if (!isset($iter)) $iter=0;
 $iter*=10;
-/*
-$bx->box_begin();
-$bx->box_title($t->translate("$sys_name Statistics"));
-$bx->box_body_begin();
-
-echo "<table border=0 width=100% cellspacing=0>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=general")."\">".$t->translate("General $sys_name Statistics")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=apps")."\">".$t->translate("Apps by Importance")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=hits")."\">".$t->translate("Apps by Hits")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=homepage")."\">".$t->translate("Apps by Homepage Visits")."<tr></a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=download")."\">".$t->translate("Apps by Downloads")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=rpm")."\">".$t->translate("Top downloaded RPM Packages")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=deb")."\">".$t->translate("Top downloaded Debian Packages")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=tgz")."\">".$t->translate("Top downloaded Slackware Packages")."</a></center></td></tr>\n";
-echo "</td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=urgency")."\">".$t->translate("Apps and Downloads by Urgency")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=version_type")."\">".$t->translate("Apps and Downloads by Version Types")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=sections")."\">".$t->translate("Apps and Importance by Sections")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=categories")."\">".$t->translate("Apps by Categories")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=version_number")."\">".$t->translate("Apps by Version Numbers")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=format")."\">".$t->translate("Apps and Downloads by Package Formats")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=importance_license")."\">".$t->translate("Importance by Licenses")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=importance_email")."\">".$t->translate("Importance by Email Domains")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=email")."\">".$t->translate("Apps by Email Domains")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=email_section")."\">".$t->translate("Apps by Sections and Email Domains")."</a></center></td></tr>\n";
-echo "<tr><td><center><a href=\"".$sess->url("stats.php3?option=licenses")."\">".$t->translate("Apps by Licenses")."</a></center></td>\n";
-echo "<td><center><a href=\"".$sess->url("stats.php3?option=email_license")."\">".$t->translate("Apps by Licenses and Email Domains")."</a></center></td><tr>\n";
-echo "</table>\n";
-
-$bx->box_body_end();
-$bx->box_end();
-*/
 
 
 
 if (isset($option)) {
-// We need to know the total number of apps for certain stats
 
   $db->query("SELECT COUNT(*) FROM developers");
   $db->next_record();
   $total_number_devs = $db->f("COUNT(*)");
-  $numiter = ($db->f("COUNT(*)")/10);
+//  $numiter = ($db->f("COUNT(*)")/10);
 
 
   switch($option) {
@@ -93,177 +60,223 @@ if (isset($option)) {
       $bx->box_begin();
       $bx->box_title($t->translate("General $sys_name Statistics"));
       $bx->box_body_begin();
-      echo $t->translate("Total number of developers")." : ".$total_number_devs."\n";
+      echo "<TABLE CELLSPACING=2 CELLPADDING=2><TR>";
+      
+      echo "<TD>";
+      echo $t->translate("Total number of developers")." : ";
+      echo "</TD><TD>";
+      echo $total_number_devs."\n";
+      echo "</TD>";
+      
+      echo "</TR><TR>";
+      
+      echo "<TD>";
+      $db->query("SELECT COUNT(*) FROM developers where gender='Male'");
+      $db->next_record();
+      $male = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where gender='Female'");
+      $db->next_record();
+      $female = $db->f("COUNT(*)");
+      $other = $total_number_devs - $male - $female;
+      echo $t->translate("Gender")." : ";
+      echo "</TD><TD>";
+      echo "<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD>";
+      htmlp_image("bar_bl_l.gif", 0, 7, 11, "-");
+      echo "</TD><TD>";
+      htmlp_image("bar_bl_m.gif", 0, $male/$total_number_devs*$bar_lenght, 11, $t->translate("Male")." ".sprintf( "%01.2f",($male/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_rd_m.gif", 0, $female/$total_number_devs*$bar_lenght, 11, $t->translate("Female"." ".sprintf( "%01.2f",($female/$total_number_devs)*100) ."%"));
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_m.gif", 0, $other/$total_number_devs*$bar_lenght, 11, $t->translate("No Entry"." ".sprintf( "%01.2f",($other/$total_number_devs)*100) ."%"));
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_r.gif", 0, 7, 11, "-");
+      echo "</TD></TR></TABLE>";
+      echo "</TD><TD>";
+      htmlp_image("bar_bl_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Male")."&nbsp;&nbsp; ";
+      htmlp_image("bar_rd_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Female")."&nbsp;&nbsp; ";
+      htmlp_image("bar_bk_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("No Entry")."&nbsp;&nbsp; ";
+      
+      //echo "<FONT COLOR=\"blue\">Male</FONT> <FONT COLOR=\"red\">Female</FONT> <FONT COLOR=\"black\">No Entry</FONT>";
+      echo "</TD>";
+      
+      echo "</TR><TR>";
+      
+      echo "<TD>";
+      $db->query("SELECT COUNT(*) FROM developers where qualification='Elementary School'");
+      $db->next_record();
+      $e_school = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='High School'");
+      $db->next_record();
+      $h_school = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='A-Level'");
+      $db->next_record();
+      $a_level = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='Apprenticeship'");
+      $db->next_record();
+      $appren = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='College Graduate'");
+      $db->next_record();
+      $college = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='University Graduate'");
+      $db->next_record();
+      $unive = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='Master'");
+      $db->next_record();
+      $master = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where qualification='PhD'");
+      $db->next_record();
+      $phd = $db->f("COUNT(*)");
+      $other = $total_number_devs - $e_school - $h_school - $a_level - $appren - $college - $unive - $master - $phd;
+
+      echo $t->translate("Qualification")." : ";
+      echo "</TD><TD>";
+      echo "<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD>";
+      htmlp_image("bar_bl_l.gif", 0, 7, 11, "-");
+      echo "</TD><TD>";
+      htmlp_image("bar_bl_m.gif", 0, $e_school/$total_number_devs*$bar_lenght, 11, $t->translate("Elementary School")." ".sprintf( "%01.2f",($e_school/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_rd_m.gif", 0, $h_school/$total_number_devs*$bar_lenght, 11, $t->translate("High School")." ".sprintf( "%01.2f",($h_school/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_cy_m.gif", 0, $a_level/$total_number_devs*$bar_lenght, 11, $t->translate("A-Level")." ".sprintf( "%01.2f",($a_level/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_gr_m.gif", 0, $appren/$total_number_devs*$bar_lenght, 11, $t->translate("Apprenticeship")." ".sprintf( "%01.2f",($appren/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_or_m.gif", 0, $college/$total_number_devs*$bar_lenght, 11, $t->translate("College Graduate")." ".sprintf( "%01.2f",($college/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_pr_m.gif", 0, $unive/$total_number_devs*$bar_lenght, 11, $t->translate("University Graduate")." ".sprintf( "%01.2f",($unive/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_wh_m.gif", 0, $master/$total_number_devs*$bar_lenght, 11, $t->translate("Master")." ".sprintf( "%01.2f",($master/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_yl_m.gif", 0, $phd/$total_number_devs*$bar_lenght, 11, $t->translate("PhD")." ".sprintf( "%01.2f",($phd/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_m.gif", 0, $other/$total_number_devs*$bar_lenght, 11, $t->translate("No Entry")." ".sprintf( "%01.2f",($other/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_r.gif", 0, 7, 11, "-");
+      echo "</TD></TR></TABLE>";
+      echo "</TD><TD>";
+
+      htmlp_image("bar_bl_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Elementary School")."&nbsp;&nbsp; ";
+      htmlp_image("bar_rd_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("High School")."&nbsp;&nbsp; ";
+      htmlp_image("bar_cy_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("A-Level")."&nbsp;&nbsp; ";
+      htmlp_image("bar_gr_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Apprenticeship")."&nbsp;&nbsp; ";
+      htmlp_image("bar_or_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("College Graduate")."&nbsp;&nbsp; ";
+      htmlp_image("bar_pr_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("University Graduate")."&nbsp;&nbsp; ";
+      htmlp_image("bar_wh_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Master")."&nbsp;&nbsp; ";
+      htmlp_image("bar_yl_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("PhD")."&nbsp;&nbsp; ";
+      htmlp_image("bar_bk_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("No Entry")."&nbsp;&nbsp; ";
+      
+      
+      echo "</TD>";
+      
+      echo "</TR><TR>";
+      
+      echo "<TD>";
+      $db->query("SELECT COUNT(*) FROM developers where profession LIKE 'Student%'");
+      $db->next_record();
+      $student = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession='Programmer'");
+      $db->next_record();
+      $programmer = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession LIKE '%Engineer%'");
+      $db->next_record();
+      $engineer = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession LIKE '%professor%'");
+      $db->next_record();
+      $prof = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession LIKE 'Executive%'");
+      $db->next_record();
+      $executive = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession LIKE 'Consultant%'");
+      $db->next_record();
+      $consultant = $db->f("COUNT(*)");
+      $other = $total_number_devs - $student - $programmer - $engineer - $prof - $executive - $consultant - $master - $phd;
+
+      echo $t->translate("Profession")." : ";
+      echo "</TD><TD>";
+      echo "<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD>";
+      htmlp_image("bar_bl_l.gif", 0, 7, 11, "-");
+      echo "</TD><TD>";
+      htmlp_image("bar_bl_m.gif", 0, $student/$total_number_devs*$bar_lenght, 11, $t->translate("Student")." ".sprintf( "%01.2f",($student/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_rd_m.gif", 0, $programmer/$total_number_devs*$bar_lenght, 11, $t->translate("Programmer")." ".sprintf( "%01.2f",($h_school/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_cy_m.gif", 0, $engineer/$total_number_devs*$bar_lenght, 11, $t->translate("Engineer")." ".sprintf( "%01.2f",($a_level/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_gr_m.gif", 0, $prof/$total_number_devs*$bar_lenght, 11, $t->translate("University professor/assistant")." ".sprintf( "%01.2f",($prof/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_or_m.gif", 0, $executive/$total_number_devs*$bar_lenght, 11, $t->translate("Executive")." ".sprintf( "%01.2f",($executive/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_pr_m.gif", 0, $consultant/$total_number_devs*$bar_lenght, 11, $t->translate("Consultant")." ".sprintf( "%01.2f",($consultant/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_m.gif", 0, $other/$total_number_devs*$bar_lenght, 11, $t->translate("No Entry")." ".sprintf( "%01.2f",($other/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_r.gif", 0, 7, 11, "-");
+      echo "</TD></TR></TABLE>";
+      echo "</TD><TD>";
+
+      htmlp_image("bar_bl_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Student")."&nbsp;&nbsp; ";
+      htmlp_image("bar_rd_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Programmer")."&nbsp;&nbsp; ";
+      htmlp_image("bar_cy_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Engineer")."&nbsp;&nbsp; ";
+      htmlp_image("bar_gr_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("University professor/assistant")."&nbsp;&nbsp; ";
+      htmlp_image("bar_or_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Executive")."&nbsp;&nbsp; ";
+      htmlp_image("bar_pr_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Consultant")."&nbsp;&nbsp; ";
+      htmlp_image("bar_bk_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("No Entry")."&nbsp;&nbsp; ";
+      
+      
+      echo "</TD>";
+      
+      echo "</TR><TR>";
+      
+      echo "<TD>";
+      $db->query("SELECT COUNT(*) FROM developers where profession LIKE '%(IT)%'");
+      $db->next_record();
+      $it_yes = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession LIKE '%(other)%'");
+      $db->next_record();
+      $it_no = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession='Software Engineer'");
+      $db->next_record();
+      $s_engineer = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession='Other type of Engineering'");
+      $db->next_record();
+      $o_engineer = $db->f("COUNT(*)");
+      $db->query("SELECT COUNT(*) FROM developers where profession='Nothing to do with the software industry'");
+      $db->next_record();
+      $ntd_it = $db->f("COUNT(*)");
+      
+      $it_yes = $it_yes + $programmer + $s_engineer;
+      $it_no = $it_no + $o_engineer + $ntd_it;
+      $other = $total_number_devs - $it_yes - $it_no;
+
+      echo $t->translate("IT or not IT")." : ";
+      echo "</TD><TD>";
+      echo "<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0><TR><TD>";
+      htmlp_image("bar_bl_l.gif", 0, 7, 11, "-");
+      echo "</TD><TD>";
+      htmlp_image("bar_bl_m.gif", 0, $it_yes/$total_number_devs*$bar_lenght, 11, $t->translate("IT")." ".sprintf( "%01.2f",($it_yes/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_rd_m.gif", 0, $it_no/$total_number_devs*$bar_lenght, 11, $t->translate("Programmer")." ".sprintf( "%01.2f",($h_school/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_m.gif", 0, $other/$total_number_devs*$bar_lenght, 11, $t->translate("No Entry")." ".sprintf( "%01.2f",($other/$total_number_devs)*100) ."%");
+      echo "</TD><TD>";
+      htmlp_image("bar_bk_r.gif", 0, 7, 11, "-");
+      echo "</TD></TR></TABLE>";
+      echo "</TD><TD>";
+
+      htmlp_image("bar_bl_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("IT")."&nbsp;&nbsp; ";
+      htmlp_image("bar_rd_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("Not IT")."&nbsp;&nbsp; ";
+      htmlp_image("bar_bk_m.gif", 0, 7, 11, "-"); echo "&nbsp;".$t->translate("No Entry")."&nbsp;&nbsp; ";
+      
+      
+      echo "</TD>";
+      
+      echo "</TR></TABLE>";
       $bx->box_body_end();
       $bx->box_end();
-
-      break;
-/*
-
-
-      $bx->box_begin();
-      $bx->box_title($t->translate("General $sys_name Statistics"));
-      $bx->box_body_begin();
-
-      echo "<CENTER><table border=0 width=90% align=center cellspacing=0>\n";
-
-    // Total number of apps
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of Applications in $sys_name")."</td>\n";
-      echo "<td width=20% align=right>".$total_number_apps."</td></tr>\n";
-
-    // Total number of insertions or modifications
-      echo "<tr><td>&nbsp;</td><td>&nbsp;</td></tr>\n";
-      $db->query("SELECT COUNT(*) FROM history");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Total Number of Insertions and Modifications")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Number of inserted or modified Apps during the last week
-      $day=7;
-      $db->query("SELECT COUNT(*) FROM software WHERE DATE_FORMAT(software.modification,'%Y-%m-%d')>=DATE_SUB(CURRENT_DATE,INTERVAL \"$day\" DAY) AND software.status='A'");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of Insertions and Modifications during the last week")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Number of inserted or modified Apps today
-      $day=1;
-      $db->query("SELECT COUNT(*) FROM software WHERE DATE_FORMAT(software.modification,'%Y-%m-%d')>=DATE_SUB(CURRENT_DATE,INTERVAL \"$day\" DAY) AND software.status='A'");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of Insertions and Modifications in the last day")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Number of today's visitors
-      $db->query("SELECT DISTINCT ipaddr FROM counter_check");
-      $db->next_record();
-      $count = $db->affected_rows();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of today's visitors")."</td>\n";
-      echo "<td width=20% align=right>$count</td></tr>\n";
-
-    // Total number of pending apps 
-      $db->query("SELECT COUNT(*) FROM software WHERE status='P'");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of pending Applications")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Number of authorised users
-      echo "<tr><td>&nbsp;</td><td>&nbsp;</td></tr>\n";
-      $db->query("SELECT COUNT(*) FROM auth_user");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of $sys_name authorised Users")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Total number of comments
-      $db->query("SELECT COUNT(*) FROM comments");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of Comments on Applications")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Total number of Licenses
-      $db->query("SELECT COUNT(*) FROM licenses");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of Licenses listed in $sys_name")."</td>\n";
-      echo "<td width=20% align=right>".($db->f("COUNT(*)")-1)."</td></tr>\n";
-				// We don't add the license type "Other"
-
-    // Total number of DevCounter sections
-      $db->query("SELECT DISTINCT section,COUNT(*) FROM categories GROUP BY section");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of $sys_name Sections")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Total number of DevCounter categories
-      $db->query("SELECT COUNT(*) FROM categories");
-      $db->next_record();
-      echo "<tr><td width=85%>&nbsp;".$t->translate("Number of $sys_name Categories")."</td>\n";
-      echo "<td width=20% align=right>".$db->f("COUNT(*)")."</td></tr>\n";
-
-    // Total number of Hits
-      echo "<tr><td>&nbsp;</td><td>&nbsp;</td></tr>\n";
-
-      echo "<tr><td colspan=2><table width=100% border=0 cellspacing=0 cellpadding=0>";
-       echo "<tr><td width=70%>&nbsp;</td>\n";
-       echo "<td width=15% align=right>".$t->translate("Today").":</td>\n";
-       echo "<td width=15% align=right>".$t->translate("Total").":</td></tr>\n";
-
-       echo "<tr><td width=70%>&nbsp;".$t->translate("Number of Hits on Applications")."</td>\n";
-      $db->query("SELECT COUNT(cnt_type) FROM counter_check WHERE cnt_type='app_cnt'");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("COUNT(cnt_type)")."</td>\n";
-      $db->query("SELECT SUM(app_cnt) FROM counter");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("SUM(app_cnt)")."</td></tr>\n";
-
-    // Total number of redirected Homepages
-       echo "<tr><td width=70%>&nbsp;".$t->translate("Number of redirected Homepages")."</td>\n";
-      $db->query("SELECT COUNT(cnt_type) FROM counter_check WHERE cnt_type='homepage_cnt'");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("COUNT(cnt_type)")."</td>\n";
-      $db->query("SELECT SUM(homepage_cnt) FROM counter");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("SUM(homepage_cnt)")."</td></tr>\n";
-
-    // Total number of Downloads
-      echo "<tr><td width=70%>&nbsp;".$t->translate("Number of Downloads")."</td>\n";
-      $db->query("SELECT COUNT(cnt_type) FROM counter_check WHERE cnt_type='download_cnt' OR cnt_type='rpm_cnt' OR cnt_type='deb_cnt' OR cnt_type='tgz_cnt'");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("COUNT(cnt_type)")."</td>\n";
-      $db->query("SELECT SUM(download_cnt+rpm_cnt+deb_cnt+tgz_cnt) AS sum_cnt FROM counter");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("sum_cnt")."</td></tr>\n";
-
-    // Total number of redirected Changelogs
-      echo "<tr><td width=70%>&nbsp;".$t->translate("Number of redirected Changelogs")."</td>\n";
-      $db->query("SELECT COUNT(cnt_type) FROM counter_check WHERE cnt_type='changelog_cnt'");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("COUNT(cnt_type)")."</td>\n";
-      $db->query("SELECT SUM(changelog_cnt) FROM counter");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("SUM(changelog_cnt)")."</td></tr>\n";
-
-    // Total number of redirected CVSs
-      echo "<tr><td width=70%>&nbsp;".$t->translate("Number of redirected CVSs")."</td>\n";
-      $db->query("SELECT COUNT(cnt_type) FROM counter_check WHERE cnt_type='cvs_cnt'");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("COUNT(cnt_type)")."</td>\n";
-      $db->query("SELECT SUM(cvs_cnt) FROM counter");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("SUM(cvs_cnt)")."</td></tr>\n";
-
-    // Total number of redirected ScreenShots
-      echo "<tr><td width=70%>&nbsp;".$t->translate("Number of redirected Screenshots")."</td>\n";
-      $db->query("SELECT COUNT(cnt_type) FROM counter_check WHERE cnt_type='screenshots_cnt'");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("COUNT(cnt_type)")."</td>\n";
-      $db->query("SELECT SUM(screenshots_cnt) FROM counter");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("SUM(screenshots_cnt)")."</td></tr>\n";
-
-    // Total number of redirected Mailing List Archives
-      echo "<tr><td width=70%>&nbsp;".$t->translate("Number of redirected Mailing Lists Archives")."</td>\n";
-      $db->query("SELECT COUNT(cnt_type) FROM counter_check WHERE cnt_type='mailarch_cnt'");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("COUNT(cnt_type)")."</td>\n";
-      $db->query("SELECT SUM(mailarch_cnt) FROM counter");
-      $db->next_record();
-      echo "<td width=20% align=right>".$db->f("SUM(mailarch_cnt)")."</td></tr>\n";
-
-      echo "</table></td></tr>";
-
-     // DevCounter Version
-      echo "<tr><td>&nbsp;</td><td>&nbsp;</td></tr>\n";
-      echo "<tr><td width=85%>&nbsp;".$t->translate("$sys_name Version")."</td>\n";
-      echo "<td width=20% align=right>".$DevCounter_Version."</td></tr>\n";
-
-      echo "</td></tr>\n";
-      echo "</table></CENTER>\n";
-      $bx->box_body_end();
-      $bx->box_end();
-
+      
       break;
 
-*/
 
-    break;
    }
 }
 
