@@ -4,10 +4,10 @@
 # DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001-2002 by
+# Copyright (c) 2001-2004 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
-#       Stefan Heinze (heinze@fokus.fraunhofer.de)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: translating.php,v 1.4 2003/11/12 14:18:09 helix Exp $
+# $Id: translating.php,v 1.5 2004/11/24 10:05:38 helix Exp $
 #
 ######################################################################  
 
