@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: logout.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: logout.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################  
 
@@ -48,5 +48,5 @@ $bx->box_full($t->translate("Logout"), $msg);
 <?php
 require("footer.inc");
 $auth->logout();
-page_close();
+@page_close();
 ?>

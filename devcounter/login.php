@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: login.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: login.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################  
 
@@ -89,5 +89,5 @@ else
 
 <?php
 require("footer.inc");
-page_close();
+@page_close();
 ?>

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: adm_langs_tools.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: adm_langs_tools.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################
 
@@ -213,14 +213,14 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 	 $bx->box_column("center","",$bgcolor,html_input_text("language", 30, 64, $db->f("language")));
 	 $bx->box_column("center","",$bgcolor,$db->f("colname"));
 	 //$bx->box_column("center","",$bgcolor,html_input_text("comment", 35, 400, $db->f("comment")));
-         $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Change")));
+         $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Change"),""));
 	 htmlp_form_end();
 	 htmlp_form_action("adm_langs_tools.php",array(),"POST");
 	 htmlp_form_hidden("code", $db->f("code") );
 	 htmlp_form_hidden("colname", $db->f("colname") );
 	 htmlp_form_hidden("option", "lang_delete" );
 	 $bgcolor = "gold";
-	 $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Delete")));
+	 $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Delete"),""));
 	 htmlp_form_end();
 	 $bx->box_next_row_of_columns();
 	 $bgcolor = "#FFFFFF";
@@ -233,7 +233,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
        //$bx->box_column("right","",$bgcolor,html_input_text("code", 5, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("language", 30, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("colname", 25, 64, ""));
-       $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add ProgLanguage")));
+       $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add ProgLanguage"),""));
        $bx->box_columns_end();
        htmlp_form_end();
       
@@ -275,7 +275,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 	 $bx->box_column("center","",$bgcolor,html_input_text("ability", 30, 64, $db->f("ability")));
 	 $bx->box_column("center","",$bgcolor, $db->f("colname"));
 	 $bx->box_column("center","",$bgcolor,html_input_text("translation", 15, 64, $db->f("translation")));
-         $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Change")));
+         $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Change"),""));
 	 htmlp_form_end();
 	 htmlp_form_action("adm_langs_tools.php",array(),"POST");
 	 htmlp_form_hidden("code", $db->f("code") );
@@ -283,7 +283,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 	 htmlp_form_hidden("colname", $db->f("colname") );
 	 htmlp_form_hidden("option", "abil_delete" );
 	 $bgcolor = "gold";
-	 $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Delete")));
+	 $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Delete"),""));
 	 htmlp_form_end();
 	 $bx->box_next_row_of_columns();
 	 $bgcolor = "#FFFFFF";
@@ -297,7 +297,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
        $bx->box_column("center","",$bgcolor,html_input_text("ability", 30, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("colname", 25, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("translation", 15, 64, ""));
-       $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add Ability")));
+       $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add Ability"),""));
        $bx->box_columns_end();
        htmlp_form_end();
       
@@ -310,9 +310,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 ?>
 <!-- end content -->
 
-
-
 <?php
 require("footer.inc");
-page_close();
+@page_close();
 ?>

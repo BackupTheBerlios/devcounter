@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: register.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: register.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################  
 
@@ -85,9 +85,9 @@ while (is_array($HTTP_POST_VARS)
         }
         if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
         if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
-	$query = "insert into extra_perms values('$username','$showname','$showemail','yes','yes')";
+        $query = "insert into extra_perms values('$username','$showname','$showemail','yes','yes')";
         $db->query($query);
-	
+
         // send mail
         $message = $t->translate("Thank you for registering on the $sys_name Site. In order")."\n"
                   .$t->translate("to complete your registration, visit the following URL").": \n\n"
@@ -161,5 +161,5 @@ echo "<input type=\"submit\" name=\"register\" value=\"".$t->translate("Register
 
 <?php
 require("footer.inc");
-page_close();
+@page_close();
 ?>

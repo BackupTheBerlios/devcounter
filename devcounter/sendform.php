@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: sendform.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: sendform.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################  
 
@@ -67,18 +67,13 @@ $db->query("SELECT * from extra_perms,auth_user WHERE auth_user.username='$devna
          echo "..-..";
          $bx->box_body_end();
          $bx->box_end();
-	 
 	}
      }
    echo " ";
-
-
 ?>
-
-
 <!-- end content -->
 
 <?php
 require("footer.inc");
-page_close();
+@page_close();
 ?>

@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: admuser.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: admuser.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################
 
@@ -220,5 +220,5 @@ if (($config_perm_admuser != "all") && (!isset($perm) || !$perm->have_perm($conf
 
 <?php
 require("footer.inc");
-page_close();
+@page_close();
 ?>

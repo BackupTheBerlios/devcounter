@@ -19,7 +19,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: html.inc,v 1.5 2002/08/22 15:41:48 helix Exp $
+# $Id: html.inc,v 1.6 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################
 
@@ -37,6 +37,7 @@ function html_link($address, $query, $text) {
     
     return $output;
 }
+
 function htmlp_link($address, $query, $text) {
     print html_link( $address, $query, $text );
 }
@@ -44,16 +45,17 @@ function htmlp_link($address, $query, $text) {
 function html_anchor($name) {
     return ( "<a name=\"".$name."\"></a>\n" );
 }
+
 function htmlp_anchor($name) {
     print html_anchor( $name );
 }
-
 
 function html_image($file, $border, $width, $height, $alternate) {
     return ( "<img src=\"images/".$file."\" border=\""
              .$border."\" width=\"".$width."\" height=\""
              .$height."\" alt=\"".$alternate."\" title=\"".$alternate."\">" );
 }
+
 function htmlp_image($file, $border, $width, $height, $alternate) {
     print html_image( $file, $border, $width, $height, $alternate );
 }
@@ -71,6 +73,7 @@ function html_form_action($file, $query, $type) {
     }
     return($output);
 }
+
 function htmlp_form_action($file, $query, $type) {
     print html_form_action( $file, $query, $type );
 }
@@ -81,6 +84,7 @@ function html_form_hidden($name, $value) {
     return ( "<input type=\"hidden\" name=\"".$name
              ."\" value=\"".$value."\">");
 }
+
 function htmlp_form_hidden($name, $value) {
     print html_form_hidden( $name, $value );
 }
@@ -88,6 +92,7 @@ function htmlp_form_hidden($name, $value) {
 function html_select($name) {
     return "<select name=\"".$name."\">\n";
 }
+
 function htmlp_select($name) {
     print html_select( $name );
 }
@@ -98,6 +103,7 @@ function html_select_option($value,$selected,$text) {
     $output .= "value=\"".$value."\">".$text."\n";
     return($output);
 }
+
 function htmlp_select_option($value,$selected,$text) {
     print html_select_option( $value, $selected, $text );
 }
@@ -105,6 +111,7 @@ function htmlp_select_option($value,$selected,$text) {
 function html_select_end() {
     return "</select>\n";
 }
+
 function htmlp_select_end() {
     print html_select_end();
 }
@@ -114,24 +121,25 @@ function html_input_text($name, $size, $maxlength, $value) {
              .$size."\" maxlength=\"".$maxlength."\" value=\""
              .$value."\">\n" );
 }
+
 function htmlp_input_text($name, $size, $maxlength, $value) {
     print html_input_text( $name, $size, $maxlength, $value );
 }
-
 
 function html_input_password($name, $size, $maxlength, $value) {
     return ( "<input type=\"password\" name=\"".$name."\" size=\""
              .$size."\" maxlength=\"".$maxlength."\" value=\""
              .$value."\">\n" );
 }
+
 function htmlp_input_password($name, $size, $maxlength, $value) {
     print html_input_password( $name, $size, $maxlength, $value );
 }
 
-
 function html_form_submit($value,$name) {
     return "<input type=\"submit\" value=\"".$value."\" name=\"".$name."\">\n";
 }
+
 function htmlp_form_submit($value,$name) {
     print html_form_submit($value, $name );
 }
@@ -142,6 +150,7 @@ function html_checkbox($name,$value,$checked) {
     $output .= "value=\"".$value."\"";
     return($output);
 }
+
 function htmlp_checkbox($name,$value,$checked) {
     print html_checkbox( $name, $value, $checked );
 }
@@ -162,10 +171,10 @@ function html_textarea($name,$columns,$rows,$wrap,$maxlength,$value) {
             .$name."\" wrap=\"".$wrap."\" maxlength=\"".$maxlength."\">"
             .$value."</textarea>\n" );
 }
+
 function htmlp_textarea($name,$columns,$rows,$wrap,$maxlength,$value) {
     print html_textarea( $name, $columns, $rows, $wrap, $maxlength, $value );
 }
-
 
 function html_form_end() {
     return "</form>\n";

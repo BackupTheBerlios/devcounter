@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: update2db.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: update2db.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################  
 
@@ -87,7 +87,6 @@ $db2 = new DB_DevCounter;
  $bx->box_body_end();
  $bx->box_end();
 ?>
-
 <!-- end content -->
 
 <?php

@@ -17,10 +17,9 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: searchdev.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+# $Id: searchdev.php,v 1.3 2002/08/26 19:46:59 helix Exp $
 #
 ######################################################################
-
 
 page_open(array("sess" => "DevCounter_Session"));
 if (isset($auth) && !empty($auth->auth["perm"])) 
@@ -67,7 +66,7 @@ $bx->box_end();
       $bx->box_begin();
       $bx->box_title($t->translate("Search for All in one"));
       $bx->box_body_begin();
-      htmlp_form_action("devresults.php","POST");
+      htmlp_form_action("devresults.php",NULL,"POST");
       echo $t->translate("Enter Name of <B>one</B> Project")."\n";
       htmlp_input_text("projname", "30", "30", "");
       htmlp_form_hidden("option", $option);
@@ -375,7 +374,7 @@ $bx->box_end();
       $bx->box_begin();
       $bx->box_title($t->translate("Search for Projects"));
       $bx->box_body_begin();
-      htmlp_form_action("devresults.php","POST");
+      htmlp_form_action("devresults.php",NULL,"POST");
       echo $t->translate("Enter Name of <B>one</B> Project")."\n";
       htmlp_input_text("projname", "30", "30", "");
       htmlp_form_hidden("option", $option);
@@ -392,7 +391,7 @@ $bx->box_end();
       $bx->box_begin();
       $bx->box_title($t->translate("Search for Languages spoken"));
       $bx->box_body_begin();
-      htmlp_form_action("devresults.php","POST");
+      htmlp_form_action("devresults.php",NULL,"POST");
       echo $t->translate("Please select desired Language")."\n";
 
       htmlp_select("dev_lang"); echo "\n";
@@ -412,7 +411,7 @@ $bx->box_end();
       $bx->box_title($t->translate("Search for Countries"));
       $bx->box_body_begin();
 
-      htmlp_form_action("devresults.php","POST");
+      htmlp_form_action("devresults.php",NULL,"POST");
       echo $t->translate("Please select desired Country")."\n";
 
       htmlp_select("dev_country"); echo "\n";
@@ -428,12 +427,10 @@ $bx->box_end();
       break;
 
    }
-   
-
 ?>
 <!-- end content -->
 
 <?php
 require("footer.inc");
-page_close();
+@page_close();
 ?>
