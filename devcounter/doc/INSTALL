@@ -64,7 +64,7 @@ Manual Installation
 5. Set path to PHPLib directory in devcounter-x.x.x/include/prepend.php3:
 
    user$ cd /usr/local/httpd/htdocs/devcounter-x.x.x
-   user$ include/prepend.php3
+   user$ vi include/prepend.php3
 
    $_PHPLIB["libdir"] = "/usr/share/php/phplib/";
 
