@@ -20,7 +20,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: lib.inc,v 1.10 2002/08/30 06:54:51 helix Exp $
+# $Id: lib.inc,v 1.11 2002/08/31 14:58:38 helix Exp $
 #
 ######################################################################
 
@@ -780,7 +780,7 @@ function lib_select_yes_or_no($name,$selected) {
 }
 
 function nlmsg($period) {
-  global $db, $la;
+  global $db, $la, $t;
 
   switch ($period) {
     case "weekly":
@@ -832,13 +832,13 @@ function nlmsg($period) {
     $msg .= "Nationality   : ".get_country($db->f("nationality"))."\n";
     $msg .= "Lives in      : ".get_country($db->f("actual_country"))."\n";
     $msg .= "Year of Birth : 19".$db->f("year_of_birth")."\n";
-    $msg .= "Gender        : ".get_gender($db->f("gender"))."\n";
+    $msg .= "Gender        : ".$t->translate(get_gender($db->f("gender")))."\n";
     $msg .= "Mother Tongue : ".get_lang($db->f("mother_tongue"))."\n";
     $msg .= "2. Language   : ".get_lang($db->f("other_lang_1"))."\n";
     $msg .= "3. Language   : ".get_lang($db->f("other_lang_2"))."\n";
     $msg .= "E-Mail        : ".ereg_replace("@"," at ",htmlentities($db->f("email_usr")))."\n";
-    $msg .= "Profession    : ".get_profession($db->f("profession"))."\n";
-    $msg .= "Qualification : ".get_qualification($db->f("qualification"))."\n";
+    $msg .= "Profession    : ".$t->translate(get_profession($db->f("profession")))."\n";
+    $msg .= "Qualification : ".$t->translate(get_qualification($db->f("qualification")))."\n";
     $name_of_projects = "";
     $db2 = new DB_DevCounter;
     $db2->query("SELECT projectname FROM os_projects WHERE username='".$db->f("username")."'");
