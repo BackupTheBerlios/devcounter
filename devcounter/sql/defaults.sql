@@ -101,12 +101,8 @@ INSERT INTO countries (code, domaine, description, language) VALUES (225, 'us', 
 INSERT INTO countries (code, domaine, description, language) VALUES (225, 'us', 'Estados Unidos', 'Spanish');
 INSERT INTO countries (code, domaine, description, language) VALUES (225, 'us', 'Etats Unis', 'French');
 INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'German');
-INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'German');
-INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'English');
 INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'English');
 INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'Spanish');
-INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'Spanish');
-INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'French');
 INSERT INTO countries (code, domaine, description, language) VALUES (0, 'xx', '', 'French');
 INSERT INTO countries (code, domaine, description, language) VALUES (1, 'ac', 'Ascension (ile de l\')', 'German');
 INSERT INTO countries (code, domaine, description, language) VALUES (2, 'ad', 'Andorra', 'German');
@@ -1137,10 +1133,6 @@ INSERT INTO languages (code, language, translation) VALUES (57, 'Spanish', 'Engl
 INSERT INTO languages (code, language, translation) VALUES (57, 'Spanisch', 'German');
 INSERT INTO languages (code, language, translation) VALUES (57, 'Espa&ntilde;ol', 'Spanish');
 INSERT INTO languages (code, language, translation) VALUES (57, '', 'French');
-INSERT INTO languages (code, language, translation) VALUES (0, '', 'English');
-INSERT INTO languages (code, language, translation) VALUES (0, '', 'German');
-INSERT INTO languages (code, language, translation) VALUES (0, '', 'Spanish');
-INSERT INTO languages (code, language, translation) VALUES (0, '', 'French');
 INSERT INTO languages (code, language, translation) VALUES (0, '', 'English');
 INSERT INTO languages (code, language, translation) VALUES (0, '', 'German');
 INSERT INTO languages (code, language, translation) VALUES (0, '', 'Spanish');
