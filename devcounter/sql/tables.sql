@@ -348,3 +348,27 @@ CREATE TABLE weightings (
   KEY weightid (weightid)
 ) TYPE=MyISAM;
 
+CREATE TABLE requests (
+  reqid bigint(20) unsigned NOT NULL auto_increment,
+  reqtime timestamp(14) NOT NULL,
+  username varchar(24) NOT NULL default '',
+  category varchar(64) NOT NULL default '',
+  tasktype varchar(64) NOT NULL default '',
+  language int(11) NOT NULL default '999',
+  projectname varchar(64) NOT NULL default '',
+  reqsubject varchar(64) NOT NULL default '',
+  reqmessage text NOT NULL,
+  PRIMARY KEY  (reqid)
+) TYPE=MyISAM;
+
+
+
+
+
+
+
+
+
+
+
+    
