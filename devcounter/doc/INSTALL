@@ -33,8 +33,8 @@ To do so, login as the default administrator with user,editor,admin
 permissions. At the prompt use the following ID to login
 (case sensitive):
 
-    Username: oldfish
-    Password: oldfish
+    Username: admin
+    Password: admin
 
 Vert important: Be sure of immediately changing the login and password by
 clicking on the User Admin link. You'll notice this is quite easy to do ;-)
