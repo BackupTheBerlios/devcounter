@@ -402,51 +402,51 @@ else
       
       if ($ability_value == 0)
         {
-         htmlp_select_option("0",1,$t->translate("no experiences"));
+         htmlp_select_option("0",1,$t->translate("No Experience"));
 	}
       else
         {
-	 htmlp_select_option("0",0,$t->translate("no experiences"));
+	 htmlp_select_option("0",0,$t->translate("No Experience"));
 	}
       if ($ability_value == 1)
         {
-         htmlp_select_option("1",1,$t->translate("very little experience"));
+         htmlp_select_option("1",1,$t->translate("Novice"));
 	}
       else
         {
-	 htmlp_select_option("1",0,$t->translate("very little experience"));
+	 htmlp_select_option("1",0,$t->translate("Novice"));
 	}
       if ($ability_value == 2)
         {
-         htmlp_select_option("2",1,$t->translate("some experience")); 
+         htmlp_select_option("2",1,$t->translate("Beginner")); 
 	}
       else
         {
-         htmlp_select_option("2",0,$t->translate("some experience")); 
+         htmlp_select_option("2",0,$t->translate("Beginner")); 
 	}
       if ($ability_value == 3)
         {
-         htmlp_select_option("3",1,$t->translate("Done this some times"));
+         htmlp_select_option("3",1,$t->translate("Advanced"));
 	}
       else
         {
-         htmlp_select_option("3",0,$t->translate("Done this some times"));
+         htmlp_select_option("3",0,$t->translate("Advanced"));
 	}
       if ($ability_value == 4)
         {
-         htmlp_select_option("4",1,$t->translate("No problem"));
+         htmlp_select_option("4",1,$t->translate("Expert"));
 	}
       else
         {
-         htmlp_select_option("4",0,$t->translate("No problem"));
+         htmlp_select_option("4",0,$t->translate("Expert"));
 	}
       if ($ability_value == 5)
         {
-         htmlp_select_option("5",1,$t->translate("Is my second nature"));
+         htmlp_select_option("5",1,$t->translate("Guru"));
 	}
       else
         {
-         htmlp_select_option("5",0,$t->translate("Is my second nature"));
+         htmlp_select_option("5",0,$t->translate("Guru"));
 	}
       htmlp_select_end();
       echo"</td></tr></table>";
@@ -505,51 +505,51 @@ else
       
       if ($ability_value == 0)
         {
-         htmlp_select_option("0",1,$t->translate("no experiences"));
+         htmlp_select_option("0",1,$t->translate("No Experience"));
 	}
       else
         {
-	 htmlp_select_option("0",0,$t->translate("no experiences"));
+	 htmlp_select_option("0",0,$t->translate("No Experience"));
 	}
       if ($ability_value == 1)
         {
-         htmlp_select_option("1",1,$t->translate("very little experience"));
+         htmlp_select_option("1",1,$t->translate("Novice"));
 	}
       else
         {
-	 htmlp_select_option("1",0,$t->translate("very little experience"));
+	 htmlp_select_option("1",0,$t->translate("Novice"));
 	}
       if ($ability_value == 2)
         {
-         htmlp_select_option("2",1,$t->translate("some experience")); 
+         htmlp_select_option("2",1,$t->translate("Beginner")); 
 	}
       else
         {
-         htmlp_select_option("2",0,$t->translate("some experience")); 
+         htmlp_select_option("2",0,$t->translate("Beginner")); 
 	}
       if ($ability_value == 3)
         {
-         htmlp_select_option("3",1,$t->translate("Done this some times"));
+         htmlp_select_option("3",1,$t->translate("Advanced"));
 	}
       else
         {
-         htmlp_select_option("3",0,$t->translate("Done this some times"));
+         htmlp_select_option("3",0,$t->translate("Advanced"));
 	}
       if ($ability_value == 4)
         {
-         htmlp_select_option("4",1,$t->translate("No problem"));
+         htmlp_select_option("4",1,$t->translate("Expert"));
 	}
       else
         {
-         htmlp_select_option("4",0,$t->translate("No problem"));
+         htmlp_select_option("4",0,$t->translate("Expert"));
 	}
       if ($ability_value == 5)
         {
-         htmlp_select_option("5",1,$t->translate("Is my second nature"));
+         htmlp_select_option("5",1,$t->translate("Guru"));
 	}
       else
         {
-         htmlp_select_option("5",0,$t->translate("Is my second nature"));
+         htmlp_select_option("5",0,$t->translate("Guru"));
 	}
 
       htmlp_select_end();

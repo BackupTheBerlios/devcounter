@@ -63,12 +63,12 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
          if ($db->num_rows() ==0)
            {
             echo "<BR>\n";
-	    htmlp_link("questionaire.php3","",$t->translate("Take part at our questionaire"));	    
+	    htmlp_link("questionaire.php3","",$t->translate("Enter your Profile"));	    
            }
          else
 	   {
             echo "<BR>\n";
-	    htmlp_link("update.php3","",$t->translate("Update your provided data"));	    
+	    htmlp_link("update.php3","",$t->translate("Update your Profile"));	    
 	    
 	   }
         }

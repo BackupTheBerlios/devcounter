@@ -49,7 +49,7 @@ else
       $bx->box_begin();
       $bx->box_title($username);
       $bx->box_body_begin();
-      htmlp_link("questionaire.php3","",$t->translate("please take part at our questionaire"));
+      htmlp_link("questionaire.php3","",$t->translate("please enter your profile"));
       $bx->box_body_end();
       $bx->box_end();
      }

@@ -198,12 +198,12 @@ else
       echo $db->f("ability")."\n";
       echo "</td><td width=20%>";
       htmlp_select("ability[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("no experiences"));
-      htmlp_select_option("1",0,$t->translate("very little experience"));
-      htmlp_select_option("2",0,$t->translate("some experience")); 
-      htmlp_select_option("3",0,$t->translate("Done this some times"));
-      htmlp_select_option("4",0,$t->translate("No problem"));
-      htmlp_select_option("5",0,$t->translate("Is my second nature"));
+      htmlp_select_option("0",1,$t->translate("No Experience"));
+      htmlp_select_option("1",0,$t->translate("Novice"));
+      htmlp_select_option("2",0,$t->translate("Beginner")); 
+      htmlp_select_option("3",0,$t->translate("Advanced"));
+      htmlp_select_option("4",0,$t->translate("Expert"));
+      htmlp_select_option("5",0,$t->translate("Guru"));
       htmlp_select_end();
       echo"</td></tr></table>";
      
@@ -253,12 +253,12 @@ else
       echo $db->f("language")."\n";
       echo "</td><td width=20%>";
       htmlp_select("lang[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("no experiences"));
-      htmlp_select_option("1",0,$t->translate("very little experience"));
-      htmlp_select_option("2",0,$t->translate("some experience")); 
-      htmlp_select_option("3",0,$t->translate("Done this some times"));
-      htmlp_select_option("4",0,$t->translate("No problem"));
-      htmlp_select_option("5",0,$t->translate("Is my second nature"));
+      htmlp_select_option("0",1,$t->translate("No Experience"));
+      htmlp_select_option("1",0,$t->translate("Novice"));
+      htmlp_select_option("2",0,$t->translate("Beginner")); 
+      htmlp_select_option("3",0,$t->translate("Advanced"));
+      htmlp_select_option("4",0,$t->translate("Expert"));
+      htmlp_select_option("5",0,$t->translate("Guru"));
       htmlp_select_end();
       echo"</td></tr></table>";
      
