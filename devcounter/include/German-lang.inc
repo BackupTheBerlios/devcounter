@@ -340,6 +340,7 @@ switch($phrase) {
      case "Developer does not allow to contact him": $tmp = "Entwickler erlaubt keinen Kontakt"; break;
      case "Unknown Developer": $tmp = "Entwickler unbekannt"; break;
      case "No Developer found": $tmp = "Kein Entwickler gefunden"; break;
+     case "Invalid action specified": $tmp = "Unzulässige Aktion angegeben"; break;
 
 // adm_langs_tools.php
     case "Success": $tmp = "Erfolg"; break;
@@ -417,8 +418,9 @@ switch($phrase) {
     case "Which programming experiences you like to watch?": $tmp = "Welche Programmierfähigkeiten sollen beobachtet werden?"; break;
     case "Which languages/tools you like to watch?": $tmp = "Welche Programmiersprachen/Werkzeuge sollen beobachtet werden?"; break;
     case "Your Developers Watch has been set succesfully": $tmp = "Ihre Entwicklerausschau wurde eingerichtet"; break;
-    case "The following Developers match with your Watch": $tmp = "Die folgenden Entwickler passen zu Ihrer Entwicklerausschau"; break;
-    case "Developers Watch Notifications were sent to": $tmp = "Ausschaumitteilungen wurden gesendet an"; break;
+    case "Your Developers Watch has been deleted succesfully": $tmp = "Ihre Entwicklerausschau wurde gelöscht"; break;
+    case "The following Developers match with the Watch of": $tmp = "Die folgenden Entwickler passen zur Entwicklerausschau von"; break;
+    case "Developers Watch Notification was sent to": $tmp = "Ausschaumitteilung wurde gesendet an"; break;
     case "Send Watch Notifications": $tmp = "Sende Ausschaumitteilungen"; break;
 
 // If no translation available, keep the original phrase

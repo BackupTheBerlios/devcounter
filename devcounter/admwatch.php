@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: admwatch.php,v 1.2 2002/09/16 20:54:54 helix Exp $
+# $Id: admwatch.php,v 1.3 2002/09/17 09:42:22 helix Exp $
 #
 ######################################################################  
 
@@ -54,11 +54,11 @@ if (($config_perm_admwatch != "all") && (!isset($perm) || !$perm->have_perm($con
 		$langnam[] = $db->f("colname");
 	}
 
-	$msg = "";
 	$db->query("SELECT auth_user.username,email_usr FROM prog_ability_watch,auth_user WHERE prog_ability_watch.username=auth_user.username");
 	while ($db->next_record()) {
 		$usrnam = $db->f("username");
 		$email = $db->f("email_usr");
+		$msg = "";
 		$count = 0;
 
 		reset ($abilnam);
@@ -109,7 +109,7 @@ if (($config_perm_admwatch != "all") && (!isset($perm) || !$perm->have_perm($con
 					$msg .= "$fusrnam2 (".$sys_url."showprofile.php?devname=$fusrnam2)\n";
 				} else {
 					if ($count == 1) {
-						echo "<p>".$t->translate("The following Developers match with your Watch")." ($usrnam &lt;$email&gt;):<br>\n";
+						echo "<p><b>".$t->translate("The following Developers match with the Watch of")." ($usrnam &lt;$email&gt;):</b><br>\n";
 					}
 					echo "<br>$fusrnam2 (<a href=\"".$sys_url."showprofile.php?devname=$fusrnam2\">".$sys_url."showprofile.php?devname=$fusrnam2</a>)\n";
 				}
@@ -126,7 +126,7 @@ if (($config_perm_admwatch != "all") && (!isset($perm) || !$perm->have_perm($con
 //			echo "<p>$msg";
 			mail($email, $subj, $msg,
 				"From: $ml_newsfromaddr\nReply-To: $ml_newsreplyaddr\nX-Mailer: PHP");
-			$bx->box_full($t->translate("Developers Watch"), $t->translate("Developers Watch Notifications were sent to")." $usrnam (&lt;$email&gt;) ".timestr(time()));
+			$bx->box_full($t->translate("Developers Watch"), $t->translate("Developers Watch Notification was sent to")." $usrnam (&lt;$email&gt;) ".timestr(time()));
 		}
 	}
 	?>

@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watch.php,v 1.7 2002/09/16 21:39:40 helix Exp $
+# $Id: watch.php,v 1.8 2002/09/17 09:42:22 helix Exp $
 #
 ######################################################################
 
@@ -143,8 +143,15 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
    $bx->box_end();
 
    echo "<CENTER>";
+   htmlp_form_hidden("action", "set");
    htmlp_form_submit($t->translate("Submit"),"");
-   echo "</CENTER><br>&nbsp;\n";
+   htmlp_form_end();
+   echo "</CENTER><br><CENTER>\n";
+   htmlp_form_action("watchset.php","","POST");
+   htmlp_form_hidden("action", "delete");
+   htmlp_form_submit($t->translate("Delete"),"");
+   htmlp_form_end();
+   echo "</CENTER>\n";
 }
 ?>
 <!-- end content -->

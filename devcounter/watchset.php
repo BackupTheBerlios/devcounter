@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watchset.php,v 1.6 2002/09/16 18:44:42 helix Exp $
+# $Id: watchset.php,v 1.7 2002/09/17 09:42:22 helix Exp $
 #
 ######################################################################
 
@@ -49,6 +49,8 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
 		$update = 0;
 	}
 
+	if (isset($action) && $action == "set") {
+
 	$counter=0;
 	$query1 = $query."prog_ability_watch SET username='$username'";
 	while ($counter < count($ability)) {
@@ -70,12 +72,15 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
 	}
 	if ($update) $query2 .= " WHERE username='$username'";
 	$db->query($query2);
-	$bx->box_begin();
-	$bx->box_title($t->translate("Done"));
-	$bx->box_body_begin();
-	echo $t->translate("Your Developers Watch has been set succesfully");
-	$bx->box_body_end();
-	$bx->box_end();
+	$bx->box_full($t->translate("Done"), $t->translate("Your Developers Watch has been set succesfully"));
+
+	} elseif (isset($action) && $action == "delete") {
+		$db->query("DELETE FROM prog_ability_watch WHERE username='$username'");
+		$db->query("DELETE FROM prog_language_watch WHERE username='$username'");
+		$bx->box_full($t->translate("Done"), $t->translate("Your Developers Watch has been deleted succesfully"));
+	} else {
+		$be->box_full($t->translate("Error"), $t->translate("Invalid action specified"));
+	}
 }
 ?>
 <!-- end content -->
