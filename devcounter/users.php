@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: users.php,v 1.6 2002/09/17 11:23:44 helix Exp $
+# $Id: users.php,v 1.7 2002/10/08 18:12:54 Masato Exp $
 #
 ######################################################################
 
@@ -41,43 +41,82 @@ $db2 = new DB_DevCounter;
 
 <!-- content -->
 <?php
-if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config_perm_users))) {
-  $be->box_full($t->translate("Error"), $t->translate("Access denied"));
-} else {
+if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config_perm_users))) 
+  {
+   $be->box_full($t->translate("Error"), $t->translate("Access denied"));
+  } 
+else 
+  {
+   if (!isset($by) || empty($by)) 
+     {
+      $by = "%";
+     }
+   if (!isset($offset) || empty($offset)|| $offset<1 ) 
+     {
+      $offset = 0;
+     }
+   if (!isset($limit) || empty($limit)|| $limit<1) 
+     {
+      $limit = 25;
+     }
 
-  if (!isset($by) || empty($by)) {
-    $by = "%";
-  }
-
-  $alphabet = array ("A","B","C","D","E","F","G","H","I","J","K","L",
+   $alphabet = array ("A","B","C","D","E","F","G","H","I","J","K","L",
 		"M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
-  $msg = "[ ";
+   $msg = "[ ";
+   if ($offset>0)
+     {
+      $new_offset=$offset-$limit;
+      if ($new_offset<0)
+        { $new_offset=0; }
+      $pquery["offset"] =  $new_offset;
+      $pquery["limit"] =  $limit;
+      $pquery["by"] =  $by;
+      $msg .= " ".html_link("users.php",$pquery,"&lt; ".$t->translate("previous page"))." | ";
+     }
+   else
+     {
+      $msg .= "&lt; ".$t->translate("previous page")." | ";
+     }
+   $new_offset = $offset+$limit;
+   $where = "auth_user.username LIKE '$by'";
+   $db->query("SELECT * FROM auth_user  WHERE $where ORDER BY username ASC LIMIT $new_offset,$limit");
+   if ($db->num_rows()>0)
+     {
+      $pquery["offset"] =  $new_offset;
+      $pquery["limit"] =  $limit;
+      $pquery["by"] =  $by;
+      $msg .= " ".html_link("users.php",$pquery," ".$t->translate("next page"))." &gt; ";
+      
+     }   
+  else
+     {
+      $msg .= " ".$t->translate("next page")." &gt; ";
+     }
+   $msg .= "] &nbsp; [ ";
+   while (list(, $ltr) = each($alphabet)) {
+     $msg .= "<a href=\"".$sess->self_url().$sess->add_query(array("by" => $ltr."%"))."\">$ltr</a> | ";
+   }
 
-  while (list(, $ltr) = each($alphabet)) {
-    $msg .= "<a href=\"".$sess->self_url().$sess->add_query(array("by" => $ltr."%"))."\">$ltr</a> | ";
-  }
+   $msg .= "<a href=\"".$sess->self_url().$sess->add_query(array("by" => "%"))."\">".$t->translate("All")."</a> ]";
 
-  $msg .= "<a href=\"".$sess->self_url().$sess->add_query(array("by" => "%"))."\">".$t->translate("All")."</a> ]";
 
-  $where = "auth_user.username LIKE '$by'";
+   $bs->box_strip($msg);
+   $db->query("SELECT * FROM auth_user, extra_perms WHERE $where AND auth_user.username=extra_perms.username ORDER BY auth_user.username ASC LIMIT $offset,$limit");
+   $bx->box_begin();
+   $bx->box_title($t->translate("Developers")." : ".ereg_replace("%","",$by));
+   $bx->box_body_begin();
 
-  $bs->box_strip($msg);
-  $db->query("SELECT * FROM auth_user, extra_perms WHERE $where AND auth_user.username=extra_perms.username ORDER BY auth_user.username ASC");
-  $bx->box_begin();
-  $bx->box_title($t->translate("Developers")." : ".ereg_replace("%","",$by));
-  $bx->box_body_begin();
+   $bx->box_columns_begin(4);
+   $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
+   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
+   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
+   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
+   $bx->box_next_row_of_columns();
 
-  $bx->box_columns_begin(4);
-  $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
-  $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
-  $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
-  $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
-  $bx->box_next_row_of_columns();
-
-  $i = 1;
-  while($db->next_record()) {
-  	if ($i%2 != 0) $bgcolor = "#E0E0E0";
-  	else $bgcolor = "#FFFFFF";
+   $i = $offset+1;
+   while($db->next_record()) {
+   	if ($i%2 != 0) $bgcolor = "#E0E0E0";
+   	else $bgcolor = "#FFFFFF";
  
 	$username = $db->f("username");
 	$bx->box_column("right","",$bgcolor,$i);
@@ -97,11 +136,12 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 	   $bx->box_column("center","",$bgcolor,"--- % ---");
 	$bx->box_next_row_of_columns();
 	$i++;
+   }
+   $bx->box_columns_end();
+   $bx->box_body_end();
+   $bx->box_end();
+   $bs->box_strip($msg);
   }
-  $bx->box_columns_end();
-  $bx->box_body_end();
-  $bx->box_end();
-}
 ?>
 <!-- end content -->
 

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: mailform.php,v 1.5 2002/08/27 11:16:59 helix Exp $
+# $Id: mailform.php,v 1.6 2002/10/08 18:12:54 Masato Exp $
 #
 ######################################################################  
 
@@ -54,7 +54,7 @@ $be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolo
          $bx->box_begin();
          $bx->box_title($t->translate("contact developer"));
          $bx->box_body_begin();
-	     htmlp_form_action("sendform.php", "", "POST");
+	 htmlp_form_action("sendform.php", "", "POST");
          htmlp_form_hidden("devname", $devname);
          echo $t->translate("Subject:")."<BR>";
          htmlp_input_text("subject", 50, 75, "");

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: devresults.php,v 1.7 2002/09/17 11:23:15 helix Exp $
+# $Id: devresults.php,v 1.8 2002/10/08 18:12:54 Masato Exp $
 #
 ######################################################################
 
@@ -133,7 +133,7 @@ case "abilities":
 
 	$query = "SELECT * FROM prog_language_values,prog_ability_values,auth_user,extra_perms WHERE prog_language_values.username=prog_ability_values.username AND prog_language_values.username=auth_user.username AND extra_perms.username=prog_ability_values.username AND extra_perms.search='yes'";
 	for ($i=1; $i<=$lang_amount; $i++) {
-		if ($plang[$i] != 0) {
+		if ($plang[$i] > 1) {
 			$db2->query("SELECT colname FROM prog_languages WHERE code='$i'");
 			$db2->next_record();
 			// echo "-".$i."-";
@@ -141,7 +141,7 @@ case "abilities":
 		}
 	}
 	for ($i=1; $i<=$ability_amount; $i++) {
-		if ($ability[$i] != 0) {
+		if ($ability[$i] > 1) {
 			$db2->query("SELECT colname FROM prog_abilities WHERE code='$i'");
 			$db2->next_record();
 			// echo "-".$i."-";
