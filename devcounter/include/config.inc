@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: config.inc,v 1.19 2003/11/12 14:18:09 helix Exp $
+# $Id: config.inc,v 1.20 2004/03/02 09:10:43 helix Exp $
 #
 ######################################################################
 
@@ -43,7 +43,7 @@
 $sys_name = "DevCounter";
 $sys_title = "Open Source Developer Pool";
 $sys_url_title = "http://www.berlios.de/";
-$sys_url = "http://devcounter.berlios.de/devcounter/";
+$sys_url = "http://devcounter.berlios.de/";
 $sys_logo_image = "images/berliOS_logo.png";
 $sys_logo_alt = "BerliOS";
 $sys_logo_width = "238";
@@ -194,8 +194,8 @@ $ml_newsreqaddr = "devcounter-news-request@lists.berlios.de";
 $ml_weeklynewstoaddr = "devcounter-weeklynews@lists.berlios.de";
 $ml_weeklynewsreqaddr = "devcounter-weeklynews-request@lists.berlios.de";
 $ml_newsadmaddr = "devcounter-admin@lists.berlios.de";
-$ml_newsfromaddr = $ml_newsadmaddr;
-$ml_newsreplyaddr = $ml_newsadmaddr;
+$ml_newsfromaddr = "devcounter-crew@berlios.de";
+$ml_newsreplyaddr = "noreply@berlios.de";
 
 ######################################################################
 # Statistic configuration
@@ -206,7 +206,7 @@ $ml_newsreplyaddr = $ml_newsadmaddr;
 # MinimumLicByEmail	the same but for Licenses >= 0.01
 # Minimum_apps_in_license   minimum amount of apps a license has to
 #			    have to be displayed in the statistic
-#			    "Apps by Licenses and Email Domains"
+#			    Apps by Licenses and Email Domains
 #			    >= 1
 #
 ######################################################################
