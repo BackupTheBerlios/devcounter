@@ -1,4 +1,5 @@
-Fast installation guide
+Fast Installation Guide
+-----------------------
 
 You need to have a webserver (we have tested the system with Apache),
 PHP3 or PHP4, PHPLib and MySQL installed in your system.
@@ -28,18 +29,19 @@ PHP3 or PHP4, PHPLib and MySQL installed in your system.
 * user$ vi devcounter/include/local.inc
   (insert the correct database parameters; please, keep devcounter as the database name)
 
-   var $Host     = "host";
+   var $Host     = "localhost";
    var $Database = "devcounter";
    var $User     = "operator";
    var $Password = "password";
 
 Ok, that's it. You've finished installing and configuring
 DevCounter. Start your browser and visit
-http://yourserver/devcounter/index.php. As you'll see, DocsWell
-comes with some inserted example documents. You can
-delete or modify them by entering as an administrator. To do so, login
-as the default administrator with user,editor,admin permissions.
-At the prompt use the following ID to login (case sensitive):
+http://yourserver/devcounter/index.php.
+As you'll see, DevCounter comes with only with the administrator.
+You can modify your profile by entering as an administrator.
+To do so, login as the default administrator with user,editor,admin
+permissions. At the prompt use the following ID to login
+(case sensitive):
 
     Username: oldfish
     Password: oldfish
