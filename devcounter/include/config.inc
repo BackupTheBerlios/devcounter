@@ -1,14 +1,14 @@
 <?php
 
 ######################################################################
-# DevCounter
+# DevCounter - Open Source Developer Counter
 # ================================================
 #
 # Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org) and
-#		 Lutz Henckel (lutz.henckel@fokus.gmd.de)
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.gmd.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This is the configuration file

@@ -51,7 +51,6 @@ switch($phrase) {
 //Frontpage
      case "Newest Developers": $tmp = "Neueste Entwickler"; break;
 
-
 //Permissions
      case "allow to show realname": $tmp = "tats&auml;chlicher Name darf angezeigt werden"; break;
      case "allow to show E-Mail": $tmp = "E-Mail darf angezeigt werden"; break;
@@ -111,7 +110,7 @@ switch($phrase) {
      case "Which of these languages/tools are you experienced with?": $tmp = "In welchen dieser Sprachen/Tools hast Du Erfahrung?"; break;
      case "Professional Data": $tmp = "Ausbildung & Beruf"; break;
      case "Personal Data": $tmp = "Persönliche Daten"; break;
-     case "Computer experience": $tmp = "Computer Erfahrung"; break;
+     case "Computer Experience": $tmp = "Computer-Erfahrung"; break;
      case "Submit": $tmp = "Abschicken"; break; 
      case "Submit Your Form": $tmp = "Formular abschicken"; break; 
      case "Add Project": $tmp = "Projekt hinzufügen"; break; 
@@ -207,7 +206,7 @@ switch($phrase) {
 // Contact Developer
      case "Send": $tmp = "Senden"; break;
      case "contact developer": $tmp = "an Entwickler schreiben"; break;
-     case "Contact Developer": $tmp = "an Entwickler schreiben"; break;     
+     case "write Developer": $tmp = "an Entwickler schreiben"; break;     
      case "Subject:": $tmp = "Betreff:"; break;
      case "Your EMail Address:": $tmp = "Deine EMail Adresse"; break;
      case "Content:": $tmp = "Inhalt:"; break;
@@ -375,9 +374,16 @@ switch($phrase) {
 
 // showprofile.php3
 
-    case "currently live in": $tmp = "lebt momentan in"; break;
+    case "Currently lives in": $tmp = "lebt momentan in"; break;
     case "Languages spoken": $tmp = "gesprochene Sprachen"; break;
     case "Number of Free Software/Open Source Projects": $tmp = "Anzahl der Free Software/Open Source Projekte"; break;
+    case "Developer last modified": $tmp = "Entwickler zuletzt geändert"; break;
+    case "Developer created": $tmp = "Entwickler erstellt"; break;
+    case "Profile last modified": $tmp = "Profildaten zuletzt geändert"; break;
+    case "# of Visits": $tmp = "# der Besuche"; break;
+    case "Registration Number": $tmp = "Registrierungsnummer"; break;
+    case "Programming Experience": $tmp = "Programmier-Erfahrung"; break;
+    case "Languages/Tools Experience": $tmp = "Programmiersprachen/Werkzeug-Erfahrung"; break;
     
 // admfaq.php3 and insfaq.php3
 

@@ -51,15 +51,10 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
      {
       if ($perm->have_perm("user") || $perm->have_perm("user_pending") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
         {
-         ?>
-         <!--<br><a href="<?php $sess->purl("insform.php3") ?>" class="menus"><?php echo $t->translate("New Profile"); ?></a>
-         <br><a href="<?php $sess->purl("devbyuser.php3") ?>" class="menus"><?php echo $t->translate("Update Profile"); ?></a>
-         <br><a href="<?php $sess->purl("newsletter.php3"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>-->
-         <?php
 	 $username = $auth->auth["uname"];
    
          $db->query("SELECT * from developers WHERE username='$username'");
-         if ($db->num_rows() ==0)
+         if ($db->num_rows()==0)
            {
             echo "<BR>\n";
 	    htmlp_link("questionaire.php3","",$t->translate("Enter your Profile"));	    
@@ -73,7 +68,8 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
         }
      }
    ?>
-   <!--<br><a href="<?php $sess->purl("backend.php3"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>-->
+   <br><a href="<?php $sess->purl("newsletter.php3"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
+   <br><a href="<?php $sess->purl("backend.php3"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>
    <br><a href="<?php $sess->purl("stats.php3?option=general"); ?>" class="menus"><?php echo $t->translate("Statistics"); ?></a>
    <?php
   }
@@ -120,7 +116,7 @@ if (
       $db->query("SELECT COUNT(*) FROM auth_user");
       $db->next_record();
       echo "<a href=\"".$sess->url("admuser.php3")."\" class=\"menus\">".$t->translate("Developers")." [".$db->f("COUNT(*)")."]</a>\n";
-      echo "<BR><a href=\"".$sess->url("adm_langs_tools.php3")."\" class=\"menus\">".$t->translate("Modify ProgLanguages &amp; ProgTools")."</a>\n";
+      echo "<br><a href=\"".$sess->url("adm_langs_tools.php3")."\" class=\"menus\">".$t->translate("Modify ProgLanguages &amp; ProgTools")."</a>\n";
      }
 
    if (($config_perm_admfaq == "all") || (isset($perm) && $perm->have_perm($config_perm_admfaq))  && !($logout)) 
@@ -133,12 +129,16 @@ if (
    if (($config_perm_nladm == "all") || (isset($perm) && $perm->have_perm($config_perm_nladm))  && !($logout)) 
      {
  				// Daily Newsletter
-      /*$where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')=\"".date("Y-m-d")."\"";
+      $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')=\"".date("Y-m-d")."\"";
+      $db->query("SELECT COUNT(*) FROM developers WHERE $where"); 
+      $db->next_record();
       echo "<br><a href=\"".$sess->url("nladm.php3?period=daily")."\" class=\"menus\">".$t->translate("Daily Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
   				// Weekly Newsletter
       $lastday = time() - 7 * 24 * 60 * 60;
-      $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')<=\"".date("Y-m-d")."\" AND DATE_FORMAT(developerss.creation,'%Y-%m-%d')>\"".date("Y-m-d",$lastday)."\"";
-      echo "<br><a href=\"".$sess->url("nladm.php3?period=weekly")."\" class=\"menus\">".$t->translate("Weekly Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";*/
+      $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')<=\"".date("Y-m-d")."\" AND DATE_FORMAT(developers.creation,'%Y-%m-%d')>\"".date("Y-m-d",$lastday)."\"";
+      $db->query("SELECT COUNT(*) FROM developers WHERE $where"); 
+      $db->next_record();
+      echo "<br><a href=\"".$sess->url("nladm.php3?period=weekly")."\" class=\"menus\">".$t->translate("Weekly Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
      }
    ?>
    </td>
@@ -213,4 +213,3 @@ echo "<P><input TYPE=\"submit\" NAME=\"go\" VALUE=\"".$t->translate("Go")."\">";
 </tr>
 </table>
 <!-- end Language menu -->
-

@@ -1,14 +1,15 @@
 <?php
 
 ######################################################################
-# DevCounter:
+# DevCounter - Open Source Developer Counter
 # ===================================================================
 #
 # Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org) and
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de)
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # Main Library file.
@@ -47,7 +48,7 @@ function timestr_middle($timestamp) {
 
 function timestr_short($timestamp){
     global $t;
-    $time = strftime("%a,%e.%b,%H:%M:%S", $timestamp);
+    $time = strftime("%e.%b, %H:%M %Z", $timestamp);
     return $time;
 }
 
@@ -197,44 +198,43 @@ function typestr($type) {
 	return $str;
 }
 
-function increasecnt($id, $type) {
+function increasecnt($id) {
   global $db;
 
   $db_local = new DB_DevCounter;
-  $db_local->query("SELECT * FROM counter WHERE proid='$id'");
+  $db_local->query("SELECT * FROM counter WHERE develid='$id'");
 
-           // If application in table and first access today update counters
-  $first = checkcnt($id, $GLOBALS[REMOTE_ADDR], $type);
+  // If developer in table and first access today update counters
+  $first = checkcnt($id, $GLOBALS[REMOTE_ADDR]);
 
   $db_local->next_record();
-  if ($first == 1) {
-    $counter = $db_local->f($type) + 1;
-    $db->query("UPDATE counter SET $type='$counter' WHERE proid='$id'");
+  if ($first) {
+    $db->query("UPDATE counter SET devel_cnt=devel_cnt+1 WHERE develid='$id'");
   }
 }
 
-function checkcnt($id, $ipaddr, $type) {
+function checkcnt($id, $ipaddr) {
   global $db;
 
   $ret = 1;
 
-			// Delete all entries from yesterday
+  // Delete all entries from yesterday
   $today = date("Y-m-d");
   $tables = "counter_check";
   $where = "DATE_FORMAT(creation_cnt,'%Y-%m-%d') != '$today'";
   $db->query("DELETE FROM $tables WHERE $where");
 
   $columns = "*";
-  $where = "proid='$id' AND cnt_type='$type' AND ipaddr='$ipaddr'";
+  $where = "develid='$id' AND ipaddr='$ipaddr'";
   $db->query("SELECT $columns FROM $tables WHERE $where");
 
   if ($db->num_rows() > 0) {
-			// If remote host already accessed the apps link,
-			// don´t increase corresponding counter
+			// If remote host already accessed the developer,
+			// don't increase counter
     $ret = 0;
   } else {
   			  // Include entry for remote host
-    $set = "proid='$id',cnt_type='$type',ipaddr='$ipaddr'";
+    $set = "develid='$id',ipaddr='$ipaddr'";
     $db->query("INSERT $tables SET $set");
   }
   return $ret;
@@ -782,34 +782,36 @@ function nlmsg($period) {
   switch ($period) {
     case "weekly":
       $lastday = time() - 7 * 24 * 60 * 60;
-      $where = "DATE_FORMAT(software.modification,'%Y-%m-%d')<=\"".date("Y-m-d")."\" AND DATE_FORMAT(software.modification,'%Y-%m-%d')>\"".date("Y-m-d",$lastday)."\"";
+      $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')<=\"".date("Y-m-d")."\" AND DATE_FORMAT(developers.creation,'%Y-%m-%d')>\"".date("Y-m-d",$lastday)."\"";
       break;
     case "daily":
     default:
-      $where = "DATE_FORMAT(software.modification,'%Y-%m-%d')=\"".date("Y-m-d")."\"";
+      $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')=\"".date("Y-m-d")."\"";
       break;
   }
 
-  $db->query("SELECT *,SUM(app_cnt+homepage_cnt+download_cnt+changelog_cnt+rpm_cnt+deb_cnt+tgz_cnt+cvs_cnt+screenshots_cnt+mailarch_cnt) AS sum_cnt FROM software, counter, auth_user WHERE $where AND software.appid=counter.appid AND software.user=auth_user.username AND software.status='A' GROUP BY software.appid ORDER BY software.modification DESC"); 
+  $db->query("SELECT * FROM developers, counter, extra_perms, auth_user WHERE $where AND developers.develid=counter.develid AND developers.username=extra_perms.username AND developers.username=auth_user.username GROUP BY developers.develid ORDER BY developers.creation DESC"); 
 
   if ($db->num_rows() <= 0) return 0;
 
   $msg = $GLOBALS["sys_name"]." $period newsletter for ".date("l, dS of F Y, H:i:s T")."\n";
-  $msg .= "Number of announcements: ".$db->num_rows()."\n";
+  $msg .= "Number of new Developers: ".$db->num_rows()."\n";
   $msg .= "\n               -----------------------------\n";
-  $msg .= "                   Annoucements Headlines\n";
+  $msg .= "                   Developer Headlines\n";
   $msg .= "               -----------------------------\n\n";
 	
   $i = 1;
   while($db->next_record()) {
-    $msg .= "$i: ".$db->f("name")." ".$db->f("version")." ";
-    if ($db->f("type") == 'S') $msg .= "(Stable)\n";
-    if ($db->f("type") == 'D') $msg .= "(Development)\n";
+    $msg .= "$i: ".$db->f("username");
+	if ($db->f("showname") == "yes") {
+		$msg .= " (".$db->f("realname").")";
+	}
     $i++;
+    $msg .= "\n";
   }
 
   $msg .= "\n               -----------------------------\n";
-  $msg .= "                   Annoucements Details\n";
+  $msg .= "                   Developer Details\n";
   $msg .= "               -----------------------------\n";
 
 //  @mysql_data_seek($result, 0);
@@ -817,58 +819,27 @@ function nlmsg($period) {
 
   $i = 1;
   while ($db->next_record()) {
-    $timestamp = mktimestamp($db->f("modification"));
-    $msg .= "\nAnnouncement : $i\n";
-    $msg .= "Name         : ".$db->f("name")."\n";
-    $msg .= "Date         : ".date("l, dS of F Y, H:i:s T", $timestamp)."\n";
-    $msg .= "Type         : ";
-    if ($db->f("type") == 'S') $msg .= "Stable\n";
-    if ($db->f("type") == 'D') $msg .= "Development\n";
-    $msg .= "Version      : ".$db->f("version")."\n";
+    $timestamp = mktimestamp($db->f("creation"));
+    $msg .= "\nAnnouncement  : $i\n";
+    $msg .= "Name          : ".$db->f("username")."\n";
+	if ($db->f("showname") == "yes") {
+		$msg .= "Realname      : ".$db->f("realname")."\n";
+	}
+    $msg .= "Date          : ".date("l, dS of F Y, H:i:s T", $timestamp)."\n";
+    $msg .= "Nationality   : ".get_country($db->f("nationality"))."\n";
+    $msg .= "Lives in      : ".get_country($db->f("actual_country"))."\n";
+    $msg .= "Year of Birth : 19".$db->f("year_of_birth")."\n";
+    $msg .= "Gender        : ".$db->f("gender")."\n";
+    $msg .= "Mother Tongue : ".get_lang($db->f("mother_tongue"))."\n";
+    $msg .= "2. Language   : ".get_lang($db->f("other_lang_1"))."\n";
+    $msg .= "3. Language   : ".get_lang($db->f("other_lang_2"))."\n";
+    $msg .= "E-Mail        : ".ereg_replace("@"," at ",htmlentities($db->f("email_usr")))."\n";
+    $msg .= "Profession    : ".$db->f("profession")."\n";
+    $msg .= "Qualification : ".$db->f("qualification")."\n";
+    $msg .= "Projects      : ".$db->f("name_of_projects")."\n";
     if ($period == "daily") {
-      $msg .= "License      : ".$db->f("license")."\n";
-      $msg .= "Section      : ".$db->f("section")."\n";
-      $msg .= "Category     : ".$db->f("category")."\n";
-      $msg .= "Importance   : ".$db->f("sum_cnt")."\n";
-      $msg .= "Urgency      : ".urgency($db->f("urgency"))."\n";
-      $db_homepage = $db->f("homepage");
-      $db_download = $db->f("download");
-      $db_changelog = $db->f("changelog");
-      $db_rpm = $db->f("rpm");
-      $db_deb = $db->f("deb");
-      $db_tgz = $db->f("tgz");
-      $db_cvs = $db->f("cvs");
-      $db_screenshots = $db->f("screenshots");
-      $db_mailarch = $db->f("mailarch");
-      $db_email = $db->f("email");
-      $db_depend = $db->f("depend");
-      if (!empty($db_homepage))
-	$msg .= "\nHomepage     : ".$db->f("homepage")."\n";
-      if (!empty($db_download))
-	$msg .= "Download     : ".$db->f("download")."\n";
-      if (!empty($db_changelog))
-	$msg .= "Changelog    : ".$db->f("changelog")."\n";
-      if (!empty($db_rpm))
-	$msg .= "RPM Package  : ".$db->f("rpm")."\n";
-      if (!empty($db_deb))
-	$msg .= "Deb Package  : ".$db->f("deb")."\n";
-      if (!empty($db_tgz))
-	$msg .= "tgz Package  : ".$db->f("tgz")."\n";
-      if (!empty($db_cvs))
-	$msg .= "CVS Tree     : ".$db->f("cvs")."\n";
-      if (!empty($db_screenshots))
-	$msg .= "Screenshots  : ".$db->f("screenshots")."\n";
-      if (!empty($db_mailarch))
-	$msg .= "Mailing List Archive : ".$db->f("mailarch")."\n";
-      $msg .= "\nDescription : \n".wrap($db->f("description"))."\n";
-      $msg .= "\nAuthor       : ".$db->f("developer")."\n";
-      if (!empty($db_email))
-	$msg .= "Email        : ".$db->f("email")."\n";
-      if (!empty($db_depend))
-	$msg .= "Depens on    : ".$db->f("depend")."\n";
-      $msg .= "\n";
     }
-    $msg .= $GLOBALS["sys_name"]."   : ".$GLOBALS["sys_url"]."appbyid.php3?id=".$db->f("appid")."\n";
+    $msg .= $GLOBALS["sys_name"]."    : ".$GLOBALS["sys_url"]."showprofile.php3?devname=".$db->f("username")."\n";
     $msg .= "\n               -----------------------------\n";
     $i++;
   }
@@ -895,7 +866,7 @@ function nlmsg($period) {
       break;
   }
   $msg .= "\nand follow the instructions there."
-  ."\n\n - ".$GLOBALS["sys_name"]." crew";
+  ."\n\n - The ".$GLOBALS["sys_name"]." crew";
 
   return $msg;
 }
@@ -945,6 +916,18 @@ function print_lang($selected) {
   
 }
 
+function get_lang($selected) {
+  global $db, $la;
+
+  $db_local = new DB_DevCounter;
+  $db_local->query("SELECT code,language FROM languages WHERE translation='$la' and code='$selected'");
+  $db_local->next_record(); 
+  
+  $db_language = $db_local->f("language");
+
+  return $db_language;
+}
+
 #  select_country($selected)
 #  Displays the different countries as a select form 
 #  $selected ist the SELECTED language
@@ -976,6 +959,15 @@ function print_country($selected) {
   
 }
 
+function get_country($selected) {
+  global $db, $la;
 
-
+  $db_local = new DB_DevCounter;
+  $db_local->query("SELECT code,description FROM countries WHERE language='$la' and code='$selected'");
+  $db_local->next_record();
+  $db_country = $db_local->f("description");
+  
+  return $db_country;
+  
+}
 ?>
