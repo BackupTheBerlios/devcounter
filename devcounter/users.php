@@ -6,8 +6,8 @@
 #
 # Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
-#       Stefan Heinze (heinze@fokus.fraunhofer.de)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: users.php,v 1.10 2004/03/02 09:22:58 helix Exp $
+# $Id: users.php,v 1.11 2004/11/24 10:08:52 helix Exp $
 #
 ######################################################################
 
@@ -131,7 +131,7 @@ else
 	else
 	   $bx->box_column("center","",$bgcolor,"--- % ---");
 	if ($db->f("showemail")=="yes")
-	   $bx->box_column("center","",$bgcolor,html_link("mailto:".$db->f("email_usr"),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+	   $bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
 	else
 	   $bx->box_column("center","",$bgcolor,"--- % ---");
 	$bx->box_next_row_of_columns();

@@ -4,10 +4,10 @@
 # DevCounter - Open Source Developer Counter
 # ===================================================================
 #
-# Copyright (c) 2001-2002 by
+# Copyright (c) 2001-2004 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
-#       Stefan Heinze (heinze@fokus.fraunhofer.de)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -20,7 +20,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: lib.inc,v 1.12 2003/11/12 14:18:10 helix Exp $
+# $Id: lib.inc,v 1.13 2004/11/24 10:05:07 helix Exp $
 #
 ######################################################################
 
@@ -499,7 +499,7 @@ function summary_news($proid) {
 	print "&nbsp;";
 	htmlp_link("news.php",array("proid" => $proid),"<b>".$db_summ_news->f("subject_news")."</b><br>").
 	$timestamp = mktimestamp($db_summ_news->f("creation_news"));
-        print "<b><font size=\"-1\">&nbsp;<a href=\"mailto:".$db_summ_news->f("email_usr")."\">".$db_summ_news->f("user_news")."</a> - ".timestr_comment($timestamp)."</b></font><br>\n";
+        print "<b><font size=\"-1\">&nbsp;<a href=\"mailto:".mailtoencode($db_summ_news->f("email_usr"))."\">".$db_summ_news->f("user_news")."</a> - ".timestr_comment($timestamp)."</b></font><br>\n";
 	if ($db_comments_on_news->num_rows() > 0) {
 		print "&nbsp;<font size=-1>[ ".$db_comments_on_news->num_rows()." ";
 		htmlp_link("comments.php",array("proid" => $proid, "type" => "News", "number" => $db_summ_news->f("creation_news"), "ref" => "0"),"comments");
@@ -526,7 +526,7 @@ function lib_show_description($query) {
   $bx->box_title($db->f("project_title")." (".$db->f("type").")");
   $bx->box_body_begin();
   echo "<b>".$t->translate("by")." ";
-  htmlp_link("mailto:".$db->f("email_usr"),"",$db->f("description_user"));
+  htmlp_link("mailto:".mailtoencode($db->f("email_usr")),"",$db->f("description_user"));
   echo " - ".timestr(mktimestamp($db->f("description_creation")));
   echo "<p><b>".$t->translate("Description")."</b>: ".$db->f("description")."\n";
   echo "<p><b>".$t->translate("Volume")."</b>: ".$db->f("volume")."\n";
@@ -1024,4 +1024,13 @@ function get_qualification($qualid) {
   
   return $qual;
 }
+
+function mailtoencode($str) {
+  $ret = "";
+  $arr = unpack("C*", $str);
+  foreach ($arr as $char)
+    $ret .= sprintf("%%%X", $char);
+  return $ret;
+}
+
 ?>
