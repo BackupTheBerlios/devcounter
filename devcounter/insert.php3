@@ -26,7 +26,8 @@ if (isset($auth) && !empty($auth->auth["perm"])) {
 
 require("header.inc");
 
-$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
+              $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 ?>
 
 <!-- content -->
