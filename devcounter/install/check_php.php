@@ -80,5 +80,5 @@
     	<li>MySQL Support: <?php status($mysql) ?></li>
     	<li>PostgreSQL Support: <?php status($pgsql) ?></li>
 	</ul>
-	<p>[ <a href="install.php">Go back</a> ] [ <a href="install.php?action=check_phplib">Next</a> ]
+	<p>[ <a href="install.php">Go back</a> ] [ <a href="install.php?action=set_phplib">Next</a> ]
 	<p>

@@ -16,13 +16,15 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: install.php,v 1.4 2002/09/01 11:48:56 helix Exp $
+# $Id: install.php,v 1.5 2002/09/01 22:57:11 helix Exp $
 #
 ######################################################################  
 
 require("./include/config.inc");
 
 $dbconfile = "./include/local.inc";
+$prependfile = "./include/prepend.php3";
+$phplibdefault = "/usr/share/php/phplib/";
 
 function status($foo) {
     if ($foo) {
@@ -80,6 +82,24 @@ case "view_phpinfo":
 case "check_php":
 	require("./install/header.inc");
 	require("./install/check_php.php");
+	break;
+
+/* Set path to PHPlib */
+
+case "set_phplib":
+	require("./install/header.inc");
+	if (!isset($op)) {
+		$op = "";
+	}
+	switch ($op) {
+	case "set":
+		require("./install/set_phplib_set.php");
+		break;
+	case "":
+	default:
+		require("./install/set_phplib.php");
+		break;
+	}
 	break;
 
 /* Check PHPlib */
@@ -151,10 +171,20 @@ default:
 	$mode = fileperms($dbconfile);
 	if ($mode) {
 		if (($mode & 00666) == 00666) {
-			echo "<p><font color=\"green\">Database configuration file ./include/local.inc has correct ".get_perms($mode)." permissions.\n";
+			echo "<p><font color=\"green\">Database configuration file $dbconfile has correct ".get_perms($mode)." permissions.\n";
 			echo "<br>Go ahead.\n";
 		} else {
-			echo "<p><font color=\"red\">Database configuration file ./include/local.inc has incorrect ".get_perms($mode)." permissions.\n";
+			echo "<p><font color=\"red\">Database configuration file $dbconfile has incorrect ".get_perms($mode)." permissions.\n";
+			echo "<br>Please change permissions to rw-rw-rw and try again!</font>\n";
+		}
+	}
+	$mode = fileperms($prependfile);
+	if ($mode) {
+		if (($mode & 00666) == 00666) {
+			echo "<p><font color=\"green\">PHPlib prepend file $prependfile has correct ".get_perms($mode)." permissions.\n";
+			echo "<br>Go ahead.\n";
+		} else {
+			echo "<p><font color=\"red\">PHPlib prepend file $prependfile has incorrect ".get_perms($mode)." permissions.\n";
 			echo "<br>Please change permissions to rw-rw-rw and try again!</font>\n";
 		}
 	}
@@ -162,6 +192,7 @@ default:
 <ol>
 <li><a href="install.php?action=view_phpinfo">View PHP configuration</a>
 <li><a href="install.php?action=check_php">Check PHP</a>
+<li><a href="install.php?action=set_phplib">Set path to PHPlib</a>
 <li><a href="install.php?action=check_phplib">Check PHPlib</a>
 <li><a href="install.php?action=create_dbusr">Create <?php echo $sys_name?> Database User</a>
 <li><a href="install.php?action=create_db">Create <?php echo $sys_name?> Database</a>
