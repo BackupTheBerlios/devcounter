@@ -175,8 +175,8 @@ else
        $bx->box_column("center","",$bgcolor,html_input_text("projectname", 25, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("projecturl", 35, 255, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("pcomment", 35, 400, ""));
-       $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Add Project")));
-       $bx->box_column("center","",$bgcolor,"--");
+       $bx->box_colspan(2,"center",$bgcolor,html_form_submit($t->translate("Add Project")));
+//       $bx->box_column("center","",$bgcolor,"--");
        $bx->box_columns_end();
        htmlp_form_end();
       

@@ -1,14 +1,14 @@
 <?php
 ######################################################################
-# DevCounter
+# DevCounter - Open Source Developer Counter
 # ================================================
 #
 # Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org),
-#		 Susanne Gruenbaum (gruenbaum@fokus.gmd.de) and
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de)
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This file contains the verification procedure when registering
@@ -41,7 +41,7 @@ $db2 = new DB_DevCounter;
 <?php
 
 
-$db->query("SELECT * from developers,extra_perms WHERE developers.username='$devname' AND extra_perms.username='$devname'");
+$db->query("SELECT * from auth_user,developers,extra_perms WHERE auth_user.username = developers.username AND developers.username='$devname' AND extra_perms.username='$devname'");
 if ($db->num_rows() == 0)
   {
       
@@ -57,6 +57,8 @@ if ($db->num_rows() == 0)
 else
   {
    $db->next_record();
+   $develid = $db->f("develid");
+   increasecnt($develid);
    $username = $devname;
    
 
@@ -70,43 +72,92 @@ else
    echo "<table border=0 width=100% align=center cellspacing=3 cellpadding=3>\n";
    //echo "<tr><td align=right width=30%>".$t->translate("Username").":</td><td width=70%> $username\n";
   
+   if ($db->f("showname") == "yes") {
+      echo "<tr><td align=right width=30%>".$t->translate("Realname").":</td><td width=70%>".$db->f("realname")."\n";
+   }
+  
+   $year_of_birth = $db->f("year_of_birth");
+   echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>19$year_of_birth\n";
+
+   $gender = $db->f("gender");
+   echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>".$t->translate("$gender")."\n";
+
    $nationality = $db->f("nationality");
    echo "<tr><td align=right width=30%>".$t->translate("Nationality").":</td><td width=70%>\n";
    print_country($nationality);
 
-
    $actual_country = $db->f("actual_country");
-   echo "<tr><td align=right width=30%>".$t->translate("currently live in").":</td><td width=70%>\n";
+   echo "<tr><td align=right width=30%>".$t->translate("Currently lives in").":</td><td width=70%>\n";
    print_country($actual_country);
 
-   echo "<tr><td align=right valign=top width=30%>".$t->translate("Languages spoken").":</td><td width=70%>\n";
-   
+   echo "<tr><td align=right valign=top width=30%>".$t->translate("Mother tongue").":</td><td width=70%>\n";
    
    $mother_tongue = $db->f("mother_tongue");
-   echo "1. ";
    print_lang($mother_tongue);
 
+   echo "<tr><td align=right valign=top width=30%>".$t->translate("Other languages").":</td><td width=70%>\n";
+   
    $other_lang_1 = $db->f("other_lang_1");
-   echo "<BR>2. ";
+   echo "1. ";
    print_lang($other_lang_1);
 
    $other_lang_2 = $db->f("other_lang_2");
-   echo "<BR>3. ";
+   echo "<BR>2. ";
    print_lang($other_lang_2);
-   
-   echo "<BR><BR>";
-   if ($db->f("contact")=="yes")
-     {
-      $pquery["devname"] = $db->f("username") ;
-      htmlp_link("mailform.php3",$pquery,$t->translate("Contact Developer"));
-     }
    echo "</td></tr>\n";
+
+   if ($db->f("contact")=="yes") {
+      echo "<tr><td align=right width=30%>".$t->translate("Contact").":</td><td width=70%>";
+      $pquery["devname"] = $db->f("username") ;
+      htmlp_link("mailform.php3",$pquery,$t->translate("write Developer"));
+   }
+
+   if ($db->f("showemail") == "yes") {
+      echo "<tr><td align=right width=30%>".$t->translate("E-Mail").":</td><td width=70%><a href=\"mailto:".$db->f("email_usr")."\">".ereg_replace("@"," at ",htmlentities($db->f("email_usr")))."</a>\n";
+   }
+  
+   echo "<tr><td align=right width=30%>".$t->translate("Developer last modified").":</td><td width=70%>\n";
+   $timestamp = mktimestamp($db->f("modification_usr"));
+   echo timestr($timestamp)."</td></tr>\n";
+
+   echo "<tr><td align=right width=30%>".$t->translate("Developer created").":</td><td width=70%>\n";
+   $timestamp = mktimestamp($db->f("creation_usr"));
+   echo timestr($timestamp)."</td></tr>\n";
+
+   echo "<tr><td align=right width=30%>".$t->translate("Profile last modified").":</td><td width=70%>\n";
+   $timestamp = mktimestamp($db->f("creation"));
+   echo timestr($timestamp)."</td></tr>\n";
+
+   $db2->query("SELECT devel_cnt FROM counter WHERE develid='$develid'");
+   $db2->next_record();
+   echo "<tr><td align=right width=30%>".$t->translate("# of Visits").":</td><td width=70%>\n";
+   echo $db2->f("devel_cnt")."</td></tr>\n";
+
+   echo "<tr><td align=right width=30%>".$t->translate("Registration Number").":</td><td width=70%>\n";
+   echo printf("#%09d",$develid)."</td></tr>\n";
+
    echo "</table>\n";
    $bx->box_body_end();
    $bx->box_end();
    
    $bx->box_begin();
-   $bx->box_title($t->translate("Computer experience"));
+   $bx->box_title($t->translate("Professional Data"));
+   $bx->box_body_begin();
+
+   echo "<table border=0 width=100% align=center cellspacing=3 cellpadding=3>\n";
+  
+   $profession = $db->f("profession");
+   echo "<tr><td align=right width=30%>".$t->translate("Profession").":</td><td width=70%>".$t->translate("$profession")."\n";
+
+   $qualification = $db->f("qualification");
+   echo "<tr><td align=right width=30%>".$t->translate("Qualification").":</td><td width=70%>".$t->translate("$qualification")."\n";
+
+   echo "</table>\n";
+   $bx->box_body_end();
+   $bx->box_end();
+   
+   $bx->box_begin();
+   $bx->box_title($t->translate("Computer Experience"));
    $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
@@ -159,7 +210,7 @@ else
    $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
-   echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("programming expirience")."</FONT></B></td></tr><tr><td>\n";
+   echo "<tr><td align=center><B><B>".$t->translate("Programming Experience")."</B></td></tr><tr><td>\n";
    echo "<center><table width=100% border=0 cellspacing=6>\n";
 
 
@@ -228,7 +279,7 @@ else
    $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
-   echo "<tr><td align=center><B><FONT SIZE=+1>".$t->translate("languages/tool experience")."</FONT></B></td></tr><tr><td>\n";
+   echo "<tr><td align=center><B>".$t->translate("Languages/Tools Experience")."</B></td></tr><tr><td>\n";
    echo "<center><table border=0 width=100% cellspacing=6>\n";
 
 

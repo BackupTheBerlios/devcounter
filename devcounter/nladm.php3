@@ -1,14 +1,14 @@
 <?php
 
 ######################################################################
-# DevCounter: Software Announcement & Retrieval System
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
 # Copyright (c) 2001 by
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de) and
-#                Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.gmd.de) and
+#       Gregorio Robles (grex@scouts-es.org)
 #
-# BerliOS DevCounter: http://sourcewell.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This file is usefull for administrating the daily/weekly newsletter
@@ -70,7 +70,7 @@ if (($config_perm_nladm != "all") && (!isset($perm) || !$perm->have_perm($config
     echo "<center><p><input type=\"submit\" name=\"send\" value=\"".$t->translate("Send newsletter")."\"></center>\n";
     echo "</form>\n";
   } else {
-    $be->box_full($t->translate("Error"), $t->translate("No Application found").".");
+    $be->box_full($t->translate("Error"), $t->translate("No Developer found").".");
   }
 }
 ?>

@@ -1,14 +1,15 @@
 <?php
 
 ######################################################################
-# DevCounter: Software Announcement & Retrieval System
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de) and
+# Copyright (c) 2002 by
+#                Lutz Henckel (lutz.henckel@fokus.fhg.de)
 #                Gregorio Robles (grex@scouts-es.org)
+#                Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourcewell.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # Registration form for the daily/weekly newsletter

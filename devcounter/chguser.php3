@@ -46,20 +46,20 @@ while (is_array($HTTP_POST_VARS)
             	$be->box_full($t->translate("Error"), $t->translate("The passwords are not identical").". ".$t->translate("Please try again")."!");
             	break;
         	}
-	    if ($show_name == "on") {$show_name = "yes";} else {$show_name = "no";}
-	    if ($show_email == "on") {$show_email = "yes";} else {$show_email = "no";}
-	    if ($search == "on") {$search = "yes";} else {$search = "no";}
-	    if ($contact == "on") {$contact = "yes";} else {$contact = "no";}
+	    	if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
+	    	if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
+	    	if ($search == "on") {$search = "yes";} else {$search = "no";}
+	    	if ($contact == "on") {$contact = "yes";} else {$contact = "no";}
 	    
-	    $query = "UPDATE auth_user SET password='$password', realname='$realname', email_usr='$email_usr', modification_usr=NOW() WHERE user_id='$u_id'";
+	    	$query = "UPDATE auth_user SET password='$password', realname='$realname', email_usr='$email_usr', modification_usr=NOW() WHERE user_id='$u_id'";
             $db->query($query);
             if ($db->affected_rows() == 0) {
                 $be->box_full($t->translate("Error"), $t->translate("Change User Parameters failed").":<br>$query");
                 break;
             }
             $bi->box_full($t->translate("Change Developer Parameters"), $t->translate("Password and/or E-Mail Address of")." <b>". $auth->auth["uname"] ."</b> ".$t->translate("is changed").".");
-			$query = "UPDATE extra_perms SET showname='$show_name', showemail='$show_email', search='$search' , contact='$contact' WHERE username='".$auth->auth["uname"]."'";
-                        $db->query($query);
+			$query = "UPDATE extra_perms SET showname='$showname', showemail='$showemail', search='$search' , contact='$contact' WHERE username='".$auth->auth["uname"]."'";
+            $db->query($query);
 			if ($ml_notify) {
 				$message  = "Username: ".$auth->auth["uname"]."\n";
 				$message .= "Realname: $realname\n";

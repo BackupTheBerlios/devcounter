@@ -1,14 +1,14 @@
 <?php
 
 ######################################################################
-# DevCounter
+# DevCounter - Open Source Developer Counter
 # ================================================
 #
 # Copyright (c) 2001 by
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de) and
-#                Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.gmd.de)
+#       Gregorio Robles (grex@scouts-es.org)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This is the XML backend (RDF-type document) of the system
@@ -18,13 +18,6 @@
 # the Free Software Foundation; either version 2 or later of the GPL.
 ###################################################################### 
 
-page_open(array("sess" => "DevCounter_Session"));
-if (isset($auth) && !empty($auth->auth["perm"])) {
-  page_close();
-  page_open(array("sess" => "DevCounter_Session",
-                  "auth" => "DevCounter_Auth",
-                  "perm" => "DevCounter_Perm"));
-}
 header("Content-Type: text/plain");
 
 // Disabling cache
@@ -55,13 +48,13 @@ echo "    <height>73</height>\n";
 echo "  </image>\n";
 
 $db = new DB_DevCounter;
-$db->query("SELECT * FROM description,auth_user WHERE description_user=username AND description.status>'1' ORDER BY description_creation DESC limit 10");
+$db->query("SELECT * FROM developers,auth_user WHERE developers.username=auth_user.username ORDER BY developers.creation DESC limit 10");
 $i=0;
 while($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>".$db->f("project_title")." ".$db->f("type")."</title>\n";
-  echo "    <link>".$sys_url."probyid.php3?id=".$db->f("proid")."</link>\n";
-  echo "    <description>".wrap($db->f("description"))."</description>\n";
+  echo "    <title>".$db->f("username")."</title>\n";
+  echo "    <link>".$sys_url."showprofile.php3?devname=".$db->f("username")."</link>\n";
+  echo "    <description>".wrap($db->f("realname"))."</description>\n";
   echo "  </item>\n";
   $i++;
 } 

@@ -47,6 +47,13 @@ $db2 = new DB_DevCounter;
     $bx->box_full($t->translate("Error"),$t->translate("Database Access failed"));
   }
   
+  // Get new developer index
+  $db->query("SELECT develid FROM developers WHERE username='$username'");
+  $db->next_record();
+
+  // Insert new counter
+  $db->query("INSERT counter SET develid='$db->f("develid")'");
+
   $counter=0;
   $query = "INSERT prog_ability_values SET  username = '$username'";
   while ($counter<$ability_amount)

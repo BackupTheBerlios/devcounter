@@ -1,14 +1,14 @@
 <?php
 ######################################################################
-# DevCounter
+# DevCounter - Open Source Developer Counter
 # ================================================
 #
 # Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org),
-#		 Susanne Gruenbaum (gruenbaum@fokus.gmd.de) and
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de)
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This file contains the verification procedure when registering
@@ -85,7 +85,7 @@ else
    htmlp_select_end(); echo "</td></tr>\n";
 
    $actual_country = $db->f("actual_country");
-   echo "<tr><td align=right width=30%>".$t->translate("Country you actually live in").":</td><td width=70%>\n";
+   echo "<tr><td align=right width=30%>".$t->translate("Country you currently live in").":</td><td width=70%>\n";
    htmlp_select("actual_country"); echo "\n";
    select_country($actual_country);
    htmlp_select_end(); echo "</td></tr>\n";
@@ -357,7 +357,7 @@ else
 
 
    $bx->box_begin();
-   $bx->box_title($t->translate("Computer experience"));
+   $bx->box_title($t->translate("Computer Experience"));
    $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 

@@ -62,24 +62,23 @@ $bx->box_begin();
 $bx->box_title($t->translate("Newest Developers"));
 $bx->box_body_begin();
 
-$db->query("SELECT * FROM auth_user, developers where auth_user.username = developers.username ORDER BY auth_user.creation_usr DESC LIMIT 0, 20");
+$db->query("SELECT * FROM auth_user, developers where auth_user.username = developers.username ORDER BY auth_user.modification_usr DESC LIMIT 0, 30");
 
 while ($db->next_record())
   {
    $user_name = $db->f("username");
-   echo "- ";
+   echo "<li>";
    $pquery["devname"] = $user_name ;
    htmlp_link("showprofile.php3",$pquery,$user_name);
-   echo "<BR>\n";
+   $timestamp = mktimestamp($db->f("modification_usr"));
+   echo " <span class=\"small\">[".timestr_short($timestamp)."]</span>\n";
   }
 
 $bx->box_body_end();
 $bx->box_end();
 
-
-
-echo "</TD></TR>";
-echo "</TABLE>";
+echo "</TD></TR>\n";
+echo "</TABLE>\n";
 
 if (empty($auth->auth["uname"]))
   {
@@ -113,7 +112,7 @@ else
 	 $bx->box_body_end();
 	 $bx->box_end();
 	}
-     }
+   }
    echo " ";
   }
 
