@@ -1,6 +1,5 @@
 <?php
 	/* PHPLIB tests */
-	$phplib = function_exists('page_open');
 	$track_vars = isset($HTTP_GET_VARS);
 ?>
 	<h3>PHPlib configuration</h3>
@@ -9,14 +8,19 @@
     	<li>track_vars: <?php echo status($track_vars) ?></li>
     	<?php if (!$track_vars) { $some_no=1; ?>
         	<li><b><font color="red">PHPLIB will not work correctly with track_vars disabled. Enable it in your config file before continuing.</font></b></li>
-    	<?php } ?> 
+    	<?php } ?>
+        <li>I am now going to try to check if PHPLIB is installed and the path is set correctly.<br>If an error occures, then you have to install PHPLIB and/or adjust the path to PHPLIB directory in include/prepend.php3</li>
+	<?php
+	require("./include/prepend.php3");
+	$phplib = function_exists('page_open');
+	?>
     	<li>PHPLIB (is page_open() defined): <?php echo status($phplib) ?></li>
     	<?php if ($phplib) { ?>
-        	<li>I am now going to try to create a <?php echo $sys_name;?>_Session class. If this line is the last thing you see, then you do not have class <?php echo $sys_name;?>_Session defined in include/local.inc. Fix that before proceeding.</li>
+        	<li>I am now going to try to create a <?php echo $sys_name;?>_Session class.<br>If an error occures, then you do not have defined class <?php echo $sys_name;?>_Session in include/local.inc. Fix it before proceeding.</li>
         	<?php $sess = @new DevCounter_Session;
         	if ($sess): ?>
-            	<li><B><font color="green">Created a <?php echo $sys_name;?>_Session instance successfully.</font></B>.</li>
+            		<li><B><font color="green">Created a <?php echo $sys_name;?>_Session instance successfully.</font></B>.</li>
         	<?php endif; ?>
-    	<?php } ?>
+        <?php } ?>
 	</ul>
 	<p>[ <a href="install.php">Go back</a> ] [ <a href="install.php?action=create_dbusr">Next</a> ]
