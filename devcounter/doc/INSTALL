@@ -2,7 +2,7 @@ Fast Installation Guide
 -----------------------
 
 You need to have a webserver (we have tested the system with Apache),
-PHP3 or PHP4, PHPLib and MySQL installed in your system.
+PHP3 or PHP4, PHPLib and MySQL installed on your system.
 
 * user$ mysql -h host -u database_superuser -p
   (insert superuser_password)
@@ -13,23 +13,23 @@ PHP3 or PHP4, PHPLib and MySQL installed in your system.
 * mysql> exit;
 * user$ tar -zxvf devcounter-x.x.tar.gz
 * user$ mysql -h host -u operator -p < devcounter/sql/devcounter.sql
-  (create tables)
+  (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/auth_user.sql
-  (insert the administrator account)
+  (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/countries.sql
-  (insert default values for countries)
+  (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/faq.sql
-  (insert default values for faq)
+  (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/languages.sql
-  (insert default values for languages)
+  (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/prog_abilities.sql
-  (insert default values for programming abilities)
+  (insert db_password)
 * user$ mysql -h host -u operator -p < devcounter/sql/prog_languages.sql
-  (insert default values for programming languages/tools)
+  (insert db_password)
 * user$ vi devcounter/include/local.inc
   (insert the correct database parameters; please, keep devcounter as the database name)
 
-   var $Host     = "localhost";
+   var $Host     = "host";
    var $Database = "devcounter";
    var $User     = "operator";
    var $Password = "password";
