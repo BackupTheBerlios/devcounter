@@ -15,7 +15,7 @@ USE devcounter;
 # Dumping data for table `auth_user`
 #
 
-INSERT INTO auth_user (user_id, username, password, realname, email_usr, modification_usr, creation_usr, perms) VALUES ('6495c2f20e082f3c243a67aa6ea6823b', 'oldfish', 'oldfish', 'Administrator', 'admin@domain.org', 20020824020258, 20011001174311, 'user,editor,admin');
+INSERT INTO auth_user (user_id, username, password, realname, email_usr, modification_usr, creation_usr, perms) VALUES ('6495c2f20e082f3c243a67aa6ea6823b', 'admin', 'admin', 'Administrator', 'admin@domain.org', 20020824020258, 20011001174311, 'user,editor,admin');
 
 #
 # Dumping data for table `countries`
@@ -1086,7 +1086,7 @@ INSERT INTO countries (code, domaine, description, language) VALUES (243, 'zw', 
 # Dumping data for table `extra_perms`
 #
 
-INSERT INTO extra_perms (username, showname, showemail, search, contact) VALUES ('oldfish', 'no', 'no', 'no', 'no');
+INSERT INTO extra_perms (username, showname, showemail, search, contact) VALUES ('admin', 'no', 'no', 'no', 'no');
 
 #
 # Dumping data for table `faq`
