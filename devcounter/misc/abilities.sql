@@ -8,7 +8,8 @@ CREATE TABLE prog_abilities (
    code int(11) NOT NULL,
    ability varchar(64) NOT NULL,
    translation varchar(64) NOT NULL,
-   colname varchar(64) NOT NULL
+   colname varchar(64) NOT NULL,
+   PRIMARY KEY (code,translation)
 );
 
 
@@ -39,6 +40,8 @@ INSERT INTO prog_abilities VALUES ('10', 'data bases', 'English','data_bases');
 INSERT INTO prog_abilities VALUES ('10', 'Datenbanken', 'German','data_bases');
 INSERT INTO prog_abilities VALUES ('11', 'documentation writing', 'English','docs');
 INSERT INTO prog_abilities VALUES ('11', 'Schreiben von Dokumentationen', 'German','docs');
+INSERT INTO prog_abilities VALUES ('12', 'translating', 'English','translate');
+INSERT INTO prog_abilities VALUES ('12', 'Übersetzen', 'German','translate');
 
 
 # --------------------------------------------------------
@@ -60,6 +63,7 @@ CREATE TABLE prog_ability_values (
    admin int(11),
    data_bases int(11),
    docs int(11),
+   translate int(11),
 
 
    PRIMARY KEY (username)
@@ -123,7 +127,8 @@ DROP TABLE IF EXISTS prog_languages;
 CREATE TABLE prog_languages (
    code int(11) NOT NULL,
    language varchar(64) NOT NULL,
-   colname varchar(64) NOT NULL
+   colname varchar(64) NOT NULL,
+   PRIMARY KEY (code)
 );
 
 

@@ -39,7 +39,7 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 } else {
 
   if (!isset($by) || empty($by)) {
-    $by = "A%";
+    $by = "%";
   }
 
   $alphabet = array ("A","B","C","D","E","F","G","H","I","J","K","L",

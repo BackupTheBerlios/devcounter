@@ -57,6 +57,15 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 
     case "lang_add":
 
+    $query = "SELECT DISTINCT code from prog_languages";
+    $db->query($query);
+    $counter=1;
+    $newcode=0;
+    while ($db->next_record() && $counter==$db->f("code"))
+      {
+        $counter++;	
+      }
+    $code=$counter;
     $query = "INSERT prog_languages SET  language = '$language', code='$code', colname='$colname'";
     $db->query($query);
     if ($db->affected_rows() == 1 )
@@ -107,16 +116,33 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 
     case "abil_add":
 
-    $query = "INSERT prog_abilities SET  ability = '$ability', code='$code', colname='$colname', translation='$translation'";
+    $query = "SELECT DISTINCT code from prog_abilities";
+    $db->query($query);
+    $counter=1;
+    $newcode=0;
+    while ($db->next_record() && $counter==$db->f("code"))
+      {
+        $counter++;	
+      }
+    $newcode=$counter;
+    $query = "INSERT prog_abilities SET  ability = '$ability', code='$newcode', colname='$colname', translation='$translation'";
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
-      $db->query("SELECT * FROM prog_abilities WHERE colname='$colname'");
+      $db->query("SELECT * FROM prog_abilities WHERE colname='$colname' ORDER BY code ASC");
       if ($db->num_rows() == 1)
         {
-         $query = "ALTER TABLE prog_ability_values ADD $colname int(11)  NOT NULL DEFAULT 0";
+	 $query = "ALTER TABLE prog_ability_values ADD $colname int(11)  NOT NULL DEFAULT 0";
+         $db->query($query);
 	}
-      $db->query($query);
+      else
+        {
+         $db->next_record();
+	 $code = $db->f("code");
+         $query = "UPDATE prog_abilities SET  code = '$code'  WHERE (code='$newcode')";
+         $db->query($query);
+	 
+	}
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
       $bx->box_body_begin();
@@ -128,7 +154,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 
     case "abil_delete":
 
-    $query = "DELETE FROM prog_abilities WHERE code='$code'";
+    $query = "DELETE FROM prog_abilities WHERE (code='$code' AND translation='$old_trans')";
     $db->query($query);
     if ($db->affected_rows() == 1 )
      {
@@ -136,8 +162,8 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
       if ($db->num_rows() == 0)
         {
          $query = "ALTER TABLE prog_ability_values DROP COLUMN $colname";
+         $db->query($query);
 	}
-      $db->query($query);
       $bx->box_begin();
       $bx->box_title($t->translate("Success"));
       $bx->box_body_begin();
@@ -159,7 +185,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
       $bx->box_begin();
       $bx->box_title($t->translate("Programming Languages"));
       $bx->box_body_begin();
-      
+      $counter=0;
       
       $bx->box_columns_begin(5);
       $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("Code")."</b>");
@@ -199,7 +225,8 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
        $bgcolor = "gold";
        htmlp_form_action("adm_langs_tools.php3",array(),"POST");
        htmlp_form_hidden("option", "lang_add" );
-       $bx->box_column("right","",$bgcolor,html_input_text("code", 5, 64, ""));
+       $bx->box_column("right","",$bgcolor,"--");
+       //$bx->box_column("right","",$bgcolor,html_input_text("code", 5, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("language", 30, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("colname", 25, 64, ""));
        //$bx->box_column("center","",$bgcolor,html_input_text("comment", 35, 400, ""));
@@ -250,6 +277,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
 	 htmlp_form_end();
 	 htmlp_form_action("adm_langs_tools.php3",array(),"POST");
 	 htmlp_form_hidden("code", $db->f("code") );
+	 htmlp_form_hidden("old_trans", $db->f("translation") );
 	 htmlp_form_hidden("colname", $db->f("colname") );
 	 htmlp_form_hidden("option", "abil_delete" );
 	 $bgcolor = "gold";
@@ -262,7 +290,8 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
        $bgcolor = "gold";
        htmlp_form_action("adm_langs_tools.php3",array(),"POST");
        htmlp_form_hidden("option", "abil_add" );
-       $bx->box_column("right","",$bgcolor,html_input_text("code", 5, 64, ""));
+       //$bx->box_column("right","",$bgcolor,html_input_text("code", 5, 64, ""));
+       $bx->box_column("right","",$bgcolor,"--");
        $bx->box_column("center","",$bgcolor,html_input_text("ability", 30, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("colname", 25, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("translation", 15, 64, ""));
