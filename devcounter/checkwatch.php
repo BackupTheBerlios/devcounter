@@ -15,6 +15,9 @@
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
+#
+# $Id: checkwatch.php,v 1.2 2002/08/26 10:15:04 helix Exp $
+#
 ######################################################################
 
 page_open(array("sess" => "DevCounter_Session",

@@ -18,6 +18,9 @@
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
+#
+# $Id: statslib.inc,v 1.4 2002/08/26 10:14:28 helix Exp $
+#
 ######################################################################
 
 ## function statslib_top($query,$var,$message,$position)

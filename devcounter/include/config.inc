@@ -4,7 +4,7 @@
 # DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
+# Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
 #       Lutz Henckel (lutz.henckel@fokus.gmd.de)
 #
@@ -16,6 +16,9 @@
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
+#
+# $Id: config.inc,v 1.12 2002/08/26 10:14:28 helix Exp $
+#
 ######################################################################
 
 ######################################################################

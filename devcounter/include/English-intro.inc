@@ -13,6 +13,4 @@ echo "Developer, which are looking for projects or want to help/assist, can subs
 
 $bx->box_body_end();
 $bx->box_end();
-
-
 ?>
