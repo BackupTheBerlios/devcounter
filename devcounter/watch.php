@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watch.php,v 1.6 2002/09/16 18:44:21 helix Exp $
+# $Id: watch.php,v 1.7 2002/09/16 21:39:40 helix Exp $
 #
 ######################################################################
 
@@ -82,7 +82,7 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
       }
       htmlp_select_end();
       echo "</td>\n";
-      if ($count >= 3) {
+      if ($count >= 2) {
          echo "</tr>\n";
          $count = 0;
       }
@@ -130,7 +130,7 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
       }
       htmlp_select_end();
       echo "</td>\n";
-      if ($count >= 3) {
+      if ($count >= 2) {
          echo "</tr>\n";
          $count = 0;
       }
