@@ -43,11 +43,14 @@ switch($phrase) {
      case "New Developer": $tmp = "Neuer Entwickler"; break;
      case "Forgot Password": $tmp = "Passwort vergessen"; break;
      case "Change Developer": $tmp = "Entwickler &auml;ndern"; break;
+     case "Developers Watch": $tmp = "Entwicklerausschau"; break;
      case "Developers": $tmp = "Entwickler"; break;
      case "Statistics": $tmp = "Statistiken"; break;
      case "Advanced Search": $tmp = "Erweiterte Suche";break;
      case "Backend": $tmp = "$phrase"; break;
      case "Modify ProgLanguages &amp; ProgTools": $tmp = "ProgSprachen und ProgTools verwalten";break;
+     case "Daily Newsletter": $tmp = "Tägl. Newsletter"; break;
+     case "Weekly Newsletter": $tmp = "Wöchentl. Newsletter"; break;
 
 //Frontpage
      case "Newest Developers": $tmp = "Neueste Entwickler"; break;
@@ -336,6 +339,7 @@ switch($phrase) {
      case "Developer did not specify a Profile yet": $tmp = "Entwickler hat bis jetzt noch keine Profildaten spezifiziert"; break;
      case "Developer does not allow to contact him": $tmp = "Entwickler erlaubt keinen Kontakt"; break;
      case "Unknown Developer": $tmp = "Entwickler unbekannt"; break;
+     case "No Developer found": $tmp = "Kein Entwickler gefunden"; break;
 
 // adm_langs_tools.php
     case "Success": $tmp = "Erfolg"; break;
@@ -409,10 +413,13 @@ switch($phrase) {
     case "Please proceed with the projects page": $tmp = "Bitte mit Projekt-Seite fortfahren"; break;
     
 // Developers watch
-    case "Set Watch": $tmp = "Setze Beobachtung"; break;
+    case "Set your Developers Watch": $tmp = "Setze Entwicklerausschau"; break;
     case "Which programming experiences you like to watch?": $tmp = "Welche Programmierfähigkeiten sollen beobachtet werden?"; break;
     case "Which languages/tools you like to watch?": $tmp = "Welche Programmiersprachen/Werkzeuge sollen beobachtet werden?"; break;
-    case "Your Developers Watch has been succesfully set": $tmp = "Ihre Entwicklerbeobachtung wurde eingerichtet"; break;
+    case "Your Developers Watch has been set succesfully": $tmp = "Ihre Entwicklerausschau wurde eingerichtet"; break;
+    case "The following Developers match with your Watch": $tmp = "Die folgenden Entwickler passen zu Ihrer Entwicklerausschau"; break;
+    case "Developers Watch Notifications were sent to": $tmp = "Ausschaumitteilungen wurden gesendet an"; break;
+    case "Send Watch Notifications": $tmp = "Sende Ausschaumitteilungen"; break;
 
 // If no translation available, keep the original phrase
       
