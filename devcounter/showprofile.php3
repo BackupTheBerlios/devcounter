@@ -115,7 +115,10 @@ else
    //$name_of_projects = $db->f("name_of_projects");
    //echo "<BR>".$t->translate("The Free Software/Open Source Projects are").": $name_of_projects";
    echo "<P>";
-   $db2->query("select * from os_projects WHERE username='$username'");
+   $db2->query("SELECT * FROM os_projects WHERE username='$username'");
+   $number_of_projects=$db2->num_rows();
+   if ($number_of_projects > 0)
+   {
    $counter=0;
    $db->query("SELECT * from os_projects ");
    $bx->box_begin();
@@ -133,7 +136,10 @@ else
       if ($counter%2 != 0) {$bgcolor = "#FFFFFF";}
       else {$bgcolor = "#E0E0E0";}
       $bx->box_column("right","",$bgcolor,$counter);
-      $bx->box_column("center","",$bgcolor,"<A HREF=\"".$db2->f("url")."\">".$db2->f("projectname")."</A>");
+      if (ereg("://",$db2->f("url")))
+      { $bx->box_column("center","",$bgcolor,"<A HREF=\"".$db2->f("url")."\">".$db2->f("projectname")."</A>"); } 
+      else
+      { $bx->box_column("center","",$bgcolor,"<A HREF=\"http://".$db2->f("url")."\">".$db2->f("projectname")."</A>"); }
       $bx->box_column("center","",$bgcolor,$db2->f("comment"));
       $bx->box_next_row_of_columns();
       $bgcolor = "#FFFFFF";
@@ -142,7 +148,7 @@ else
     $bx->box_columns_end();
     $bx->box_body_end();
     $bx->box_end();
-
+    }
 
 
    echo "</td></tr>\n";

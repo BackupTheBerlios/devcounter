@@ -200,7 +200,7 @@ if (isset($option)) {
       echo "</TD><TD>";
       htmlp_image("bar_rd_m.gif", 0, $programmer/$total_number_devs*$bar_lenght, 11, $t->translate("Programmer")." ".sprintf( "%01.2f",($programmer/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
-      htmlp_image("bar_cy_m.gif", 0, $engineer/$total_number_devs*$bar_lenght, 11, $t->translate("Engineer")." ".sprintf( "%01.2f",($engeneer/$total_number_devs)*100) ."%");
+      htmlp_image("bar_cy_m.gif", 0, $engineer/$total_number_devs*$bar_lenght, 11, $t->translate("Engineer")." ".sprintf( "%01.2f",($engineer/$total_number_devs)*100) ."%");
       echo "</TD><TD>";
       htmlp_image("bar_gr_m.gif", 0, $prof/$total_number_devs*$bar_lenght, 11, $t->translate("University professor/assistant")." ".sprintf( "%01.2f",($prof/$total_number_devs)*100) ."%");
       echo "</TD><TD>";

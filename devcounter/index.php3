@@ -62,7 +62,7 @@ $bx->box_begin();
 $bx->box_title($t->translate("Newest Developers"));
 $bx->box_body_begin();
 
-$db->query("SELECT * FROM auth_user, developers where auth_user.username = developers.username ORDER BY auth_user.creation_usr DESC LIMIT 0, 10");
+$db->query("SELECT * FROM auth_user, developers where auth_user.username = developers.username ORDER BY auth_user.creation_usr DESC LIMIT 0, 20");
 
 while ($db->next_record())
   {

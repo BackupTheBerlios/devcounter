@@ -30,6 +30,7 @@ require "header.inc";
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $bs = new box("100%",$th_strip_frame_color,$th_strip_frame_width,$th_strip_title_bgcolor,$th_strip_title_font_color,$th_strip_title_align,$th_strip_body_bgcolor,$th_strip_body_font_color,$th_strip_body_align);
+$db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
@@ -71,10 +72,15 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
   while($db->next_record()) {
   	if ($i%2 != 0) $bgcolor = "gold";
   	else $bgcolor = "#FFFFFF";
-
+ 
+	$username = $db->f("username");
 	$bx->box_column("right","",$bgcolor,$i);
 	$pquery["devname"] = $db->f("username") ;
-	$bx->box_column("center","",$bgcolor,html_link("showprofile.php3",$pquery,$db->f("username")));
+	$db2->query("SELECT * from developers,extra_perms WHERE developers.username='$username'");
+	if ($db2->num_rows() == 0)
+	{ $bx->box_column("center","",$bgcolor,$username); }
+	else
+	{ $bx->box_column("center","",$bgcolor,html_link("showprofile.php3",$pquery,$username)); }
 	if ($db->f("showname")=="yes")
 	  {
 	   $bx->box_column("center","",$bgcolor,$db->f("realname"));
