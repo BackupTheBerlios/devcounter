@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: admwatch.php,v 1.1 2002/09/16 18:45:50 helix Exp $
+# $Id: admwatch.php,v 1.2 2002/09/16 20:54:54 helix Exp $
 #
 ######################################################################  
 
@@ -54,6 +54,7 @@ if (($config_perm_admwatch != "all") && (!isset($perm) || !$perm->have_perm($con
 		$langnam[] = $db->f("colname");
 	}
 
+	$msg = "";
 	$db->query("SELECT auth_user.username,email_usr FROM prog_ability_watch,auth_user WHERE prog_ability_watch.username=auth_user.username");
 	while ($db->next_record()) {
 		$usrnam = $db->f("username");
@@ -100,12 +101,40 @@ if (($config_perm_admwatch != "all") && (!isset($perm) || !$perm->have_perm($con
 //			echo "<p>SELECT * FROM prog_language_values WHERE $where2 AND username='$fusrnam'\n";
 			while ($db3->next_record()) {
 				$count++;
-				if ($count == 1) echo "<p>The following Developers match with your ($usrnam &lt;$email&gt;) Watch:<br>\n";
 				$fusrnam2 = $db3->f("username");
-				echo "<br>$fusrnam2 (<a href=\"".$sys_url."showprofile.php?devname=$fusrnam2\">".$sys_url."showprofile.php?devname=$fusrnam2</a>)\n";
+				if (isset($notify)) {
+					if ($count == 1) {
+						$msg .= "The following Developers match with your Watch:\n\n";
+					}
+					$msg .= "$fusrnam2 (".$sys_url."showprofile.php?devname=$fusrnam2)\n";
+				} else {
+					if ($count == 1) {
+						echo "<p>".$t->translate("The following Developers match with your Watch")." ($usrnam &lt;$email&gt;):<br>\n";
+					}
+					echo "<br>$fusrnam2 (<a href=\"".$sys_url."showprofile.php?devname=$fusrnam2\">".$sys_url."showprofile.php?devname=$fusrnam2</a>)\n";
+				}
 			}
 		}	
+		if (isset($notify) && $msg != "") {
+			$subj = "[".$sys_name."] Developers Watch for ".date("l dS of F Y")."\n";
+			$msg .= "\nYou get this DevCounter Developers Watch Notification,\n";
+			$msg .= "because you have set a Developers Watch.\n";
+			$msg .= "To suppress this Notification visit\n";
+			$msg .= $sys_url."watch.php\n";
+			$msg .= "and delete your Developers Watch.\n\n";
+			$msg .= " - The DevCounter crew\n";
+//			echo "<p>$msg";
+			mail($email, $subj, $msg,
+				"From: $ml_newsfromaddr\nReply-To: $ml_newsreplyaddr\nX-Mailer: PHP");
+			$bx->box_full($t->translate("Developers Watch"), $t->translate("Developers Watch Notifications were sent to")." $usrnam (&lt;$email&gt;) ".timestr(time()));
+		}
 	}
+	?>
+	<form method="get" action="<?php $sess->pself_url() ?>">
+	<?php
+	echo "<input type=\"hidden\" name=\"notify\" value=\"send\">\n";
+	echo "<center><p><input type=\"submit\" name=\"send\" value=\"".$t->translate("Send Watch Notifications")."\"></center>\n";
+	echo "</form>\n";
 }
 ?>
 <!-- end content -->
