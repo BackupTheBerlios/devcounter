@@ -161,34 +161,190 @@ else
  
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
+   $profession = $db->f("profession");
    echo "<tr><td align=right width=30%>".$t->translate("Profession").":</td><td width=70%>\n";
    htmlp_select("profession"); echo "\n";
-   htmlp_select_option("no entry",1,$t->translate("no entry")); echo "\n";
-   htmlp_select_option("Student (IT)",0,$t->translate("Student (IT)")); echo "\n";
-   htmlp_select_option("Student (other)",0,$t->translate("Student (other)")); echo "\n";
-   htmlp_select_option("Programmer",0,$t->translate("Programmer")); echo "\n";
-   htmlp_select_option("Software Engineer",0,$t->translate("Software Engineer")); echo "\n";
-   htmlp_select_option("Other type of Engineering",0,$t->translate("Other type of Engineering")); echo "\n";
-   htmlp_select_option("University professor/assistant (IT)",0,$t->translate("University professor/assistant (IT)")); echo "\n";
-   htmlp_select_option("University professor/assistant (other)",0,$t->translate("University professor/assistant (other)")); echo "\n";
-   htmlp_select_option("Executive (IT)",0,$t->translate("Executive (IT)")); echo "\n";
-   htmlp_select_option("Executive (other)",0,$t->translate("Executive (other)")); echo "\n";
-   htmlp_select_option("Consultant (IT)",0,$t->translate("Consultant (IT)")); echo "\n";
-   htmlp_select_option("Consultant (other)",0,$t->translate("Consultant (other)")); echo "\n";
-   htmlp_select_option("Nothing to do with the software industry",0,$t->translate("Nothing to do with the software industry")); echo "\n";
+   if ($profession == "no entry") 
+     {
+      htmlp_select_option("no entry",1,$t->translate("no entry")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("no entry",0,$t->translate("no entry")); echo "\n";
+     }
+   if ($profession == "Student (IT)") 
+     {
+      htmlp_select_option("Student (IT)",1,$t->translate("Student (IT)")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Student (IT)",0,$t->translate("Student (IT)")); echo "\n";
+     }
+   if ($profession == "Student (other)") 
+     {
+      htmlp_select_option("Student (other)",1,$t->translate("Student (other)")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Student (other)",0,$t->translate("Student (other)")); echo "\n";
+     }
+   if ($profession == "Programmer") 
+     {
+      htmlp_select_option("Programmer",1,$t->translate("Programmer")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Programmer",0,$t->translate("Programmer")); echo "\n";
+     }
+   if ($profession == "Software Engineer") 
+     {
+      htmlp_select_option("Software Engineer",1,$t->translate("Software Engineer")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Software Engineer",0,$t->translate("Software Engineer")); echo "\n";
+     }
+   if ($profession == "Other type of Engineering") 
+     {
+      htmlp_select_option("Other type of Engineering",1,$t->translate("Other type of Engineering")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Other type of Engineering",0,$t->translate("Other type of Engineering")); echo "\n";
+     }
+   if ($profession == "University professor/assistant (IT)") 
+     {
+      htmlp_select_option("University professor/assistant (IT)",1,$t->translate("University professor/assistant (IT)")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("University professor/assistant (IT)",0,$t->translate("University professor/assistant (IT)")); echo "\n";
+     }
+   if ($profession == "University professor/assistant (other)") 
+     {
+      htmlp_select_option("University professor/assistant (other)",1,$t->translate("University professor/assistant (other)")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("University professor/assistant (other)",0,$t->translate("University professor/assistant (other)")); echo "\n";
+     }
+   if ($profession == "Executive (IT)") 
+     {
+      htmlp_select_option("Executive (IT)",1,$t->translate("Executive (IT)")); echo "\n";
+    }
+   else
+     {
+      htmlp_select_option("Executive (IT)",0,$t->translate("Executive (IT)")); echo "\n";
+     }
+   if ($profession == "Executive (other)") 
+     {
+      htmlp_select_option("Executive (other)",1,$t->translate("Executive (other)")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Executive (other)",0,$t->translate("Executive (other)")); echo "\n";
+     }
+   if ($profession == "Consultant (IT)") 
+     {
+      htmlp_select_option("Consultant (IT)",1,$t->translate("Consultant (IT)")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Consultant (IT)",0,$t->translate("Consultant (IT)")); echo "\n";
+     }
+   if ($profession == "Consultant (other)") 
+     {
+      htmlp_select_option("Consultant (other)",1,$t->translate("Consultant (other)")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Consultant (other)",0,$t->translate("Consultant (other)")); echo "\n";
+     }
+   if ($profession == "Nothing to do with the software industry") 
+     {
+      htmlp_select_option("Nothing to do with the software industry",1,$t->translate("Nothing to do with the software industry")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Nothing to do with the software industry",0,$t->translate("Nothing to do with the software industry")); echo "\n";
+     }
    htmlp_select_end(); echo "</td></tr>\n";
 
+   $qualification = $db->f("qualification");
    echo "<tr><td align=right width=30%>".$t->translate("Qualification").":</td><td width=70%>\n";
    htmlp_select("qualification"); echo "\n";
-   htmlp_select_option("no entry",1,$t->translate("no entry")); echo "\n";
-   htmlp_select_option("Elementary School",0,$t->translate("Elementary School")); echo "\n";
-   htmlp_select_option("High School",0,$t->translate("High School")); echo "\n";
-   htmlp_select_option("A-Level",0,$t->translate("A-Level")); echo "\n";
-   htmlp_select_option("Apprenticeship",0,$t->translate("Apprenticeship")); echo "\n";
-   htmlp_select_option("College Graduate",0,$t->translate("College Graduate")); echo "\n";
-   htmlp_select_option("University Graduate",0,$t->translate("University Graduate")); echo "\n";
-   htmlp_select_option("Master",0,$t->translate("Master")); echo "\n";
-   htmlp_select_option("PhD",0,$t->translate("PhD")); echo "\n";
+   if ($qualification == "no entry") 
+     {
+      htmlp_select_option("no entry",1,$t->translate("no entry")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("no entry",0,$t->translate("no entry")); echo "\n";
+     }
+   if ($qualification == "Elementary School") 
+     {
+      htmlp_select_option("Elementary School",1,$t->translate("Elementary School")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Elementary School",0,$t->translate("Elementary School")); echo "\n";
+     }
+   if ($qualification == "High School") 
+     {
+      htmlp_select_option("High School",1,$t->translate("High School")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("High School",0,$t->translate("High School")); echo "\n";
+     }
+   if ($qualification == "A-Level") 
+     {
+      htmlp_select_option("A-Level",1,$t->translate("A-Level")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("A-Level",0,$t->translate("A-Level")); echo "\n";
+     }
+   if ($qualification == "Apprenticeship") 
+     {
+      htmlp_select_option("Apprenticeship",1,$t->translate("Apprenticeship")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Apprenticeship",0,$t->translate("Apprenticeship")); echo "\n";
+     }
+   if ($qualification == "College Graduate") 
+     {
+      htmlp_select_option("College Graduate",1,$t->translate("College Graduate")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("College Graduate",0,$t->translate("College Graduate")); echo "\n";
+     }
+   if ($qualification == "University Graduate") 
+     {
+      htmlp_select_option("University Graduate",1,$t->translate("University Graduate")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("University Graduate",0,$t->translate("University Graduate")); echo "\n";
+     }
+   if ($qualification == "Master") 
+     {
+      htmlp_select_option("Master",1,$t->translate("Master")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("Master",0,$t->translate("Master")); echo "\n";
+     }
+   if ($qualification == "PhD") 
+     {
+      htmlp_select_option("PhD",1,$t->translate("PhD")); echo "\n";
+     }
+   else
+     {
+      htmlp_select_option("PhD",0,$t->translate("PhD")); echo "\n";
+     }
    htmlp_select_end(); echo "</td></tr>\n";
 
    echo "</table>\n";
@@ -201,8 +357,10 @@ else
    $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
-   echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" size=3 maxlength=2>\n";
-   echo "<BR>".$t->translate("Which Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"name_of_projects\" size=30 maxlength=200></td></tr>\n";
+   $number_of_projects = $db->f("number_of_projects");
+   echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" value=\"$number_of_projects\" size=3 maxlength=2>\n";
+   $name_of_projects = $db->f("name_of_projects");
+   echo "<BR>".$t->translate("Which Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"name_of_projects\" value=\"$name_of_projects\" size=30 maxlength=200></td></tr>\n";
   
 
    echo "</TABLE>";
