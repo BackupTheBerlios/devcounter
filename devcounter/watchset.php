@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: watchset.php,v 1.7 2002/09/17 09:42:22 helix Exp $
+# $Id: watchset.php,v 1.8 2002/09/17 10:23:33 helix Exp $
 #
 ######################################################################
 
@@ -72,7 +72,11 @@ if (($config_perm_watch != "all") && (!isset($perm) || !$perm->have_perm($config
 	}
 	if ($update) $query2 .= " WHERE username='$username'";
 	$db->query($query2);
-	$bx->box_full($t->translate("Done"), $t->translate("Your Developers Watch has been set succesfully"));
+	$bx->box_full($t->translate("Done"),
+		$t->translate("Your Developers Watch has been set succesfully")
+		.".<br>"
+		.$t->translate("You will be informed by email, if developers with corresponding abilities and expriences becomes available")
+		.".");
 
 	} elseif (isset($action) && $action == "delete") {
 		$db->query("DELETE FROM prog_ability_watch WHERE username='$username'");

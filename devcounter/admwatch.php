@@ -16,7 +16,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: admwatch.php,v 1.3 2002/09/17 09:42:22 helix Exp $
+# $Id: admwatch.php,v 1.4 2002/09/17 10:23:33 helix Exp $
 #
 ######################################################################  
 
@@ -42,7 +42,7 @@ $db3 = new DB_DevCounter;
 
 <!-- content -->
 <?php
-if (($config_perm_admwatch != "all") && (!isset($perm) || !$perm->have_perm($config_perm_admwatch))) {
+if (!isset($notify) && ($config_perm_admwatch != "all") && (!isset($perm) || !$perm->have_perm($config_perm_admwatch))) {
 	$be->box_full($t->translate("Error"), $t->translate("Access denied"));
 } else {
 	$db->query("SELECT colname FROM prog_abilities WHERE translation='English'");

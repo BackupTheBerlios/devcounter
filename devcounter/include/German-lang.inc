@@ -422,6 +422,7 @@ switch($phrase) {
     case "The following Developers match with the Watch of": $tmp = "Die folgenden Entwickler passen zur Entwicklerausschau von"; break;
     case "Developers Watch Notification was sent to": $tmp = "Ausschaumitteilung wurde gesendet an"; break;
     case "Send Watch Notifications": $tmp = "Sende Ausschaumitteilungen"; break;
+    case "You will be informed by email, if developers with corresponding abilities and expriences becomes available": $tmp = "Sie werden per eMail benachrichtigt, wenn Entwickler mit entsprechenden Kenntnissen und Erfahrungen verfügbar sind"; break;
 
 // If no translation available, keep the original phrase
       
