@@ -93,7 +93,7 @@ if (isset($option)) {
       $bx->box_begin();
       $bx->box_title($t->translate("General $sys_name Statistics"));
       $bx->box_body_begin();
-      echo $t->translate("Total nuber of developers")." : ".$total_number_devs."\n";
+      echo $t->translate("Total number of developers")." : ".$total_number_devs."\n";
       $bx->box_body_end();
       $bx->box_end();
 

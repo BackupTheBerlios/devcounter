@@ -39,6 +39,17 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 <!-- content -->
 <?php
 
+
+
+
+  switch($option) {
+
+// Abilities
+    case "abilities":
+
+
+
+
 $request_amount = 0;
 $hit_amount =0;
 
@@ -99,6 +110,46 @@ else
   }
 $bx->box_body_end();
 $bx->box_end();
+
+
+
+     break;
+
+    case "projects":
+
+      $bx->box_begin();
+      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_body_begin();
+      echo $t->translate("Not yet implemented")."\n";
+      $bx->box_body_end();
+      $bx->box_end();
+
+      break;
+
+    case "lang":
+
+      $bx->box_begin();
+      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_body_begin();
+      echo $t->translate("Not yet implemented")."\n";
+      $bx->box_body_end();
+      $bx->box_end();
+
+      break;
+
+    case "country":
+
+      $bx->box_begin();
+      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_body_begin();
+      echo $t->translate("Not yet implemented")."\n";
+      $bx->box_body_end();
+      $bx->box_end();
+
+      break;
+
+   }
+
 
 ?>
 <!-- end content -->
