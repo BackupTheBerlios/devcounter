@@ -37,7 +37,7 @@ PHP3 or PHP4, PHPLib and MySQL installed on your system.
 Ok, that's it. You've finished installing and configuring
 DevCounter. Start your browser and visit
 http://yourserver/devcounter/index.php.
-As you'll see, DevCounter comes with only with the administrator.
+As you'll see, DevCounter comes only with the administrator.
 You can modify your profile by entering as an administrator.
 To do so, login as the default administrator with user,editor,admin
 permissions. At the prompt use the following ID to login
