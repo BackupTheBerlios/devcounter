@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: searchdev.php,v 1.6 2002/09/03 10:43:45 helix Exp $
+# $Id: searchdev.php,v 1.7 2002/09/17 11:46:45 helix Exp $
 #
 ######################################################################
 
@@ -103,7 +103,7 @@ $bx->box_end();
      {
       $counter++;
       $db->next_record();
-      if (($counter % 3)==1)
+      if (($counter % 2)==1)
          echo "<tr><td width=33%>\n";
       else
          echo "<td width=33%>\n";
@@ -121,13 +121,13 @@ $bx->box_end();
       htmlp_select_end();
       echo"</td></tr></table>";
      
-      if (($counter % 3)==0)
+      if (($counter % 2)==0)
          echo "</td></tr>\n\n";
       else
          echo "</td>\n";
      }
      
-   if (($counter % 3)==0)
+   if (($counter % 2)==0)
       echo "</tr>\n\n";
 
    htmlp_form_hidden("ability_amount", $ability_amount);
@@ -149,7 +149,7 @@ $bx->box_end();
      {
       $counter++;
       $db->next_record();
-      if (($counter % 3)==1)
+      if (($counter % 2)==1)
          echo "<tr><td width=33%>\n";
       else
         echo "<td width=33%>\n";
@@ -167,13 +167,13 @@ $bx->box_end();
       htmlp_select_end();
       echo"</td></tr></table>";
      
-      if (($counter % 3)==0)
+      if (($counter % 2)==0)
          echo "</td></tr>\n\n";
       else
          echo "</td>\n";
      }
      
-   if (($counter % 3)==0)
+   if (($counter % 2)==0)
       echo "</tr>\n\n";
 
    htmlp_form_hidden("lang_amount", $lang_amount);
@@ -218,7 +218,7 @@ $bx->box_end();
      {
       $counter++;
       $db->next_record();
-      if (($counter % 3)==1)
+      if (($counter % 2)==1)
          echo "<tr><td width=33%>\n";
       else
          echo "<td width=33%>\n";
@@ -234,13 +234,13 @@ $bx->box_end();
       htmlp_select_end();
       echo"</td></tr></table>";
      
-      if (($counter % 3)==0)
+      if (($counter % 2)==0)
          echo "</td></tr>\n\n";
       else
          echo "</td>\n";
      }
      
-   if (($counter % 3)==0)
+   if (($counter % 2)==0)
       echo "</tr>\n\n";
 
    htmlp_form_hidden("ability_amount", $ability_amount);
@@ -262,7 +262,7 @@ $bx->box_end();
      {
       $counter++;
       $db->next_record();
-      if (($counter % 3)==1)
+      if (($counter % 2)==1)
          echo "<tr><td width=33%>\n";
       else
         echo "<td width=33%>\n";
@@ -278,13 +278,13 @@ $bx->box_end();
       htmlp_select_end();
       echo"</td></tr></table>";
      
-      if (($counter % 3)==0)
+      if (($counter % 2)==0)
          echo "</td></tr>\n\n";
       else
          echo "</td>\n";
      }
      
-   if (($counter % 3)==0)
+   if (($counter % 2)==0)
       echo "</tr>\n\n";
 
    htmlp_form_hidden("lang_amount", $lang_amount);
