@@ -34,6 +34,10 @@ $bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+
+$db2 = new DB_DevCounter;
+
+ 
 ?>
 
 <!-- content -->
@@ -58,7 +62,7 @@ else
    $bx->box_body_begin();
   
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
-   htmlp_form_action("insert.php3","POST");
+   htmlp_form_action("update2db.php3","POST");
    echo "\n";
 /*
    $db->query("SELECT * from auth_user WHERE user_id='$user__id'");
@@ -386,16 +390,64 @@ else
         {
          echo "<td width=33%>\n";
         }
+      $ability_value = 0;
+      $ability_code = $db->f("code");
+      $db2->query("select * from prog_abilities_values WHERE code='$ability_code' AND username='$username'");
+      $db2->next_record();
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("ability")."\n";
+      $ability_value = $db2->f("value");
       echo "</td><td width=20%>";
-      htmlp_select("ability[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("no experiences"));
-      htmlp_select_option("1",0,$t->translate("very little experience"));
-      htmlp_select_option("2",0,$t->translate("some experience")); 
-      htmlp_select_option("3",0,$t->translate("Done this some times"));
-      htmlp_select_option("4",0,$t->translate("No problem"));
-      htmlp_select_option("5",0,$t->translate("Is my second nature"));
+      htmlp_select("ability[".$ability_code."]"); 
+      
+      if ($ability_value == 0)
+        {
+         htmlp_select_option("0",1,$t->translate("no experiences"));
+	}
+      else
+        {
+	 htmlp_select_option("0",0,$t->translate("no experiences"));
+	}
+      if ($ability_value == 1)
+        {
+         htmlp_select_option("1",1,$t->translate("very little experience"));
+	}
+      else
+        {
+	 htmlp_select_option("1",0,$t->translate("very little experience"));
+	}
+      if ($ability_value == 2)
+        {
+         htmlp_select_option("2",1,$t->translate("some experience")); 
+	}
+      else
+        {
+         htmlp_select_option("2",0,$t->translate("some experience")); 
+	}
+      if ($ability_value == 3)
+        {
+         htmlp_select_option("3",1,$t->translate("Done this some times"));
+	}
+      else
+        {
+         htmlp_select_option("3",0,$t->translate("Done this some times"));
+	}
+      if ($ability_value == 4)
+        {
+         htmlp_select_option("4",1,$t->translate("No problem"));
+	}
+      else
+        {
+         htmlp_select_option("4",0,$t->translate("No problem"));
+	}
+      if ($ability_value == 5)
+        {
+         htmlp_select_option("5",1,$t->translate("Is my second nature"));
+	}
+      else
+        {
+         htmlp_select_option("5",0,$t->translate("Is my second nature"));
+	}
       htmlp_select_end();
       echo"</td></tr></table>";
      
@@ -441,16 +493,65 @@ else
         {
         echo "<td width=33%>\n";
         }
+      $ability_value = 0;
+      $ability_code = $db->f("code");
+      $db2->query("select * from prog_languages_values WHERE code='$ability_code' AND username='$username'");
+      $db2->next_record();
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("language")."\n";
+      $ability_value = $db2->f("value");
       echo "</td><td width=20%>";
       htmlp_select("lang[".$db->f("code")."]"); 
-      htmlp_select_option("0",1,$t->translate("no experiences"));
-      htmlp_select_option("1",0,$t->translate("very little experience"));
-      htmlp_select_option("2",0,$t->translate("some experience")); 
-      htmlp_select_option("3",0,$t->translate("Done this some times"));
-      htmlp_select_option("4",0,$t->translate("No problem"));
-      htmlp_select_option("5",0,$t->translate("Is my second nature"));
+      
+      if ($ability_value == 0)
+        {
+         htmlp_select_option("0",1,$t->translate("no experiences"));
+	}
+      else
+        {
+	 htmlp_select_option("0",0,$t->translate("no experiences"));
+	}
+      if ($ability_value == 1)
+        {
+         htmlp_select_option("1",1,$t->translate("very little experience"));
+	}
+      else
+        {
+	 htmlp_select_option("1",0,$t->translate("very little experience"));
+	}
+      if ($ability_value == 2)
+        {
+         htmlp_select_option("2",1,$t->translate("some experience")); 
+	}
+      else
+        {
+         htmlp_select_option("2",0,$t->translate("some experience")); 
+	}
+      if ($ability_value == 3)
+        {
+         htmlp_select_option("3",1,$t->translate("Done this some times"));
+	}
+      else
+        {
+         htmlp_select_option("3",0,$t->translate("Done this some times"));
+	}
+      if ($ability_value == 4)
+        {
+         htmlp_select_option("4",1,$t->translate("No problem"));
+	}
+      else
+        {
+         htmlp_select_option("4",0,$t->translate("No problem"));
+	}
+      if ($ability_value == 5)
+        {
+         htmlp_select_option("5",1,$t->translate("Is my second nature"));
+	}
+      else
+        {
+         htmlp_select_option("5",0,$t->translate("Is my second nature"));
+	}
+
       htmlp_select_end();
       echo"</td></tr></table>";
      

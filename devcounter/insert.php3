@@ -48,7 +48,7 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
   while ($counter<$ability_amount)
     {
      $counter++;
-     $query = "INSERT prog_abilities_values SET  username = '$username', code = $counter, value = $ability[$counter]";
+     $query = "INSERT prog_abilities_values SET  username = '$username', code = '$counter', value = '$ability[$counter]'";
      $db->query($query);
     }
 
@@ -57,7 +57,7 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
   while ($counter<$lang_amount)
     {
      $counter++;
-     $query = "INSERT prog_languages_values SET  username = '$username', code = $counter, value = $lang[$counter]";
+     $query = "INSERT prog_languages_values SET  username = '$username', code = '$counter', value = '$lang[$counter]'";
      $db->query($query);
     }
 
