@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: req_compose.php,v 1.3 2002/10/19 12:13:24 Masato Exp $
+# $Id: req_compose.php,v 1.4 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################
 
@@ -52,7 +52,7 @@ else
   {
    $username= $auth->auth["uname"];
    $bx->box_begin();
-   $bx->box_title($t->translate("make request"));
+   $bx->box_title($t->translate("Create a new Request"));
    $bx->box_body_begin();
    htmlp_form_action("req_manage.php", "", "POST");
    htmlp_form_hidden("option", "send" );

@@ -17,13 +17,13 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: backend.php,v 1.5 2002/10/19 12:13:24 Masato Exp $
+# $Id: backend.php,v 1.6 2003/02/26 13:19:11 masato Exp $
 #
 ###################################################################### 
 
 require "./include/prepend.php3";
 
-header("Content-Type: text/plain");
+header("Content-Type: text/xml");
 
 // Disabling cache
 header("Cache-Control: no-cache, must-revalidate");     // HTTP/1.1
@@ -55,15 +55,15 @@ echo "    <height>73</height>\n";
 echo "  </image>\n";
 
 echo "  <item>\n";
-echo "    <title><b>Developers:</b></title>";
-echo "    <link>http://devcounter.berlios.de/</link>";
+echo "    <title><b>Developers:</b></title>\n";
+echo "    <link>http://devcounter.berlios.de/</link>\n";
 echo "  </item>\n";
 
-$db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.username=auth_user.username AND developers.username=extra_perms.username ORDER BY developers.creation DESC limit 10");
+$db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.username=auth_user.username AND developers.username=extra_perms.username ORDER BY developers.creation DESC limit 5");
 $i=0;
 while($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>&nbsp;&nbsp;&nbsp;".$db->f("username");
+  echo "    <title>".$db->f("username");
   if ($db->f("showname") == "yes")
     echo " (".$db->f("realname").")";
   $timestamp = mktimestamp($db->f("creation"));
@@ -75,15 +75,15 @@ while($db->next_record()) {
 } 
 
 echo "  <item>\n";
-echo "    <title><b>Requests:</b></title>";
-echo "    <link>http://devcounter.berlios.de/req_show.php</link>";
+echo "    <title><b>Requests:</b></title>\n";
+echo "    <link>http://devcounter.berlios.de/req_show.php</link>\n";
 echo "  </item>\n";
 
-$db->query("SELECT * FROM requests ORDER BY reqtime DESC LIMIT 0,10");
+$db->query("SELECT * FROM requests ORDER BY reqtime DESC LIMIT 0,5");
 
 while ($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>&nbsp;&nbsp;&nbsp;".$db->f("reqsubject");
+  echo "    <title>".$db->f("reqsubject");
   $timestamp = mktimestamp($db->f("reqtime"));
   echo " [".timestr_short($timestamp)."]";
   echo "</title>\n";

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: showprofile.php,v 1.6 2002/08/27 22:36:15 helix Exp $
+# $Id: showprofile.php,v 1.7 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################
 
@@ -47,6 +47,38 @@ if ($db->num_rows() == 0)
   {
       
    $be->box_full($t->translate("Error"), $t->translate("Developer did not specify a Profile yet"));
+   
+   
+   
+   echo "<CENTER><TABLE BORDER=\"0\" WIDTH=\"60%\">";
+   echo "<TR><TD VALIGN=\"top\">";
+
+   switch ($la) {
+   case "English":
+   	require("./include/English-intro.inc");
+   	break;
+   case "German":
+   	require("./include/German-intro.inc");
+   	break;
+   /*
+   case "Spanish":
+   	require("./include/Spanish-lang.inc");
+   	break;
+   case "French":
+   	require("./include/French-lang.inc");
+   	break;
+   */
+   default:
+   	require("./include/English-intro.inc");
+   	break;
+   }
+   echo " ";
+
+   echo "</TD></TR></TABLE></CENTER>";
+
+   
+   
+   
   }
 else
   {
@@ -104,10 +136,10 @@ else
    print_lang($other_lang_2);
    echo "</td></tr>\n";
 
-   if ($db->f("contact")=="yes") {
+   if ($db->f("contact")!="no") {
       echo "<tr><td align=right width=30%>".$t->translate("Contact").":</td><td width=70%>";
       $pquery["devname"] = $db->f("username") ;
-      htmlp_link("mailform.php",$pquery,$t->translate("write Developer"));
+      htmlp_link("pmess_compose.php",$pquery,$t->translate("write Developer"));
    }
 
    if ($db->f("showemail") == "yes") {

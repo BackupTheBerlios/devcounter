@@ -362,6 +362,17 @@ CREATE TABLE requests (
 ) TYPE=MyISAM;
 
 
+CREATE TABLE pmessages (
+  pmessid bigint(20) unsigned NOT NULL auto_increment,
+  pmesstime timestamp(14) NOT NULL,
+  pmessfrom varchar(124) NOT NULL default '',
+  pmessstatus varchar(64) NOT NULL default '',
+  pmessto varchar(64) NOT NULL default '',
+  pmesssubject varchar(64) NOT NULL default '',
+  pmessmessage text NOT NULL,
+  PRIMARY KEY  (pmessid)
+) TYPE=MyISAM;
+
 
 
 

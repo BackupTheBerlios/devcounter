@@ -4,6 +4,10 @@ $bx->box_begin();
 $bx->box_title("Einf¸hrung");
 $bx->box_body_begin();
 
+echo "<B>DevCounter</B> ist ein offener, freier und unabh&auml;ngiger Entwicklerpool \n";
+echo "der erstellt wurde um Entwicklern zu helfen andere Entwickler, Tester, Hilfe und \n";
+echo "neue Projektmitglieder zu finden\n";
+echo "<P>";
 echo "<B>DevCounter</B> befragt Open-Source-Entwickler nach ihren Kentnissen\n";
 echo "und Erfahrungen sowie der Mitarbeit an Open-Source-Projekten.\n";
 echo "Auﬂerdem erlaubt <B>DevCounter</B> die zielgerichtete Suche nach Entwicklern\n";

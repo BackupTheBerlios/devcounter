@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: index.php,v 1.9 2002/10/19 12:13:24 Masato Exp $
+# $Id: index.php,v 1.10 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################  
 
@@ -93,45 +93,10 @@ echo " ";
 
 echo "</TD><TD WIDTH=\"250\" VALIGN=\"top\">";
 
-$bx->box_begin();
-$bx->box_title($t->translate("Newest Requests"));
-$bx->box_body_begin();
+require("./include/Box-Newest-Requests.inc");
+require("./include/Box-Newest-Developers.inc");
+require("./include/Box-Newest-PMessages.inc");
 
-$db->query("SELECT * FROM requests ORDER BY reqtime DESC LIMIT 0,10");
-
-while ($db->next_record()) {
-	$reqsubject = $db->f("reqsubject");
-	$reqid = $db->f("reqid");
-	echo "<li>";
-	$pquery["reqid"] = $reqid ;
-	htmlp_link("req_show.php",$pquery,$reqsubject);
-	echo " (".$db->f("username").")";
-	$timestamp = mktimestamp($db->f("reqtime"));
-	echo "\n<br>&nbsp;&nbsp;&nbsp;<span class=\"small\">[".timestr_short($timestamp)."]</span>\n";
-}
-
-$bx->box_body_end();
-$bx->box_end();
-
-$bx->box_begin();
-$bx->box_title($t->translate("Newest Developers"));
-$bx->box_body_begin();
-
-$db->query("SELECT * FROM auth_user,developers,extra_perms where auth_user.username=developers.username AND auth_user.username=extra_perms.username ORDER BY developers.creation DESC LIMIT 0,10");
-
-while ($db->next_record()) {
-	$user_name = $db->f("username");
-	echo "<li>";
-	$rquery["devname"] = $user_name ;
-	htmlp_link("showprofile.php",$rquery,$user_name);
-	if ($db->f("showname") == "yes")
-		echo " (".$db->f("realname").")";
-	$timestamp = mktimestamp($db->f("creation"));
-	echo "\n<br>&nbsp;&nbsp;&nbsp;<span class=\"small\">[".timestr_short($timestamp)."]</span>\n";
-}
-
-$bx->box_body_end();
-$bx->box_end();
 
 echo "</TD></TR>\n";
 echo "</TABLE>\n";

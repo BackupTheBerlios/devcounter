@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: chguser.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: chguser.php,v 1.5 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################
 
@@ -54,7 +54,7 @@ while (is_array($HTTP_POST_VARS)
 	    	if ($showname == "on") {$showname = "yes";} else {$showname = "no";}
 	    	if ($showemail == "on") {$showemail = "yes";} else {$showemail = "no";}
 	    	if ($search == "on") {$search = "yes";} else {$search = "no";}
-	    	if ($contact == "on") {$contact = "yes";} else {$contact = "no";}
+	    	//if ($contact == "on") {$contact = "yes";} else {$contact = "no";}
 	    
 	    	$query = "UPDATE auth_user SET password='$password', realname='$realname', email_usr='$email_usr', modification_usr=NOW() WHERE user_id='$u_id'";
             $db->query($query);
@@ -81,7 +81,7 @@ while (is_array($HTTP_POST_VARS)
 }
 
 $bx->box_begin();
-$bx->box_title($t->translate("Change Developer Parameters"));
+$bx->box_title($t->translate("Change my Settings"));
 $bx->box_body_begin();
 echo "<table border=0 align=\"center\" cellspacing=0 cellpadding=3>\n";
 $db->query("select * from auth_user,extra_perms where auth_user.username='".$auth->auth["uname"]."' and extra_perms.username='".$auth->auth["uname"]."'");
@@ -142,15 +142,51 @@ echo $t->translate("allow to be searched") ?></td>
 <tr valign=middle align=left>
 <td align=right>
 <?php 
-if ($db->f("contact")=="yes")
+echo $t->translate("personal message behavior");
+echo"</td><td>";
+htmlp_select("contact");
+switch($db->f("contact"))
+  {
+   case "yes":
+   htmlp_select_option("yes",1,$t->translate("mail me a copy of each personal message"));
+   htmlp_select_option("dai",0,$t->translate("mail me a list of new personal messages once a day"));
+   htmlp_select_option("wee",0,$t->translate("mail me a list of new personal messages once a week"));
+   htmlp_select_option("no",0,$t->translate("don't allow any personal messages"));
+   break;
+   
+   case "dai":
+   htmlp_select_option("yes",0,$t->translate("mail me a copy of each personal message"));
+   htmlp_select_option("dai",1,$t->translate("mail me a list of new personal messages once a day"));
+   htmlp_select_option("wee",0,$t->translate("mail me a list of new personal messages once a week"));
+   htmlp_select_option("no",0,$t->translate("don't allow any personal messages"));
+   break;
+   
+   case "wee":
+   htmlp_select_option("yes",0,$t->translate("mail me a copy of each personal message"));
+   htmlp_select_option("dai",0,$t->translate("mail me a list of new personal messages once a day"));
+   htmlp_select_option("wee",1,$t->translate("mail me a list of new personal messages once a week"));
+   htmlp_select_option("no",0,$t->translate("don't allow any personal messages"));
+   break;
+   
+   case "no":
+   htmlp_select_option("yes",0,$t->translate("mail me a copy of each personal message"));
+   htmlp_select_option("dai",0,$t->translate("mail me a list of new personal messages once a day"));
+   htmlp_select_option("wee",0,$t->translate("mail me a list of new personal messages once a week"));
+   htmlp_select_option("no",1,$t->translate("don't allow any personal messages"));
+   break;
+   
+  }
+htmlp_select_end(); 
+/*if ($db->f("contact")=="yes")
   {
    echo"<input type=\"checkbox\" name=\"contact\" checked></td><td>";
   }
 else
   {
   echo"<input type=\"checkbox\" name=\"contact\"></td><td>";
-  }
-echo $t->translate("allow to be contacted by DevCounter") ?></td>
+  }*/
+  ?>
+
 </tr>
 <?php
 	$time = mktimestamp($db->f("modification_usr"));

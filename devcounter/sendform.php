@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: sendform.php,v 1.5 2002/08/27 11:16:59 helix Exp $
+# $Id: sendform.php,v 1.6 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################  
 
@@ -40,30 +40,25 @@ $be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolo
 
 <!-- content -->
 <?php
-$db->query("SELECT * from extra_perms,auth_user WHERE auth_user.username='$devname' AND extra_perms.username='$devname'");
-   if ($db->num_rows() ==0)
-     {
-      $be->box_full($t->translate("Error"), $t->translate("Unknown Developer"));
-     }
-   else
-     {
-      $db->next_record();
-      //echo ".- ".$db->f("username").$db->num_rows()." -.";
-      if ($db->f("contact")=="yes")
-        {
+
+if (empty($auth->auth["uname"]))
+  {
+   $be->box_full($t->translate("Not logged in"), $t->translate("Please login first"));
+  }
+else
+  {
          $bx->box_begin();
          $bx->box_title($t->translate("contact developer"));
          $bx->box_body_begin();
-         mail($db->f("email_usr"),"[$sys_name] $subject",$body,"From: $s_email\nReply-To: $s_email\nX-Mailer: PHP");
+         mail($pmessto,"[$sys_name] $pmesssubject",$pmessmessage,"From: $s_email\nReply-To: $s_email\nX-Mailer: PHP");
 	 echo $t->translate("Message sent");
+	 //echo "<BR><BR>";
+	 //echo  "(from $s_email)<BR>(to $pmessto)";
          $bx->box_body_end();
          $bx->box_end();
-        }
-      else
-        {
-         $be->box_full($t->translate("Error"), $t->translate("Developer does not allow to contact him"));
-	}
-     }
+
+
+  }
    echo " ";
 ?>
 <!-- end content -->

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: sitebar.php,v 1.5 2002/09/25 10:05:19 helix Exp $
+# $Id: sitebar.php,v 1.6 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################  
 
@@ -64,17 +64,35 @@ $bx->box_body_begin();
 echo "<a href=\"$sys_url_title\" target=\"_content\"><img src=\"$sys_logo_small_image\" border=\"0\" height=\"$sys_logo_small_heigth\" width=\"$sys_logo_small_width\" ALT=\"$sys_logo_small_alt\"></a>";
 $bx->box_body_end();
 $bx->box_end();
+
 $bx->box_begin();
-$bx->box_title("<font size=\"1\">".$t->translate("Newest Developers")."</font>");
-$db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.username=auth_user.username AND developers.username=extra_perms.username ORDER BY developers.creation DESC limit 20");
+$bx->box_title("<font size=\"1\">".$t->translate("Newest Requests")."</font>");
+$db->query("SELECT * FROM requests ORDER BY reqtime DESC limit 10");
 $i=0;
 $bx->box_body_begin();
 while($db->next_record()) {
-  echo "<li><font size=\"1\"><a href=\"".$sys_url."showprofile.php?devname=".$db->f("username")."\" target=\"_content\">".$db->f("username")."</a>";
+  echo "<div class=newsind>&#149;&nbsp;";
+  echo "<a href=\"".$sys_url."req_show.php?reqid=".$db->f("reqid")."\" target=\"_content\">".$db->f("reqsubject")."</a>";
+  $timestamp = mktimestamp($db->f("reqtime"));
+  echo "<br>[".timestr_short($timestamp)."]</div>\n";
+  $i++;
+}
+echo "<p><b><font size=\"1\"><a href=\"".$sys_url."req_show.php\" target=\"_content\">more...</a></font></b>\n";
+$bx->box_body_end();
+$bx->box_end();
+
+$bx->box_begin();
+$bx->box_title("<font size=\"1\">".$t->translate("Newest Developers")."</font>");
+$db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.username=auth_user.username AND developers.username=extra_perms.username ORDER BY developers.creation DESC limit 10");
+$i=0;
+$bx->box_body_begin();
+while($db->next_record()) {
+  echo "<div class=newsind>&#149;&nbsp;";
+  echo "<a href=\"".$sys_url."showprofile.php?devname=".$db->f("username")."\" target=\"_content\">".$db->f("username")."</a>";
   if ($db->f("showname") == "yes")
-    echo "<br>&nbsp;&nbsp;&nbsp;(".$db->f("realname").")";
+    echo "<br>(".$db->f("realname").")";
   $timestamp = mktimestamp($db->f("creation"));
-  echo "<br>&nbsp;&nbsp;&nbsp;[".timestr_short($timestamp)."]</font></li>\n";
+  echo "<br>[".timestr_short($timestamp)."]</div>\n";
   $i++;
 }
 echo "<p><b><font size=\"1\"><a href=\"".$sys_url."\" target=\"_content\">more...</a></font></b>\n";

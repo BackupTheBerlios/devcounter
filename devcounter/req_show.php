@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: req_show.php,v 1.3 2002/10/19 12:13:24 Masato Exp $
+# $Id: req_show.php,v 1.4 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################
 
@@ -63,11 +63,11 @@ if (!isset($reqid) || empty($reqid))
         { $new_offset=0; }
       $nquery["offset"] =  $new_offset;
       $nquery["limit"] =  $limit;
-      $msg .= " ".html_link("req_show.php",$nquery,"&lt; ".$t->translate("previous page"))." | ";
+      $msg .= " &lt; ".html_link("req_show.php",$nquery,$t->translate("previous page"))." | ";
      }
    else
      {
-      $msg .= "&lt; ".$t->translate("previous page")." | ";
+      $msg .= "&lt; ".$t->translate("previous page")." |";
      }
 
    $new_offset = $offset+$limit;
@@ -76,7 +76,7 @@ if (!isset($reqid) || empty($reqid))
      {
       $nquery["offset"] =  $new_offset;
       $nquery["limit"] =  $limit;
-      $msg .= " ".html_link("req_show.php",$nquery," ".$t->translate("next page"))." &gt; ";
+      $msg .= " ".html_link("req_show.php",$nquery,$t->translate("next page"))." &gt; ";
       
      }   
    else
@@ -172,7 +172,7 @@ else
       $bx->box_begin();
       $bx->box_body_begin();
       $bx->box_columns_begin(2);
-      $bx->box_colspan(2,"center",$th_strip_title_bgcolor,"<b><FONT SIZE=+2>".$reqsubject."</FONT></b>","");
+      $bx->box_colspan(2,"center",$th_strip_title_bgcolor,"<b>".$reqsubject."</b>","");
       $bgcolor = "#FFFFFF";
 
       $bx->box_next_row_of_columns();
@@ -243,7 +243,7 @@ else
       
       $bx->box_next_row_of_columns();
       $reqmessage=$db->f("reqmessage");
-      $bx->box_colspan(2,"left",$bgcolor,"<B>".$t->translate("Content").":</B> &nbsp;<BR>\n"."<PRE>".$reqmessage."</PRE>");
+      $bx->box_colspan(2,"left",$bgcolor,"<B>".$t->translate("Content").":</B> &nbsp;<BR>\n".$reqmessage);
       $bx->box_next_row_of_columns();
       
       $bx->box_columns_end();

@@ -6,36 +6,61 @@
 </tr>
 
 <tr ALIGN=RIGHT BGCOLOR="<?php echo $th_nav_bgcolor;?>">
-<td><a href="<?php $sess->purl("index.php") ?>" class="menus"><?php echo $t->translate("Index"); ?></a>
-<br><a href="<?php $sess->purl("faq.php") ?>" class="menus"><?php echo $t->translate("Q&amp;A"); ?></a>
 
-<br>
+<td>
 <?php
 if (isset($auth) && !empty($auth->auth["perm"]) && !($logout) ) 
   {
    if ($perm->have_perm("pending") || $perm->have_perm("user") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
      {
       ?>
-      <br><a href="<?php $sess->purl("logout.php") ?>" class="menus"><?php echo $t->translate("Logout"); ?></a>
+      <a href="<?php $sess->purl("logout.php") ?>" class="menus"><?php echo $t->translate("Logout"); ?></a>
       <?php
      }
-  } 
+  }
 else 
   {
    ?>
-   <br><a href="<?php $sess->purl("login.php") ?>" class="menus"><?php echo $t->translate("Login"); ?></a>
+   <a href="<?php $sess->purl("login.php") ?>" class="menus"><?php echo $t->translate("Login"); ?></a>
    <?php
   }
 ?>
+<br>
+<br><a href="<?php $sess->purl("index.php") ?>" class="menus"><?php echo $t->translate("Index"); ?></a>
+
+<br><a href="<?php $sess->purl("faq.php") ?>" class="menus"><?php echo $t->translate("Q&amp;A"); ?></a>
+
+
 <br><a href="<?php $sess->purl("register.php") ?>" class="menus"><?php echo $t->translate("New Developer"); ?></a>
 <br><a href="<?php $sess->purl("remind.php") ?>" class="menus"><?php echo $t->translate("Forgot Password"); ?></a>
+<br><a href="<?php $sess->purl("users.php") ?>" class="menus"><?php echo $t->translate("Developers List"); ?></a>
+<br><a href="<?php $sess->purl("req_show.php") ?>" class="menus"><?php echo $t->translate("Show Requests"); ?></a>
+<br><a href="<?php $sess->purl("newsletter.php"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
+<br><a href="<?php $sess->purl("backend.php"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>
+<br><a href="<?php $sess->purl("stats.php?option=general"); ?>" class="menus"><?php echo $t->translate("Statistics"); ?></a>
+</td>
+</tr>
+</table>
+<!-- end BerliOS menu -->
+
+<!-- Personal menu -->
+   <table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="100%">
+   
 <?php
 if (isset($auth) && !empty($auth->auth["perm"]) && !($logout)) 
   {
    if ($perm->have_perm("user") || $perm->have_perm("user_pending") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
      {
       ?>
-      <br><a href="<?php $sess->purl("chguser.php") ?>" class="menus"><?php echo $t->translate("Change Developer"); ?></a>
+   <tr BGCOLOR="<?php echo $th_navstrip_bgcolor;?>">
+   <td ALIGN=CENTER>
+   <span class="titlebar"><font color="<?php echo $th_navstrip_font_color;?>"><?php echo  $t->translate("Personal Menu");?></font></span></td>
+   </tr> 
+
+   <tr ALIGN=RIGHT BGCOLOR="<?php echo $th_nav_bgcolor;?>">
+   <td>
+
+      <a href="<?php $sess->purl("chguser.php") ?>" class="menus"><?php echo $t->translate("My Settings"); ?></a>
       <?php
      }
   }
@@ -43,16 +68,15 @@ if (isset($auth) && !empty($auth->auth["perm"]) && !($logout))
 if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_perm_users)) && !($logout)) 
   {
    ?>
-   <br><a href="<?php $sess->purl("users.php") ?>" class="menus"><?php echo $t->translate("Developers"); ?></a>
-   <br><a href="<?php $sess->purl("req_show.php") ?>" class="menus"><?php echo $t->translate("Show Requests"); ?></a>
    <?php
 if (isset($auth) && !empty($auth->auth["perm"]) && !($logout) ) 
   {
    if ($perm->have_perm("pending") || $perm->have_perm("user") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
      {
       ?>
-      <br><a href="<?php $sess->purl("req_manage.php") ?>" class="menus"><?php echo $t->translate("Manage your Requests"); ?></a>
+      <br><a href="<?php $sess->purl("req_manage.php") ?>" class="menus"><?php echo $t->translate("My Requests"); ?></a>
       <br><a href="<?php $sess->purl("req_compose.php") ?>" class="menus"><?php echo $t->translate("Create a new Request"); ?></a>
+      <br><a href="<?php $sess->purl("pmess_manage.php") ?>" class="menus"><?php echo $t->translate("personal Messages"); ?></a>
       
      <?php 
      }
@@ -88,9 +112,6 @@ if (isset($auth) && !empty($auth->auth["perm"]) && !($logout) )
         <?php
      }
 ?>
-   <br><a href="<?php $sess->purl("newsletter.php"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
-   <br><a href="<?php $sess->purl("backend.php"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>
-   <br><a href="<?php $sess->purl("stats.php?option=general"); ?>" class="menus"><?php echo $t->translate("Statistics"); ?></a>
    <?php
   }
 ?>
@@ -245,5 +266,7 @@ echo "<P><input TYPE=\"submit\" NAME=\"go\" VALUE=\"".$t->translate("Go")."\">";
 if (ereg("Gecko", "$HTTP_USER_AGENT")) {
 	echo "<p align=center><a href=\"javascript:addNetscapePanel();\"><img SRC=\"images/add-button.gif\" BORDER=0 height=45 width=100></a>\n";
 }
+echo "<p align=\"center\"><a href=\"http://developer.berlios.de\">
+<img src=\"http://developer.berlios.de/bslogot.php?group_id=175&type=1\" width=\"124\" height=\"32\" border=\"0\" hspace=\"3\" vspace=\"3\" alt=\"BerliOS Logo\"><br>Developer</a>\n";
 ?>
 <!-- end Language menu -->

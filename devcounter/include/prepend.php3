@@ -5,13 +5,13 @@
  * Copyright (c) 1998-2000 NetUSE AG
  *                    Boris Erdmann, Kristian Koehntopp
  *
- * $Id: prepend.php3,v 1.2 2002/09/01 22:58:33 helix Exp $
+ * $Id: prepend.php3,v 1.3 2003/02/26 13:19:11 masato Exp $
  *
  */ 
 
 if (!isset($_PHPLIB)) {
 $_PHPLIB = array();
-$_PHPLIB["libdir"] = "/usr/share/php/phplib/";
+$_PHPLIB["libdir"] = "/usr/local/httpd/php/"; 
 
 require($_PHPLIB["libdir"] . "db_mysql.inc");  /* Change this to match your database. */
 require($_PHPLIB["libdir"] . "ct_sql.inc");    /* Change this to match your data storage container */

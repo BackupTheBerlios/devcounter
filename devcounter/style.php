@@ -38,6 +38,7 @@ A:hover { text-decoration:underline; }
 .title { font-family: <?php echo $th_font_family; ?>; font-size: <?php echo $h2; ?>; }
 
 .small { font-family: <?php echo $th_font_family; ?>; font-size: <?php echo $fss; ?>; }
+.newsind { font-family: <?php echo $th_font_family; ?>; font-size: <?php echo $fss; ?>; text-indent: -9px; margin-left: 9px; padding-bottom: 2px;}
 
 A.small:link { text-decoration:none; font-size: <?php echo $fss; ?> }
 A.small:visited { text-decoration:none; font-size: <?php echo $fss; ?> }

@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: login.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: login.php,v 1.5 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################  
 
@@ -45,6 +45,9 @@ if ($perm->have_perm("user_pending")) {
   ."<br>".$t->translate("Your authentication is valid until")." <b>".timestr($auth->auth["exp"])."</b>";
   $bx->box_full($t->translate("Welcome to $sys_name"), $msg);
 
+echo "<TABLE BORDER=\"0\" WIDTH=\"100%\">";
+echo "<TR><TD VALIGN=\"top\">";
+
 if (empty($auth->auth["uname"]))
   {
     echo " ";
@@ -53,6 +56,28 @@ else
   {
    $username = $auth->auth["uname"];
    
+echo "<TABLE BORDER=\"0\" WIDTH=\"100%\">";
+echo "<TR><TD VALIGN=\"top\">";
+
+switch ($la) {
+case "English":
+	require("./include/English-intro.inc");
+	break;
+case "German":
+	require("./include/German-intro.inc");
+	break;
+/*
+case "Spanish":
+	require("./include/Spanish-lang.inc");
+	break;
+case "French":
+	require("./include/French-lang.inc");
+	break;
+*/
+default:
+	require("./include/English-intro.inc");
+	break;
+}
    $db->query("SELECT * from developers WHERE username='$username'");
    if ($db->num_rows() ==0)
      {
@@ -81,6 +106,15 @@ else
 	}
      }
    echo " ";
+   echo "</TD><TD WIDTH=\"250\" VALIGN=\"top\">";
+   
+   require("./include/Box-Newest-Requests.inc");
+   require("./include/Box-Newest-Developers.inc");
+   require("./include/Box-Newest-PMessages.inc");
+   echo "</TD></TR>\n";
+   echo "</TABLE>\n";
+
+
   }
 }
 ?>

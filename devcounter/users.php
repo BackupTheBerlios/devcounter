@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: users.php,v 1.8 2002/10/19 12:13:24 Masato Exp $
+# $Id: users.php,v 1.9 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################
 
@@ -71,11 +71,11 @@ else
       $lquery["offset"] =  $new_offset;
       $lquery["limit"] =  $limit;
       $lquery["by"] =  $by;
-      $msg .= " ".html_link("users.php",$lquery,"&lt; ".$t->translate("previous page"))." | ";
+      $msg .= "&lt; ".html_link("users.php",$lquery,$t->translate("previous page"))." | ";
      }
    else
      {
-      $msg .= "&lt; ".$t->translate("previous page")." | ";
+      $msg .= "&lt; ".$t->translate("previous page")." |";
      }
    $new_offset = $offset+$limit;
    $where = "auth_user.username LIKE '$by'";
@@ -85,14 +85,14 @@ else
       $lquery["offset"] =  $new_offset;
       $lquery["limit"] =  $limit;
       $lquery["by"] =  $by;
-      $msg .= " ".html_link("users.php",$lquery," ".$t->translate("next page"))." &gt; ";
+      $msg .= " ".html_link("users.php",$lquery,$t->translate("next page"))." &gt; ";
       
      }   
   else
      {
       $msg .= " ".$t->translate("next page")." &gt; ";
      }
-   $msg .= "] &nbsp; [ ";
+   $msg .= "]<br>[ ";
    while (list(, $ltr) = each($alphabet)) {
      $msg .= "<a href=\"".$sess->self_url().$sess->add_query(array("by" => $ltr."%"))."\">$ltr</a> | ";
    }

@@ -42,8 +42,9 @@ switch($phrase) {
      case "Logout": $tmp = "Ausloggen"; break;
      case "New Developer": $tmp = "Neuer Entwickler"; break;
      case "Forgot Password": $tmp = "Passwort vergessen"; break;
-     case "Change Developer": $tmp = "Entwickler &auml;ndern"; break;
+     case "My Settings": $tmp = "Meine Einstellungen"; break;
      case "Developers Watch": $tmp = "Entwicklerausschau"; break;
+     case "Developers List": $tmp = "Entwicklerliste"; break;
      case "Developers": $tmp = "Entwickler"; break;
      case "Statistics": $tmp = "Statistiken"; break;
      case "Advanced Search": $tmp = "Erweiterte Suche";break;
@@ -53,18 +54,26 @@ switch($phrase) {
      case "Weekly Newsletter": $tmp = "Wöchentl. Newsletter"; break;
      case "Create a new Request": $tmp = "Neue Anfrage erstellen"; break;
      case "Show Requests": $tmp = "Anfragen anzeigen"; break;
-     case "Manage your Requests": $tmp = "Eigene Anfragen verwalten"; break;
+     case "My Requests": $tmp = "Meine Anfragen"; break;
+     case "personal Messages": $tmp = "pers&ouml;nl. Nachrichten"; break;
+     case "Personal Menu": $tmp = "Persönliches Men&uuml;"; break;
 
 //Frontpage
      case "Newest Developers": $tmp = "Neueste Entwickler"; break;
      case "Newest Requests": $tmp = "Neueste Anfragen"; break;
+     case "My Latest Personal Messages": $tmp = "Meine neusten pers&ouml;nl. Nachrichten"; break;
      case "Please enter your Profile": $tmp = "Bitte geben Sie Ihre Profildaten ein"; break;
+     case "no personal messages": $tmp = "keine pers&ouml;nl. Nachrichten"; break;
 
 //Permissions
      case "allow to show realname": $tmp = "tats&auml;chlicher Name darf angezeigt werden"; break;
      case "allow to show E-Mail": $tmp = "E-Mail darf angezeigt werden"; break;
      case "allow to be searched": $tmp = "Darf gefunden werden"; break;
-     case "allow to be contacted by DevCounter": $tmp = "Darf von DevCounter kontaktiert werden"; break;
+     case "personal message behavior": $tmp = "Verhalten pers&ouml;nl. Nachrichten"; break;
+     case "mail me a copy of each personal message": $tmp = "Eine Kopie jeder pers&ouml;nl. Nachricht mailen"; break;
+     case "mail me a list of new personal messages once a day": $tmp = "T&auml;glich eine Liste neuer pers&ouml;nl. Nachrichten mailen"; break;
+     case "mail me a list of new personal messages once a week": $tmp = "w&ouml;chentlich eine Liste neuer pers&ouml;nl. Nachrichten mailen"; break;
+     case "don't allow any personal messages": $tmp = "Keine pers&ouml;nl. Nachrichten erlauben"; break;
      case "Register as a new Developer": $tmp = "Als neuer Entwicker anmelden"; break;
      
 //Statiscs and Profile
@@ -209,7 +218,7 @@ switch($phrase) {
      case "You will get your Password by e-mail in a couple of minutes": $tmp = "Sie erhalten Ihr Passwort per E-Mail in wenigen Minuten"; break;
 
 // Change User Parameters
-     case "Change Developer Parameters": $tmp = "Änderung der Entwicklerdaten"; break;
+     case "Change my Settings": $tmp = "Meine Einstellungen ändern"; break;
      case "Remind me": $tmp = "Erinnerung"; break;
      case "Modification": $tmp = "Modifiziert"; break;
      case "Creation": $tmp = "Erzeugt"; break;
@@ -433,6 +442,13 @@ switch($phrase) {
     case "Developers Watch Notification was sent to": $tmp = "Ausschaumitteilung wurde gesendet an"; break;
     case "Send Watch Notifications": $tmp = "Sende Ausschaumitteilungen"; break;
     case "You will be informed by email, if developers with corresponding abilities and expriences becomes available": $tmp = "Sie werden per eMail benachrichtigt, wenn Entwickler mit entsprechenden Kenntnissen und Erfahrungen verfügbar sind"; break;
+
+// personal Messages
+    case "Reply": $tmp = "Antworten"; break;
+    case "new": $tmp = "neu"; break;
+    case "unread": $tmp = "ungelesen"; break;
+    case "read": $tmp = "gelesen"; break;
+
 
 // If no translation available, keep the original phrase
       

@@ -19,7 +19,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: html.inc,v 1.6 2002/08/26 19:46:59 helix Exp $
+# $Id: html.inc,v 1.7 2003/02/26 13:19:11 masato Exp $
 #
 ######################################################################
 
@@ -64,12 +64,18 @@ function html_form_action($file, $query, $type) {
     global $sess;
     
     if ($file == "PHP_SELF") {
-        $output = ( "<form action=\"".$sess->self_url()
-                    .$sess->add_query($query)."\" method=\"".$type."\">");
+        $output = "<form action=\"".$sess->self_url();
+		if ($query != "") {
+        	$output .= $sess->add_query($query);
+		}
+		$output .= "\" method=\"".$type."\">";
 
     } else {
-        $output = ( "<form action=\"".$sess->url($file)
-                    .$sess->add_query($query)."\" method=\"".$type."\">" );
+        $output = "<form action=\"".$sess->url($file);
+		if ($query != "") {
+        	$output .= $sess->add_query($query);
+		}
+		$output .= "\" method=\"".$type."\">";
     }
     return($output);
 }
