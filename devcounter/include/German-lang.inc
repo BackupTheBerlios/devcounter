@@ -267,57 +267,41 @@ switch($phrase) {
 
 // General Statistics
 	 case "Number of Applications in $GLOBALS[sys_name]": $tmp = "Anzahl der Anwendungen in $GLOBALS[sys_name]"; break;
-	 case "Total Number of Insertions and Modifications": $tmp = "Gesamtzahl der Eintragungen und Modifikationen"; break;
-	 case "Number of Insertions and Modifications during the last week": $tmp = "Anzahl der Eintragungen und Modifikationen in der letzen Woche"; break;
-	 case "Number of pending Applications": $tmp = "Anzahl der zu prüfenden Anwendungen"; break;
-	 case "Number of $GLOBALS[sys_name] authorised Users": $tmp = "Anzahl der bei $GLOBALS[sys_name] registrierten Benutzer"; break;
-	 case "Number of Comments on Applications": $tmp = "Anzahl der Kommentare zu Anwendungen"; break;
-	 case "Number of Licenses listed in $GLOBALS[sys_name]": $tmp = "Anzahl der Lizenzen in $GLOBALS[sys_name]"; break;
-	 case "Number of $GLOBALS[sys_name] Sections": $tmp = "Anzahl der Sektionen in $GLOBALS[sys_name]"; break;
-	 case "Number of $GLOBALS[sys_name] Categories": $tmp = "Anzahl der Kategorien in $GLOBALS[sys_name]"; break;
-	 case "Number of Hits on Applications": $tmp = "Anzahl der Zugriffe auf Anwendungen"; break;
-	 case "Number of redirected Homepages": $tmp = "Anzahl der Zugriffe auf Homepages"; break;
-	 case "Number of Downloads": $tmp = "Anzahl der Zugriffe auf Downloads"; break;
-	 case "Number of redirected Changelogs": $tmp = "Anzahl der Zugriffe auf Changlogs"; break;
-	 case "Number of redirected CVSs": $tmp = "Anzahl der Zugriffe auf CVS-Verzeichnisse"; break;
-	 case "Number of redirected Screenshots": $tmp = "Anzahl der Zugriffe auf Screenshots"; break;
-	 case "Number of redirected Mailing Lists Archives": $tmp = "Anzahl der Zugriffe auf Mailing-Lists-Archive"; break;
+	 case "Developers by Year of Birth": $tmp = "Entwickler nach Geburtsjahr"; break;
+	 case "Developer by Visits": $tmp = "Entwicklern nach Besuchen"; break;
+	 case "Developers by Profession": $tmp = "Entwickler nach Beruf"; break;
+	 case "Developers by Gender": $tmp = "Entwickler nach Geschlecht"; break;
+	 case "Developers by Qualification": $tmp = "Entwickler nach Abschluß"; break;
+	 case "Developers by Email Domains": $tmp = "Entwickler nach Email-Domain"; break;
+	 case "Developers by Programming Abilities": $tmp = "Entwickler nach Programmier-Erfahrung"; break;
+	 case "Developers by Programming Languages/Tools": $tmp = "Entwickler nach Programmiersprachen/Werkzeug-Erfahrung"; break;
+	 case "Developers by Nationality": $tmp = "Entwickler nach Herkunftsland"; break;
+	 case "Developers by Countries currently lives in": $tmp = "Entwickler nach Land, in dem man momentan lebt"; break;
+	 case "Developers by Mother Tonque": $tmp = "Entwickler nach Muttersprache"; break;
+
+	 case "Number of Developers in $GLOBALS[sys_name]": $tmp = "Anzahl der Entwickler in $GLOBALS[sys_name]"; break;
+	 case "Number of Projects": $tmp = "Anzahl der Projekte"; break;
+	 case "Number of Countries": $tmp = "Anzahl der Länder"; break;
+	 case "Number of Languages": $tmp = "Anzahl der Sprachen"; break;
+	 case "Number of Programming Abilities": $tmp = "Anzahl der Programmier-Erfahrung"; break;
+	 case "Number of Programming Languages/Tools": $tmp = "Anzahl der Programmiersprachen/Werkzeug-Erfahrung"; break;
+	 case "Number of Visits on Developers": $tmp = "Anzahl der Besucher von Entwicklern"; break;
+     case "Number of Insertions and Modifications": $tmp = "Anzahl der Eintragungen und Modifikationen"; break;
+     case "Today": $tmp = "Heute"; break;
 	 case "$GLOBALS[sys_name] Version": $tmp = "$GLOBALS[sys_name] Version"; break;
 
-	 case "High Urgency": $tmp = "Hohe Bedeutung"; break;
-	 case "Medium Urgency": $tmp = "Mittlere Bedeutung"; break;
-	 case "Low Urgency": $tmp = "Geringe Bedeutung"; break;
-	 case "Stable Version": $tmp = "Stabile Version"; break;
-	 case "Development Version": $tmp = "Entwicklungsversion"; break;
-	 case "Version Number": $tmp = "Versionsnummer"; break;
-	 case "Tarballs": $tmp = "$phrase"; break;
-	 case "Red Hat Packages": $tmp = "Red Hat Pakete"; break;
-	 case "Debian Packages": $tmp = "Debian Pakete"; break;
-	 case "Slackware Packages": $tmp = "Slackware Pakete"; break;
-	 case "Applications listed by their Importance": $tmp = "Anwendungen geordnet nach ihrer Bedeutung"; break;
-	 case "Applications listed by Number of Tarball-Downloads": $tmp = "Anwendungen geordnet nach Anzahl der Tarball-Downloads"; break;
-	 case "Applications listed by Number of Hits": $tmp = "Anwendungen geordnet nach Anzahl der Zugriffe"; break;
-	 case "Applications listed by Homepage Visits": $tmp = "Anwendungen geordnet nach Anzahl der Homepage-Besuche"; break;
-	 case "Top downloaded Red Hat Packages": $tmp = "Top der heruntergeladenen RPM-Pakete"; break;
-	 case "Top downloaded Debian Packages": $tmp = "Top der heruntergeladenen Debian-Pakete"; break;
-	 case "Top downloaded Slackware Packages": $tmp = "Top der heruntergeladenen Slackware-Pakete"; break;
-	 case "Application Importance listed by Sections": $tmp = "Anwendungsbedeutung geordnet nach Sektionen"; break;
-	 case "Applications listed by Sections": $tmp = "Anwendungen geordnet nach Sektionen"; break;
-	 case "Applications listed by Categories": $tmp = "Anwendungen geordnet nach Kategrien"; break;
-	 case "Applications listed by Licenses": $tmp = "Anwendungen geordnet nach Lizenzen"; break;
-	 case "Availability of downloadable Packet Formats": $tmp = "Verfügbarkeit von herunterladbaren Paketformaten"; break;
-	 case "Downloads listed by Packet Formats": $tmp = "Downloads geordnet nach Paketformaten"; break;
-	 case "Applications listed by Urgency": $tmp = "Anwendungen geordnet nach Dringlichkeit"; break;
-	 case "Downloads listed by Urgency": $tmp = "Downloads geordnet nach Dringlichkeit"; break;
-	 case "Applications listed by Version Numbers": $tmp = "Anwendungen geordnet nach Versionsnummern"; break;
-	 case "Applications listed by Licenses": $tmp = "Anwendungen geordnet nach Lizenzen"; break;
-	 case "Applications listed by Version Type": $tmp = "Anwendungen geordnet nach Versionstypen"; break;
-	 case "Downloads listed by Version Type": $tmp = "Downloads geordnet nach Versionstypen"; break;
-	 case "Application Importance listed by Licenses": $tmp = "Anwendungsbedeutung geordnet nach Lizenzen"; break;
-	 case "Application Importance listed by Developer's Email Domains": $tmp = "Anwendungsbedeutung geordnet nach E-Mail-Domainen der Entwickler"; break;
-	 case "Applications listed by Developer's Email Domain": $tmp = "Anwendungen geordnet nach E-Mail-Domainen der Entwickler"; break;
-	 case "Applications listed by Sections and Developer's Email Domain": $tmp = "Anwendungen geordnet nach Sektionen und E-Mail-Domainen der Entwickler"; break;
-	 case "Applications listed by Licenses and Developer's Email Domain": $tmp = "Anwendungen geordnet nach Lizenzen und E-Mail-Domainen der Entwickler"; break;
+     case "Developers listed by Year of Birth": $tmp = "Entwickler geordnet nach Geburtsjahr"; break;
+     case "Developers listed by Number of Visits": $tmp = "Entwickler geordnet nach der Besucheranzahl"; break;
+     case "Developers listed by Profession": $tmp = "Entwickler geordnet nach Beruf"; break;
+     case "Developers listed by Gender": $tmp = "Entwickler geordnet nach Geschlecht"; break;
+     case "Developers listed by Qualification": $tmp = "Entwickler geordnet nach Abschluß"; break;
+     case "Developers listed by Email Domain": $tmp = "Entwickler geordnet nach Email-Domain"; break;
+     case "Developers listed by Programming Abilities": $tmp = "Entwickler geordnet nach Programmier-Erfahrung"; break;
+     case "Developers listed by Programming Languages/Tools": $tmp = "Entwickler geordnet nach Programmiersprachen/Werkzeug-Erfahrung"; break;
+     case "Developers listed by Nationality": $tmp = "Entwickler geordnet nach Herkunftsland"; break;
+     case "Developers listed by Countries currently lives in": $tmp = "Entwickler geordnet nach Land, in dem man momentan lebt"; break;
+     case "Developers listed by Mother Tongue": $tmp = "Entwickler geordnet nach Muttersprache"; break;
+
 
 // Errors
      case "Access denied": $tmp = "Zugriff verweigert"; break;
@@ -367,12 +351,6 @@ switch($phrase) {
     case "Add Ability": $tmp = "F&auml;higkeit hinzuf&uuml;gen"; break;
     case "Add ProgLanguage": $tmp = "ProgSprache hinzuf&uuml;gen"; break;
     case "Ability removed": $tmp = "F&auml;higkeit entfernt"; break;
-
-// stats.php
-    case "Number of Insertions and Modifications in the last day": $tmp = "Anzahl der Eintragungen und Modifikationen während des letzten Tages"; break;
-    case "Number of today's visitors": $tmp = "Anzahl der heutigen Besucher"; break;
-    case "Today": $tmp = "Heute"; break;
-    case "Version Number":  $tmp = "Versionsnummer"; break;
 
 // admuser.php
     case "User Administration": $tmp = "Benutzeradministration"; break;
