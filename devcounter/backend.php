@@ -5,7 +5,7 @@
 # ================================================
 #
 # Copyright (c) 2001-2002 by
-#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
 #       Gregorio Robles (grex@scouts-es.org)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: backend.php,v 1.7 2004/03/02 09:22:58 helix Exp $
+# $Id: backend.php,v 1.8 2004/03/02 10:21:30 helix Exp $
 #
 ###################################################################### 
 
@@ -83,7 +83,7 @@ $db->query("SELECT * FROM requests ORDER BY reqtime DESC LIMIT 0,5");
 
 while ($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>".$db->f("reqsubject");
+  echo "    <title>".html_entity_decode($db->f("reqsubject"));
   $timestamp = mktimestamp($db->f("reqtime"));
   echo " [".timestr_short($timestamp)."]";
   echo "</title>\n";
