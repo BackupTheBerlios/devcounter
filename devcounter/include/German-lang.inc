@@ -280,6 +280,7 @@ switch($phrase) {
 	 case "Developers by Mother Tonque": $tmp = "Entwickler nach Muttersprache"; break;
 
 	 case "Number of Developers in $GLOBALS[sys_name]": $tmp = "Anzahl der Entwickler in $GLOBALS[sys_name]"; break;
+	 case "Number of today's visitors": $tmp = "Anzahl der heutigen Besucher"; break;
 	 case "Number of Projects": $tmp = "Anzahl der Projekte"; break;
 	 case "Number of Countries": $tmp = "Anzahl der Länder"; break;
 	 case "Number of Languages": $tmp = "Anzahl der Sprachen"; break;
