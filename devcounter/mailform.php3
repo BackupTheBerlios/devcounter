@@ -86,7 +86,7 @@ else
          $bx->box_begin();
          $bx->box_title($t->translate("error"));
          $bx->box_body_begin();
-         echo "..-..";
+         echo "User does not allow contacting";
          $bx->box_body_end();
          $bx->box_end();
 	 

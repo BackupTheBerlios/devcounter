@@ -105,9 +105,6 @@ $bx->box_body_begin();
         while ($db->next_record())
 	  {
 
-/*	   $pquery["devname"] = $db->f("username") ;
-	   htmlp_link("showprofile.php3",$pquery,$db->f("username"));
-	   echo "<BR>\n";*/
 
            if ($counter%2 != 1) {$bgcolor = "#FFFFFF";}
            else {$bgcolor = "#E0E0E0";}
@@ -139,8 +136,8 @@ $bx->box_body_begin();
 	$i++;
 	   
 	  }
+        $bx->box_columns_end();
        }
-    $bx->box_columns_end();
 
     $bx->box_body_end();
     $bx->box_end();
@@ -239,8 +236,8 @@ $bx->box_body_begin();
 	$i++;
 	   
 	  }
+        $bx->box_columns_end();
        }
-    $bx->box_columns_end();
 
     $bx->box_body_end();
     $bx->box_end();
@@ -316,9 +313,9 @@ $bx->box_body_begin();
 	$i++;
 	   
 	  }
-       }
+       $bx->box_columns_end();
+      }
 
-    $bx->box_columns_end();
 
     $bx->box_body_end();
     $bx->box_end();
@@ -385,8 +382,8 @@ $bx->box_body_begin();
 	   
 
 	  }
+        $bx->box_columns_end();
        }
-    $bx->box_columns_end();
 
     $bx->box_body_end();
     $bx->box_end();
@@ -450,9 +447,9 @@ $bx->box_body_begin();
 	   
 	   
 	  }
+         $bx->box_columns_end();
        }
 
-    $bx->box_columns_end();
 
     $bx->box_body_end();
     $bx->box_end();
@@ -519,8 +516,8 @@ $bx->box_body_begin();
 	$i++;
 	   
 	  }
+        $bx->box_columns_end();
        }
-    $bx->box_columns_end();
 
       $bx->box_body_end();
       $bx->box_end();

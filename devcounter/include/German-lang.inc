@@ -52,11 +52,12 @@ switch($phrase) {
 
 
 //Permissions
-     case "allow to show realname": $tmp = "wirlicher Name darf angezeigt werden"; break;
+     case "allow to show realname": $tmp = "tats&auml;chlicher Name darf angezeigt werden"; break;
      case "allow to show E-Mail": $tmp = "E-Mail darf angezeigt werden"; break;
      case "allow to be searched": $tmp = "Darf gefunden werden"; break;
      case "allow to be contacted by DevCounter": $tmp = "Darf von DevCounter kontaktiert werden"; break;
-
+     case "Register as a new Developer": $tmp = "Als neuer Entwicker anmelden"; break;
+     
 //Statiscs and Profile
      case "Total number of developers": $tmp = "Gesamtazahl der Entwickler";break;
      case "no entry": $tmp = "Kein Eintrag";break;
@@ -93,6 +94,7 @@ switch($phrase) {
      case "Other languages": $tmp = "weitere Sprachen"; break;
 
      
+     case "Project": $tmp = "Projekt"; break;
      case "Number of Free Software/Open Source Projects you are involved in": $tmp = "Anzahl der Free Software/Open Source Projekte in die eingebunden bist"; break;
      case "Which of these programming expirience do you have?": $tmp = "In welchen Bereichen hast Du Erfahrung?"; break;
      case "Which of these languages/tools are you experienced with?": $tmp = "In welchen dieser Sprachen/Tools hast Du Erfahrung?"; break;
@@ -145,13 +147,15 @@ switch($phrase) {
      case "Programming &amp; Computer Abilities": $tmp = "Programmier- &amp; Computerf&auml;higkeiten"; break;
      case "All in one": $tmp = "Alles auf einmal"; break;
      case "Search for Languages spoken": $tmp = "Suche nach gesprochen Sprachen"; break;
-     case "Please select desired Language": $tmp = "Bitte gew&uuml;nschte Sprace ausw&auml;hlen"; break;
+     case "Please select desired Language": $tmp = "Bitte gew&uuml;nschte Sprache ausw&auml;hlen"; break;
      case "Search for Projects": $tmp = "Suche nach Projekten"; break;
      case "Enter Name of <B>one</B> Project": $tmp = "Gib den Namen <B>eines</B> Projektes ein"; break;
      case "Results": $tmp = "Ergebnisse"; break;
      case "No Results": $tmp = "keine Ergebnisse"; break;
+     case "Search Results": $tmp = "Suchergebisse"; break;
      case "Search for Countries": $tmp = "Suche nach L&auml;ndern"; break;
-     case "Please select desired Country": $tmp = "Bitte das gw&uuml;nschte Land ausw&auml;hlen"; break;
+     case "Please select desired Country": $tmp = "Bitte das gew&uuml;nschte Land ausw&auml;hlen"; break;
+     case "Search for All in one": $tmp = "Nach allem auf einmal suchen"; break;
 
 
 // Apps update
@@ -161,8 +165,6 @@ switch($phrase) {
      case "Delete": $tmp = "Löschen"; break;
      case "Undelete": $tmp = "Wiederherstellen"; break;
 
-// Apps not yet reviewed
-     case "Waiting for Review by an Editor": $tmp = "Wartet auf Überprüfung durch einen Editor"; break;
 
 // Apps by identifier
      case "Application": $tmp = "Anwendung"; break;
@@ -190,6 +192,14 @@ switch($phrase) {
      case " -- the $GLOBALS[sys_name] crew": $tmp = " -- die $GLOBALS[sys_name] Crew"; break;
      case "Verification of Registration": $tmp = "Verifikation der Registrierung"; break;
      case "Your account is now activated. Please login": $tmp = "Ihre Benutzerkennung ist jetzt freigeschaltet. Bitte loggen Sie sich ein"; break;
+
+// Contact Developer
+     case "Send": $tmp = "Senden"; break;
+     case "contact developer": $tmp = "an Entwickler schreiben"; break;
+     case "Contact Developer": $tmp = "an Entwickler schreiben"; break;     
+     case "Subject:": $tmp = "Betreff:"; break;
+     case "Your EMail Address:": $tmp = "Deine EMail Adresse"; break;
+     case "Content:": $tmp = "Inhalt:"; break;
 
 // Forget password / Remind me
      case "Register as a new User": $tmp = "Registrierung als neuer Benutzer"; break;
@@ -239,25 +249,6 @@ switch($phrase) {
 // Statistics
 	 case "$GLOBALS[sys_name] Statistics": $tmp = "$GLOBALS[sys_name] Statistiken"; break;
 	 case "General $GLOBALS[sys_name] Statistics": $tmp = "Allgemeine $GLOBALS[sys_name] Statistiken"; break;
-	 case "Apps by Importance": $tmp = "Anw. nach Bedeutung"; break;
-	 case "Apps by Hits": $tmp = "Anw. nach Zugriffen"; break;
-	 case "Apps by Homepage Visits": $tmp = "Anw. nach Homepage-Besuchen"; break;
-	 case "Apps by Downloads": $tmp = "Anw. nach Downloads"; break;
-	 case "Top downloaded RPM Packages": $tmp = "Top der heruntergeladenen RPM-Pakete"; break;
-	 case "Top downloaded Debian Packages": $tmp = "Top der heruntergeladenen Debian-Pakete"; break;
-	 case "Top downloaded Slackware Packages": $tmp = "Top der heruntergeladenen Slackware-Pakete"; break;
-	 case "Apps and Downloads by Urgency": $tmp = "Anw. und Downloads nach Dringlichkeit"; break;
-	 case "Apps and Downloads by Version Types": $tmp = "Anw. und Downloads nach Versionstypen"; break;
-	 case "Apps and Importance by Sections": $tmp = "Anw. und Bedeutung nach Sektionen"; break;
-	 case "Apps by Categories": $tmp = "Anw. nach Kategorien"; break;
-	 case "Apps by Version Numbers": $tmp = "Anw. nach Versionsnummern"; break;
-	 case "Apps and Downloads by Package Formats": $tmp = "Anw. und Downloads nach Paketformaten"; break;
-	 case "Importance by Licenses": $tmp = "Bedeutung nach Lizenzen"; break;
-	 case "Importance by Email Domains": $tmp = "Bedeutung nach E-Mail-Domainen"; break;
-	 case "Apps by Email Domains": $tmp = "Anw. nach E-Mail-Domainen"; break;
-	 case "Apps by Sections and Email Domains": $tmp = "Anw. nach Sektionen und E-Mail-Domainen"; break;
-	 case "Apps by Licenses": $tmp = "Anw. nach Lizenzen"; break;
-	 case "Apps by Licenses and Email Domains": $tmp = "Anw. nach Lizenzen und E-Mail-Domainen"; break;
 
 // General Statistics
 	 case "Number of Applications in $GLOBALS[sys_name]": $tmp = "Anzahl der Anwendungen in $GLOBALS[sys_name]"; break;
@@ -362,6 +353,13 @@ switch($phrase) {
     case "There can only be one anonymous user in the system": $tmp = "Es darf nur ein anonymer Benutzer existieren"; break;
     case "The anonymous permission is incompatible with another type of permission": $tmp = "Das anonyme Recht ist inkompatibel zu anderen Rechten"; break;
 
+
+// showprofile.php3
+
+    case "actually live in": $tmp = "lebt momentan in"; break;
+    case "Languages spoken": $tmp = "gesprochene Sprachen"; break;
+    case "Number of Free Software/Open Source Projects": $tmp = "Anzahl der Free Software/Open Source Projekte"; break;
+    
 // admfaq.php3 and insfaq.php3
 
     case "Enter a New Frequently Asked Question": $tmp = "Erstellen einer neuen häufig gestellten Frage"; break;
