@@ -35,8 +35,9 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
 <?php
 
 
-  $query = "INSERT developers SET username = '$username', nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification', number_of_projects='$number_of_projects', name_of_projects='$name_of_projects', nonprog='$nonprog'";
+  $query = "INSERT developers SET username = '$username', nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification', number_of_projects='$number_of_projects', name_of_projects='$name_of_projects'";
   $db->query($query);
+//  echo "Fehler-Nr: $db->Errno \nFehlertxt: $db->Error \n";
 
   if ($db->affected_rows() == 0) 
   {
@@ -75,6 +76,8 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
     $bx->box_body_begin();
     echo "\n<P>";
     echo $t->translate("Give another time thanx for filling it out");
+    echo "\n<BR>";
+    htmlp_link("./index.php3", "", $t->translate("please proceed to the main page"));
     echo "\n<P>";
     $bx->box_body_end();
     $bx->box_end();

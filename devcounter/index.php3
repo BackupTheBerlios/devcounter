@@ -33,15 +33,28 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
 <!-- content -->
 
 <?php
-$bx->box_begin();
-$bx->box_title($t->translate("Testbox."));
-$bx->box_body_begin();
-echo "in the Box\n";
 
 
-$bx->box_body_end();
-$bx->box_end();
-
+if (empty($auth->auth["uname"]))
+  {
+    echo " ";
+  }
+else
+  {
+   $username = $auth->auth["uname"];
+   
+   $db->query("SELECT * from developers WHERE username='$username'");
+   if ($db->num_rows() ==0)
+     {
+      $bx->box_begin();
+      $bx->box_title($username);
+      $bx->box_body_begin();
+      htmlp_link("questionaire.php3","",$t->translate("please take part at our questionaire"));
+      $bx->box_body_end();
+      $bx->box_end();
+     }
+   echo " ";
+  }
 
 ?>
 <!-- end content -->
