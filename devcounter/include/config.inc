@@ -215,13 +215,13 @@ $Minimum_apps_in_license = 1;
 # Please, be sure of what you make!
 # An error could make your system fragile.
 #
-# config_perm_apppend    Access permission to enter apppend.php3
-# config_perm_appdom     Access permission to enter appdom.php3
-# config_perm_developer  Access permission to enter developer.php3
-# config_perm_users      Access permission to enter users.php3
+# config_perm_apppend    Access permission to enter apppend.php
+# config_perm_appdom     Access permission to enter appdom.php
+# config_perm_developer  Access permission to enter developer.php
+# config_perm_users      Access permission to enter users.php
 # config_perm_watch      Access permission to set developers watch
-# config_perm_admdate    Access permission to enter admdate.php3
-# config_perm_admuser    Access permission to enter admuser.php3
+# config_perm_admdate    Access permission to enter admdate.php
+# config_perm_admuser    Access permission to enter admuser.php
 # config_perm_admlicens  Access permission to administrate licenses
 # config_perm_admcomment Access permission to administrate comments
 # config_perm_admsec     Access permission to administrate sections

@@ -6,8 +6,8 @@
 </tr>
 
 <tr ALIGN=RIGHT BGCOLOR="<?php echo $th_nav_bgcolor;?>">
-<td><a href="<?php $sess->purl("index.php3") ?>" class="menus"><?php echo $t->translate("Index"); ?></a>
-<br><a href="<?php $sess->purl("faq.php3") ?>" class="menus"><?php echo $t->translate("Q&amp;A"); ?></a>
+<td><a href="<?php $sess->purl("index.php") ?>" class="menus"><?php echo $t->translate("Index"); ?></a>
+<br><a href="<?php $sess->purl("faq.php") ?>" class="menus"><?php echo $t->translate("Q&amp;A"); ?></a>
 
 <br>
 <?php
@@ -16,26 +16,26 @@ if (isset($auth) && !empty($auth->auth["perm"]) && !($logout) )
    if ($perm->have_perm("pending") || $perm->have_perm("user") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
      {
       ?>
-      <br><a href="<?php $sess->purl("logout.php3") ?>" class="menus"><?php echo $t->translate("Logout"); ?></a>
+      <br><a href="<?php $sess->purl("logout.php") ?>" class="menus"><?php echo $t->translate("Logout"); ?></a>
       <?php
      }
   } 
 else 
   {
    ?>
-   <br><a href="<?php $sess->purl("login.php3") ?>" class="menus"><?php echo $t->translate("Login"); ?></a>
+   <br><a href="<?php $sess->purl("login.php") ?>" class="menus"><?php echo $t->translate("Login"); ?></a>
    <?php
   }
 ?>
-<br><a href="<?php $sess->purl("register.php3") ?>" class="menus"><?php echo $t->translate("New Developer"); ?></a>
-<br><a href="<?php $sess->purl("remind.php3") ?>" class="menus"><?php echo $t->translate("Forgot Password"); ?></a>
+<br><a href="<?php $sess->purl("register.php") ?>" class="menus"><?php echo $t->translate("New Developer"); ?></a>
+<br><a href="<?php $sess->purl("remind.php") ?>" class="menus"><?php echo $t->translate("Forgot Password"); ?></a>
 <?php
 if (isset($auth) && !empty($auth->auth["perm"]) && !($logout)) 
   {
    if ($perm->have_perm("user") || $perm->have_perm("user_pending") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
      {
       ?>
-      <br><a href="<?php $sess->purl("chguser.php3") ?>" class="menus"><?php echo $t->translate("Change Developer"); ?></a>
+      <br><a href="<?php $sess->purl("chguser.php") ?>" class="menus"><?php echo $t->translate("Change Developer"); ?></a>
       <?php
      }
   }
@@ -43,7 +43,7 @@ if (isset($auth) && !empty($auth->auth["perm"]) && !($logout))
 if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_perm_users)) && !($logout)) 
   {
    ?>
-   <br><a href="<?php $sess->purl("users.php3") ?>" class="menus"><?php echo $t->translate("Developers"); ?></a>
+   <br><a href="<?php $sess->purl("users.php") ?>" class="menus"><?php echo $t->translate("Developers"); ?></a>
 
    <br>
    <?php
@@ -57,19 +57,19 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
          if ($db->num_rows()==0)
            {
             echo "<BR>\n";
-	        htmlp_link("questionaire.php3","",$t->translate("Enter your Profile"));	    
+	        htmlp_link("questionaire.php","",$t->translate("Enter your Profile"));	    
            }
          else
 	       {
             echo "<BR>\n";
-	        htmlp_link("update.php3","",$t->translate("Update your Profile"));
+	        htmlp_link("update.php","",$t->translate("Update your Profile"));
 	       }
         }
      }
 ?>
-   <br><a href="<?php $sess->purl("newsletter.php3"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
-   <br><a href="<?php $sess->purl("backend.php3"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>
-   <br><a href="<?php $sess->purl("stats.php3?option=general"); ?>" class="menus"><?php echo $t->translate("Statistics"); ?></a>
+   <br><a href="<?php $sess->purl("newsletter.php"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
+   <br><a href="<?php $sess->purl("backend.php"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>
+   <br><a href="<?php $sess->purl("stats.php?option=general"); ?>" class="menus"><?php echo $t->translate("Statistics"); ?></a>
    <?php
   }
 ?>
@@ -114,15 +114,15 @@ if (
      {
       $db->query("SELECT COUNT(*) FROM auth_user");
       $db->next_record();
-      echo "<a href=\"".$sess->url("admuser.php3")."\" class=\"menus\">".$t->translate("Developers")." [".$db->f("COUNT(*)")."]</a>\n";
-      echo "<br><a href=\"".$sess->url("adm_langs_tools.php3")."\" class=\"menus\">".$t->translate("Modify ProgLanguages &amp; ProgTools")."</a>\n";
+      echo "<a href=\"".$sess->url("admuser.php")."\" class=\"menus\">".$t->translate("Developers")." [".$db->f("COUNT(*)")."]</a>\n";
+      echo "<br><a href=\"".$sess->url("adm_langs_tools.php")."\" class=\"menus\">".$t->translate("Modify ProgLanguages &amp; ProgTools")."</a>\n";
      }
 
    if (($config_perm_admfaq == "all") || (isset($perm) && $perm->have_perm($config_perm_admfaq))  && !($logout)) 
      {
       $db->query("SELECT COUNT(*) FROM faq WHERE language='$la'");
       $db->next_record();
-      echo "<br><a href=\"".$sess->url("admfaq.php3")."\" class=\"menus\">".$t->translate("Q&amp;A")." [".$db->f("COUNT(*)")."]</a>\n";
+      echo "<br><a href=\"".$sess->url("admfaq.php")."\" class=\"menus\">".$t->translate("Q&amp;A")." [".$db->f("COUNT(*)")."]</a>\n";
      }
 
    if (($config_perm_nladm == "all") || (isset($perm) && $perm->have_perm($config_perm_nladm))  && !($logout)) 
@@ -131,13 +131,13 @@ if (
       $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')=\"".date("Y-m-d")."\"";
       $db->query("SELECT COUNT(*) FROM developers WHERE $where"); 
       $db->next_record();
-      echo "<br><a href=\"".$sess->url("nladm.php3?period=daily")."\" class=\"menus\">".$t->translate("Daily Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
+      echo "<br><a href=\"".$sess->url("nladm.php?period=daily")."\" class=\"menus\">".$t->translate("Daily Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
   				// Weekly Newsletter
       $lastday = time() - 7 * 24 * 60 * 60;
       $where = "DATE_FORMAT(developers.creation,'%Y-%m-%d')<=\"".date("Y-m-d")."\" AND DATE_FORMAT(developers.creation,'%Y-%m-%d')>\"".date("Y-m-d",$lastday)."\"";
       $db->query("SELECT COUNT(*) FROM developers WHERE $where"); 
       $db->next_record();
-      echo "<br><a href=\"".$sess->url("nladm.php3?period=weekly")."\" class=\"menus\">".$t->translate("Weekly Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
+      echo "<br><a href=\"".$sess->url("nladm.php?period=weekly")."\" class=\"menus\">".$t->translate("Weekly Newsletter")." [".$db->f("COUNT(*)")."]</a>\n";
      }
    ?>
    </td>
@@ -159,7 +159,7 @@ if (
 <td align=center>
 <p>
 <?php
-htmlp_form_action("devresults.php3",array(),"POST");
+htmlp_form_action("devresults.php",array(),"POST");
 htmlp_form_hidden("option", "name");
 ?>
 <input TYPE="text" SIZE="10" NAME="search_text" VALUE="">
@@ -167,7 +167,7 @@ htmlp_form_hidden("option", "name");
 echo "<P><input TYPE=\"submit\" VALUE=\"".$t->translate('Search')."\">";
 ?>
 </form>
-<p><a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Advanced Search"); ?></a>
+<p><a href="<?php $sess->purl("searchdev.php") ?>" class="menus"><?php echo $t->translate("Advanced Search"); ?></a>
 </td>
 </tr>
 </table>
@@ -211,4 +211,9 @@ echo "<P><input TYPE=\"submit\" NAME=\"go\" VALUE=\"".$t->translate("Go")."\">";
 </td>
 </tr>
 </table>
+<?php
+if (ereg("Gecko", "$HTTP_USER_AGENT")) {
+	echo "<p align=center><a href=\"javascript:addNetscapePanel();\"><img SRC=\"images/add-button.gif\" BORDER=0 height=45 width=100></a>\n";
+}
+?>
 <!-- end Language menu -->

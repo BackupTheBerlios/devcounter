@@ -401,7 +401,7 @@ switch($phrase) {
 
 // New Translations for SourceWell 1.0.9
 
-// stats.php3
+// stats.php
     case "Number of Insertions and Modifications in the last day": $tmp = "Nombre d'insertions et de modifications le jour passé"; break;
     case "Number of today's visitors": $tmp = "Nombre de visiteurs aujourd'hui"; break;
     case "Today": $tmp = "Aujourd'hui"; break;
@@ -410,12 +410,12 @@ switch($phrase) {
     case "Medium Urgency": $tmp = "Urgence moyenne"; break;
     case "Low Urgency": $tmp = "Urgence basse"; break;
 
-// admuser.php3
+// admuser.php
     case "User Administration": $tmp = "Administration d'utilisateur"; break;
     case "There can only be one anonymous user in the system": $tmp = "Il ne peut y avoir plus d'un utilisateur anonyme dans le système"; break;
     case "The anonymous permission is incompatible with another type of permission": $tmp = "La permission anonyme est incompatible avec un autre type de permission"; break;
 
-// inscat.php3 and inssec.php3
+// inscat.php and inssec.php
     case "Former category": $tmp = "ex-catégorie"; break;
     case "in Section": $tmp = "dans section"; break;
     case "has been renamed to": $tmp = "a été renommé en"; break;
@@ -441,7 +441,7 @@ switch($phrase) {
     case "section": $tmp = "section"; break;
     case "Delete Section": $tmp = "Supprimer section"; break;
 
-// inslic.php3
+// inslic.php
 
     case "License name not specified": $tmp = "Nom de licence non spécifiée"; break;
     case "has a new URL:": $tmp = "a une nouvelle URL:"; break;
@@ -455,7 +455,7 @@ switch($phrase) {
     case "License not specified": $tmp = "Licence non spécifiée"; break;
     case "Delete License": $tmp = "Supprimer licence"; break;
 
-// admcomment.php3 and comment.php3
+// admcomment.php and comment.php
     case "Posted on": $tmp = "Posté sur"; break;
     case "Modify": $tmp = "Modifier"; break;
     case "Comment about": $tmp = "Commenter sur"; break;
@@ -465,7 +465,7 @@ switch($phrase) {
     case "Comment Deleted": $tmp = "Commentaire supprimé"; break;
     case "Selected Comment was deleted": $tmp = "Le commentaire sélectionné a été supprimé"; break;
 
-// admfaq.php3 and insfaq.php3
+// admfaq.php and insfaq.php
 
     case "Enter a New Frequently Asked Question": $tmp = "Entrez une nouvelle question posée fréquemment"; break;
     case "Frequently Asked Questions Administration": $tmp = "Administration Foire Aux Questions"; break;
@@ -476,11 +476,11 @@ switch($phrase) {
     case "The following FAQ has been modified": $tmp = "La FAQ suivante a été modifiée"; break;
     case "The following FAQ has been inserted in this language": $tmp = "La FAQ suivante a été insérée dans cette langue"; break;
 
-// admdate.php3
+// admdate.php
     case "Modification date": $tmp = "Date de modification"; break;
     case "History date": $tmp = "Date d'archive"; break;
 
-// nladm.php3
+// nladm.php
     case "The Mailing Lists are not enabled": $tmp = "Les mailing list ne sont pas permises"; break;
     case "daily newsletter for": $tmp = "lettre d'information quotidienne pour"; break;
     case "weekly newsletter for": $tmp = "lettre d'information hebdomadaire pour"; break;
@@ -490,13 +490,13 @@ switch($phrase) {
 // footer.inc
     case "System Credits": $tmp = "Auteurs du système"; break;
 
-// login.php3
+// login.php
     case "Anonymous login": $tmp = "Connexion anonyme"; break;
     case "If you are not registered and/or you do not want to, you can login as an anonymous user by entering": $tmp = "Si vous n'êtes pas un utilisateur enregistré et/ou si vous ne le souhaitez pas, connectez vous comme utilisateur anonyme en entrant"; break;
     case "as user name and": $tmp = "comme nom d'utilisateur et"; break;
     case "as password.": $tmp = "comme mot de passe"; break;
 
-// configure.php3
+// configure.php
 
 
 // If no translation available, keep the original phrase

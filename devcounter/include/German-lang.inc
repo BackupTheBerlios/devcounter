@@ -348,7 +348,7 @@ switch($phrase) {
      case "No Frequently Asked Questions exist": $tmp = "Es existieren keine oft gestellten Fragen"; break;
      case "Developer did not specify a Profile yet": $tmp = "Entwickler hat bis jetzt noch keine Profildaten spezifiziert"; break;
 
-// adm_langs_tools.php3
+// adm_langs_tools.php
     case "Success": $tmp = "Erfolg"; break;
     case "ProgLanguage": $tmp = "Programmiersprache"; break;
     case "ColumnName": $tmp = "Spaltenname"; break;
@@ -365,19 +365,19 @@ switch($phrase) {
     case "Add ProgLanguage": $tmp = "ProgSprache hinzuf&uuml;gen"; break;
     case "Ability removed": $tmp = "F&auml;higkeit entfernt"; break;
 
-// stats.php3
+// stats.php
     case "Number of Insertions and Modifications in the last day": $tmp = "Anzahl der Eintragungen und Modifikationen während des letzten Tages"; break;
     case "Number of today's visitors": $tmp = "Anzahl der heutigen Besucher"; break;
     case "Today": $tmp = "Heute"; break;
     case "Version Number":  $tmp = "Versionsnummer"; break;
 
-// admuser.php3
+// admuser.php
     case "User Administration": $tmp = "Benutzeradministration"; break;
     case "There can only be one anonymous user in the system": $tmp = "Es darf nur ein anonymer Benutzer existieren"; break;
     case "The anonymous permission is incompatible with another type of permission": $tmp = "Das anonyme Recht ist inkompatibel zu anderen Rechten"; break;
 
 
-// showprofile.php3
+// showprofile.php
 
     case "Currently lives in": $tmp = "lebt momentan in"; break;
     case "Languages spoken": $tmp = "gesprochene Sprachen"; break;
@@ -393,7 +393,7 @@ switch($phrase) {
     case "Thank you for entering your Profile": $tmp = "Danke für die Eingabe Ihrer Profildaten"; break;
     case "Please proceed with the main page ": $tmp = "Bitte mit der Hauptseite fortfahren"; break;
 
-// admfaq.php3 and insfaq.php3
+// admfaq.php and insfaq.php
 
     case "Enter a New Frequently Asked Question": $tmp = "Erstellen einer neuen häufig gestellten Frage"; break;
     case "Frequently Asked Questions Administration": $tmp = "Administration der häufig gestellten Fragen"; break;
@@ -404,20 +404,20 @@ switch($phrase) {
     case "The following FAQ has been modified": $tmp = "Die folgende Frage wurde geändert"; break;
     case "The following FAQ has been inserted in this language": $tmp = "Die folgende Frage wurde erstellt in der Sprache"; break;
 
-// admdate.php3
+// admdate.php
     case "Modification date": $tmp = "Änderungsdatum"; break;
     case "History date": $tmp = "Datum der Historie"; break;
 
 // footer.inc
     case "System Credits": $tmp = "Systembeschreibung"; break;
 
-// login.php3
+// login.php
     case "Anonymous login": $tmp = "Anonymes Login"; break;
     case "If you are not registered and/or you do not want to, you can login as an anonymous user by entering": $tmp = "Wenn Sie nicht registriert sind und/oder Sie möchten dies auch nicht, dann authentifizieren Sie sich als anonymer Benutzer durch Eingabe von"; break;
     case "as user name and": $tmp = "als Benutzername und"; break;
     case "as password.": $tmp = "als Passwort"; break;
 
-// configure.php3
+// configure.php
 
     case "Enter your projects here": $tmp = "Projekte hier eingeben"; break;
     case "Project updated": $tmp = "Projekt ge&auml;ndert"; break;

@@ -398,7 +398,7 @@ switch($phrase) {
 
 // New Translations for version 1.0.9
 
-// stats.php3
+// stats.php
     case "Number of Insertions and Modifications in the last day": $tmp = "N&uacute;mero de Inserciones y Modificaciones en el &uacute;ltimo d&iacute;a"; break;
     case "Number of today's visitors": $tmp = "N&uacute;mero de visitas en el d&iacute;a de hoy"; break;
     case "Today": $tmp = "Hoy"; break;
@@ -407,12 +407,12 @@ switch($phrase) {
     case "Medium Urgency": $tmp = "Urgencia Media"; break;
     case "Low Urgency": $tmp = "Urgencia Baja"; break;
 
-// admuser.php3
+// admuser.php
     case "User Administration": $tmp = "Administraci&oacute;n de usuarios"; break;
     case "There can only be one anonymous user in the system": $tmp = "S&oacute;lo puede haber un usuario an&oacute;nimo en el sistema"; break;
     case "The anonymous permission is incompatible with another type of permission": $tmp = "El permiso de usuario an&oacute;nimo es incompatible con cualquier otro tipo de permisos"; break;
 
-// inscat.php3 and inssec.php3
+// inscat.php and inssec.php
     case "Former category": $tmp = "La categor&iacute;a"; break;
     case "in Section": $tmp = "en secci&oacute;n"; break;
     case "has been renamed to": $tmp = "ha sido renombrada a"; break;
@@ -437,7 +437,7 @@ switch($phrase) {
     case "section": $tmp = ""; break;    // en la fila de arriba
     case "Delete Section": $tmp = "Borrar Secci&oacute;n"; break;
 
-// inslic.php3
+// inslic.php
 
     case "License name not specified": $tmp = "No ha especificado ning&uacute;n nombre de licencia"; break;
     case "has a new URL:": $tmp = "tiene &eacute;sta direcci&oacute;n como nueva URL"; break;
@@ -451,7 +451,7 @@ switch($phrase) {
     case "License not specified": $tmp = "No ha especificado ninguna licencia"; break;
     case "Delete License": $tmp = "Borrar licencia"; break;
 
-// admcomment.php3 and comment.php3
+// admcomment.php and comment.php
     case "Posted on": $tmp = "Mandado el"; break;
     case "Modify": $tmp = "Modificar"; break;
     case "Comment about": $tmp = "Comentario acerca de"; break;
@@ -461,7 +461,7 @@ switch($phrase) {
     case "Comment Deleted": $tmp = "Comentario borrado"; break;
     case "Selected Comment was deleted": $tmp = "El comentario seleccionado ha sido borrado"; break;
 
-// admfaq.php3 and insfaq.php3
+// admfaq.php and insfaq.php
 
     case "Enter a New Frequently Asked Question": $tmp = "Introduzca una Pregunta Frecuente nueva"; break;
     case "Frequently Asked Questions Administration": $tmp = "Administraci&oacute;n de Preguntas Frecuentes"; break;
@@ -472,11 +472,11 @@ switch($phrase) {
     case "The following FAQ has been modified": $tmp = "La siguiente Pregunta Frecuente ha sido modificada"; break;
     case "The following FAQ has been inserted in this language": $tmp = "Ehhhh... esto no deber&iacute;a salir"; break;
 
-// admdate.php3
+// admdate.php
     case "Modification date": $tmp = "Fecha de modificaci&oacute;n"; break;
     case "History date": $tmp = "Fecha en el historial"; break;
 
-// nladm.php3
+// nladm.php
     case "The Mailing Lists are not enabled": $tmp = "Las listas de correo no est&aacute;n habilitadas"; break;
     case "daily newsletter for": $tmp = ": Lista de noticias diaria del d&iacute;a"; break;
     case "weekly newsletter for": $tmp = ": Lista de noticias semanal del d&iacute;a"; break;
@@ -486,13 +486,13 @@ switch($phrase) {
 // footer.inc
     case "System Credits": $tmp = "Cr&eacute;ditos"; break;
 
-// login.php3
+// login.php
     case "Anonymous login": $tmp = "Login como an&oacute;nimo"; break;
     case "If you are not registered and/or you do not want to, you can login as an anonymous user by entering": $tmp = "Si no est&aacute; registrado y/o no quiere registrarse, puede autentificarse como usuario an&oacute;nimo introduciendo"; break;
     case "as user name and": $tmp = "como nombre de usuario y"; break;
     case "as password.": $tmp = "como contrase&ntilde;a"; break;
 
-// configure.php3
+// configure.php
 
 // If no translation available, keep the original phrase
      default: $tmp = "$phrase"; break;

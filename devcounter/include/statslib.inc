@@ -58,10 +58,10 @@ function statslib_top($query,$var,$message,$position) {
       $db_local_appid = $db_local->f("appid");
       $db_local_type = $db_local->f("type");
       if ($db_local_type == "S") {
-        echo " (<a href=\"".$sess->url("appbyid.php3").$sess->add_query(array("id" => $db_local->f("appid")))."\">S</A>)";
+        echo " (<a href=\"".$sess->url("appbyid.php").$sess->add_query(array("id" => $db_local->f("appid")))."\">S</A>)";
       }
       if ($db_local_type == "D") {
-        echo " (<a href=\"".$sess->url("appbyid.php3").$sess->add_query(array("id" => $db_local->f("appid")))."\">D</A>)";
+        echo " (<a href=\"".$sess->url("appbyid.php").$sess->add_query(array("id" => $db_local->f("appid")))."\">D</A>)";
       }
     }
     echo "</td>\n";

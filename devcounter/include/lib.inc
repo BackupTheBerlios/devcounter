@@ -107,7 +107,7 @@ function licensep($selected) {
 ##
 ## shows 10 apps of the current iteraction $iter
 ## until it reaches the maximum number of iteractions $maxiter
-## $url is the name of the page (*.php3)
+## $url is the name of the page (*.php)
 ## $urlquery contains an array with the paramaters for the new page
 ##            (everything after the ?)
 
@@ -264,11 +264,11 @@ $btop = new box("100%",$th_box_frame_color,1,$th_box_title_bgcolor,$th_box_title
 					// Actions listed and linked
 					// The current page has border = 1
 
-  htmlp_link("summary.php3",array("proid" => $proid),html_image("ic/a.png",abs(!strcmp("summary",$page)),36,36,"Summary"));
-  htmlp_link("news.php3",array("proid" => $proid),html_image("ic/b.png",abs(!strcmp("news",$page)),36,36,"News"));
-  htmlp_link("comments.php3",array("proid" => $proid),html_image("ic/c.png",abs(!strcmp("comments",$page)),36,36,"General Comments"));
-  htmlp_link("sponsoring.php3",array("proid" => $proid),html_image("ic/d.png",abs(!strcmp("sponsoring",$page)),36,36,"Sponsor Collaboration"));
-  htmlp_link("history.php3",array("proid" => $proid),html_image("ic/e.png",abs(!strcmp("history",$page)),36,36,"Project History"));
+  htmlp_link("summary.php",array("proid" => $proid),html_image("ic/a.png",abs(!strcmp("summary",$page)),36,36,"Summary"));
+  htmlp_link("news.php",array("proid" => $proid),html_image("ic/b.png",abs(!strcmp("news",$page)),36,36,"News"));
+  htmlp_link("comments.php",array("proid" => $proid),html_image("ic/c.png",abs(!strcmp("comments",$page)),36,36,"General Comments"));
+  htmlp_link("sponsoring.php",array("proid" => $proid),html_image("ic/d.png",abs(!strcmp("sponsoring",$page)),36,36,"Sponsor Collaboration"));
+  htmlp_link("history.php",array("proid" => $proid),html_image("ic/e.png",abs(!strcmp("history",$page)),36,36,"Project History"));
 
 					// Blank space that
 					// limits actions from states
@@ -281,7 +281,7 @@ $btop = new box("100%",$th_box_frame_color,1,$th_box_title_bgcolor,$th_box_title
 
   for($i=1;$i<7;$i++) {
 	if ($i <= $db_top->f("status")) {
-		htmlp_link("step$i.php3",array("proid" => $proid),html_image("ic/$i.png",abs(!strcmp($i,$page)),36,36,"Step $i"));
+		htmlp_link("step$i.php",array("proid" => $proid),html_image("ic/$i.png",abs(!strcmp($i,$page)),36,36,"Step $i"));
 	} else {
 		htmlp_image("ic/".$i."grey.png",abs(!strcmp($i,$page)),24,24,"Step $i");
 	}
@@ -324,12 +324,12 @@ function summary($proid) {
 
   $db_summary->query("SELECT COUNT(*) FROM news WHERE proid='$proid'");
   $db_summary->next_record();
-  htmlp_link("news.php3",array("proid" => $proid),html_image("ic/b.png",0,48,48,"News")."&nbsp;News");
+  htmlp_link("news.php",array("proid" => $proid),html_image("ic/b.png",0,48,48,"News")."&nbsp;News");
   print "( <B>".$db_summary->f("COUNT(*)")."</B> news for this project )<hr>\n";
 
 					// Commments
 
-  htmlp_link("comments.php3",array("proid" => $proid),html_image("ic/c.png",0,48,48,"Comments")."&nbsp;General Comments");
+  htmlp_link("comments.php",array("proid" => $proid),html_image("ic/c.png",0,48,48,"Comments")."&nbsp;General Comments");
   $db_summary->query("SELECT COUNT(*) FROM comments WHERE proid='$proid' AND type='general'");
   $db_summary->next_record();
   print "( <B>".$db_summary->f("COUNT(*)")."</B> general comments";
@@ -339,7 +339,7 @@ function summary($proid) {
 
 					// Sponsor Involvement
 
-  htmlp_link("sponsoring.php3",array("proid" => $proid),html_image("ic/d.png",0,48,48,"News")."&nbsp;Sponsoring collaboration");
+  htmlp_link("sponsoring.php",array("proid" => $proid),html_image("ic/d.png",0,48,48,"News")."&nbsp;Sponsoring collaboration");
   $db_summary->query("SELECT COUNT(*) FROM sponsoring WHERE proid='$proid' AND status='A'");
   $db_summary->next_record();
   print "( <B>".$db_summary->f("COUNT(*)")."</B> accepted sponsoring collaborations, ";
@@ -350,7 +350,7 @@ function summary($proid) {
 
 					// Project History
 
-  htmlp_link("history.php3",array("proid" => $proid),html_image("ic/e.png",0,48,48,"News")."&nbsp;Project History");
+  htmlp_link("history.php",array("proid" => $proid),html_image("ic/e.png",0,48,48,"News")."&nbsp;Project History");
   print "<BR><i>You'll find here all what has been posted to the project (news, comments, content suggestions, etc.) in chronological order</i>.<br>&nbsp;\n";
 
   $bx->box_body_end();
@@ -381,13 +381,13 @@ function summary($proid) {
   $bx->box_body_begin();
   step_information ($status);
 
-  print html_link("decisions.php3",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Decisions on this step")." Sponsors can make the current decision following this link.\n&nbsp;<p>";
+  print html_link("decisions.php",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Decisions on this step")." Sponsors can make the current decision following this link.\n&nbsp;<p>";
 
-  print html_link("configure_edit.php3",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Project configurations")." Configure the project parameters.\n&nbsp;<p>";
+  print html_link("configure_edit.php",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Project configurations")." Configure the project parameters.\n&nbsp;<p>";
 
-  print html_link("views.php3",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Information access configuration")." Configure the information access to the project's data.\n&nbsp;<p>";
+  print html_link("views.php",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Information access configuration")." Configure the information access to the project's data.\n&nbsp;<p>";
 
-  print html_link("monitor_edit.php3",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Monitor This Project")." Receive an email update when something happens in this project.<p><br>\n";
+  print html_link("monitor_edit.php",array("proid" => $proid),html_image("ic/check.png",0,16,15,"ic/check.png")." Monitor This Project")." Receive an email update when something happens in this project.<p><br>\n";
   $bx->box_body_end();
 
   $bx->box_title($t->translate("Project Information"));
@@ -494,12 +494,12 @@ function summary_news($proid) {
 	$db_comments_on_news->query("SELECT * FROM comments WHERE proid='$proid' AND type='News' AND number='".$db_summ_news->f("creation_news")."'");
 
 	print "&nbsp;";
-	htmlp_link("news.php3",array("proid" => $proid),"<b>".$db_summ_news->f("subject_news")."</b><br>").
+	htmlp_link("news.php",array("proid" => $proid),"<b>".$db_summ_news->f("subject_news")."</b><br>").
 	$timestamp = mktimestamp($db_summ_news->f("creation_news"));
         print "<b><font size=\"-1\">&nbsp;<a href=\"mailto:".$db_summ_news->f("email_usr")."\">".$db_summ_news->f("user_news")."</a> - ".timestr_comment($timestamp)."</b></font><br>\n";
 	if ($db_comments_on_news->num_rows() > 0) {
 		print "&nbsp;<font size=-1>[ ".$db_comments_on_news->num_rows()." ";
-		htmlp_link("comments.php3",array("proid" => $proid, "type" => "News", "number" => $db_summ_news->f("creation_news"), "ref" => "0"),"comments");
+		htmlp_link("comments.php",array("proid" => $proid, "type" => "News", "number" => $db_summ_news->f("creation_news"), "ref" => "0"),"comments");
 		print "on it ]</font>\n";
 	}
 	print "<p>\n";
@@ -509,7 +509,7 @@ function summary_news($proid) {
 	print "&nbsp;There have not been posted any news by the project owner(s).\n";
   }
 
-  print "<p align=right><a href=\"".$sess->url("news_edit.php3").$sess->add_query(array("proid" => $proid))."\"><FONT SIZE=\"-1\">[Submit News]</FONT></a>&nbsp;&nbsp;<br>&nbsp;\n";
+  print "<p align=right><a href=\"".$sess->url("news_edit.php").$sess->add_query(array("proid" => $proid))."\"><FONT SIZE=\"-1\">[Submit News]</FONT></a>&nbsp;&nbsp;<br>&nbsp;\n";
 
 }
 
@@ -658,7 +658,7 @@ function lib_comment_it($proid,$type,$number,$ref,$subject,$text) {
   global $sess;
 
   print "<FONT SIZE=-1>[ ";
-  htmlp_link("comments_edit.php3",array("proid" => $proid, "type" => $type, "number" => $number, "ref" => $ref, "subject" => $subject),$text);
+  htmlp_link("comments_edit.php",array("proid" => $proid, "type" => $type, "number" => $number, "ref" => $ref, "subject" => $subject),$text);
   print " ]</FONT>\n";
 
 }
@@ -667,7 +667,7 @@ function lib_previous_comment($proid,$type,$number,$ref,$text) {
   global $sess;
 
   print "<FONT SIZE=-1>[ ";
-  htmlp_link("comments.php3",array("proid" => $proid, "type" => $type, "number" => $number, "ref" => $ref),$text);
+  htmlp_link("comments.php",array("proid" => $proid, "type" => $type, "number" => $number, "ref" => $ref),$text);
   print " ]</FONT>\n";
 
 }
@@ -682,7 +682,7 @@ function lib_show_comments_on_it($proid,$type_cmt,$number,$cmt_id) {
   if ($db->num_rows() > 0) {
 	echo "<ul>\n";
   	while($db->next_record()) {
-		echo "<li>".html_link("comments.php3",array("proid" => $proid, "type" => $type_cmt, "number" => $number, "ref" => $cmt_id),$db->f("subject_cmt"))." by <b>".$db->f("user_cmt")."</b> on <b>".timestr_comment(mktimestamp($db->f("creation_cmt")))."</b>\n";
+		echo "<li>".html_link("comments.php",array("proid" => $proid, "type" => $type_cmt, "number" => $number, "ref" => $cmt_id),$db->f("subject_cmt"))." by <b>".$db->f("user_cmt")."</b> on <b>".timestr_comment(mktimestamp($db->f("creation_cmt")))."</b>\n";
 		lib_show_comments_on_it($proid,$type_cmt,$number,$db->f("id"));
   	}
   	echo "</ul>\n";
@@ -870,7 +870,7 @@ function nlmsg($period) {
 			}
 		}
     }
-    $msg .= "\n".$GLOBALS["sys_name"]."    : ".$GLOBALS["sys_url"]."showprofile.php3?devname=".$db->f("username")."\n";
+    $msg .= "\n".$GLOBALS["sys_name"]."    : ".$GLOBALS["sys_url"]."showprofile.php?devname=".$db->f("username")."\n";
     $msg .= "\n               -----------------------------\n";
     $i++;
   }

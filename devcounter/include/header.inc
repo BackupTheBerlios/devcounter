@@ -40,6 +40,22 @@ $db = new DB_DevCounter;
    <title><?php echo $sys_name;?> - <?php echo $t->translate($sys_title);?></title>
 <link rel="stylesheet" type="text/css" href="berlios.css">
 <link rel="shortcut icon" href="berlios.ico">
+
+<SCRIPT LANGUAGE="JavaScript"> function addNetscapePanel() {
+      if ((typeof window.sidebar == "object") && (typeof window.sidebar.addPanel == "function"))
+      {
+         window.sidebar.addPanel ("DevCounter",
+         "<?php echo $sys_url."sitebar.php"?>","");
+      }
+      else
+      {
+         var rv = window.confirm ("This page is enhanced for use with Netscape 6.  " + "Would you like to upgrade now?"); 
+         if (rv)
+            document.location.href = "http://home.netscape.com/download/index.html";
+      }
+   }
+//--> </SCRIPT>
+
 </head>
 <body bgcolor="<?php echo $th_body_bgcolor;?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
 
