@@ -1,5 +1,5 @@
 <?php
-require("config.inc");
+require("./include/config.inc");
 $fsn = "12px";
 $fss = "10px";
 $h1 = "16px";
