@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: config.inc,v 1.15 2002/09/03 10:46:53 helix Exp $
+# $Id: config.inc,v 1.16 2002/09/16 18:33:52 helix Exp $
 #
 ######################################################################
 
@@ -240,6 +240,7 @@ $Minimum_apps_in_license = 1;
 # config_perm_admcat     Access permission to administrate categories
 # config_perm_nladm      Access permission to administrate newsletters
 # config_perm_admfaq     Access permission for administrating the faq
+# config_perm_admwatch   Access permission for administrate watch
 # 
 ######################################################################
 
@@ -256,6 +257,7 @@ $config_perm_admsec = "admin";
 $config_perm_admcat = "admin";
 $config_perm_nladm = "admin";
 $config_perm_admfaq = "admin";
+$config_perm_admwatch = "admin";
 
 ######################################################################
 # PHPLIB user authorization

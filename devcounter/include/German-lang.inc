@@ -289,6 +289,7 @@ switch($phrase) {
 	 case "Number of Visits on Developers": $tmp = "Anzahl der Besucher von Entwicklern"; break;
      case "Number of Insertions and Modifications": $tmp = "Anzahl der Eintragungen und Modifikationen"; break;
      case "Today": $tmp = "Heute"; break;
+     case "Last&nbsp;Week": $tmp = "Letzte&nbsp;Woche"; break;
 	 case "$GLOBALS[sys_name] Version": $tmp = "$GLOBALS[sys_name] Version"; break;
 
      case "Developers listed by Year of Birth": $tmp = "Entwickler geordnet nach Geburtsjahr"; break;

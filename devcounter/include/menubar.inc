@@ -56,17 +56,20 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
          $db->query("SELECT * from developers WHERE username='$uname'");
          if ($db->num_rows()==0)
            {
-            echo "<BR>\n";
-	        htmlp_link("questionaire.php","",$t->translate("Enter your Profile"));	    
+           ?>
+           <br><a href="<?php $sess->purl("questionaire.php") ?>" class="menus"><?php echo $t->translate("Enter your Profile"); ?></a>
+           <?php   
            }
          else
 	       {
-            echo "<BR>\n";
-	        htmlp_link("update.php","",$t->translate("Update your Profile"));
+           ?>
+           <br><a href="<?php $sess->purl("update.php") ?>" class="menus"><?php echo $t->translate("Update your Profile"); ?></a>
+           <?php
 	       }
         }
-        echo "<BR>\n";
-	    htmlp_link("watch.php","",$t->translate("Watch Developers"));
+        ?>
+        <br><a href="<?php $sess->purl("watch.php") ?>" class="menus"><?php echo $t->translate("Developers Watch"); ?></a>
+        <?php
      }
 ?>
    <br><a href="<?php $sess->purl("newsletter.php"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
@@ -89,7 +92,8 @@ if (
        ($config_perm_admsec == "all") ||
        ($config_perm_admcat == "all") ||
        ($config_perm_nladm == "all") ||
-       ($config_perm_admfaq == "all"))
+       ($config_perm_admfaq == "all") ||
+       ($config_perm_admwatch == "all"))
   || (isset($perm) &&
        (($perm->have_perm($config_perm_admuser)) ||
         ($perm->have_perm($config_perm_admlicens)) ||
@@ -97,7 +101,8 @@ if (
         ($perm->have_perm($config_perm_admsec)) ||
         ($perm->have_perm($config_perm_admcat)) ||
         ($perm->have_perm($config_perm_nladm)) ||
-        ($perm->have_perm($config_perm_admfaq)) ))
+        ($perm->have_perm($config_perm_admfaq)) ||
+        ($perm->have_perm($config_perm_admwatch))))
   && !($logout)) 
   {
 
@@ -125,6 +130,13 @@ if (
       $db->query("SELECT COUNT(*) FROM faq WHERE language='$la'");
       $db->next_record();
       echo "<br><a href=\"".$sess->url("admfaq.php")."\" class=\"menus\">".$t->translate("Q&amp;A")." [".$db->f("COUNT(*)")."]</a>\n";
+     }
+
+   if (($config_perm_admwatch == "all") || (isset($perm) && $perm->have_perm($config_perm_admwatch))  && !($logout))
+     {
+      $db->query("SELECT COUNT(*) FROM prog_ability_watch");
+      $db->next_record();
+      echo "<br><a href=\"".$sess->url("admwatch.php")."\" class=\"menus\">".$t->translate("Developers Watch")." [".$db->f("COUNT(*)")."]</a>\n";
      }
 
    if (($config_perm_nladm == "all") || (isset($perm) && $perm->have_perm($config_perm_nladm))  && !($logout)) 

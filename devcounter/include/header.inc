@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: header.inc,v 1.5 2002/08/30 06:52:52 helix Exp $
+# $Id: header.inc,v 1.6 2002/09/16 18:33:52 helix Exp $
 #
 ######################################################################
 
@@ -41,8 +41,8 @@ $db = new DB_DevCounter;
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
    <meta http-equiv="expires" content="0">
    <title><?php echo $sys_name;?> - <?php echo $t->translate($sys_title);?></title>
-<link rel="stylesheet" type="text/css" href="berlios.css">
-<link rel="shortcut icon" href="berlios.ico">
+<link rel="STYLESHEET" type="text/css" href="berlios.css">
+<link rel="SHORTCUT ICON" href="favicon.ico" title="external:favicon.ico">
 
 <SCRIPT LANGUAGE="JavaScript"> function addNetscapePanel() {
       if ((typeof window.sidebar == "object") && (typeof window.sidebar.addPanel == "function"))
