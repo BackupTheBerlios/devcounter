@@ -58,6 +58,18 @@ for ($i=0;$i<$lang_amount;$i++)
      }
   }
 
+for ($i=0;$i<$ability_amount;$i++)
+  {
+   if ($ability[$i] != 0)
+     {
+      $db->query("SELECT username FROM prog_abilities_values WHERE code='$i' AND value>='$lang[$i]'");
+      $plang_amount++;
+      while ($db->next_record())
+        {
+	 $un_query[$db->f("username")]++;
+	}
+     }
+  }
 $bx->box_begin();
 $bx->box_title($t->translate("Results"));
 $bx->box_body_begin();
