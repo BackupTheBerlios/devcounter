@@ -38,21 +38,28 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 
 <!-- content -->
 <?php
-$user__id = $confirm_hash;
-$db->query("UPDATE auth_user SET perms='user' WHERE user_id='$confirm_hash'");
 
-if ($db->affected_rows() == 0) 
-  {
-   $be->box_full($t->translate("Error"), $t->translate("Verification of Registration failed").":<br>$query");
-  } 
-  else 
-  {
-   $msg = $t->translate("Your account is now activated. Please login").".";
-   $bx->box_full($t->translate("Verification of Registration"), $msg);
+$db->query("SELECT perms FROM auth_user WHERE user_id='$confirm_hash'")
+$db->next_record();
 
-  }
+if ($db->f("perms") == "user") {
+    $msg = $t->translate("Your account is active. Please login").".";
+    $bx->box_full($t->translate("Verification of Registration"), $msg);
+} else {
+    $query = "UPDATE auth_user SET perms='user' WHERE user_id='$confirm_hash'";
+    $db->query($query);
+
+    if ($db->affected_rows() == 0) {
+       $be->box_full($t->translate("Error"), $t->translate("Verification of Registration failed").":<br>$query<p>Please contact the <a href=\"mailto:heinze@fokus.gmd.de\">webmaster</a>");
+    } else {
+       $msg = $t->translate("Your account is now activated. Please login").".";
+       $bx->box_full($t->translate("Verification of Registration"), $msg);
+    }
+
 
 ?>
+
+
 <!-- end content -->
 
 <?php
