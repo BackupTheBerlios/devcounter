@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: showprofile.php,v 1.5 2002/08/27 11:16:59 helix Exp $
+# $Id: showprofile.php,v 1.6 2002/08/27 22:36:15 helix Exp $
 #
 ######################################################################
 
@@ -70,13 +70,14 @@ else
   
    $year_of_birth = $db->f("year_of_birth");
    if ($year_of_birth == "0") {
-      $year_of_birth = $t->translate("no entry");
+      $year_of_birth = $t->translate("No Entry");
    } else {
       $year_of_birth = "19".$year_of_birth;
    }
    echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>$year_of_birth\n";
 
-   $gender = $db->f("gender");
+   $gendid = $db->f("gender");
+   $gender = get_gender($gendid);
    echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>".$t->translate("$gender")."\n";
 
    $nationality = $db->f("nationality");
@@ -143,11 +144,13 @@ else
 
    echo "<table border=0 width=100% align=center cellspacing=3 cellpadding=3>\n";
   
-   $profession = $db->f("profession");
-   echo "<tr><td align=right width=30%>".$t->translate("Profession").":</td><td width=70%>".$t->translate("$profession")."\n";
+   $profid = $db->f("profession");
+   $prof = get_profession($profid);
+   echo "<tr><td align=right width=30%>".$t->translate("Profession").":</td><td width=70%>".$t->translate($prof)."\n";
 
-   $qualification = $db->f("qualification");
-   echo "<tr><td align=right width=30%>".$t->translate("Qualification").":</td><td width=70%>".$t->translate("$qualification")."\n";
+   $qualid = $db->f("qualification");
+   $qual = get_qualification($qualid);
+   echo "<tr><td align=right width=30%>".$t->translate("Qualification").":</td><td width=70%>".$t->translate($qual)."\n";
 
    echo "</table>\n";
    $bx->box_body_end();
@@ -211,9 +214,9 @@ else
 
    $db->query("SELECT * from prog_abilities WHERE translation='$la'");
    $ability_amount=$db->num_rows();
-   $counter=0;$counter2=0;
+   $counter=0; $counter2=0;
    
-   while ($counter<$ability_amount)
+   while ($counter < $ability_amount)
      {
       $counter++;
       $db->next_record();
@@ -221,43 +224,32 @@ else
       $ability_code = $db->f("code");
       $colname = $db->f("colname");
       $ability_value = $db2->f($colname);
-      if ($ability_value !=0)
+      if ($ability_value > 1)
         {
          $counter2++;
-         if (($counter2 % 3)==1)
-           {
-            echo "<tr><td width=18% align=right>\n"; 
-           }
+         if (($counter2 % 3) == 1)
+            echo "<tr><td width=18% align=right>\n";
          else
-           {
             echo "<td width=18% align=right>\n";
-           }
          echo $db->f("ability")."\n";
          echo "</td><td width=90>";
       
-            $printstars = 0;
-	 while ($printstars !=$ability_value)
+         $printstars = 1;
+         while ($printstars != $ability_value)
            {
-	    htmlp_image("13.gif", 0, 17, 16 , "*");
-      	    //echo "+";
-   	    $printstars++;
+            htmlp_image("13.gif", 0, 17, 16 , "*");
+            $printstars++;
       	   }
       
-         if (($counter2 % 3)==0)
-           {
-            echo "</td></tr>\n\n"; 
-           }
+         if (($counter2 % 3) == 0)
+            echo "</td></tr>\n\n";
          else
-           {
             echo "</td>\n";
-           }
         }
      }
      
-   if (($counter2 % 3)==0)
-     {
+   if (($counter2 % 3) == 0)
       echo "</tr>\n\n"; 
-     }
    htmlp_form_hidden("ability_amount", $ability_amount);
   
    echo "</table></center>\n";
@@ -276,7 +268,7 @@ else
    $db->query("SELECT * from prog_languages");
    $lang_amount=$db->num_rows();
    $counter=0;$counter2=0;
-   while ($counter<$lang_amount)
+   while ($counter < $lang_amount)
      {
       $counter++;
       $db->next_record();
@@ -284,44 +276,32 @@ else
       $ability_code = $db->f("code");
       $colname = $db->f("colname");
       $ability_value = $db2->f($colname);
-      if ($ability_value !=0)
+      if ($ability_value > 1)
         {
          $counter2++;
-	 if (($counter2 % 3)==1)
-           {
-            echo "<tr><td width=18% align=right>\n"; 
-           }
+         if (($counter2 % 3) == 1)
+            echo "<tr><td width=18% align=right>\n";
          else
-           {
            echo "<td width=18% align=right>\n";
-           }
          echo $db->f("language")."\n";
          echo "</td><td width=90>";
 
-     
-         $printstars = 0;
-         while ($printstars !=$ability_value)
+         $printstars = 1;
+         while ($printstars != $ability_value)
            {
-	    htmlp_image("13.gif", 0, 17, 16 , "*");
-	    //echo "+";
-	    $printstars++;
-	   }
+            htmlp_image("13.gif", 0, 17, 16 , "*");
+            $printstars++;
+           }
 
-         if (($counter2 % 3)==0)
-           {
-            echo "</td></tr>\n\n"; 
-           }
+         if (($counter2 % 3) == 0)
+            echo "</td></tr>\n\n";
          else
-           {
             echo "</td>\n";
-           }
-	}
+        }
      }
      
-   if (($counter2 % 3)==0)
-     {
-      echo "</tr>\n\n"; 
-     }
+   if (($counter2 % 3) == 0)
+      echo "</tr>\n\n";
    htmlp_form_hidden("lang_amount", $lang_amount);
 
    echo "</table></center>\n";
