@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: sitebar.php,v 1.4 2002/09/01 11:27:51 helix Exp $
+# $Id: sitebar.php,v 1.5 2002/09/25 10:05:19 helix Exp $
 #
 ######################################################################  
 
@@ -52,7 +52,7 @@ $bx = new box("95%",$th_box_frame_color,0,$th_box_title_bgcolor,$th_box_title_fo
    <meta http-equiv="expires" content="0">
    <meta http-equiv="Refresh" content="1200; URL=<?php echo $sys_url."sitebar.php"?>">
    <title><?php echo $sys_name;?> - <?php echo $t->translate($sys_title);?></title>
-<link rel="stylesheet" type="text/css" href="berlios.css">
+<link rel="stylesheet" type="text/css" href="style.php">
 </head>
 <body bgcolor="<?php echo $th_body_bgcolor;?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
 
