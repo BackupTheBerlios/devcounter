@@ -13,7 +13,7 @@
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # File with the main German translation
-# translated by Lutz Henckel <lutz.henckel@fokus.gmd.de>
+# translated by Lutz Henckel <lutz.henckel@fokus.fhg.de>
 #
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
