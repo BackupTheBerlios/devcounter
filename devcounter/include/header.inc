@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: header.inc,v 1.4 2002/08/26 10:14:28 helix Exp $
+# $Id: header.inc,v 1.5 2002/08/30 06:52:52 helix Exp $
 #
 ######################################################################
 
@@ -35,7 +35,7 @@ require("html.inc");
 $t = new translation($la);
 $db = new DB_DevCounter;
 ?>
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
