@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: questionaire.php,v 1.6 2002/09/16 21:39:40 helix Exp $
+# $Id: questionaire.php,v 1.7 2002/10/22 11:39:39 Masato Exp $
 #
 ######################################################################
 
@@ -54,7 +54,7 @@ else
    $bx->box_body_begin();
   
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
-   htmlp_form_action("insert.php","","GET");
+   htmlp_form_action("insert.php","","POST");
    echo "\n";
 
    $username=$auth->auth["uname"];
