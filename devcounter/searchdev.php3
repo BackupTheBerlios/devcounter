@@ -39,7 +39,7 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 <!-- content -->
 <?php
 
-   htmlp_form_action("insert.php3","POST");
+   htmlp_form_action("devresults.php3","POST");
    $bx->box_begin();
    $bx->box_title($t->translate("Computer experience"));
    $bx->box_body_begin();
