@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: config.inc,v 1.17 2003/07/16 18:21:22 masato Exp $
+# $Id: config.inc,v 1.18 2003/11/12 13:56:03 helix Exp $
 #
 ######################################################################
 
@@ -48,7 +48,8 @@ $sys_logo_image = "images/berliOS_logo.png";
 $sys_logo_alt = "BerliOS";
 $sys_logo_width = "238";
 $sys_logo_heigth = "61";
-$sys_logo_small_image = "images/berliOS_small_logo.png";
+#$sys_logo_small_image = "images/berliOS_small_logo.png";
+$sys_logo_small_image = "http://developer.berlios.de/bslogo.php?group_id=175&type=1";
 $sys_logo_small_alt = $sys_logo_alt;
 $sys_logo_small_width = "124";
 $sys_logo_small_heigth = "32";
