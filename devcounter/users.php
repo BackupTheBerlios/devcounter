@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: users.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: users.php,v 1.5 2002/08/30 07:06:19 helix Exp $
 #
 ######################################################################
 
@@ -76,7 +76,7 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 
   $i = 1;
   while($db->next_record()) {
-  	if ($i%2 != 0) $bgcolor = "gold";
+  	if ($i%2 != 0) $bgcolor = "#E0E0E0";
   	else $bgcolor = "#FFFFFF";
  
 	$username = $db->f("username");
@@ -88,21 +88,13 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
 	else
 	{ $bx->box_column("center","",$bgcolor,html_link("showprofile.php",$pquery,$username)); }
 	if ($db->f("showname")=="yes")
-	  {
 	   $bx->box_column("center","",$bgcolor,$db->f("realname"));
-	  }
 	else
-	  {
-	   $bx->box_column("center","",$bgcolor,"-- % ---");
-	  }
-	if ($db->f("showemail")=="yes")
-	  {
-	   $bx->box_column("center","",$bgcolor,html_link("mailto:".$db->f("email_usr"),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
-	  }
-	else
-	  {
 	   $bx->box_column("center","",$bgcolor,"--- % ---");
-	  }
+	if ($db->f("showemail")=="yes")
+	   $bx->box_column("center","",$bgcolor,html_link("mailto:".$db->f("email_usr"),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+	else
+	   $bx->box_column("center","",$bgcolor,"--- % ---");
 	$bx->box_next_row_of_columns();
 	$i++;
   }
