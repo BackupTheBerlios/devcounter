@@ -17,7 +17,7 @@ if (isset($username)) {
     $be->box_full($t->translate("Error"), $t->translate("Either your Username or Password are invalid")."."
 		."<br>".$t->translate("Please try again")."!"
 		."<br><br>".$t->translate("If you are not yet a registered User, please select")
-		." <a href=\"register.php3\">".$t->translate("New User")."</a>."
+		." <a href=\"register.php\">".$t->translate("New User")."</a>."
 	);
 }
 $bx->box_begin();
