@@ -4,7 +4,7 @@
 # http://www.phpmyadmin.net/ (download page)
 #
 # Host: db.berlios.de
-# Generation Time: Aug 26, 2002 at 01:23 PM
+# Generation Time: Aug 27, 2002 at 04:19 PM
 # Server version: 3.23.37
 # PHP Version: 3.0.18
 # Database : `devcounter`
@@ -1102,6 +1102,14 @@ INSERT INTO faq (faqid, language, question, answer) VALUES (14, 'Spanish', '&iqu
 INSERT INTO faq (faqid, language, question, answer) VALUES (15, 'Spanish', 'Esta es una FAQ solo en espaniol...  ', 'y aqui esta la respuesta');
 
 #
+# Dumping data for table `gender`
+#
+
+INSERT INTO gender (gendid, gender) VALUES (1, 'No Entry');
+INSERT INTO gender (gendid, gender) VALUES (2, 'Male');
+INSERT INTO gender (gendid, gender) VALUES (3, 'Female');
+
+#
 # Dumping data for table `languages`
 #
 
@@ -1423,6 +1431,24 @@ INSERT INTO languages (code, language, translation) VALUES (71, 'Yoruba', 'Spani
 INSERT INTO languages (code, language, translation) VALUES (71, '', 'French');
 
 #
+# Dumping data for table `profession`
+#
+
+INSERT INTO profession (profid, profession) VALUES (1, 'No Entry');
+INSERT INTO profession (profid, profession) VALUES (2, 'Student (IT)');
+INSERT INTO profession (profid, profession) VALUES (3, 'Student (other)');
+INSERT INTO profession (profid, profession) VALUES (4, 'Programmer');
+INSERT INTO profession (profid, profession) VALUES (5, 'Software Engineer');
+INSERT INTO profession (profid, profession) VALUES (6, 'Other type of Engineering');
+INSERT INTO profession (profid, profession) VALUES (7, 'University professor/assistant (IT)');
+INSERT INTO profession (profid, profession) VALUES (8, 'University professor/assistant (other)');
+INSERT INTO profession (profid, profession) VALUES (9, 'Executive (IT)');
+INSERT INTO profession (profid, profession) VALUES (10, 'Executive (other)');
+INSERT INTO profession (profid, profession) VALUES (11, 'Consultant (IT)');
+INSERT INTO profession (profid, profession) VALUES (12, 'Consultant (other)');
+INSERT INTO profession (profid, profession) VALUES (13, 'Nothing to do with the software industry');
+
+#
 # Dumping data for table `prog_abilities`
 #
 
@@ -1482,3 +1508,30 @@ INSERT INTO prog_languages (code, language, colname) VALUES (24, 'TCL', 'tcl');
 INSERT INTO prog_languages (code, language, colname) VALUES (25, 'Scheme', 'scheme');
 INSERT INTO prog_languages (code, language, colname) VALUES (26, 'Make', 'make');
 INSERT INTO prog_languages (code, language, colname) VALUES (27, 'CVS', 'cvs');
+INSERT INTO prog_languages (code, language, colname) VALUES (28, 'Ruby', 'ruby');
+
+#
+# Dumping data for table `qualification`
+#
+
+INSERT INTO qualification (qualid, qualification) VALUES (1, 'No Entry');
+INSERT INTO qualification (qualid, qualification) VALUES (2, 'Elementary School');
+INSERT INTO qualification (qualid, qualification) VALUES (3, 'High School');
+INSERT INTO qualification (qualid, qualification) VALUES (4, 'A-Level');
+INSERT INTO qualification (qualid, qualification) VALUES (5, 'Apprenticeship');
+INSERT INTO qualification (qualid, qualification) VALUES (6, 'College Graduate');
+INSERT INTO qualification (qualid, qualification) VALUES (7, 'University Graduate');
+INSERT INTO qualification (qualid, qualification) VALUES (8, 'Master');
+INSERT INTO qualification (qualid, qualification) VALUES (9, 'PhD');
+
+#
+# Dumping data for table `weightings`
+#
+
+INSERT INTO weightings (weightid, weighting) VALUES (1, 'No Experience');
+INSERT INTO weightings (weightid, weighting) VALUES (2, 'Novice');
+INSERT INTO weightings (weightid, weighting) VALUES (3, 'Beginner');
+INSERT INTO weightings (weightid, weighting) VALUES (4, 'Advanced');
+INSERT INTO weightings (weightid, weighting) VALUES (5, 'Expert');
+INSERT INTO weightings (weightid, weighting) VALUES (6, 'Guru');
+

@@ -4,7 +4,7 @@
 # http://www.phpmyadmin.net/ (download page)
 #
 # Host: db.berlios.de
-# Generation Time: Aug 26, 2002 at 01:13 PM
+# Generation Time: Aug 27, 2002 at 04:13 PM
 # Server version: 3.23.37
 # PHP Version: 3.0.18
 # Database : `devcounter`
@@ -131,6 +131,17 @@ CREATE TABLE faq (
 # --------------------------------------------------------
 
 #
+# Table structure for table `gender`
+#
+
+CREATE TABLE gender (
+  gendid int(11) NOT NULL auto_increment,
+  gender varchar(128) NOT NULL default 'No Entry',
+  KEY weightid (gendid)
+) TYPE=MyISAM;
+# --------------------------------------------------------
+
+#
 # Table structure for table `languages`
 #
 
@@ -151,6 +162,17 @@ CREATE TABLE os_projects (
   url varchar(255) NOT NULL default '',
   comment text NOT NULL,
   PRIMARY KEY  (username,projectname)
+) TYPE=MyISAM;
+# --------------------------------------------------------
+
+#
+# Table structure for table `profession`
+#
+
+CREATE TABLE profession (
+  profid int(11) NOT NULL auto_increment,
+  profession varchar(128) NOT NULL default 'No Entry',
+  KEY weightid (profid)
 ) TYPE=MyISAM;
 # --------------------------------------------------------
 
@@ -244,6 +266,7 @@ CREATE TABLE prog_language_values (
   scheme int(11) default NULL,
   make int(11) default NULL,
   cvs int(11) default NULL,
+  ruby int(11) NOT NULL default '0',
   PRIMARY KEY  (username)
 ) TYPE=MyISAM;
 # --------------------------------------------------------
@@ -295,5 +318,27 @@ CREATE TABLE prog_languages (
   language varchar(64) NOT NULL default '',
   colname varchar(64) NOT NULL default '',
   PRIMARY KEY  (code)
+) TYPE=MyISAM;
+# --------------------------------------------------------
+
+#
+# Table structure for table `qualification`
+#
+
+CREATE TABLE qualification (
+  qualid int(11) NOT NULL auto_increment,
+  qualification varchar(128) NOT NULL default 'No Entry',
+  KEY weightid (qualid)
+) TYPE=MyISAM;
+# --------------------------------------------------------
+
+#
+# Table structure for table `weightings`
+#
+
+CREATE TABLE weightings (
+  weightid int(11) NOT NULL auto_increment,
+  weighting varchar(128) NOT NULL default 'No Experience',
+  KEY weightid (weightid)
 ) TYPE=MyISAM;
 
