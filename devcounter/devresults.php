@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: devresults.php,v 1.6 2002/09/16 18:47:58 helix Exp $
+# $Id: devresults.php,v 1.7 2002/09/17 11:23:15 helix Exp $
 #
 ######################################################################
 
@@ -89,7 +89,7 @@ case "allinone":
 		echo $t->translate("No Results")."\n";
 	} else {
 		$bx->box_columns_begin(4);
-		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
@@ -160,7 +160,7 @@ case "abilities":
 		echo $t->translate("No Results")."\n";
 	} else {
 		$bx->box_columns_begin(4);
-		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
@@ -210,7 +210,7 @@ case "projects":
 		echo $t->translate("No Results")."\n";
 	} else {
 		$bx->box_columns_begin(4);
-		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
@@ -259,7 +259,7 @@ case "lang":
 		echo $t->translate("No Results")."\n";
 	} else {
 		$bx->box_columns_begin(4);
-		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
@@ -308,7 +308,7 @@ case "country":
 		echo $t->translate("No Results")."\n";
 	} else {
 		$bx->box_columns_begin(4);
-		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
@@ -357,7 +357,7 @@ case "name":
 		echo $t->translate("No Results")."\n";
 	} else {
 		$bx->box_columns_begin(4);
-		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+		$bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
 		$bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");

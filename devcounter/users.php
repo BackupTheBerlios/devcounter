@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: users.php,v 1.5 2002/08/30 07:06:19 helix Exp $
+# $Id: users.php,v 1.6 2002/09/17 11:23:44 helix Exp $
 #
 ######################################################################
 
@@ -68,7 +68,7 @@ if (($config_perm_users != "all") && (!isset($perm) || !$perm->have_perm($config
   $bx->box_body_begin();
 
   $bx->box_columns_begin(4);
-  $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No")."</b>");
+  $bx->box_column("right","5%", $th_strip_title_bgcolor,"<b>".$t->translate("No.")."</b>");
   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Username")."</b>");
   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("Realname")."</b>");
   $bx->box_column("center","25%", $th_strip_title_bgcolor,"<b>".$t->translate("E-Mail")."</b>");
