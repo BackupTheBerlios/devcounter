@@ -45,7 +45,7 @@ INSERT INTO prog_abilities VALUES ('11', 'Schreiben von Dokumentationen', 'Germa
 # Table structure for table 'prog_abilities_values'
 #
 
-DROP TABLE IF EXISTS prog_abilities;
+DROP TABLE IF EXISTS prog_abilities_values;
 CREATE TABLE languages (
    username varchar(64) NOT NULL,
    code int(11) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE languages (
 # Table structure for table 'prog_languages_values'
 #
 
-DROP TABLE IF EXISTS prog_alanguages_values;
+DROP TABLE IF EXISTS prog_languages_values;
 CREATE TABLE languages (
    username varchar(64) NOT NULL,
    code int(11) NOT NULL,

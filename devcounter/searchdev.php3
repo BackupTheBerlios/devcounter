@@ -43,6 +43,7 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
    $bx->box_begin();
    $bx->box_title($t->translate("Computer experience"));
    $bx->box_body_begin();
+/*
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
    echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" size=3 maxlength=2>\n";
@@ -52,6 +53,7 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
    echo "</TABLE>";
    $bx->box_body_end();
    $bx->box_body_begin();
+*/
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
    echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("Which of these programming expirience do you have?")."</FONT></B></td></tr><tr><td>\n";
