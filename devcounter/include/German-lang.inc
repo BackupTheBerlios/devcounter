@@ -344,7 +344,12 @@ switch($phrase) {
 
 // adm_langs_tools.php3
     case "Success": $tmp = "Erfolg"; break;
-    case "ProgLanguage updated": $tmp = "Programmiersprace ge&auml;ndert"; break;
+    case "ProgLanguage updated": $tmp = "Programmiersprache ge&auml;ndert"; break;
+    case "ProgLanguage added": $tmp = "Programmiersprache hinzugef&uuml;gt"; break;
+    case "ProgLanguage removed": $tmp = "Programmiersprache entfernt"; break;
+    case "Ability updated": $tmp = "F&auml;higkeit ge&auml;ndert"; break;
+    case "Ability added": $tmp = "F&auml;higkeit hinzugef&uuml;gt"; break;
+    case "Ability removed": $tmp = "F&auml;higkeit entfernt"; break;
 
 // stats.php3
     case "Number of Insertions and Modifications in the last day": $tmp = "Anzahl der Eintragungen und Modifikationen während des letzten Tages"; break;
