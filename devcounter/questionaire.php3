@@ -30,7 +30,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
 
 require("header.inc");
 
-$bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
+$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
@@ -69,7 +69,7 @@ else
    $username=$auth->auth["uname"];
 
    htmlp_form_hidden("username", $username);
-   echo "<tr><td align=right width=30%>".$t->translate("Username")."</td><td width=70%> $username\n";
+   echo "<tr><td align=right width=30%>".$t->translate("Username").":</td><td width=70%> $username\n";
   
 
    echo "<tr><td align=right width=30%>".$t->translate("Nationality").":</td><td width=70%>\n";
@@ -294,24 +294,16 @@ else
 
 
    echo"<CENTER><TABLE BORDER=0 width=89%><TR><TD width=65%>\n";
-   $bx->box_begin();
-   $bx->box_title($t->translate("Submit"));
-   $bx->box_body_begin();
-   echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=0>\n";
-   echo "<tr><td align=right width=15%>&nbsp;</td><td width=85%>\n";
-   htmlp_form_submit($t->translate("Submit Your Form"),"");
 
-   echo "</td>\n";
-   echo "<td>";
-//  echo "<img src=\"images/blank.gif\" width=\"118\" height=\"52\" border=\"0\"></td></tr>";
-   echo "\n";
-   htmlp_form_end();
+
+   echo "<CENTER>";
+   htmlp_form_submit($t->translate("Submit"),"");
+   echo "</CENTER>";
+
    echo "</td></tr>\n";
    echo "</table>\n";
-   echo "</td></tr>\n";
-   echo "</table>\n";
-   $bx->box_body_end();
-   $bx->box_end();
+
+
    echo"</TD><TD width=5%>&nbsp;\n";
    echo"</TD><TD width=30%>\n";
   }

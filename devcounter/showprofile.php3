@@ -30,7 +30,7 @@ if (isset($auth) && !empty($auth->auth["perm"]))
 
 require("header.inc");
 
-$bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
+$bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
@@ -59,21 +59,16 @@ else
    $db->next_record();
    $username = $devname;
    
-   $bx->box_begin();
-   $bx->box_title($t->translate("Developer"));
-   $bx->box_body_begin();
 
-   echo "<CENTER><FONT SIZE=\"+3\"><B>&nbsp;&nbsp;$devname&nbsp;&nbsp;</B></FONT></CENTER>";
+   echo "<CENTER><FONT SIZE=\"+3\"><B>&nbsp;&nbsp;$devname&nbsp;&nbsp;</B></FONT></CENTER><BR><BR>";
 
-   $bx->box_body_end();
-   $bx->box_end();
    
    $bx->box_begin();
    $bx->box_title($t->translate("Personal Data"));
    $bx->box_body_begin();
 
    echo "<table border=0 width=100% align=center cellspacing=3 cellpadding=3>\n";
-   echo "<tr><td align=right width=30%>".$t->translate("Username").":</td><td width=70%> $username\n";
+   //echo "<tr><td align=right width=30%>".$t->translate("Username").":</td><td width=70%> $username\n";
   
    $nationality = $db->f("nationality");
    echo "<tr><td align=right width=30%>".$t->translate("Nationality").":</td><td width=70%>\n";
@@ -159,7 +154,7 @@ else
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
    echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("programming expirience")."</FONT></B></td></tr><tr><td>\n";
-   echo "<center><table width=90% border=0>\n";
+   echo "<center><table width=100% border=0 cellspacing=6>\n";
 
 
    $db2->query("select * from prog_ability_values WHERE username='$username'");
@@ -182,24 +177,25 @@ else
          $counter2++;
          if (($counter2 % 3)==1)
            {
-            echo "<tr><td width=33%>\n"; 
+            echo "<tr><td width=18% align=right>\n"; 
            }
          else
            {
-            echo "<td width=33%>\n";
+            echo "<td width=18% align=right>\n";
            }
-         echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
+         //echo "<table border=3 width=100% cellpadding=3><tr><td align=right>";
          echo $db->f("ability")."\n";
-         echo "</td><td width=20%>";
+         echo "</td><td width=90>";
       
             $printstars = 0;
 	 while ($printstars !=$ability_value)
            {
-      	    echo "*";
+	    htmlp_image("13.gif", 0, 17, 16 , "*");
+      	    //echo "+";
    	    $printstars++;
       	   }
       
-         echo"</td></tr></table>";
+         //echo"</td></tr></table>";
      
          if (($counter2 % 3)==0)
            {
@@ -227,7 +223,7 @@ else
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
    echo "<tr><td align=center><B><FONT SIZE=+1>".$t->translate("languages/tool experience")."</FONT></B></td></tr><tr><td>\n";
-   echo "<center><table border=0>\n";
+   echo "<center><table border=0 width=100% cellspacing=6>\n";
 
 
 
@@ -250,27 +246,28 @@ else
          $counter2++;
 	 if (($counter2 % 3)==1)
            {
-            echo "<tr><td width=33%>\n"; 
+            echo "<tr><td width=18% align=right>\n"; 
            }
          else
            {
-           echo "<td width=33%>\n";
+           echo "<td width=18% align=right>\n";
            }
-         echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
+//         echo "<table border=3 width=100% cellpadding=3><tr><td align=right>";
          echo $db->f("language")."\n";
-         echo "</td><td width=20%>";
+         echo "</td><td width=90>";
 
      
          $printstars = 0;
          while ($printstars !=$ability_value)
            {
-	    echo "*";
+	    htmlp_image("13.gif", 0, 17, 16 , "*");
+	    //echo "+";
 	    $printstars++;
 	   }
       
  
 
-         echo"</td></tr></table>";
+//         echo"</td></tr></table>";
      
          if (($counter2 % 3)==0)
            {

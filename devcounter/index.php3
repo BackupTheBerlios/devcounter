@@ -59,7 +59,7 @@ echo "<TR><TD VALIGN=\"top\">";
 echo "</TD><TD WIDTH=\"250\">";
 
 $bx->box_begin();
-$bx->box_title($t->translate("Newest Devlopers"));
+$bx->box_title($t->translate("Newest Developers"));
 $bx->box_body_begin();
 
 $db->query("SELECT * FROM auth_user ORDER BY creation_usr DESC LIMIT 0, 10");

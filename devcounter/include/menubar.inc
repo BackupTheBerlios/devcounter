@@ -165,10 +165,10 @@ htmlp_form_hidden("option", "name");
 ?>
 <input TYPE="text" SIZE="10" NAME="search_text" VALUE="">
 <?php
-echo "<BR><input TYPE=\"submit\" VALUE=\"".$t->translate('Search')."\">";
+echo "<P><input TYPE=\"submit\" VALUE=\"".$t->translate('Search')."\">";
 ?>
 </form>
-   <a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Advanced Search"); ?></a>
+<p><a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Advanced Search"); ?></a>
 </td>
 </tr>
 </table>
@@ -206,7 +206,7 @@ while (list(, $ln) = each($la_array)) {
 ?>
 </select>
 <?php
-echo "<BR><input TYPE=\"submit\" NAME=\"go\" VALUE=\"".$t->translate("Go")."\">";
+echo "<P><input TYPE=\"submit\" NAME=\"go\" VALUE=\"".$t->translate("Go")."\">";
 ?>
 </form>
 </td>
