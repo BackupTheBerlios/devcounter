@@ -46,6 +46,7 @@ switch($phrase) {
      case "Statistics": $tmp = "Statistiken"; break;
      case "Advanced Search": $tmp = "Erweiterte Suche";break;
      case "Backend": $tmp = "$phrase"; break;
+     case "Modify ProgLanguages &amp; ProgTools": $tmp = "ProgSprachen und ProgTools verwalten";break;
 
 //Frontpage
      case "Newest Developers": $tmp = "Neueste Entwickler"; break;
@@ -335,11 +336,19 @@ switch($phrase) {
 
 // adm_langs_tools.php3
     case "Success": $tmp = "Erfolg"; break;
-    case "ProgLanguage updated": $tmp = "Programmiersprache ge&auml;ndert"; break;
-    case "ProgLanguage added": $tmp = "Programmiersprache hinzugef&uuml;gt"; break;
-    case "ProgLanguage removed": $tmp = "Programmiersprache entfernt"; break;
+    case "ProgLanguage": $tmp = "Programmiersprache"; break;
+    case "ColumnName": $tmp = "Spaltenname"; break;
+    case "Programming Abilities" : $tmp = "Programmierfertigkeiten"; break;
+    case "ProgAbilityName" : $tmp = "ProgFertigkeitenName"; break;
+    case "Programming Languages": $tmp = "Programmiersprachen"; break;
+    case "ProgLanguageName": $tmp = "ProgSprachenName"; break;
+    case "ProgLanguage updated": $tmp = "ProgSprache ge&auml;ndert"; break;
+    case "ProgLanguage added": $tmp = "ProgSprache hinzugef&uuml;gt"; break;
+    case "ProgLanguage removed": $tmp = "ProgSprache entfernt"; break;
     case "Ability updated": $tmp = "F&auml;higkeit ge&auml;ndert"; break;
     case "Ability added": $tmp = "F&auml;higkeit hinzugef&uuml;gt"; break;
+    case "Add Ability": $tmp = "F&auml;higkeit hinzuf&uuml;gen"; break;
+    case "Add ProgLanguage": $tmp = "ProgSprache hinzuf&uuml;gen"; break;
     case "Ability removed": $tmp = "F&auml;higkeit entfernt"; break;
 
 // stats.php3

@@ -77,28 +77,17 @@ $db2 = new DB_DevCounter;
 
 
  $bx->box_begin();
- $bx->box_title($t->translate("Thank you"));
+ $bx->box_title($t->translate("Done"));
  $bx->box_body_begin();
  echo "\n<P>";
- echo $t->translate("Give another time thanx for filling it out");
+ echo $t->translate("Your profile data has been succesfully changed");
  echo "\n<BR>";
  htmlp_link("./index.php3", "", $t->translate("please proceed to the main page"));
  echo "\n<P>";
  $bx->box_body_end();
  $bx->box_end();
 
- echo "</td></tr>\n";
- echo "</table>\n";
- $bx->box_body_end();
- $bx->box_end();
 
- $bx->box_body_end();
- $bx->box_end();
-
-/*else 
-  {
-  $be->box_full($t->translate("Error"),$t->translate("Sorry, we only allow one insertion per IP every 24 hours"));
-  }  */
 ?>
 
 <!-- end content -->

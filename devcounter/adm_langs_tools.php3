@@ -229,9 +229,14 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
        //$bx->box_column("right","",$bgcolor,html_input_text("code", 5, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("language", 30, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("colname", 25, 64, ""));
-       //$bx->box_column("center","",$bgcolor,html_input_text("comment", 35, 400, ""));
-       $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Add ProgLanguage")));
-       $bx->box_column("center","",$bgcolor,"--");
+       //$bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Add ProgLanguage")));
+       echo "<!-- New Column starts -->\n";
+       echo "<td align=\"center\" width=\"\" bgcolor=\"".$bgcolor."\" colspan=2>";
+       echo html_form_submit($t->translate("Add ProgLanguage"));
+       echo "</td>\n";
+       echo "<!-- Column finishes -->\n";
+
+       //$bx->box_column("center","",$bgcolor,"--");
        $bx->box_columns_end();
        htmlp_form_end();
       
@@ -295,8 +300,13 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
        $bx->box_column("center","",$bgcolor,html_input_text("ability", 30, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("colname", 25, 64, ""));
        $bx->box_column("center","",$bgcolor,html_input_text("translation", 15, 64, ""));
-       $bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Add Ability")));
-       $bx->box_column("center","",$bgcolor,"--");
+       //$bx->box_column("center","",$bgcolor,html_form_submit($t->translate("Add Ability")));
+       echo "<!-- New Column starts -->\n";
+       echo "<td align=\"center\" width=\"\" bgcolor=\"".$bgcolor."\" colspan=2>";
+       echo html_form_submit($t->translate("Add Ability"));
+       echo "</td>\n";
+       echo "<!-- Column finishes -->\n";
+       //$bx->box_column("center","",$bgcolor,"--");
        $bx->box_columns_end();
        htmlp_form_end();
       
