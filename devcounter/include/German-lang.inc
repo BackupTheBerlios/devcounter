@@ -134,6 +134,7 @@ switch($phrase) {
 
      case "Done": $tmp = "Ausgeführt"; break;
      case "Your Profile has been succesfully changed": $tmp = "Ihre Profiledaten wurden erfolgreich geändert"; break;
+     case "Your Project Data were included successfully": $tmp = "Ihre Projektdaten wurden erfolgreich eingetragen"; break;
      case "Please proceed with the main page": $tmp = "Bitte mit Hauptseite fortfahren"; break;
 
 // Languages
@@ -347,6 +348,8 @@ switch($phrase) {
      case "License description is not available": $tmp = "Lizenzbeschreibung ist nicht verfügbar"; break;
      case "No Frequently Asked Questions exist": $tmp = "Es existieren keine oft gestellten Fragen"; break;
      case "Developer did not specify a Profile yet": $tmp = "Entwickler hat bis jetzt noch keine Profildaten spezifiziert"; break;
+     case "Developer does not allow to contact him": $tmp = "Entwickler erlaubt keinen Kontakt"; break;
+     case "Unknown Developer": $tmp = "Entwickler unbekannt"; break;
 
 // adm_langs_tools.php
     case "Success": $tmp = "Erfolg"; break;
