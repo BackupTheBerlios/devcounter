@@ -146,13 +146,6 @@ switch($phrase) {
 	 case "Spanish": $tmp = "Spanisch"; break;
 	 case "French": $tmp = "Französisch"; break;
 
-// sorted by
-	 case "sorted by": $tmp = "sortiert nach"; break;
-	 case "Date": $tmp = "Datum"; break;
-	 case "Importance": $tmp = "Bedeutung"; break;
-	 case "Urgency": $tmp = "Dringlichkeit"; break;
-	 case "Name": $tmp = "Name"; break;
-
 // FAQ
      case "Frequently Asked Questions": $tmp = "Oft gestellte Fragen"; break;
      case "Question": $tmp = "Frage"; break;
@@ -175,21 +168,6 @@ switch($phrase) {
      case "Please select desired Country": $tmp = "Bitte das gew&uuml;nschte Land ausw&auml;hlen"; break;
      case "Search for All in one": $tmp = "Nach allem auf einmal suchen"; break;
 
-
-// Apps update
-     case "Comment": $tmp = "Kommentar"; break;
-     case "Review": $tmp = "Überprüfen"; break;
-     case "Update": $tmp = "Aktualisieren"; break;
-     case "Delete": $tmp = "Löschen"; break;
-     case "Undelete": $tmp = "Wiederherstellen"; break;
-
-
-// Apps by identifier
-     case "Application": $tmp = "Anwendung"; break;
-     case "Others by Author": $tmp = "Anderes vom Autor"; break;
-     case "has not yet been reviewed by a $GLOBALS[sys_name] Editor.<br> Please, be patient. It will be surely done in the next time.": $tmp = "wurde noch nicht von einem $GLOBALS[sys_name] Editor überprüft.<br> Bitte haben Sie noch etwas Geduld. In n&auml;chster Zeit wird dies bestimmt geschehen."; break;
-     case "is modified": $tmp = "ist modifiziert"; break;
-     case "is deleted": $tmp = "ist gelöscht"; break;
 
 // User registration
      case "Register as a new User": $tmp = "Registrierung als neuer Benutzer"; break;
@@ -294,7 +272,7 @@ switch($phrase) {
      case "Today": $tmp = "Heute"; break;
      case "Last&nbsp;Week": $tmp = "Letzte&nbsp;Woche"; break;
 	 case "$GLOBALS[sys_name] Version": $tmp = "$GLOBALS[sys_name] Version"; break;
-
+     case "No.": $tmp = "Nr."; break;
      case "Developers listed by Year of Birth": $tmp = "Entwickler geordnet nach Geburtsjahr"; break;
      case "Developers listed by Number of Visits": $tmp = "Entwickler geordnet nach der Besucheranzahl"; break;
      case "Developers listed by Profession": $tmp = "Entwickler geordnet nach Beruf"; break;
