@@ -45,15 +45,16 @@ Manual Installation
    create DevCounter tables and defaults:
 
    user$ cd /usr/local/httpd/htdocs/devcounter-x.x.x
-   user$ mysql -h host -u operator -p < devcounter/sql/tables.sql
+   user$ mysql -h host -u operator -p < sql/tables.sql
    (insert db_password)
-   user$ mysql -h host -u operator -p < devcounter/sql/defaults.sql
+   user$ mysql -h host -u operator -p < sql/defaults.sql
    (insert db_password)
 
 4. Set database parameters in devcounter-x.x.x/include/local.inc;
    keep devcounter as the database name
 
-   user$ vi devcounter-x.x.x/include/local.inc
+   user$ cd /usr/local/httpd/htdocs/devcounter-x.x.x
+   user$ vi include/local.inc
 
    var $Host     = "host";
    var $Database = "devcounter";
@@ -62,7 +63,8 @@ Manual Installation
 
 5. Set path to PHPLib directory in devcounter-x.x.x/include/prepend.php3:
 
-   user$ vi devcounter-x.x.x/include/prepend.php3
+   user$ cd /usr/local/httpd/htdocs/devcounter-x.x.x
+   user$ include/prepend.php3
 
    $_PHPLIB["libdir"] = "/usr/share/php/phplib/";
 
