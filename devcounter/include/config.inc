@@ -36,7 +36,7 @@
 $sys_name = "DevCounter";
 $sys_title = "Open Source Developer Counter";
 $sys_url_title = "http://www.berlios.de/";
-$sys_url = "http://devcounter.berlios.de/dc/";
+$sys_url = "http://devcounter.berlios.de/devcounter/";
 $sys_logo_image = "images/berlios.jpg";
 $sys_logo_alt = "BerliOS";
 $sys_logo_width = "238";
