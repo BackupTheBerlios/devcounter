@@ -41,7 +41,7 @@ $db2 = new DB_DevCounter;
 <?php
 
 
-$db->query("SELECT * from developers WHERE username='$devname'");
+$db->query("SELECT * from developers,extra_perms WHERE developers.username='$devname' AND extra_perms.username='$devname'");
 if ($db->num_rows() == 0)
   {
       
@@ -85,7 +85,8 @@ else
    print_country($actual_country);
 
    echo "<tr><td align=right valign=top width=30%>".$t->translate("Languages spoken").":</td><td width=70%>\n";
-
+   
+   
    $mother_tongue = $db->f("mother_tongue");
    echo "1. ";
    print_lang($mother_tongue);
@@ -98,8 +99,12 @@ else
    echo "<BR>3. ";
    print_lang($other_lang_2);
    
-
-
+   echo "<BR><BR>";
+   if ($db->f("contact")=="yes")
+     {
+      $pquery["devname"] = $db->f("username") ;
+      htmlp_link("mailform.php3",$pquery,$t->translate("Contact Developer"));
+     }
    echo "</td></tr>\n";
    echo "</table>\n";
    $bx->box_body_end();
