@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: config.inc,v 1.14 2002/09/01 16:20:22 helix Exp $
+# $Id: config.inc,v 1.15 2002/09/03 10:46:53 helix Exp $
 #
 ######################################################################
 
@@ -43,7 +43,7 @@
 $sys_name = "DevCounter";
 $sys_title = "Open Source Developer Counter";
 $sys_url_title = "http://www.berlios.de/";
-$sys_url = "http://localhost/devcounter/";
+$sys_url = "http://devcounter.berlios.de/devcounter/";
 $sys_logo_image = "images/berliOS_logo.png";
 $sys_logo_alt = "BerliOS";
 $sys_logo_width = "238";
@@ -126,6 +126,7 @@ $th_box_frame_color = "#CCCCCC";
 $th_box_frame_width = "1";
 $th_box_title_bgcolor = "#CCCCCC";
 $th_box_body_bgcolor = "#FFFFFF";
+$th_box_body_bgcolor2 = "#E0E0E0";
 $th_box_title_align = "left";
 $th_box_body_align = "left";
 $th_box_title_font_color = "#000000";
