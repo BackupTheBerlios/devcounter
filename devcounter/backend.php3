@@ -48,13 +48,15 @@ echo "    <height>73</height>\n";
 echo "  </image>\n";
 
 $db = new DB_DevCounter;
-$db->query("SELECT * FROM developers,auth_user WHERE developers.username=auth_user.username ORDER BY developers.creation DESC limit 10");
+$db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.username=auth_user.username AND developers.username=extra_perms.username ORDER BY developers.creation DESC limit 10");
 $i=0;
 while($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>".$db->f("username")."</title>\n";
+  echo "    <title>".$db->f("username");
+  if ($db->f("showname") == "yes")
+    echo " (".$db->f("realname").")";
+  echo "</title>\n";
   echo "    <link>".$sys_url."showprofile.php3?devname=".$db->f("username")."</link>\n";
-  echo "    <description>".wrap($db->f("realname"))."</description>\n";
   echo "  </item>\n";
   $i++;
 } 
