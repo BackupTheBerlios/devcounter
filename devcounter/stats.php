@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: stats.php,v 1.10 2002/09/03 10:44:24 helix Exp $
+# $Id: stats.php,v 1.11 2002/09/16 18:47:02 helix Exp $
 #
 ######################################################################
 
@@ -151,6 +151,10 @@ if (isset($option)) {
       echo "<td width=20% align=right>".$db->f("SUM(devel_cnt)")."</td></tr>\n";
 
     // Number of inserted or modified Developers
+      echo "<tr><td width=70%>&nbsp;</td><td width=15%>&nbsp;</td><td width=15%>&nbsp;</td></tr>\n";
+      echo "<tr><td width=70%>&nbsp;</td>\n";
+      echo "<td width=15% align=right>".$t->translate("Today").":</td>\n";
+      echo "<td width=15% align=right>&nbsp;".$t->translate("Last&nbsp;Week").":</td></tr>\n";
       $day=1;
       $db->query("SELECT COUNT(*) FROM auth_user,developers WHERE auth_user.username=developers.username AND (DATE_FORMAT(auth_user.modification_usr,'%Y-%m-%d')>=DATE_SUB(CURRENT_DATE,INTERVAL \"$day\" DAY) OR DATE_FORMAT(developers.creation,'%Y-%m-%d')>=DATE_SUB(CURRENT_DATE,INTERVAL \"$day\" DAY))");
       $db->next_record();

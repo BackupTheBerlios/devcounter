@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: devresults.php,v 1.5 2002/09/03 10:43:16 helix Exp $
+# $Id: devresults.php,v 1.6 2002/09/16 18:47:58 helix Exp $
 #
 ######################################################################
 
@@ -52,7 +52,7 @@ case "allinone":
 	$request_amount = 0;
 	$hit_amount =0;
 
-	$query = "SELECT DISTINCT developers.username,auth_user.realname,auth_user.email_usr";
+	$query = "SELECT DISTINCT developers.username,auth_user.realname,auth_user.email_usr,extra_perms.showname,extra_perms.showemail";
 	$query .= " FROM developers,auth_user,os_projects,prog_language_values,prog_ability_values,extra_perms";
 	$query .= " WHERE developers.username=auth_user.username AND developers.username=extra_perms.username AND os_projects.username=extra_perms.username AND prog_language_values.username=prog_ability_values.username AND extra_perms.username=prog_ability_values.username AND extra_perms.search='yes'";
 	if ($projname != "") $query .= " AND os_projects.projectname LIKE '%$projname%'";
