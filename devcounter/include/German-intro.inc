@@ -23,6 +23,10 @@ echo "Projektmitglieder oder Tester suchen. Der entsprechende Entwicker und Proj
 echo "<P>";
 echo "Entwickler, die Projekte suchen und helfen wollen, können sich bei <B>DevCounters</B> ";
 echo "unter Angabe ihrer Kenntnisse eintragen.";
+echo "<P>";
+echo "<B>Backlinking:</B><BR>\n";
+echo "Wir bitten jeden einen Link zur&uuml;ck zu <B>DevCounter</B> in die Projekt- oder Homepage einzubauen. \n";
+echo "Text f&uuml;r eine kurze Beschreibung kann von dieser Einf&uuml;hrung genommen werden.\n";
 
 $bx->box_body_end();
 $bx->box_end();

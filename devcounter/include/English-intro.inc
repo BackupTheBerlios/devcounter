@@ -23,6 +23,10 @@ echo "<P>";
 echo "Developer, which are looking for projects or want to help/assist,\n";
 echo "can subscribe at <B>DevCounter</B> with information about her\n";
 echo "knowledge and abilities.";
+echo "<P>";
+echo "<B>Backlinking:</B><BR>\n";
+echo "We asks everyone to put a link back to <B>DevCounter</B> on the home page or project page. \n";
+echo "Text for short descriptions can be taken from this introduction.\n";
 
 $bx->box_body_end();
 $bx->box_end();
