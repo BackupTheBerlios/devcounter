@@ -62,7 +62,7 @@ else
    $bx->box_body_begin();
   
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
-   htmlp_form_action("update2db.php3","POST");
+   htmlp_form_action("update2db.php3","","GET");
    echo "\n";
 /*
    $db->query("SELECT * from auth_user WHERE user_id='$user__id'");
@@ -375,6 +375,10 @@ else
    echo "<tr><td align=center><B><B><FONT SIZE=+1>".$t->translate("Which of these programming expirience do you have?")."</FONT></B></td></tr><tr><td>\n";
    echo "<center><table width=90% border=0>\n";
 
+
+   $db2->query("select * from prog_ability_values WHERE username='$username'");
+   $db2->next_record();
+
    $db->query("SELECT * from prog_abilities WHERE translation='$la'");
    $ability_amount=$db->num_rows();
    $counter=0;
@@ -392,11 +396,10 @@ else
         }
       $ability_value = 0;
       $ability_code = $db->f("code");
-      $db2->query("select * from prog_abilities_values WHERE code='$ability_code' AND username='$username'");
-      $db2->next_record();
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("ability")."\n";
-      $ability_value = $db2->f("value");
+      $colname = $db->f("colname");
+      $ability_value = $db2->f($colname);
       echo "</td><td width=20%>";
       htmlp_select("ability[".$ability_code."]"); 
       
@@ -478,6 +481,11 @@ else
    echo "<tr><td align=center><B><FONT SIZE=+1>".$t->translate("Which of these languages/tools are you experienced with?")."</FONT></B></td></tr><tr><td>\n";
    echo "<center><table border=0>\n";
 
+
+
+   $db2->query("select * from prog_language_values WHERE username='$username'");
+   $db2->next_record();
+
    $db->query("SELECT * from prog_languages");
    $lang_amount=$db->num_rows();
    $counter=0;
@@ -495,13 +503,12 @@ else
         }
       $ability_value = 0;
       $ability_code = $db->f("code");
-      $db2->query("select * from prog_languages_values WHERE code='$ability_code' AND username='$username'");
-      $db2->next_record();
       echo "<table border=0 width=100% cellpadding=3><tr><td align=right>";
       echo $db->f("language")."\n";
-      $ability_value = $db2->f("value");
+      $colname = $db->f("colname");
+      $ability_value = $db2->f($colname);
       echo "</td><td width=20%>";
-      htmlp_select("lang[".$db->f("code")."]"); 
+      htmlp_select("lang[".$ability_code."]"); 
       
       if ($ability_value == 0)
         {

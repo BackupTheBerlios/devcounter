@@ -58,7 +58,7 @@ else
    $bx->box_body_begin();
   
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
-   htmlp_form_action("insert.php3","POST");
+   htmlp_form_action("insert.php3","","GET");
    echo "\n";
 /*
    $db->query("SELECT * from auth_user WHERE user_id='$user__id'");

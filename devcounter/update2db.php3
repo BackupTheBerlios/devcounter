@@ -28,6 +28,7 @@ require("header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
@@ -45,22 +46,31 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
   }
 */
   
-    $counter=0;
+  $counter=0;
+  $query = "UPDATE prog_ability_values SET username = '$username'";
   while ($counter<$ability_amount)
     {
      $counter++;
-     $query = "UPDATE prog_abilities_values SET  value = '$ability[$counter]' WHERE (username = '$username' AND code = '$counter')";
-     $db->query($query);
+     $db2->query("SELECT colname FROM prog_abilities WHERE code='$counter'");
+     $db2->next_record();
+     //$query = "UPDATE prog_abilities_values SET  value = '$ability[$counter]' WHERE (username = '$username' AND code = '$counter')";
+     $query = $query.", ".$db2->f("colname")."='$ability[$counter]'";
     }
+  $query = $query."WHERE (username = '$username')";
+  $db->query($query);
 
-   $counter=0;
-
+  $counter=0;
+  $query = "UPDATE prog_language_values SET username = '$username'";
   while ($counter<$lang_amount)
     {
      $counter++;
-     $query = "UPDATE prog_languages_values SET  value = '$lang[$counter]' WHERE (username = '$username' AND code = '$counter')";
-     $db->query($query);
+     $db2->query("SELECT colname FROM prog_languages WHERE code='$counter'");
+     $db2->next_record();
+     //$query = "UPDATE prog_languages_values SET  value = '$lang[$counter]' WHERE (username = '$username' AND code = '$counter')";
+     $query = $query.", ".$db2->f("colname")."='$lang[$counter]'";
     }
+  $query = $query."WHERE (username = '$username')";
+  $db->query($query);
 
 
 

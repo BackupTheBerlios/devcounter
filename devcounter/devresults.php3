@@ -34,6 +34,7 @@ $bx = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+$db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
@@ -53,7 +54,7 @@ $be = new box("",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$
 $request_amount = 0;
 $hit_amount =0;
 
-$db->query("SELECT username from developers");
+/*$db->query("SELECT username from developers");
 while ($db->next_record())
   {
    $un_query[$db->f("username")]=0;
@@ -84,10 +85,36 @@ for ($i=0;$i<$ability_amount;$i++)
 	}
      }
   }
+*/
+$query = "SELECT * from prog_language_values, prog_ability_values WHERE prog_language_values.username=prog_ability_values.username ";
+for ($i=0;$i<$lang_amount;$i++)
+  {
+   if ($lang[$i] != 0)
+     {
+      $db2->query("SELECT colname FROM prog_languages WHERE code='$i'");
+      $db2->next_record();//echo "-".$i."-";
+      $query = $query." AND prog_language_values.".$db2->f("colname").">='$lang[$i]'";
+     }
+   
+  }
+for ($i=0;$i<$ability_amount;$i++)
+  {
+   if ($ability[$i] != 0)
+     {
+      $db2->query("SELECT colname FROM prog_abilities WHERE code='$i'");
+      $db2->next_record();//echo "-".$i."-";
+      $query = $query." AND prog_ability_values.".$db2->f("colname").">='$lang[$i]'";
+     }
+  }
+
+$db->query($query);
+
+
 $bx->box_begin();
 $bx->box_title($t->translate("Search Results"));
 $bx->box_body_begin();
 
+/*
 if ($request_amount != 0)
   {
    for($x=0;$x<sizeof($un_query);$x++) 
@@ -111,6 +138,25 @@ else
   {
    echo $t->translate("No Results")."\n";
   }
+*/
+
+     if ($db->num_rows() == 0)
+       {
+        echo $t->translate("No Results")."\n";
+       }
+     else
+       {
+        while ($db->next_record())
+	  {
+	   $pquery["devname"] = $db->f("username") ;
+	   htmlp_link("showprofile.php3",$pquery,$db->f("username"));
+	   echo "<BR>\n";
+	   //echo $db->f("username")."<BR>\n";
+	  }
+       }
+
+
+
 $bx->box_body_end();
 $bx->box_end();
 

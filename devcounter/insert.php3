@@ -28,6 +28,7 @@ require("header.inc");
 
 $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,
               $th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
+$db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
@@ -44,22 +45,29 @@ $bx = new box("100%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcol
     $bx->box_full($t->translate("Error"),$t->translate("Database Access failed"));
   }
   
-    $counter=0;
+  $counter=0;
+  $query = "INSERT prog_ability_values SET  username = '$username'";
   while ($counter<$ability_amount)
     {
      $counter++;
-     $query = "INSERT prog_abilities_values SET  username = '$username', code = '$counter', value = '$ability[$counter]'";
-     $db->query($query);
+     $db2->query("SELECT colname FROM prog_abilities WHERE code='$counter'");
+     $db2->next_record();
+     //$query = "INSERT prog_abilities_values SET  username = '$username', code = '$counter', value = '$ability[$counter]'";
+     $query = $query.", ".$db2->f("colname")."='$ability[$counter]'";
     }
+  $db->query($query);
 
-   $counter=0;
-
+  $counter=0;
+  $query = "INSERT prog_language_values SET  username = '$username'";
   while ($counter<$lang_amount)
     {
      $counter++;
-     $query = "INSERT prog_languages_values SET  username = '$username', code = '$counter', value = '$lang[$counter]'";
-     $db->query($query);
+     $db2->query("SELECT colname FROM prog_languages WHERE code='$counter'");
+     $db2->next_record();
+     //$query = "INSERT prog_languages_values SET  username = '$username', code = '$counter', value = '$lang[$counter]'";
+     $query = $query.", ".$db2->f("colname")."='$lang[$counter]'";
     }
+   $db->query($query);
 
 
 

@@ -4,10 +4,11 @@
 #
 
 DROP TABLE IF EXISTS prog_abilities;
-CREATE TABLE languages (
+CREATE TABLE prog_abilities (
    code int(11) NOT NULL,
    ability varchar(64) NOT NULL,
-   translation varchar(64) NOT NULL
+   translation varchar(64) NOT NULL,
+   colname varchar(64) NOT NULL
 );
 
 
@@ -16,54 +17,93 @@ CREATE TABLE languages (
 #
 
 
-INSERT INTO prog_abilities VALUES ('1', 'network programming', 'English');
-INSERT INTO prog_abilities VALUES ('1', 'Netzwerkprogrammierung', 'German');
-INSERT INTO prog_abilities VALUES ('2', 'system programming', 'English');
-INSERT INTO prog_abilities VALUES ('2', 'Systemprogrammierung', 'German');
-INSERT INTO prog_abilities VALUES ('3', 'kernel programming', 'English');
-INSERT INTO prog_abilities VALUES ('3', 'Kernelprogrammierung', 'German');
-INSERT INTO prog_abilities VALUES ('4', 'Qt', 'English');
-INSERT INTO prog_abilities VALUES ('4', 'Qt', 'German');
-INSERT INTO prog_abilities VALUES ('5', 'KDE', 'English');
-INSERT INTO prog_abilities VALUES ('5', 'KDE', 'German');
-INSERT INTO prog_abilities VALUES ('6', 'GTK', 'English');
-INSERT INTO prog_abilities VALUES ('6', 'GTK', 'German');
-INSERT INTO prog_abilities VALUES ('7', 'Gnome', 'English');
-INSERT INTO prog_abilities VALUES ('7', 'Gnome', 'German');
-INSERT INTO prog_abilities VALUES ('8', 'libSDL', 'English');
-INSERT INTO prog_abilities VALUES ('8', 'libSDL', 'German');
-INSERT INTO prog_abilities VALUES ('9', 'administration', 'English');
-INSERT INTO prog_abilities VALUES ('9', 'Administration', 'German');
-INSERT INTO prog_abilities VALUES ('10', 'data bases', 'English');
-INSERT INTO prog_abilities VALUES ('10', 'Datenbanken', 'German');
-INSERT INTO prog_abilities VALUES ('11', 'documentation writing', 'English');
-INSERT INTO prog_abilities VALUES ('11', 'Schreiben von Dokumentationen', 'German');
+INSERT INTO prog_abilities VALUES ('1', 'network programming', 'English','network');
+INSERT INTO prog_abilities VALUES ('1', 'Netzwerkprogrammierung', 'German','network');
+INSERT INTO prog_abilities VALUES ('2', 'system programming', 'English','system');
+INSERT INTO prog_abilities VALUES ('2', 'Systemprogrammierung', 'German','system');
+INSERT INTO prog_abilities VALUES ('3', 'kernel programming', 'English','kernel');
+INSERT INTO prog_abilities VALUES ('3', 'Kernelprogrammierung', 'German','kernel');
+INSERT INTO prog_abilities VALUES ('4', 'Qt', 'English','qt');
+INSERT INTO prog_abilities VALUES ('4', 'Qt', 'German','qt');
+INSERT INTO prog_abilities VALUES ('5', 'KDE', 'English','kde');
+INSERT INTO prog_abilities VALUES ('5', 'KDE', 'German','kde');
+INSERT INTO prog_abilities VALUES ('6', 'GTK', 'English','gtk');
+INSERT INTO prog_abilities VALUES ('6', 'GTK', 'German','gtk');
+INSERT INTO prog_abilities VALUES ('7', 'Gnome', 'English','gnome');
+INSERT INTO prog_abilities VALUES ('7', 'Gnome', 'German','gnome');
+INSERT INTO prog_abilities VALUES ('8', 'libSDL', 'English','sdl');
+INSERT INTO prog_abilities VALUES ('8', 'libSDL', 'German','sdl');
+INSERT INTO prog_abilities VALUES ('9', 'administration', 'English','admin');
+INSERT INTO prog_abilities VALUES ('9', 'Administration', 'German','admin');
+INSERT INTO prog_abilities VALUES ('10', 'data bases', 'English','data_bases');
+INSERT INTO prog_abilities VALUES ('10', 'Datenbanken', 'German','data_bases');
+INSERT INTO prog_abilities VALUES ('11', 'documentation writing', 'English','docs');
+INSERT INTO prog_abilities VALUES ('11', 'Schreiben von Dokumentationen', 'German','docs');
 
 
 # --------------------------------------------------------
 #
-# Table structure for table 'prog_abilities_values'
+# Table structure for table 'prog_ability_values'
 #
 
-DROP TABLE IF EXISTS prog_abilities_values;
-CREATE TABLE languages (
+DROP TABLE IF EXISTS prog_ability_values;
+CREATE TABLE prog_ability_values (
    username varchar(64) NOT NULL,
-   code int(11) NOT NULL,
-   value int(11) NOT NULL
+   network int(11),
+   system int(11),
+   kernel int(11),
+   qt int(11),
+   kde int(11),
+   gtk int(11),
+   gnome int(11),
+   sdl int(11),
+   admin int(11),
+   data_bases int(11),
+   docs int(11),
+
+
+   PRIMARY KEY (username)
    );
 
 
 
 # --------------------------------------------------------
 #
-# Table structure for table 'prog_languages_values'
+# Table structure for table 'prog_language_values'
 #
 
-DROP TABLE IF EXISTS prog_languages_values;
-CREATE TABLE languages (
+DROP TABLE IF EXISTS prog_language_values;
+CREATE TABLE prog_language_values (
    username varchar(64) NOT NULL,
-   code int(11) NOT NULL,
-   value int(11) NOT NULL
+   c int(11),
+   cpp int(11),
+   objective_c int(11),
+   java int(11),
+   python int(11),
+   perl int(11),
+   php int(11),
+   shell_script int(11),
+   html int(11),
+   lisp int(11),
+   latex int(11),
+   pascal int(11),
+   fortran int(11),
+   basic int(11),
+   visual_basic int(11),
+   java_script int(11),
+   sql int(11),
+   ada int(11),
+   modula int(11),
+   eiffel int(11),
+   prolog int(11),
+   xml int(11),
+   smalltalk int(11),
+   tcl int(11),
+   scheme int(11),
+   make int(11),
+   cvs int(11),
+
+   PRIMARY KEY (username)
    );
 
 
@@ -80,9 +120,10 @@ CREATE TABLE languages (
 #
 
 DROP TABLE IF EXISTS prog_languages;
-CREATE TABLE languages (
+CREATE TABLE prog_languages (
    code int(11) NOT NULL,
-   ability varchar(64) NOT NULL
+   language varchar(64) NOT NULL,
+   colname varchar(64) NOT NULL
 );
 
 
@@ -92,32 +133,32 @@ CREATE TABLE languages (
 
 
 
-INSERT INTO prog_languages VALUES ( '1', 'C');
-INSERT INTO prog_languages VALUES ( '2', 'C++');
-INSERT INTO prog_languages VALUES ( '3', 'Objective C');
-INSERT INTO prog_languages VALUES ( '4', 'Java');
-INSERT INTO prog_languages VALUES ( '5', 'Python');
-INSERT INTO prog_languages VALUES ( '6', 'Perl');
-INSERT INTO prog_languages VALUES ( '7', 'PHP');
-INSERT INTO prog_languages VALUES ( '8', 'Shell Script');
-INSERT INTO prog_languages VALUES ( '9', 'HTML');
-INSERT INTO prog_languages VALUES ( '10', 'Lisp');
-INSERT INTO prog_languages VALUES ( '11', 'Latex');
-INSERT INTO prog_languages VALUES ( '12', 'Pascal');
-INSERT INTO prog_languages VALUES ( '13', 'Fortran');
-INSERT INTO prog_languages VALUES ( '14', 'Basic');
-INSERT INTO prog_languages VALUES ( '15', 'Visual Basic');
-INSERT INTO prog_languages VALUES ( '16', 'Java Script');
-INSERT INTO prog_languages VALUES ( '17', 'SQL');
-INSERT INTO prog_languages VALUES ( '18', 'Ada');
-INSERT INTO prog_languages VALUES ( '19', 'Modula');
-INSERT INTO prog_languages VALUES ( '20', 'Eiffel');
-INSERT INTO prog_languages VALUES ( '21', 'Prolog');
-INSERT INTO prog_languages VALUES ( '22', 'XML');
-INSERT INTO prog_languages VALUES ( '23', 'Smalltalk');
-INSERT INTO prog_languages VALUES ( '24', 'TCL');
-INSERT INTO prog_languages VALUES ( '25', 'Scheme');
-INSERT INTO prog_languages VALUES ( '26', 'Make');
-INSERT INTO prog_languages VALUES ( '27', 'CVS');
+INSERT INTO prog_languages VALUES ( '1', 'C', 'c');
+INSERT INTO prog_languages VALUES ( '2', 'C++', 'cpp');
+INSERT INTO prog_languages VALUES ( '3', 'Objective C', 'objective_c');
+INSERT INTO prog_languages VALUES ( '4', 'Java', 'java');
+INSERT INTO prog_languages VALUES ( '5', 'Python', 'python');
+INSERT INTO prog_languages VALUES ( '6', 'Perl', 'perl');
+INSERT INTO prog_languages VALUES ( '7', 'PHP', 'php');
+INSERT INTO prog_languages VALUES ( '8', 'Shell Script', 'shell_script');
+INSERT INTO prog_languages VALUES ( '9', 'HTML', 'html');
+INSERT INTO prog_languages VALUES ( '10', 'Lisp', 'lisp');
+INSERT INTO prog_languages VALUES ( '11', 'Latex', 'latex');
+INSERT INTO prog_languages VALUES ( '12', 'Pascal', 'pascal');
+INSERT INTO prog_languages VALUES ( '13', 'Fortran', 'fortran');
+INSERT INTO prog_languages VALUES ( '14', 'Basic', 'basic');
+INSERT INTO prog_languages VALUES ( '15', 'Visual Basic', 'visual_basic');
+INSERT INTO prog_languages VALUES ( '16', 'Java Script', 'java_script');
+INSERT INTO prog_languages VALUES ( '17', 'SQL', 'sql');
+INSERT INTO prog_languages VALUES ( '18', 'Ada', 'ada');
+INSERT INTO prog_languages VALUES ( '19', 'Modula', 'modula');
+INSERT INTO prog_languages VALUES ( '20', 'Eiffel', 'eiffel');
+INSERT INTO prog_languages VALUES ( '21', 'Prolog', 'prolog');
+INSERT INTO prog_languages VALUES ( '22', 'XML', 'xml');
+INSERT INTO prog_languages VALUES ( '23', 'Smalltalk', 'smalltalk');
+INSERT INTO prog_languages VALUES ( '24', 'TCL', 'tcl');
+INSERT INTO prog_languages VALUES ( '25', 'Scheme', 'scheme');
+INSERT INTO prog_languages VALUES ( '26', 'Make', 'make');
+INSERT INTO prog_languages VALUES ( '27', 'CVS', 'cvs');
 
 
