@@ -20,7 +20,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: lib.inc,v 1.8 2002/08/26 10:14:28 helix Exp $
+# $Id: lib.inc,v 1.9 2002/08/27 22:35:15 helix Exp $
 #
 ######################################################################
 
@@ -913,11 +913,6 @@ function mailuser($perms, $subj, $message) {
   }
 }
 
-
-
-
-
-
 #
 #  select_lang($selected)
 #  Displays the different languages as a select form 
@@ -990,7 +985,6 @@ function print_country($selected) {
   $db_country = $db_local->f("description");
   
   echo $db_local->f("description")."\n";
-  
 }
 
 function get_country($selected) {
@@ -1002,6 +996,32 @@ function get_country($selected) {
   $db_country = $db_local->f("description");
   
   return $db_country;
+}
+
+function get_gender($gendid) {
+  $db_local = new DB_DevCounter;
+  $db_local->query("SELECT gender FROM gender WHERE gendid='$gendid'");
+  $db_local->next_record();
+  $gend = $db_local->f("gender");
   
+  return $gend;
+}
+
+function get_profession($profid) {
+  $db_local = new DB_DevCounter;
+  $db_local->query("SELECT profession FROM profession WHERE profid='$profid'");
+  $db_local->next_record();
+  $prof = $db_local->f("profession");
+  
+  return $prof;
+}
+
+function get_qualification($qualid) {
+  $db_local = new DB_DevCounter;
+  $db_local->query("SELECT qualification FROM qualification WHERE qualid='$qualid'");
+  $db_local->next_record();
+  $qual = $db_local->f("qualification");
+  
+  return $qual;
 }
 ?>
