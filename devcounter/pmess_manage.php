@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: pmess_manage.php,v 1.1 2003/02/26 13:21:40 masato Exp $
+# $Id: pmess_manage.php,v 1.2 2003/02/26 13:25:05 masato Exp $
 #
 ######################################################################
 
@@ -57,11 +57,11 @@ else
       $db->query("DELETE from pmessages WHERE pmessto='$username' AND pmessid='$pmessid'");
       if ($db->affected_rows() == 1 )
         {
-         $bx->box_full($t->translate("Success"), $t->translate("Request deleted"));
+         $bx->box_full($t->translate("Success"), $t->translate("Message deleted"));
         }
       else
         {
-         $bx->box_full($t->translate("Error"), $t->translate("Request wasn't deleted"));
+         $bx->box_full($t->translate("Error"), $t->translate("Message wasn't deleted"));
 	}
       
       break;
@@ -92,7 +92,7 @@ else
       
              if ($db2->affected_rows() == 1 )
               {
-               $bx->box_full($t->translate("Success"), $t->translate("Request posted"));
+               $bx->box_full($t->translate("Success"), $t->translate("Message posted"));
 	       if ($db->f("contact")=="yes")
 	         {
 		  mail($db->f("email_usr"),"[$sys_name] $pmesssubject","$pmessmessage\n---\n \nRead your personal messages at http://devcounter.berlios.de/","From: noreply@berlios.de\nReply-To: noreply@berlios.de\nX-Mailer: PHP");
@@ -100,7 +100,7 @@ else
               }
             else
               {
-               $bx->box_full($t->translate("Error"), $t->translate("Request wasn't posted"));
+               $bx->box_full($t->translate("Error"), $t->translate("Message wasn't posted"));
       	      } 
             
            }
