@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: users.php,v 1.7 2002/10/08 18:12:54 Masato Exp $
+# $Id: users.php,v 1.8 2002/10/19 12:13:24 Masato Exp $
 #
 ######################################################################
 
@@ -68,10 +68,10 @@ else
       $new_offset=$offset-$limit;
       if ($new_offset<0)
         { $new_offset=0; }
-      $pquery["offset"] =  $new_offset;
-      $pquery["limit"] =  $limit;
-      $pquery["by"] =  $by;
-      $msg .= " ".html_link("users.php",$pquery,"&lt; ".$t->translate("previous page"))." | ";
+      $lquery["offset"] =  $new_offset;
+      $lquery["limit"] =  $limit;
+      $lquery["by"] =  $by;
+      $msg .= " ".html_link("users.php",$lquery,"&lt; ".$t->translate("previous page"))." | ";
      }
    else
      {
@@ -82,10 +82,10 @@ else
    $db->query("SELECT * FROM auth_user  WHERE $where ORDER BY username ASC LIMIT $new_offset,$limit");
    if ($db->num_rows()>0)
      {
-      $pquery["offset"] =  $new_offset;
-      $pquery["limit"] =  $limit;
-      $pquery["by"] =  $by;
-      $msg .= " ".html_link("users.php",$pquery," ".$t->translate("next page"))." &gt; ";
+      $lquery["offset"] =  $new_offset;
+      $lquery["limit"] =  $limit;
+      $lquery["by"] =  $by;
+      $msg .= " ".html_link("users.php",$lquery," ".$t->translate("next page"))." &gt; ";
       
      }   
   else

@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: backend.php,v 1.4 2002/08/27 09:59:41 helix Exp $
+# $Id: backend.php,v 1.5 2002/10/19 12:13:24 Masato Exp $
 #
 ###################################################################### 
 
@@ -54,11 +54,16 @@ echo "    <width>66</width>\n";
 echo "    <height>73</height>\n";
 echo "  </image>\n";
 
+echo "  <item>\n";
+echo "    <title><b>Developers:</b></title>";
+echo "    <link>http://devcounter.berlios.de/</link>";
+echo "  </item>\n";
+
 $db->query("SELECT * FROM developers,auth_user,extra_perms WHERE developers.username=auth_user.username AND developers.username=extra_perms.username ORDER BY developers.creation DESC limit 10");
 $i=0;
 while($db->next_record()) {
   echo "  <item>\n";
-  echo "    <title>".$db->f("username");
+  echo "    <title>&nbsp;&nbsp;&nbsp;".$db->f("username");
   if ($db->f("showname") == "yes")
     echo " (".$db->f("realname").")";
   $timestamp = mktimestamp($db->f("creation"));
@@ -68,6 +73,23 @@ while($db->next_record()) {
   echo "  </item>\n";
   $i++;
 } 
+
+echo "  <item>\n";
+echo "    <title><b>Requests:</b></title>";
+echo "    <link>http://devcounter.berlios.de/req_show.php</link>";
+echo "  </item>\n";
+
+$db->query("SELECT * FROM requests ORDER BY reqtime DESC LIMIT 0,10");
+
+while ($db->next_record()) {
+  echo "  <item>\n";
+  echo "    <title>&nbsp;&nbsp;&nbsp;".$db->f("reqsubject");
+  $timestamp = mktimestamp($db->f("reqtime"));
+  echo " [".timestr_short($timestamp)."]";
+  echo "</title>\n";
+  echo "    <link>".$sys_url."req_show.php?reqid=".$db->f("reqid")."</link>\n";
+  echo "  </item>\n";
+}
 
 echo "  </channel>\n";
 echo "</rss>\n";

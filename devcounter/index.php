@@ -18,9 +18,10 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: index.php,v 1.8 2002/10/08 18:12:54 Masato Exp $
+# $Id: index.php,v 1.9 2002/10/19 12:13:24 Masato Exp $
 #
 ######################################################################  
+
 
 require("./include/prepend.php3");
 
@@ -121,8 +122,8 @@ $db->query("SELECT * FROM auth_user,developers,extra_perms where auth_user.usern
 while ($db->next_record()) {
 	$user_name = $db->f("username");
 	echo "<li>";
-	$pquery["devname"] = $user_name ;
-	htmlp_link("showprofile.php",$pquery,$user_name);
+	$rquery["devname"] = $user_name ;
+	htmlp_link("showprofile.php",$rquery,$user_name);
 	if ($db->f("showname") == "yes")
 		echo " (".$db->f("realname").")";
 	$timestamp = mktimestamp($db->f("creation"));

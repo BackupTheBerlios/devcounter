@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: mailform.php,v 1.6 2002/10/08 18:12:54 Masato Exp $
+# $Id: mailform.php,v 1.7 2002/10/19 12:13:24 Masato Exp $
 #
 ######################################################################  
 
@@ -36,6 +36,7 @@ require("./include/header.inc");
 
 $bx = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_body_font_color,$th_box_body_align);
 $be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolor,$th_box_title_font_color,$th_box_title_align,$th_box_body_bgcolor,$th_box_error_font_color,$th_box_body_align);
+$db2 = new DB_DevCounter;
 ?>
 
 <!-- content -->
@@ -61,7 +62,17 @@ $be = new box("80%",$th_box_frame_color,$th_box_frame_width,$th_box_title_bgcolo
          htmlp_form_submit("send","");
          echo "<BR>\n";
          echo $t->translate("Your EMail Address:")."<BR>";
-         htmlp_input_text("s_email", 50, 75, "");
+	 if (empty($auth->auth["uname"]))
+           {
+	    htmlp_input_text("s_email", 50, 75, "");
+	   }
+	 else
+	   {
+	    $username = $auth->auth["uname"];
+	    $db2->query("SELECT * from auth_user WHERE username='$username'");
+	    $db2->next_record();
+	    htmlp_input_text("s_email", 50, 75, $db2->f("email_usr"));
+	   }
          echo "<BR>\n";
          echo$t->translate("Content:")."<BR>";
          htmlp_textarea("body",60,30,"nowrap",2000,"");

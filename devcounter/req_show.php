@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: req_show.php,v 1.2 2002/10/09 18:36:16 Masato Exp $
+# $Id: req_show.php,v 1.3 2002/10/19 12:13:24 Masato Exp $
 #
 ######################################################################
 
@@ -189,9 +189,9 @@ else
          $db2->query("SELECT * FROM os_projects WHERE username='$reqdev' AND projectname='$projectname'");
          $db2->next_record(); 
          if (ereg("://",$db2->f("url")))
-           {  $bx->box_column("left","", $bgcolor,"<A HREF=\"".$db2->f("url")."\">".$db2->f("projectname")."</A>"); } 
+           {  $bx->box_column("left","", $bgcolor,"<A HREF=\"".$db2->f("url")."\">".$db2->f("projectname")."</A><BR> &nbsp; (".$db2->f("comment").")"); } 
          else
-           {  $bx->box_column("left","", $bgcolor,"<A HREF=\"http://".$db2->f("url")."\">".$db2->f("projectname")."</A>"); }
+           {  $bx->box_column("left","", $bgcolor,"<A HREF=\"http://".$db2->f("url")."\">".$db2->f("projectname")."</A><BR> &nbsp; (".$db2->f("comment").")"); }
         }
       else
         {
