@@ -777,7 +777,7 @@ function lib_select_yes_or_no($name,$selected) {
 }
 
 function nlmsg($period) {
-  global $db;
+  global $db, $la;
 
   switch ($period) {
     case "weekly":
@@ -796,9 +796,9 @@ function nlmsg($period) {
 
   $msg = $GLOBALS["sys_name"]." $period newsletter for ".date("l, dS of F Y, H:i:s T")."\n";
   $msg .= "Number of new Developers: ".$db->num_rows()."\n";
-  $msg .= "\n               -----------------------------\n";
-  $msg .= "                   Developer Headlines\n";
-  $msg .= "               -----------------------------\n\n";
+  $msg .= "\n                -----------------------------\n";
+  $msg .= "                    Developer Headlines\n";
+  $msg .= "                -----------------------------\n\n";
 	
   $i = 1;
   while($db->next_record()) {
@@ -810,9 +810,9 @@ function nlmsg($period) {
     $msg .= "\n";
   }
 
-  $msg .= "\n               -----------------------------\n";
-  $msg .= "                   Developer Details\n";
-  $msg .= "               -----------------------------\n";
+  $msg .= "\n                -----------------------------\n";
+  $msg .= "                    Developer Details\n";
+  $msg .= "                -----------------------------\n";
 
 //  @mysql_data_seek($result, 0);
   $db->seek(0);
@@ -836,10 +836,41 @@ function nlmsg($period) {
     $msg .= "E-Mail        : ".ereg_replace("@"," at ",htmlentities($db->f("email_usr")))."\n";
     $msg .= "Profession    : ".$db->f("profession")."\n";
     $msg .= "Qualification : ".$db->f("qualification")."\n";
-    $msg .= "Projects      : ".$db->f("name_of_projects")."\n";
-    if ($period == "daily") {
+    $name_of_projects = "";
+    $db2 = new DB_DevCounter;
+    $db2->query("SELECT projectname FROM os_projects WHERE username='".$db->f("username")."'");
+    while ($db2->next_record()) { 
+       $name_of_projects .= " ".$db2->f("projectname");
     }
-    $msg .= $GLOBALS["sys_name"]."    : ".$GLOBALS["sys_url"]."showprofile.php3?devname=".$db->f("username")."\n";
+    $msg .= "Projects      :$name_of_projects\n";
+    if ($period == "daily") {
+		$msg .= "\n                Programming Experience\n";
+		$msg .= "                ----------------------\n";
+    	$db3 = new DB_DevCounter;
+		$db2->query("SELECT * FROM prog_ability_values WHERE username='".$db->f("username")."'");
+		if ($db2->next_record()) {
+			$db3->query("SELECT * from prog_abilities WHERE translation='$la'");
+			while ($db3->next_record()) {
+				$colname = $db3->f("colname");
+				$value = $db2->f($colname);
+				if ($value > 0)
+					$msg .= $db3->f("ability")." : $value\n";
+			}
+		}
+		$msg .= "\n                Languages/Tools Experience\n";
+		$msg .= "                --------------------------\n";
+		$db2->query("SELECT * FROM prog_language_values WHERE username='".$db->f("username")."'");
+		if ($db2->next_record()) {
+			$db3->query("SELECT * from prog_languages");
+			while ($db3->next_record()) {
+				$colname = $db3->f("colname");
+				$value = $db2->f($colname);
+				if ($value > 0)
+					$msg .= $db3->f("language")." : $value\n";
+			}
+		}
+    }
+    $msg .= "\n".$GLOBALS["sys_name"]."    : ".$GLOBALS["sys_url"]."showprofile.php3?devname=".$db->f("username")."\n";
     $msg .= "\n               -----------------------------\n";
     $i++;
   }

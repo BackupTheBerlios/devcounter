@@ -215,18 +215,19 @@ $Minimum_apps_in_license = 1;
 # Please, be sure of what you make!
 # An error could make your system fragile.
 #
-# config_perm_apppend	Access permission to enter apppend.php3
-# config_perm_appdom	Access permission to enter appdom.php3
-# config_perm_developer	Access permission to enter developer.php3
-# config_perm_users	Access permission to enter users.php3
-# config_perm_admdate	Access permission to enter admdate.php3
-# config_perm_admuser	Access permission to enter admuser.php3
-# config_perm_admlicens	Access permission to administrate licenses
-# config_perm_admcomment	Access permission to administrate comments
-# config_perm_admsec	Access permission to administrate sections
-# config_perm_admcat	Access permission to administrate categories
-# config_perm_nladm	Access permission to administrate newsletters
-# config_perm_admfaq 	Access permission for administrating the faq
+# config_perm_apppend    Access permission to enter apppend.php3
+# config_perm_appdom     Access permission to enter appdom.php3
+# config_perm_developer  Access permission to enter developer.php3
+# config_perm_users      Access permission to enter users.php3
+# config_perm_watch      Access permission to set developers watch
+# config_perm_admdate    Access permission to enter admdate.php3
+# config_perm_admuser    Access permission to enter admuser.php3
+# config_perm_admlicens  Access permission to administrate licenses
+# config_perm_admcomment Access permission to administrate comments
+# config_perm_admsec     Access permission to administrate sections
+# config_perm_admcat     Access permission to administrate categories
+# config_perm_nladm      Access permission to administrate newsletters
+# config_perm_admfaq     Access permission for administrating the faq
 # 
 ######################################################################
 
@@ -234,6 +235,7 @@ $config_perm_apppend = "editor";
 $config_perm_appdom = "editor";
 $config_perm_developer = "all";
 $config_perm_users = "all";
+$config_perm_watch = "all";
 $config_perm_admdate = "admin";
 $config_perm_admuser = "admin";
 $config_perm_admlicens = "admin";
