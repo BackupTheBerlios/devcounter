@@ -4,8 +4,8 @@
 # DevCounter - Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#       Lutz Henckel (lutz.henckel@fokus.gmd.de)
+# Copyright (c) 2001-2002 by
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
 #       Gregorio Robles (grex@scouts-es.org)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de

@@ -1,13 +1,15 @@
 <?php
 
 ######################################################################
-# SourceAgency: Open Source Project Mediation & Management System
+# DevCounter: Open Source Developer Counter
 # ===============================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS SourceAgency: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # The PHP3 and PHPLib HTML library
@@ -17,7 +19,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: html.inc,v 1.4 2002/03/07 12:43:30 Masato Exp $
+# $Id: html.inc,v 1.5 2002/08/22 15:41:48 helix Exp $
 #
 ######################################################################
 
@@ -135,9 +137,9 @@ function htmlp_form_submit($value,$name) {
 }
 
 function html_checkbox($name,$value,$checked) {
-    $output = ( "<input type=\"checkbox\" name=\"".$name."\" value=\""
-                .$value."\"" );
-    $output .= ( $checked ? " checked >" : ">" );
+    $output = "<input type=\"checkbox\" name=\"".$name."\"";
+    $output .= ( $checked ? " checked " : " " );
+    $output .= "value=\"".$value."\"";
     return($output);
 }
 function htmlp_checkbox($name,$value,$checked) {
@@ -145,8 +147,9 @@ function htmlp_checkbox($name,$value,$checked) {
 }
 
 function html_radio($name,$value,$checked) {
-    $output = "<input type=\"radio\" name=\"".$name."\" value=\"".$value."\"";
-    $output .= ( $checked ? " checked >" : ">" );
+    $output = "<input type=\"radio\" name=\"".$name."\"";
+    $output .= ( $checked ? " checked " : " " );
+    $output .= "value=\"".$value."\">";
     return($output);
 }
 function htmlp_radio($name,$value,$checked) {

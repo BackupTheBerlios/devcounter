@@ -1,14 +1,15 @@
 <?php
 
 ######################################################################
-# DevCounter: 
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
 # Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org) and
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de)
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heize (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This file contains the common header
@@ -24,7 +25,6 @@ header("Pragma: no-cache"); 				// HTTP/1.0
 
 require("config.inc");
 require("lib.inc");
-require("security.inc");
 require("translation.inc");
 require("lang.inc");
 require("box.inc");
@@ -32,7 +32,6 @@ require("html.inc");
 $t = new translation($la);
 $db = new DB_DevCounter;
 ?>
-
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
 <head>

@@ -1,13 +1,16 @@
 <?php
 
 ######################################################################
-# Widi - Who Is Doing It?
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# Widi: http://widi.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
+# BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This page inserts the data into the database
 #
@@ -49,9 +52,9 @@ else
    $db->query("SELECT * from developers WHERE username='$username'");
    $db->next_record();
    $number_of_projects = $db->f("number_of_projects");
+   if ($number_of_projects <= 0)
+      $number_of_projects = 6;
    $counter2=0;
-   if ($number_of_projects>0)
-     {
       while ($counter!=$number_of_projects)
         {
          $counter++;
@@ -66,21 +69,13 @@ else
 	   }
 	}
       $db->query("UPDATE developers SET number_of_projects='$counter2' WHERE username='$username'");
-     }
-   else
-     {
       $bx->box_begin();
-      $bx->box_title($t->translate("Error"));
+      $bx->box_title($t->translate("Success"));
       $bx->box_body_begin();
-      echo $t->translate("No Projects")."\n";
+      echo $t->translate("Your Project Data were included successfully")."\n";
       $bx->box_body_end();
       $bx->box_end();
-
-     }
   }
-
-
-
 ?>
 
 <!-- end content -->

@@ -51,23 +51,22 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
      {
       if ($perm->have_perm("user") || $perm->have_perm("user_pending") || $perm->have_perm("editor") || $perm->have_perm("admin")) 
         {
-	 $username = $auth->auth["uname"];
+	     $uname = $auth->auth["uname"];
    
-         $db->query("SELECT * from developers WHERE username='$username'");
+         $db->query("SELECT * from developers WHERE username='$uname'");
          if ($db->num_rows()==0)
            {
             echo "<BR>\n";
-	    htmlp_link("questionaire.php3","",$t->translate("Enter your Profile"));	    
+	        htmlp_link("questionaire.php3","",$t->translate("Enter your Profile"));	    
            }
          else
-	   {
+	       {
             echo "<BR>\n";
-	    htmlp_link("update.php3","",$t->translate("Update your Profile"));	    
-	    
-	   }
+	        htmlp_link("update.php3","",$t->translate("Update your Profile"));
+	       }
         }
      }
-   ?>
+?>
    <br><a href="<?php $sess->purl("newsletter.php3"); ?>" class="menus"><?php echo $t->translate("Newsletter"); ?></a>
    <br><a href="<?php $sess->purl("backend.php3"); ?>" class="menus"><?php echo $t->translate("Backend"); ?></a>
    <br><a href="<?php $sess->purl("stats.php3?option=general"); ?>" class="menus"><?php echo $t->translate("Statistics"); ?></a>

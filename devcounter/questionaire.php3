@@ -1,17 +1,17 @@
 <?php
 ######################################################################
-# DevCounter
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org),
-#		 Susanne Gruenbaum (gruenbaum@fokus.gmd.de) and
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
-# This file contains the verification procedure when registering
+# Form to initially ask for developers profile
 #
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -88,11 +88,11 @@ else
    echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>\n";
    echo "<center><table width=80% border=0>\n";
    echo "<tr><td width=26%>";
-   htmlp_radio("gender","no entry",0); echo "&nbsp; ".$t->translate("no entry")."\n";
+   htmlp_radio("gender","no entry",1); echo "&nbsp;".$t->translate("no entry")."\n";
    echo "</td>\n<td width=26%>";
-   htmlp_radio("gender","Male",0); echo "&nbsp; ".$t->translate("Male")."\n";
+   htmlp_radio("gender","Male",0); echo "&nbsp;".$t->translate("Male")."\n";
    echo "</td>\n<td width=26%>";
-   htmlp_radio("gender","Female",0); echo "&nbsp; ".$t->translate("Female")."\n";
+   htmlp_radio("gender","Female",0); echo "&nbsp;".$t->translate("Female")."\n";
    echo "</td></tr></table></center>\n";
    echo "</td></tr>\n";
    echo "<tr><td align=right width=30%>".$t->translate("Mother tongue").":</td><td width=70%>\n";
@@ -167,7 +167,7 @@ else
    $bx->box_body_begin();
    echo "<table border=0 width=100% align=center cellspacing=0 cellpadding=3>\n";
 
-   echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" size=3 maxlength=2>\n";
+   echo "<tr><td align=left>".$t->translate("Number of Free Software/Open Source Projects you are involved in").": <input type=\"TEXT\" name=\"number_of_projects\" value=\"0\" size=\"3\" maxlength=\"2\">\n";
    echo "</tr>\n";
   
 

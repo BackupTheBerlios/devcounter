@@ -1,14 +1,15 @@
 <?php
 
 ######################################################################
-# SourceWell: Software Announcement & Retrieval System
+# Devcounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de) and
-#                Gregorio Robles (grex@scouts-es.org)
+# Copyright (c) 2001-2002 by
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Gregorio Robles (grex@scouts-es.org)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS SourceWell: http://sourcewell.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # File with the main German translation
@@ -50,6 +51,7 @@ switch($phrase) {
 
 //Frontpage
      case "Newest Developers": $tmp = "Neueste Entwickler"; break;
+     case "Please enter your Profile": $tmp = "Bitte geben Sie Ihre Profildaten ein"; break;
 
 //Permissions
      case "allow to show realname": $tmp = "tats&auml;chlicher Name darf angezeigt werden"; break;
@@ -60,7 +62,7 @@ switch($phrase) {
      
 //Statiscs and Profile
      case "Total number of developers": $tmp = "Gesamtazahl der Entwickler";break;
-     case "no entry": $tmp = "Kein Eintrag";break;
+     case "no entry": $tmp = "kein Eintrag";break;
      case "No Entry": $tmp = "Kein Eintrag";break;
      case "Gender": $tmp = "Geschlecht";break;
      case "Male": $tmp = "Männlich";break;
@@ -102,7 +104,6 @@ switch($phrase) {
      case "Year of Birth": $tmp = "Geburtsjahr"; break;
      case "Mother tongue": $tmp = "Muttersprache"; break;
      case "Other languages": $tmp = "weitere Sprachen"; break;
-
      
      case "Project": $tmp = "Projekt"; break;
      case "Number of Free Software/Open Source Projects you are involved in": $tmp = "Anzahl der Free Software/Open Source Projekte in die eingebunden bist"; break;
@@ -114,11 +115,10 @@ switch($phrase) {
      case "Submit": $tmp = "Abschicken"; break; 
      case "Submit Your Form": $tmp = "Formular abschicken"; break; 
      case "Add Project": $tmp = "Projekt hinzufügen"; break; 
-     case "Please enter Project Data": $tmp = "Bitte Projektdaten eingeben"; break; 
+     case "Please enter your Project Data": $tmp = "Bitte Projektdaten eingeben"; break; 
      case "Projectname": $tmp = "Projektname"; break; 
-     case "ProjectURL": $tmp = "ProjektURL"; break; 
-
-     
+     case "ProjectURL": $tmp = "ProjektURL"; break;
+ 
      case "No Experience": $tmp = "Keine Erfahrung"; break;
      case "Novice": $tmp = "Einsteiger"; break;
      case "Beginner": $tmp = "Anfänger"; break;
@@ -131,6 +131,10 @@ switch($phrase) {
      case "Search": $tmp = "Suche"; break;
      case "Language": $tmp = "Sprache"; break;
      case "Go": $tmp = "Los"; break;
+
+     case "Done": $tmp = "Ausgeführt"; break;
+     case "Your Profile has been succesfully changed": $tmp = "Ihre Profiledaten wurden erfolgreich geändert"; break;
+     case "Please proceed with the main page": $tmp = "Bitte mit Hauptseite fortfahren"; break;
 
 // Languages
 	 case "English": $tmp = "Englisch"; break;
@@ -190,7 +194,7 @@ switch($phrase) {
      case "Confirm Password": $tmp = "Passwort bestätigen"; break;
      case "Realname": $tmp = "Name"; break;
      case "Register": $tmp = "Registrieren"; break;
-     case "User Registration": $tmp = "Benutzerregistrierung"; break;
+     case "Developer Registration": $tmp = "Entwicklerregistrierung"; break;
      case "Congratulations": $tmp = "Gratulation"; break;
      case "You have registered on $GLOBALS[sys_name]": $tmp = "Sie haben sich bei $GLOBALS[sys_name] registriert"; break;
      case "Your new username is": $tmp = "Ihr neuer Benutzername ist"; break;
@@ -342,6 +346,7 @@ switch($phrase) {
      case "Please try again": $tmp = "Bitte versuchen Sie es nochmal"; break;
      case "License description is not available": $tmp = "Lizenzbeschreibung ist nicht verfügbar"; break;
      case "No Frequently Asked Questions exist": $tmp = "Es existieren keine oft gestellten Fragen"; break;
+     case "Developer did not specify a Profile yet": $tmp = "Entwickler hat bis jetzt noch keine Profildaten spezifiziert"; break;
 
 // adm_langs_tools.php3
     case "Success": $tmp = "Erfolg"; break;
@@ -384,7 +389,10 @@ switch($phrase) {
     case "Registration Number": $tmp = "Registrierungsnummer"; break;
     case "Programming Experience": $tmp = "Programmier-Erfahrung"; break;
     case "Languages/Tools Experience": $tmp = "Programmiersprachen/Werkzeug-Erfahrung"; break;
-    
+    case "Thank you": $tmp = "Danksagung"; break;
+    case "Thank you for entering your Profile": $tmp = "Danke für die Eingabe Ihrer Profildaten"; break;
+    case "Please proceed with the main page ": $tmp = "Bitte mit der Hauptseite fortfahren"; break;
+
 // admfaq.php3 and insfaq.php3
 
     case "Enter a New Frequently Asked Question": $tmp = "Erstellen einer neuen häufig gestellten Frage"; break;
@@ -416,7 +424,7 @@ switch($phrase) {
     case "Project deleted": $tmp = "Projekt gel&ouml;scht"; break;
     case "Project added": $tmp = "Projekt hinzugef&uuml;gt"; break;
     case "The Projects": $tmp = "Die Projekte"; break;
-    case "please proceed to the projects page": $tmp = "Bitte zur Projekt-Seite fortfahren"; break;
+    case "Please proceed with the projects page": $tmp = "Bitte mit Projekt-Seite fortfahren"; break;
     
 
 // If no translation available, keep the original phrase

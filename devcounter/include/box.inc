@@ -4,9 +4,9 @@
 # The HTML Table Library
 # ===================================================================
 #
-# Copyright (c) 2001 by
+# Copyright (c) 2001-2002 by
 #		 Lutz Henckel (lutz.henckel@fokus.gmd.de) and
-#                Gregorio Robles (grex@scouts-es.org)
+#        Gregorio Robles (grex@scouts-es.org)
 #
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #

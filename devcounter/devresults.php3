@@ -1,17 +1,17 @@
 <?php
 ######################################################################
-# DevCounter
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org),
-#		 Susanne Gruenbaum (gruenbaum@fokus.gmd.de) and
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
-# This file contains the verification procedure when registering
+# Show search results
 #
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

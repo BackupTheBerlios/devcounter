@@ -1,13 +1,16 @@
 <?php
 
 ######################################################################
-# Widi - Who Is Doing It?
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# Widi: http://widi.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
+# BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This page inserts the data into the database
 #
@@ -52,8 +55,8 @@ else
    $db->query("SELECT * from developers WHERE username='$username'");
    $db->next_record();
    $number_of_projects = $db->f("number_of_projects");
-   if ($number_of_projects>0)
-     {
+   if ($number_of_projects <= 0)
+      $number_of_projects = 6;
    
        $counter=0;
        htmlp_form_action("addproj2db.php3","","POST");
@@ -61,7 +64,7 @@ else
        
        //$bs->box_strip($msg);
        $bx->box_begin();
-       $bx->box_title($t->translate("Please enter Project Data"));
+       $bx->box_title($t->translate("Please enter your Project Data"));
        $bx->box_body_begin();
 	  
        $bx->box_columns_begin(4);
@@ -88,22 +91,7 @@ else
        $bx->box_columns_end();
        $bx->box_body_end();
        $bx->box_end();
-       
-     }
-   else
-     {
-      $bx->box_begin();
-      $bx->box_title($t->translate("Error"));
-      $bx->box_body_begin();
-      echo $t->translate("No Projects")."\n";
-      $bx->box_body_end();
-      $bx->box_end();
-
-     }
   }
-
-
-
 ?>
 
 <!-- end content -->

@@ -1,14 +1,14 @@
 <?php
 
 ######################################################################
-# DevCounter: Software Announcement & Retrieval System
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de) and
-#                Gregorio Robles (grex@scouts-es.org)
+# Copyright (c) 2001-2002 by
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Gregorio Robles (grex@scouts-es.org)
 #
-# BerliOS DevCounter: http://sourcewell.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This file is usefull for administrating (registered) users
@@ -75,11 +75,15 @@ if (($config_perm_admuser != "all") && (!isset($perm) || !$perm->have_perm($conf
 			  // Handles all user contributions to the system
 			  // so that we don't loose them when changing username
         if ($username != $old_username) {
-	  $query = "update software set user='$username',status='M' where user='$old_username'";
+	  $query = "UPDATE developers SET username='$username' where username='$old_username'";
 	  $db->query($query);
-	  $query = "update history set user_his ='$username' where user_his='$old_username'";
+	  $query = "UPDATE extra_perms SET username ='$username' where username='$old_username'";
 	  $db->query($query);
-	  $query = "update comments set user_cmt='$username' where user_cmt='$old_username'";
+	  $query = "UPDATE os_projects SET username='$username' where username='$old_username'";
+	  $db->query($query);
+	  $query = "UPDATE prog_ability_values SET username='$username' where username='$old_username'";
+	  $db->query($query);
+	  $query = "UPDATE prog_language_values SET username='$username' where username='$old_username'";
 	  $db->query($query);
         }
 			// Update user information.
@@ -101,6 +105,23 @@ if (($config_perm_admuser != "all") && (!isset($perm) || !$perm->have_perm($conf
 	  $be->box_full($t->translate("Error"), $t->translate("User Deletion failed").":<br>$query");
 	  break;
 	}
+	$query = "SELECT develid FROM developers WHERE username='$username'";
+	$db->query($query);
+	$db->next_record();
+	$develid = $db->f("develid");
+	$query = "DELETE FROM developers WHERE username='$username'";
+	$db->query($query);
+	$query = "DELETE FROM extra_perms WHERE username ='$username'";
+	$db->query($query);
+	$query = "DELETE FROM os_projects WHERE username='$username'";
+	$db->query($query);
+	$query = "DELETE FROM prog_ability_values WHERE username='$username'";
+	$db->query($query);
+	$query = "DELETE FROM prog_language_values WHERE username='$username'";
+	$db->query($query);
+	$query = "DELETE FROM counter WHERE develid='$develid'";
+	$db->query($query);
+
 	$bx->box_full($t->translate("User Deletion"), $t->translate("User")." <b>$username</b> ".$t->translate("is deleted").".<BR>");
 	break;
 

@@ -1,15 +1,18 @@
 <?php
 
 ######################################################################
-# Widi - Who Is Doing It?
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# Widi: http://widi.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
+# BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
-# This page inserts the data into the database
+# Updates developers profile data in database
 #
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,8 +37,6 @@ $db2 = new DB_DevCounter;
 <!-- content -->
 
 <?php
-
-
   $query = "UPDATE developers SET nationality='$nationality', actual_country='$actual_country', year_of_birth='$year_of_birth', gender='$gender', mother_tongue='$mother_tongue', other_lang_1='$other_lang_1', other_lang_2='$other_lang_2', profession='$profession', qualification='$qualification' WHERE username='$username'";
   $db->query($query);
 //  echo "Fehler-Nr: $db->Errno \nFehlertxt: $db->Error \n";
@@ -72,22 +73,16 @@ $db2 = new DB_DevCounter;
   $query = $query."WHERE (username = '$username')";
   $db->query($query);
 
-
-
-
-
  $bx->box_begin();
  $bx->box_title($t->translate("Done"));
  $bx->box_body_begin();
  echo "\n<P>";
- echo $t->translate("Your profile data has been succesfully changed");
+ echo $t->translate("Your Profile has been succesfully changed");
  echo "\n<BR>";
- htmlp_link("./index.php3", "", $t->translate("please proceed to the main page"));
+ htmlp_link("./index.php3", "", $t->translate("Please proceed with the main page"));
  echo "\n<P>";
  $bx->box_body_end();
  $bx->box_end();
-
-
 ?>
 
 <!-- end content -->

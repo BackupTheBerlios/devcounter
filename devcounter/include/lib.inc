@@ -4,7 +4,7 @@
 # DevCounter - Open Source Developer Counter
 # ===================================================================
 #
-# Copyright (c) 2001 by
+# Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
 #       Lutz Henckel (lutz.henckel@fokus.fhg.de)
 #       Stefan Heinze (heinze@fokus.fhg.de)

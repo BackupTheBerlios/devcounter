@@ -1,9 +1,9 @@
 <?php
 ######################################################################
-# DevCounter - Open Source Developer Counter
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
+# Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
 #       Lutz Henckel (lutz.henckel@fokus.fhg.de)
 #       Stefan Heinze (heinze@fokus.fhg.de)
@@ -11,7 +11,7 @@
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
-# This file contains the verification procedure when registering
+# Form to update developers profile
 #
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -42,10 +42,6 @@ $db2 = new DB_DevCounter;
 
 <!-- content -->
 <?php
-
-
-
-
 if (empty($auth->auth["uname"]))
   {
    $bx->box_begin();
@@ -410,7 +406,7 @@ else
       echo $db->f("ability")."\n";
       $colname = $db->f("colname");
       $ability_value = $db2->f($colname);
-      echo "</td><td width=20%>";
+      echo "</td><td width=20% align=right>";
       htmlp_select("ability[".$ability_code."]"); 
       
       if ($ability_value == 0)
@@ -517,7 +513,7 @@ else
       echo $db->f("language")."\n";
       $colname = $db->f("colname");
       $ability_value = $db2->f($colname);
-      echo "</td><td width=20%>";
+      echo "</td><td width=20% align=right>";
       htmlp_select("plang[".$ability_code."]"); 
       
       if ($ability_value == 0)
@@ -602,9 +598,7 @@ else
    $bx->box_body_end();
    $bx->box_end();
 
-
    echo"<CENTER><TABLE BORDER=0 width=89%><TR><TD width=65%>\n";
-
  
    echo "<CENTER>";
    htmlp_form_submit($t->translate("Submit"),"");
@@ -617,9 +611,6 @@ else
    echo"</TD><TD width=5%>&nbsp;\n";
    echo"</TD><TD width=30%>\n";
   }
-
-
-
 ?>
 <!-- end content -->
 

@@ -1,14 +1,15 @@
 <?php
 
 ######################################################################
-# DevCounter: 
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org) and
-#                Lutz Henckel (lutz.henckel@fokus.gmd.de)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This is the login file: here authenticated sessions start
@@ -51,9 +52,9 @@ else
    if ($db->num_rows() ==0)
      {
       $bx->box_begin();
-      $bx->box_title($username);
+      $bx->box_title($t->translate("Developer").": ".$username);
       $bx->box_body_begin();
-      htmlp_link("questionaire.php3","",$t->translate("please enter your profile"));
+      htmlp_link("questionaire.php3","",$t->translate("Please enter your Profile"));
       $bx->box_body_end();
       $bx->box_end();
      }
@@ -67,9 +68,9 @@ else
       if ($db->num_rows() ==0 && $number_of_projects>0)
         {
 	 $bx->box_begin();
-	 $bx->box_title($username);
+         $bx->box_title($t->translate("Developer").": ".$username);
 	 $bx->box_body_begin();
-	 htmlp_link("addproj.php3","",$t->translate("please enter your project data"));
+	 htmlp_link("addproj.php3","",$t->translate("Please enter your Project Data"));
 	 $bx->box_body_end();
 	 $bx->box_end();
 	}

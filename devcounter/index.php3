@@ -1,13 +1,15 @@
 <?php
 
 ######################################################################
-# DevCounter
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
-#                Gregorio Robles (grex@scouts-es.org)
+# Copyright (c) 2001-2002 by
+#       Gregorio Robles (grex@scouts-es.org)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
-# BerliOS DevCounter: http://sourceagency.berlios.de
+# BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
 # This is the index file
@@ -56,30 +58,6 @@ echo "<TR><TD VALIGN=\"top\">";
         break;
       }
 
-echo "</TD><TD WIDTH=\"250\">";
-
-$bx->box_begin();
-$bx->box_title($t->translate("Newest Developers"));
-$bx->box_body_begin();
-
-$db->query("SELECT * FROM auth_user, developers where auth_user.username = developers.username ORDER BY auth_user.modification_usr DESC LIMIT 0, 30");
-
-while ($db->next_record())
-  {
-   $user_name = $db->f("username");
-   echo "<li>";
-   $pquery["devname"] = $user_name ;
-   htmlp_link("showprofile.php3",$pquery,$user_name);
-   $timestamp = mktimestamp($db->f("modification_usr"));
-   echo " <span class=\"small\">[".timestr_short($timestamp)."]</span>\n";
-  }
-
-$bx->box_body_end();
-$bx->box_end();
-
-echo "</TD></TR>\n";
-echo "</TABLE>\n";
-
 if (empty($auth->auth["uname"]))
   {
     echo " ";
@@ -92,9 +70,9 @@ else
    if ($db->num_rows() ==0)
      {
       $bx->box_begin();
-      $bx->box_title($username);
+      $bx->box_title($t->translate("Developer").": ".$username);
       $bx->box_body_begin();
-      htmlp_link("questionaire.php3","",$t->translate("please enter your profile"));
+      htmlp_link("questionaire.php3","",$t->translate("Please enter your Profile"));
       $bx->box_body_end();
       $bx->box_end();
      }
@@ -106,15 +84,39 @@ else
       if ($db->num_rows() ==0 && $number_of_projects>0)
         {
 	 $bx->box_begin();
-	 $bx->box_title($username);
+	 $bx->box_title($t->translate("Developer").": ".$username);
 	 $bx->box_body_begin();
-	 htmlp_link("addproj.php3","",$t->translate("please enter your project data"));
+	 htmlp_link("addproj.php3","",$t->translate("Please enter your Project Data"));
 	 $bx->box_body_end();
 	 $bx->box_end();
 	}
    }
    echo " ";
   }
+
+echo "</TD><TD WIDTH=\"250\">";
+
+$bx->box_begin();
+$bx->box_title($t->translate("Newest Developers"));
+$bx->box_body_begin();
+
+$db->query("SELECT * FROM auth_user,developers where auth_user.username=developers.username ORDER BY developers.creation DESC LIMIT 0, 30");
+
+while ($db->next_record())
+  {
+   $user_name = $db->f("username");
+   echo "<li>";
+   $pquery["devname"] = $user_name ;
+   htmlp_link("showprofile.php3",$pquery,$user_name);
+   $timestamp = mktimestamp($db->f("creation"));
+   echo " <span class=\"small\">[".timestr_short($timestamp)."]</span>\n";
+  }
+
+$bx->box_body_end();
+$bx->box_end();
+
+echo "</TD></TR>\n";
+echo "</TABLE>\n";
 
 ?>
 <!-- end content -->

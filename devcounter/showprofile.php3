@@ -1,9 +1,9 @@
 <?php
 ######################################################################
-# DevCounter - Open Source Developer Counter
+# DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001 by
+# Copyright (c) 2001-2002 by
 #       Gregorio Robles (grex@scouts-es.org)
 #       Lutz Henckel (lutz.henckel@fokus.fhg.de)
 #       Stefan Heinze (heinze@fokus.fhg.de)
@@ -11,7 +11,7 @@
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
 #
-# This file contains the verification procedure when registering
+# Show developers profile data
 #
 # This program is free software. You can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ if ($db->num_rows() == 0)
    $bx->box_title($t->translate("Error"));
    $bx->box_body_begin();
 
-   echo $t->translate("no profile given");
+   echo $t->translate("Developer did not specify a Profile yet");
 
    $bx->box_body_end();
    $bx->box_end();
@@ -77,7 +77,12 @@ else
    }
   
    $year_of_birth = $db->f("year_of_birth");
-   echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>19$year_of_birth\n";
+   if ($year_of_birth == "0") {
+      $year_of_birth = $t->translate("no entry");
+   } else {
+      $year_of_birth = "19".$year_of_birth;
+   }
+   echo "<tr><td align=right width=30%>".$t->translate("Year of Birth").":</td><td width=70%>$year_of_birth\n";
 
    $gender = $db->f("gender");
    echo "<tr><td align=right width=30%>".$t->translate("Gender").":</td><td width=70%>".$t->translate("$gender")."\n";
