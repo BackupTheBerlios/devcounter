@@ -14,7 +14,7 @@ echo "translation ...\n";
 echo "<P>";
 echo "Registered users are able to define a Developers Watch\n";
 echo "which defines the abilities and experiences you are looking for.\n";
-echo "If a developer with these abilities and expriences are present,\n";
+echo "If developers with these abilities and expriences becomes available,\n";
 echo "the user will be informed via a message by email.\n";
 echo "<P>";
 echo "Developer, which are looking for projects or want to help/assist,\n";
