@@ -117,21 +117,56 @@ $bx->box_end();
 
     case "projects":
 
+/*
       $bx->box_begin();
       $bx->box_title($t->translate("Under Construction"));
       $bx->box_body_begin();
       echo $t->translate("Not yet implemented")."\n";
       $bx->box_body_end();
       $bx->box_end();
-
+*/
+      $db->query("SELECT username FROM developers WHERE  name_of_projects LIKE '%$projname%'");
+      $bx->box_begin();
+      $bx->box_title($t->translate("Results"));
+      $bx->box_body_begin();
+      
+     if ($db->num_rows() == 0)
+       {
+        echo $t->translate("No Results")."\n";
+       }
+     else
+       {
+        while ($db->next_record())
+	  {
+	   echo $db->f("username")."<BR>\n";
+	  }
+       }
+        $bx->box_body_end();
+        $bx->box_end();
       break;
 
     case "lang":
 
+
+      $db->query("SELECT username FROM developers WHERE mother_tongue='$dev_lang' OR other_lang_1='$dev_lang' OR other_lang_2='$dev_lang'");
       $bx->box_begin();
-      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_title($t->translate("Results"));
       $bx->box_body_begin();
-      echo $t->translate("Not yet implemented")."\n";
+      
+//      mother_tongue   other_lang_1   other_lang_2
+      
+      
+     if ($db->num_rows() == 0)
+       {
+        echo $t->translate("No Results")."\n";
+       }
+     else
+       {
+        while ($db->next_record())
+	  {
+	   echo $db->f("username")."<BR>\n";
+	  }
+       }
       $bx->box_body_end();
       $bx->box_end();
 
@@ -139,10 +174,23 @@ $bx->box_end();
 
     case "country":
 
+      $db->query("SELECT username FROM developers WHERE nationality='$dev_country' OR actual_country='$dev_country'");
       $bx->box_begin();
-      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_title($t->translate("Results"));
       $bx->box_body_begin();
-      echo $t->translate("Not yet implemented")."\n";
+
+     if ($db->num_rows() == 0)
+       {
+        echo $t->translate("No Results")."\n";
+       }
+     else
+       {
+        while ($db->next_record())
+	  {
+	   echo $db->f("username")."<BR>\n";
+	  }
+       }
+
       $bx->box_body_end();
       $bx->box_end();
 

@@ -46,7 +46,7 @@ if (($config_perm_users == "all") || (isset($perm) && $perm->have_perm($config_p
    <br><a href="<?php $sess->purl("users.php3") ?>" class="menus"><?php echo $t->translate("Developers"); ?></a>
 
    <br>
-   <br><a href="<?php $sess->purl("search.php3") ?>" class="menus"><?php echo $t->translate("Search Developer"); ?></a>
+   <br><a href="<?php $sess->purl("searchdev.php3") ?>" class="menus"><?php echo $t->translate("Search Developer"); ?></a>
    <?php
    if (isset($auth) && !empty($auth->auth["perm"]) && !($logout)) 
      {

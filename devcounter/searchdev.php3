@@ -220,20 +220,34 @@ $bx->box_end();
     case "projects":
 
       $bx->box_begin();
-      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_title($t->translate("Search for Projects"));
       $bx->box_body_begin();
-      echo $t->translate("Not yet implemented")."\n";
+      htmlp_form_action("devresults.php3","POST");
+      echo $t->translate("Enter Name of <B>one</B> Project")."\n";
+      htmlp_input_text("projname", "30", "30", "");
+      htmlp_form_hidden("option", $option);
+      htmlp_form_submit($t->translate("Submit Your Form"),"");
       $bx->box_body_end();
       $bx->box_end();
+      
+      htmlp_form_end();
 
       break;
 
     case "lang":
 
       $bx->box_begin();
-      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_title($t->translate("Search for Languages spoken"));
       $bx->box_body_begin();
-      echo $t->translate("Not yet implemented")."\n";
+      htmlp_form_action("devresults.php3","POST");
+      echo $t->translate("Please select desired Language")."\n";
+
+      htmlp_select("dev_lang"); echo "\n";
+      select_lang(999);
+      htmlp_select_end();
+
+      htmlp_form_hidden("option", $option);
+      htmlp_form_submit($t->translate("Submit Your Form"),"");
       $bx->box_body_end();
       $bx->box_end();
 
@@ -242,9 +256,19 @@ $bx->box_end();
     case "country":
 
       $bx->box_begin();
-      $bx->box_title($t->translate("Under Construction"));
+      $bx->box_title($t->translate("Search for Counties"));
       $bx->box_body_begin();
-      echo $t->translate("Not yet implemented")."\n";
+
+      htmlp_form_action("devresults.php3","POST");
+      echo $t->translate("Please select desired Country")."\n";
+
+      htmlp_select("dev_country"); echo "\n";
+      select_country(999);
+      htmlp_select_end();
+
+      htmlp_form_hidden("option", $option);
+      htmlp_form_submit($t->translate("Submit Your Form"),"");
+
       $bx->box_body_end();
       $bx->box_end();
 
