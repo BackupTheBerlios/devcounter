@@ -17,7 +17,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: config.inc,v 1.12 2002/08/26 10:14:28 helix Exp $
+# $Id: config.inc,v 1.13 2002/09/01 11:28:39 helix Exp $
 #
 ######################################################################
 
@@ -32,6 +32,10 @@
 # sys_logo_alt		Alternative text for your site's image
 # sys_logo_width	Width of the image of your site
 # sys_logo_heigth	Heigth of the image of your site
+# sys_logo_small_image	Small image of your sitebar
+# sys_logo_small_alt	Alternative text for your sitebar's image
+# sys_logo_small_width	Width of the image of your sitebar
+# sys_logo_small_heigth	Heigth of the image of your sitebar
 #
 # (don't forget to put slashes at the end of the URLs)
 ######################################################################
@@ -44,6 +48,10 @@ $sys_logo_image = "images/berliOS_logo.png";
 $sys_logo_alt = "BerliOS";
 $sys_logo_width = "238";
 $sys_logo_heigth = "61";
+$sys_logo_small_image = "images/berliOS_small_logo.png";
+$sys_logo_small_alt = $sys_logo_alt;
+$sys_logo_small_width = "124";
+$sys_logo_small_heigth = "32";
 
 ######################################################################
 # Organisation Config
