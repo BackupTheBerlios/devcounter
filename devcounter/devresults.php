@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: devresults.php,v 1.10 2004/11/24 10:08:52 helix Exp $
+# $Id: devresults.php,v 1.11 2006/01/09 16:26:37 helix Exp $
 #
 ######################################################################
 
@@ -110,7 +110,7 @@ case "allinone":
 				$bx->box_column("center","",$bgcolor,"-- % ---");
 			}
 			if ($db->f("showemail") == "yes") {
-				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))));
 			} else {
 				$bx->box_column("center","",$bgcolor,"--- % ---");
 			}
@@ -181,7 +181,7 @@ case "abilities":
 				$bx->box_column("center","",$bgcolor,"-- % ---");
 			}
 			if ($db->f("showemail") == "yes") {
-				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))));
 			} else {
 				$bx->box_column("center","",$bgcolor,"--- % ---");
 			}
@@ -231,7 +231,7 @@ case "projects":
 				$bx->box_column("center","",$bgcolor,"-- % ---");
 			}
 			if ($db->f("showemail") == "yes") {
-				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))));
 			} else {
 				$bx->box_column("center","",$bgcolor,"--- % ---");
 			}
@@ -280,7 +280,7 @@ case "lang":
 				$bx->box_column("center","",$bgcolor,"-- % ---");
 			}
 			if ($db->f("showemail") == "yes") {
-				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))));
 			} else {
 				$bx->box_column("center","",$bgcolor,"--- % ---");
 			}
@@ -329,7 +329,7 @@ case "country":
 				$bx->box_column("center","",$bgcolor,"-- % ---");
 			}
 			if ($db->f("showemail") == "yes") {
-				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))));
 			} else {
 				$bx->box_column("center","",$bgcolor,"--- % ---");
 			}
@@ -378,7 +378,7 @@ case "name":
 				$bx->box_column("center","",$bgcolor,"-- % ---");
 			}
 			if ($db->f("showemail") == "yes") {
-				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("@"," at ",htmlentities($db->f("email_usr")))));
+				$bx->box_column("center","",$bgcolor,html_link("mailto:".mailtoencode($db->f("email_usr")),"",ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))));
 			} else {
 				$bx->box_column("center","",$bgcolor,"--- % ---");
 			}

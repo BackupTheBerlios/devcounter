@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: showprofile.php,v 1.9 2004/11/24 10:08:52 helix Exp $
+# $Id: showprofile.php,v 1.10 2006/01/09 16:26:37 helix Exp $
 #
 ######################################################################
 
@@ -143,7 +143,7 @@ else
    }
 
    if ($db->f("showemail") == "yes") {
-      echo "<tr><td align=right width=30%>".$t->translate("E-Mail").":</td><td width=70%><a href=\"mailto:".mailtoencode($db->f("email_usr"))."\">".ereg_replace("@"," at ",htmlentities($db->f("email_usr")))."</a>\n";
+      echo "<tr><td align=right width=30%>".$t->translate("E-Mail").":</td><td width=70%><a href=\"mailto:".mailtoencode($db->f("email_usr"))."\">".ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))."</a>\n";
    }
   
    echo "<tr><td align=right width=30%>".$t->translate("Developer last modified").":</td><td width=70%>\n";

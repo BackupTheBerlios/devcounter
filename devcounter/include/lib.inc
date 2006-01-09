@@ -20,7 +20,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: lib.inc,v 1.13 2004/11/24 10:05:07 helix Exp $
+# $Id: lib.inc,v 1.14 2006/01/09 16:26:37 helix Exp $
 #
 ######################################################################
 
@@ -836,7 +836,7 @@ function nlmsg($period) {
     $msg .= "Mother Tongue : ".get_lang($db->f("mother_tongue"))."\n";
     $msg .= "2. Language   : ".get_lang($db->f("other_lang_1"))."\n";
     $msg .= "3. Language   : ".get_lang($db->f("other_lang_2"))."\n";
-    $msg .= "E-Mail        : ".ereg_replace("@"," at ",htmlentities($db->f("email_usr")))."\n";
+    $msg .= "E-Mail        : ".ereg_replace("\."," dot ",ereg_replace("@"," at ",htmlentities($db->f("email_usr"))))."\n";
     $msg .= "Profession    : ".$t->translate(get_profession($db->f("profession")))."\n";
     $msg .= "Qualification : ".$t->translate(get_qualification($db->f("qualification")))."\n";
     $name_of_projects = "";
@@ -1027,6 +1027,8 @@ function get_qualification($qualid) {
 
 function mailtoencode($str) {
   $ret = "";
+  $str = ereg_replace("@"," at ",$str);
+  $str = ereg_replace("\."," dot ",$str);
   $arr = unpack("C*", $str);
   foreach ($arr as $char)
     $ret .= sprintf("%%%X", $char);
