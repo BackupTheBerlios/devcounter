@@ -4,10 +4,10 @@
 # DevCounter: Open Source Developer Counter
 # ================================================
 #
-# Copyright (c) 2001-2002 by
+# Copyright (c) 2001-2006 by
 #       Gregorio Robles (grex@scouts-es.org)
-#       Lutz Henckel (lutz.henckel@fokus.fraunhofer.de)
-#       Stefan Heinze (heinze@fokus.fraunhofer.de)
+#       Lutz Henckel (lutz.henckel@fokus.fhg.de)
+#       Stefan Heinze (heinze@fokus.fhg.de)
 #
 # BerliOS DevCounter: http://devcounter.berlios.de
 # BerliOS - The OpenSource Mediator: http://www.berlios.de
@@ -18,7 +18,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 or later of the GPL.
 #
-# $Id: insfaq.php,v 1.5 2004/03/02 09:22:58 helix Exp $
+# $Id: insfaq.php,v 1.6 2006/01/10 10:10:41 helix Exp $
 #
 ######################################################################  
 
@@ -90,7 +90,7 @@ if (($config_perm_admfaq != "all") && (!isset($perm) || !$perm->have_perm($confi
     if ($modify == 2) {
  				// We insert it into the DB
       $db->query("UPDATE faq SET question='$question',answer='$answer' WHERE faqid='$faqid'");
-      if ($db->affected_rows() < 1) {
+      if ($db->affected_rows() <> 1 && $db->Errno) {
         $be->box_full($t->translate("Error"), $t->translate("Database Error"));
       } else {
 				// We show what we just have inserted
